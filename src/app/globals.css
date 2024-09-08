@@ -19,9 +19,30 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+:root {
+  --navbar-bg-color: #FFFDD0;
 }
+
+[data-theme="dark"] {
+  --navbar-bg-color: black;
+}
+
+.nav {
+  background-color: var(--navbar-bg-color);
+}
+
+.bg-primary{
+  background-color: #98FF98;
+}
+.bg-secondary{
+  background-color: #FFFDD0;
+}
+
+.primary{
+  color: #98FF98;
+}
+.secondary{
+  color: #FFFDD0;
+}
+
+
