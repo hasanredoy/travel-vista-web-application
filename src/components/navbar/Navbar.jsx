@@ -1,15 +1,22 @@
+import Link from "next/link";
+
+import { ImHome } from "react-icons/im";
+
+
+
 const Navbar = () => {
 
   const navLinks =<>
-  <li>Home</li>
-  <li>All Places</li>
-  <li>Start Hosting</li>
-  <li>Reviews</li>
-  <li>Contact us </li>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><ImHome></ImHome> Home</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">All Places</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">Start Hosting</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">Reviews</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">Contact us </Link>
   </>
   return (
-    <nav className="navbar nav bg-secondary">
-      <div className="navbar-start">
+    <nav className=" nav relative ">
+    <container className="navbar w-[90%] mx-auto lg:w-[85%]">
+    <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
@@ -29,7 +36,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className=" h-full dropdown-content bg-[#08F3E7] bg-opacity-10 bg-transparent  w-[300px]    min-h-screen  z-[20] mt-2 absolute -left-28 flex flex-col gap-3 pl-20 pt-5 "
           >
            {navLinks}
           </ul>
@@ -75,6 +82,7 @@ const Navbar = () => {
           </div>
         </button>
       </div>
+    </container>
     </nav>
   );
 };
