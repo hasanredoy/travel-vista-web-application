@@ -7,7 +7,9 @@ import { MdAddHomeWork } from "react-icons/md";
 import { MdContactSupport } from "react-icons/md";
 import './navbar.css'
 import { usePathname } from "next/navigation";
-
+import trip from '../../../public/assets/trip.gif'
+import airplane from '../../../public/assets/airplane.gif'
+import Image from "next/image";
 
 
 
@@ -25,12 +27,13 @@ const Navbar = () => {
   <Link href={'/contact_us'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600 ${path=='/contact_us'&&'text-violet-600'}`}><MdContactSupport className="text-xl"></MdContactSupport> Contact us </Link>
   </>
   return (
-    <nav className=" nav relative ">
+    <nav className="shadow-lg  nav relative ">
     <container className="navbar w-[90%] mx-auto lg:w-[85%]">
     <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+          <div tabIndex={0} role="button" title="click outside to close" className="btn btn-ghost btn-circle">
             <svg
+            
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
               fill="none"
@@ -47,9 +50,12 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className=" h-full dropdown-content dropDown bg-[#08F3E7] shadow-lg shadow-blue-300 bg-opacity-30 bg-transparent  w-[300px]    min-h-screen  z-[20] mt-2 absolute -left-28 flex flex-col gap-3 pl-20 pt-5 "
+            className=" h-full dropdown-content dropDown bg-[#08F3E7] shadow-lg shadow-blue-300 bg-opacity-40   w-[200px] md:w-[240px] lg:w-[300px]    min-h-screen  z-[20] mt-2 absolute -left-10 md:-left-14 lg:-left-28 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
           >
            {navLinks}
+           <div>
+            <Image src={trip} alt="trip " width={60} height={60} className=" absolute top-0 right-0"></Image>
+           </div>
           </ul>
         </div>
       </div>

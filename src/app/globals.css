@@ -30,7 +30,6 @@ body {
 
 .nav {
   background-color: var(--navbar-bg-color);
-  opacity: 20;
 }
 
 .bg-primary{
