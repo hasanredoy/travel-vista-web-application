@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 
 import { ImHome } from "react-icons/im";
@@ -5,19 +6,23 @@ import { MdOutlineTravelExplore, MdReviews } from "react-icons/md";
 import { MdAddHomeWork } from "react-icons/md";
 import { MdContactSupport } from "react-icons/md";
 import './navbar.css'
+import { usePathname } from "next/navigation";
 
 
 
 
 const Navbar = () => {
 
+  const path = usePathname()
+  console.log(path)
+
   // nav links 
   const navLinks =<>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><ImHome className="text-xl"></ImHome> Home</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdOutlineTravelExplore className="text-xl"></MdOutlineTravelExplore> All Places</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdAddHomeWork className="text-xl"></MdAddHomeWork> Start Hosting</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdReviews className="text-xl"></MdReviews> Reviews</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdContactSupport className="text-xl"></MdContactSupport> Contact us </Link>
+  <Link href={'/'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600  ${path=='/'&&'text-violet-600'}`}><ImHome className="text-xl"></ImHome> Home</Link>
+  <Link href={'/all_places'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600 ${path=='/all_places'&&'text-violet-600'}`}><MdOutlineTravelExplore className="text-xl"></MdOutlineTravelExplore> All Places</Link>
+  <Link href={'/start_hosting'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600 ${path=='/start_hosting'&&'text-violet-600'}`}><MdAddHomeWork className="text-xl"></MdAddHomeWork> Start Hosting</Link>
+  <Link href={'/reviews'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600 ${path=='/reviews'&&'text-violet-600'}`}><MdReviews className="text-xl"></MdReviews> Reviews</Link>
+  <Link href={'/contact_us'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600 ${path=='/contact_us'&&'text-violet-600'}`}><MdContactSupport className="text-xl"></MdContactSupport> Contact us </Link>
   </>
   return (
     <nav className=" nav relative ">
