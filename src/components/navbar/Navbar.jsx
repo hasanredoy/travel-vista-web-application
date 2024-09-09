@@ -8,8 +8,8 @@ import { MdContactSupport } from "react-icons/md";
 import './navbar.css'
 import { usePathname } from "next/navigation";
 import trip from '../../../public/assets/trip.gif'
-import airplane from '../../../public/assets/airplane.gif'
 import Image from "next/image";
+import logo from '../../../public/assets/logo.png'
 
 
 
@@ -60,7 +60,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+
+        <Link href={'/'}><Image src={logo} width={200} height={50} alt="logo"></Image></Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
