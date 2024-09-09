@@ -5,19 +5,18 @@ import { ImHome } from "react-icons/im";
 import { MdOutlineTravelExplore, MdReviews } from "react-icons/md";
 import { MdAddHomeWork } from "react-icons/md";
 import { MdContactSupport } from "react-icons/md";
-import './navbar.css'
 import { usePathname } from "next/navigation";
 import trip from '../../../public/assets/trip.gif'
 import Image from "next/image";
 import logo from '../../../public/assets/logo.png'
+import { RiMenuUnfold3Fill } from "react-icons/ri";
+import { LuLogIn } from "react-icons/lu";
 
 
 
 const Navbar = () => {
-
+//  get pathname
   const path = usePathname()
-  console.log(path)
-
   // nav links 
   const navLinks =<>
   <Link href={'/'} className={`text-base font-bold flex gap-2 items-center hover:text-violet-600  ${path=='/'&&'text-violet-600'}`}><ImHome className="text-xl"></ImHome> Home</Link>
@@ -28,25 +27,11 @@ const Navbar = () => {
   </>
   return (
     <nav className="shadow-lg  nav relative ">
-    <container className="navbar w-[90%] mx-auto lg:w-[85%]">
+    <container className="navbar w-[96%] mx-auto lg:w-[85%]">
     <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" title="click outside to close" className="btn btn-ghost btn-circle">
-            <svg
-            
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>
+           <RiMenuUnfold3Fill className="text-xl md:text-2xl lg:text-3xl"></RiMenuUnfold3Fill>
           </div>
           <ul
             tabIndex={0}
@@ -61,44 +46,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-center">
 
-        <Link href={'/'}><Image src={logo} width={200} height={50} alt="logo"></Image></Link>
+        <Link href={'/'}><Image src={logo} className=" w-[120px] md:w-[180px] lg:w-[250px]" width={200} height={50} alt="logo"></Image></Link>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button>
-        <button className="btn btn-ghost btn-circle">
-          <div className="indicator">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-            <span className="badge badge-xs badge-primary indicator-item"></span>
-          </div>
-        </button>
+       <Link href={'/login'}>
+       <button className=" btn-nav">Login<LuLogIn className=" text-base md:text-xl"></LuLogIn> </button></Link>
       </div>
     </container>
     </nav>

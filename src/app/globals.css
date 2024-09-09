@@ -39,6 +39,7 @@ body {
   background-color: #FFFDD0;
 }
 
+
 .primary{
   color: #08F3E7;
 }
@@ -46,4 +47,71 @@ body {
   color: #FFFDD0;
 }
 
+.btn-primary{
+  background-color: #08F3E7;
+  color: black;
+   font-weight: 600;
+  size: 17px;
+  padding: 7px 12px;
+  border-radius: 6px;
+}
 
+.btn-secondary{
+  background-color: #FFFDD0;
+  color: #01534f;
+   font-weight: 600;
+  size: 17px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  box-shadow: 5px #8df1ec;
+
+}
+.btn-secondary:hover{
+  background-color: #02fcef;
+  color: #000e0d;
+  border: 1px solid #FFFDD0;
+
+}
+.btn-nav{
+  background-color: #FFFDD0;
+  color: #01534f;
+   font-weight: 600;
+  size: 17px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  box-shadow: 3px 3px #014b47;
+  border: 1px solid #016e69;
+  display: flex ;
+  align-items: center;
+  gap: 3px;
+
+}
+.btn-nav:hover{
+  background-color: #016e69;
+  color: #f7f8f8;
+  border: 1px solid #015348;
+
+}
+
+@media screen and (max-width: 600px) {
+  .btn-nav{
+    background-color: #FFFDD0;
+    color: #01534f;
+     font-weight: 400;
+    size: 12px;
+    padding: 2px 4px;
+    border-radius: 6px;
+    box-shadow: 0px 0px #014b47;
+    border: 1px solid #016e69;
+    display: flex ;
+    align-items: center;
+    gap: 2px;
+  
+  }
+  .btn-nav:hover{
+    background-color: #016e69;
+    color: #f7f8f8;
+    border: 1px solid #015348;
+  
+  }
+}
