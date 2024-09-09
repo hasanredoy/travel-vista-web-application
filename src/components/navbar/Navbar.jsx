@@ -1,17 +1,23 @@
 import Link from "next/link";
 
 import { ImHome } from "react-icons/im";
+import { MdOutlineTravelExplore, MdReviews } from "react-icons/md";
+import { MdAddHomeWork } from "react-icons/md";
+import { MdContactSupport } from "react-icons/md";
+import './navbar.css'
+
 
 
 
 const Navbar = () => {
 
+  // nav links 
   const navLinks =<>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><ImHome></ImHome> Home</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">All Places</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">Start Hosting</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">Reviews</Link>
-  <Link href={'/'} className="text-base font-bold flex gap-2 items-center">Contact us </Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><ImHome className="text-xl"></ImHome> Home</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdOutlineTravelExplore className="text-xl"></MdOutlineTravelExplore> All Places</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdAddHomeWork className="text-xl"></MdAddHomeWork> Start Hosting</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdReviews className="text-xl"></MdReviews> Reviews</Link>
+  <Link href={'/'} className="text-base font-bold flex gap-2 items-center"><MdContactSupport className="text-xl"></MdContactSupport> Contact us </Link>
   </>
   return (
     <nav className=" nav relative ">
@@ -36,7 +42,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className=" h-full dropdown-content bg-[#08F3E7] bg-opacity-10 bg-transparent  w-[300px]    min-h-screen  z-[20] mt-2 absolute -left-28 flex flex-col gap-3 pl-20 pt-5 "
+            className=" h-full dropdown-content dropDown bg-[#08F3E7] shadow-lg shadow-blue-300 bg-opacity-30 bg-transparent  w-[300px]    min-h-screen  z-[20] mt-2 absolute -left-28 flex flex-col gap-3 pl-20 pt-5 "
           >
            {navLinks}
           </ul>
