@@ -1,10 +1,10 @@
 
-const Banner = () => {
+const Hero = () => {
   return (
     <container
     className="hero min-h-screen"
     style={{
-      backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+      backgroundImage: "url(https://i.postimg.cc/2StjsbVp/dreamy-atmosphere-pastel-colored-scene-travel-content.jpg)",
     }}>
     <div className="hero-overlay bg-opacity-60"></div>
     <div className="hero-content text-neutral-content text-center">
@@ -21,4 +21,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default Hero;
