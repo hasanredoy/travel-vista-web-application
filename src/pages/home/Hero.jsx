@@ -18,7 +18,7 @@ const Hero = () => {
       <button className=" btn-primary">Get Started</button>
     </div>
   </div>
-  <div>
+  <div className=" absolute  top-[5%] right-[10%] ">
     <Carousel></Carousel>
   </div>
 </div>

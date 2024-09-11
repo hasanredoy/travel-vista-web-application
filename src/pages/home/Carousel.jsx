@@ -9,12 +9,13 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import Image from 'next/image';
+// import Image from 'next/img';
+import './home.css'
 
 
 const Carousel = () => {
   return (
-    <div>
+    <div className=' max-w-[500px]'>
       
     <>
       <Swiper
@@ -34,31 +35,31 @@ const Carousel = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-1.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/morskie-oko-tatry_1204-510.jpg?t=st=1726042587~exp=1726046187~hmac=580804b32bd7c177d51d02f2f3237cd7f20fe137001e37c001936379debffe74&w=740" />
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://imgs.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://imgs.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" /> {/*switzerland */}
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/mountains-lake_1398-2285.jpg?t=st=1726045008~exp=1726048608~hmac=ca4eef0a168dd2d260290ca079abebb89638b1553b9ce8c96abdea8d41ad5e50&w=740" />{/*russia*/}
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/long-straight-road-winter_335224-668.jpg?t=st=1726045109~exp=1726048709~hmac=b55c7727d308889270cd12a9d08e082be494feea4633ca5da7c96afe2f45d820&w=826" />{/*new zeeland*/}
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-6.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/dramatic-coastline-with-crashing-waves-towering-cliffs_9975-33133.jpg?t=st=1726045223~exp=1726048823~hmac=f8f2bc33dc4f580a2109e1d49e6700c052d547c72ef38a70dec33ead017f15db&w=826" />{/*australia*/}
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-7.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/rest-sunshine-atoll-bungalow-holiday_1232-3876.jpg?t=st=1726045347~exp=1726048947~hmac=e2aec77dc0e10b0fedd163582e6bfcfe75d2d3cde3a6012ccbe839eb9ddef1f9&w=740" />{/*maldaves*/}
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400}  height={400} src="https://swiperjs.com/demos/images/nature-8.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400}  height={400} src="https://img.freepik.com/free-photo/great-wall_1359-1016.jpg?t=st=1726045405~exp=1726049005~hmac=95bd6ffe1593f4e5f2745f957089458efdf4387ce42b9aadbdf4ba0a7da88ebd&w=740" />{/*china*/}
         </SwiperSlide>
         <SwiperSlide>
-          <Image alt='swiper' width={400} height={400} src="https://swiperjs.com/demos/images/nature-9.jpg" />
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/beautiful-view-remarkables-mountain-range-queenstown-new-zealand_181624-45497.jpg?t=st=1726045471~exp=1726049071~hmac=f8dcd71ac7fb8da4c080ed2aac564976510788dfc59c160aacc04aca218b848b&w=740" />
         </SwiperSlide>
       </Swiper>
     </>
