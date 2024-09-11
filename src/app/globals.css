@@ -20,8 +20,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 :root {
-  --navbar-bg-color: #08F3E7
-  ;
+  --navbar-bg-color: linear-gradient( to top, #01afa1,#75f9fd,#84e2f3,#05adb3 );
 }
 
 [data-theme="dark"] {
@@ -29,7 +28,7 @@ body {
 }
 
 .nav {
-  background-color: var(--navbar-bg-color);
+  background: var(--navbar-bg-color);
 }
 
 .bg-primary{
@@ -49,7 +48,8 @@ body {
 
 .btn-primary{
   background-color: #08F3E7;
-  color: black;
+  background: linear-gradient( to right, #01afa1,#02f0f8,#37ddfa,#01858a );
+color: black;
    font-weight: 600;
   size: 17px;
   padding: 7px 12px;
@@ -74,6 +74,7 @@ body {
 }
 .btn-nav{
   background-color: #FFFDD0;
+
   color: #01534f;
    font-weight: 600;
   size: 17px;

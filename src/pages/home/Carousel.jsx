@@ -35,13 +35,13 @@ const Carousel = () => {
         className="mySwiper"
       >
         <SwiperSlide>
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        </SwiperSlide>
+        <SwiperSlide>
           <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/morskie-oko-tatry_1204-510.jpg?t=st=1726042587~exp=1726046187~hmac=580804b32bd7c177d51d02f2f3237cd7f20fe137001e37c001936379debffe74&w=740" />
         </SwiperSlide>
         <SwiperSlide>
-          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://imgs.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://imgs.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" /> {/*switzerland */}
+          <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /> {/*switzerland */}
         </SwiperSlide>
         <SwiperSlide>
           <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/mountains-lake_1398-2285.jpg?t=st=1726045008~exp=1726048608~hmac=ca4eef0a168dd2d260290ca079abebb89638b1553b9ce8c96abdea8d41ad5e50&w=740" />{/*russia*/}
