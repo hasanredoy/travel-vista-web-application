@@ -23,7 +23,7 @@ const Navbar = () => {
     <>
       <Link
         href={"/"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500     hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  ${
+        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500     hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/" && "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         } `}
       >
@@ -33,20 +33,20 @@ const Navbar = () => {
         )}
       </Link>
       <Link
-        href={"/all_places"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  ${
-          path == "/all_places" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+        href={"/tours"}
+        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  transition-all  ${
+          path == "/tours" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
         <MdOutlineTravelExplore className="text-xl"></MdOutlineTravelExplore>{" "}
-        All Places{" "}
-        {path == "/all_places" && (
+        Tours{" "}
+        {path == "/tours" && (
           <GoDotFill className=" text-green-400 font-bold "></GoDotFill>
         )}
       </Link>
       <Link
         href={"/start_hosting"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  ${
+        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/start_hosting" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
@@ -57,7 +57,7 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/reviews"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  ${
+        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/reviews" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
@@ -68,7 +68,7 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/contact_us"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  ${
+        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/contact_us" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
