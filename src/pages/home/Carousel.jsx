@@ -15,9 +15,9 @@ import './home.css'
 
 const Carousel = () => {
   return (
-    <div className=' max-w-[500px]'>
-      
-    <>
+    <div className=' relative max-w-[500px] max-h-[300px]'>
+      <h1 className=' text-2xl absolute top-4 items-center flex capitalize justify-center w-full font-black text-center  bg-gradient-to-r text-white '>Travel the World !</h1>
+    
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -62,7 +62,6 @@ const Carousel = () => {
           <img alt='swiper' className=' h-[300px] max-h-[300px]' width={400} height={400} src="https://img.freepik.com/free-photo/beautiful-view-remarkables-mountain-range-queenstown-new-zealand_181624-45497.jpg?t=st=1726045471~exp=1726049071~hmac=f8dcd71ac7fb8da4c080ed2aac564976510788dfc59c160aacc04aca218b848b&w=740" />
         </SwiperSlide>
       </Swiper>
-    </>
   
     </div>
   );
