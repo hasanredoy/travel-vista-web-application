@@ -83,8 +83,8 @@ const Navbar = () => {
     <nav className="shadow-lg  nav relative ">
       
       <section className="navbar w-[96%] mx-auto lg:w-[85%]">
-        <section className="navbar-start">
-          <div className="dropdown">
+        <div className="navbar-start">
+          <section className="dropdown">
             <div
               tabIndex={0}
               role="button"
@@ -95,7 +95,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className=" h-full dropdown-content dropDown bg-[#08F3E7] shadow-lg shadow-blue-300 bg-opacity-90   w-[200px] md:w-[240px] lg:w-[300px]    min-h-screen  z-[20] mt-2 absolute -left-10 md:-left-14 lg:-left-28 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
+              className=" h-full dropdown-content dropDown bg-[#08F3E7] shadow-lg shadow-blue-300 bg-opacity-90   w-[200px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[20] mt-2 absolute -left-10 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
             >
               {navLinks}
               <div>
@@ -108,8 +108,8 @@ const Navbar = () => {
                 ></Image>
               </div>
             </ul>
-          </div>
-        </section>
+          </section>
+        </div>
         <div className="navbar-center">
           <Link href={"/"}>
             <Image
