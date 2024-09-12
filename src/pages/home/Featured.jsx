@@ -1,3 +1,4 @@
+import Cards from "./Cards";
 import SearchInput from "./SearchInput";
 
 const Featured = () => {
@@ -6,6 +7,8 @@ const Featured = () => {
       <div className=" absolute -top-[30px] z-40 left-[20%]">
       <SearchInput></SearchInput>
       </div>
+
+      <Cards></Cards>
 
     </div>
   );

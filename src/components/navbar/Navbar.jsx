@@ -81,8 +81,9 @@ const Navbar = () => {
   );
   return (
     <nav className="shadow-lg  nav relative ">
-      <container className="navbar w-[96%] mx-auto lg:w-[85%]">
-        <div className="navbar-start">
+      
+      <section className="navbar w-[96%] mx-auto lg:w-[85%]">
+        <section className="navbar-start">
           <div className="dropdown">
             <div
               tabIndex={0}
@@ -108,7 +109,7 @@ const Navbar = () => {
               </div>
             </ul>
           </div>
-        </div>
+        </section>
         <div className="navbar-center">
           <Link href={"/"}>
             <Image
@@ -127,7 +128,7 @@ const Navbar = () => {
             </button>
           </Link>
         </div>
-      </container>
+      </section>
     </nav>
   );
 };
