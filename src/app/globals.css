@@ -54,6 +54,15 @@ color: black;
   size: 17px;
   padding: 7px 12px;
   border-radius: 6px;
+  border: 1px solid #01afa1;
+}
+.btn-primary:hover{
+  background-color: white;
+  background: white;
+
+   transition: 1s;
+  color: black;
+  border: 1px solid #01afa1;
 }
 
 .btn-secondary{

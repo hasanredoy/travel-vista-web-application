@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Cards from "./Cards";
 import SearchInput from "./SearchInput";
 
@@ -8,8 +9,9 @@ const Featured = () => {
       <SearchInput></SearchInput>
       </div>
 
-      <div className=" pt-20">
+      <div className=" py-20">
       <Cards></Cards>
+      <Link href={'/tours'} className=" flex justify-center mt-10"><button className="btn-primary">View More</button></Link>
       </div>
 
     </div>
