@@ -19,7 +19,7 @@ const [showDateInput,setShowDateInput] = useState(false)
   ]);
   
   return (
-    <div className=' border-2 relative bg-white border-sky-500  rounded-md max-w-3xl min-w-[750px] flex justify-between items-center w-full'>
+    <div className=' border-2 relative bg-white border-sky-500  rounded-md max-w-xs md:max-w-xl lg:max-w-3xl min-w-[750px] flex justify-between items-center w-full'>
       <input className=' focus:bg-sky-100 py-3  px-3 outline-none placeholder:text-black   border-r-2 flex-1 border-sky-500' type="text" placeholder="Where to go  ?" name="search"  />
       <button title='click' className='  w-32 font-bold hover:bg-[#a6f8f1] py-3 ' onClick={()=>setShowDateInput(!showDateInput)}>Date ?</button>
       {/* start date inp  */}

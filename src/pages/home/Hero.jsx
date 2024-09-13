@@ -11,7 +11,7 @@ const Hero = () => {
   }}>
   <div className="hero-overlay w-full bg-opacity-50 bg-black"></div>
 
-  <div className=" absolute  top-[20%] left-[10%] ">
+  <div className=" absolute  top-10 lg:top-[20%] left-0 lg:left-[10%] ">
     <div className="max-w-md  text-white">
       <h1 className="mb-5 text-2xl bg-black bg-opacity-15 md:text-3xl lg:text-5xl font-black"><span className=' text-[#FFDC7F]  bg-gradient-to-r bg-clip-text text-transparent from-[#71fdfd] via-[#4cfdee] to-[#61daf0]'>Discover</span> the World with Travel Vista</h1>
       <p className="mb-5 bg-black bg-opacity-10 ">
@@ -20,7 +20,7 @@ const Hero = () => {
       <button className=" btn-primary">Book Now</button>
     </div>
   </div>
-  <div className=" absolute  top-[0] right-[10%] ">
+  <div className=" absolute top-[20%]  lg:top-[0px] flex justify-center w-full right-0  ">
     <Carousel></Carousel>
   </div>
 </div>
