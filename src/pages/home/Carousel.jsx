@@ -15,7 +15,7 @@ import './home.css'
 
 const Carousel = () => {
   return (
-    <div className=' relative max-w-[300px] lg:max-w-[500px] max-h-[300px]'>
+    <div className=' relative max-w-[300px] lg:max-w-[600px] max-h-[400px]'>
       <h1 className=' text-2xl absolute top-4 items-center flex capitalize justify-center w-full font-black text-center  bg-gradient-to-r text-white '>Travel the World !</h1>
     
       <Swiper
