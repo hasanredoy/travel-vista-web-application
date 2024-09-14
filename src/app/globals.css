@@ -128,4 +128,23 @@ color: black;
     border: 1px solid #015348;
   
   }
+
+  .btn-primary{
+    background-color: #08F3E7;
+    background: linear-gradient( to right, #01afa1,#02f0f8,#37ddfa,#01858a );
+  color: black;
+     font-weight: 500;
+    size: 14px;
+    padding: 3px 7px;
+    border-radius: 6px;
+    border: 1px solid #01afa1;
+  }
+  .btn-primary:hover{
+    background-color: white;
+    background: white;
+  
+     transition: 1s;
+    color: black;
+    border: 1px solid #01afa1;
+  }
 }

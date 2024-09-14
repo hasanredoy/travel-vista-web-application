@@ -6,7 +6,7 @@ import Heading from "@/components/reuseble/Heading";
 const Featured = () => {
   return (
     <div className="min-h-screen relative w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
-      <div className=" hidden absolute -top-[30px] z-40 left-0 lg:left-[20%]">
+      <div className=" absolute z-40 md:-top-[20px] lg:-top-[30px] flex w-full justify-center">
       <SearchInput></SearchInput>
       </div>
 

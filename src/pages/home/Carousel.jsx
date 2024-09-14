@@ -16,7 +16,7 @@ import "./home.css";
 
 const Carousel = () => {
   return (
-    <div className=" relative max-w-[250px] lg:max-w-[600px] h-[320px] md:h-[320px] lg:h-[400px] ">
+    <div className=" relative max-w-[310px] md:max-w-[350px] lg:max-w-[600px] h-[320px] md:h-[320px] lg:h-[400px] ">
       <h1 className=" hidden  md:text-lg lg:text-2xl items-center md:flex capitalize justify-center w-full font-black text-center  text-white ">
         Travel the World !
       </h1>
@@ -45,7 +45,7 @@ const Carousel = () => {
         <SwiperSlide>
           <img
             alt="swiper"
-            className="  h-[250px] max-h-[250px] md:h-[280px] md:max-h-[280px] lg:h-[300px] lg:max-h-[300px]"
+            className=" w-full  h-[250px] max-h-[250px] md:h-[280px] md:max-h-[280px] lg:h-[300px] lg:max-h-[300px]"
             src="https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
         </SwiperSlide>
