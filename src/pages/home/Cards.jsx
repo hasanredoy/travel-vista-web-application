@@ -12,8 +12,8 @@ const Cards =async () => {
 const tourData = await loadData()
 
   return (
-    <div className="  grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-14 mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
-      {tourData?.map((data,index)=><div key={index} className="card bg-base-100 border border-sky-200 shadow-xl relative pb-0">
+    <div className="card-list  grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-14 mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
+      {tourData?.map((data,index)=><li key={index} className="card bg-base-100 border border-sky-200 shadow-xl relative pb-0">
   <figure>
     <img
       src={data?.image}
@@ -34,7 +34,7 @@ const tourData = await loadData()
   <button title="view details" className="  btn-primary w-10  h-8 text-center text-white"><FaAnglesRight className=""></FaAnglesRight></button>
   </div>
 
-      </div>)}
+      </li>)}
     </div>
   );
 };

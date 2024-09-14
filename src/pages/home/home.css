@@ -2,7 +2,7 @@
 
 .swiper {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
 }
 
@@ -18,7 +18,24 @@
   width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
+  .swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 300px;
+    min-height: 300px;
+  }
+  
+}
+
+@media screen and (max-width: 500px) {
   .swiper {
     width: 100%;
     padding-top: 50px;

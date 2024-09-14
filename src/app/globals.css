@@ -103,7 +103,11 @@ color: black;
 
 }
 
-@media screen and (max-width: 600px) {
+.card-list:has(li:hover) li:not(:hover) {
+  filter: blur(4px)
+}
+
+@media screen and (max-width: 500px) {
   .btn-nav{
     background-color: #FFFDD0;
     color: #01534f;

@@ -5,7 +5,7 @@ import './home.css'
 const Hero = () => {
   return (
 <div
-  className="hero min-h-[calc(100dvh-0px)] md:min-h-[calc(100dvh-200px)] relative "
+  className="hero min-h-[calc(100dvh-0px)] md:min-h-[calc(100dvh-80px)] lg:min-h-[calc(100dvh-150px)] relative "
   style={{
     backgroundImage: "url(https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
   }}>
