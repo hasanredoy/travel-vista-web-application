@@ -23,21 +23,21 @@ const SearchInput = () => {
   ]);
 
   return (
-    <div className=" border-0 md:border-2 relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
-    <div className=" pl-3 flex gap-3 items-center   w-full md:border-r-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
+    <div className=" border-0 md:border-2 relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-2xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
+    <div className=" pl-3 flex gap-2 lg:gap-3 items-center   w-full md:border-r-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
       <CiLocationOn className=" md:text-2xl text-black"></CiLocationOn>
       {/* search input  */}
     <input
-        className=" focus:bg-sky-100 py-3   px-3 outline-none placeholder:text-black"
+        className=" focus:bg-sky-100 py-3 px-3  md:px-0 lg:px-3 outline-none placeholder:text-black"
         type="text"
-        placeholder="Where to go  ?"
+        placeholder="Where to go?"
         name="search"
       />
     </div>
     {/* date button  */}
       <button
         title="click"
-        className=" pl-3 w-full md:w-40 md:min-w-40 md:max-w-40  md:px-5  flex gap-6 items-center font-bold border-b border-gray-400 md:border-sky-500 md:border-b-0 hover:bg-[#a6f8f1] py-3 "
+        className=" pl-3 w-full  md:w-20 lg:w-40 md:min-w-32 lg:min-w-40 lg:max-w-40 px-3  lg:px-5  flex gap-5 md:gap-6 items-center font-bold border-b border-gray-400 md:border-sky-500 md:border-b-0 hover:bg-[#a6f8f1] py-3 "
         onClick={() => setShowDateInput(!showDateInput)}
       >
       <IoCalendarNumberOutline className=" md:text-xl"></IoCalendarNumberOutline>  Date ?
@@ -58,11 +58,11 @@ const SearchInput = () => {
         <></>
       )}
       {/* choose travelers inp  */}
-  <div className=" mb-3 md:mb-0 pl-3 flex gap-2 items-center   w-full md:border-l-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
+  <div className=" mb-3 md:mb-0  pl-3 md:pl-2 lg:pl-3 flex gap-3 items-center   w-full md:border-l-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
     <HiUserGroup className=" md:text-2xl"></HiUserGroup>
   <input
         type="number"
-        className="  w-full placeholder:text-black  py-3 px-5 outline-none"
+        className="  w-full placeholder:text-black  py-3 px-2 lg:px-5 outline-none"
         placeholder="How many Travelers?"
       />
   </div>
