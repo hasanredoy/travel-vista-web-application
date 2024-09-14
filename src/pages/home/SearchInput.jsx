@@ -5,6 +5,9 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 
 import { useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
+import { IoCalendarNumberOutline } from "react-icons/io5";
+import { HiUserGroup } from "react-icons/hi";
+
 
 const SearchInput = () => {
   // state to show and hide date input
@@ -20,9 +23,10 @@ const SearchInput = () => {
   ]);
 
   return (
-    <div className=" border-2 relative bg-white border-sky-500  rounded-md max-w-xs md:max-w-xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
-    <div className=" pl-3 flex gap-3 items-center   w-full md:border-r-2 border-b-2 md:border-b-0 flex-1 border-sky-500">
+    <div className=" border-0 md:border-2 relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
+    <div className=" pl-3 flex gap-3 items-center   w-full md:border-r-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
       <CiLocationOn className=" md:text-2xl text-black"></CiLocationOn>
+      {/* search input  */}
     <input
         className=" focus:bg-sky-100 py-3   px-3 outline-none placeholder:text-black"
         type="text"
@@ -30,19 +34,20 @@ const SearchInput = () => {
         name="search"
       />
     </div>
+    {/* date button  */}
       <button
         title="click"
-        className=" w-full md:w-32 font-bold border-b-2 border-sky-500 md:border-b-0 hover:bg-[#a6f8f1] py-3 "
+        className=" pl-3 w-full md:w-40 md:min-w-40 md:max-w-40  md:px-5  flex gap-6 items-center font-bold border-b border-gray-400 md:border-sky-500 md:border-b-0 hover:bg-[#a6f8f1] py-3 "
         onClick={() => setShowDateInput(!showDateInput)}
       >
-        Date ?
+      <IoCalendarNumberOutline className=" md:text-xl"></IoCalendarNumberOutline>  Date ?
       </button>
-      {/* start date inp  */}
+      {/* date inp  */}
       {showDateInput ? (
-        <div className=" absolute top-10 left-[25%]">
+        <div className=" absolute top-28  md:top-10 flex justify-center w-full">
           <DateRange
             rangeColors={["#01afa1"]}
-            className="border border-sky-400 shadow-lg bg-base-300  rounded-lg"
+            className="border max-w-[320px]  md:max-w-lg border-sky-400 shadow-lg bg-base-300  rounded-lg"
             editableDateInputs={true}
             onChange={(item) => setDate([item.selection])}
             moveRangeOnFirstSelection={false}
@@ -52,12 +57,16 @@ const SearchInput = () => {
       ) : (
         <></>
       )}
-      <input
+      {/* choose travelers inp  */}
+  <div className=" mb-3 md:mb-0 pl-3 flex gap-2 items-center   w-full md:border-l-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
+    <HiUserGroup className=" md:text-2xl"></HiUserGroup>
+  <input
         type="number"
-        className=" border-b-2 md:border-b-0 lg:border-l-2  w-full mb-3 md:mb-0 placeholder:text-black border-sky-500 py-3 px-5 outline-none"
+        className="  w-full placeholder:text-black  py-3 px-5 outline-none"
         placeholder="How many Travelers?"
       />
-      <button className=" md:border-l-2 border-sky-500 bg-gradient-to-r  from-[#71fdfd] via-[#4cfdee] to-[#61daf0]  py-3 w-32 hover:bg-gradient-to-r hover:from-white hover:to-white hover:via-white font-bold text-black ">
+  </div>
+      <button className=" md:border-l-2 border-gray-400 md:border-sky-500 bg-gradient-to-r  from-[#71fdfd] via-[#4cfdee] to-[#61daf0]  py-3 w-32 hover:bg-gradient-to-r hover:from-white hover:to-white hover:via-white font-bold text-black rounded-md mb-3 md:mb-0 md:rounded-none ">
         Search
       </button>
     </div>
