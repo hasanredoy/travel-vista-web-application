@@ -11,17 +11,7 @@ import { HiUserGroup } from "react-icons/hi";
 const SearchInput = () => {
   // state to show and hide date input
   const [showDateInput, setShowDateInput] = useState(false);
-  // state handle prompt 
-  // const [ prompt ]
-
-  useEffect(()=>{
-    const getPrompt = localStorage.getItem('prompt')
-    console.log(getPrompt);
-    if(!getPrompt){
-      localStorage.setItem('prompt','["Dubai, UAE.","Moscow, Russia.", "Sydney, Australia","Machu Picchu, Peru","Kyoto, Japan", "Cape Town, South Africa","Banff National Park, Canada","Santorini, Greece"]')
-    }
-  },[])
-
+  
   // date state
   const [date, setDate] = useState([
     {
@@ -30,6 +20,23 @@ const SearchInput = () => {
       key: "selection",
     },
   ]);
+  // state handle prompt 
+  const [ prompt ,setPrompt] = useState()
+  
+  useEffect(()=>{
+    // get access of prompt form local storage 
+    const getPrompt = localStorage.getItem('prompt')
+    // if there is not any prompt in local storage then set these dummy prompt in local storage 
+    const hello = ["Dubai, UAE. Moscow, Russia. Sydney, Australia. Machu Picchu, Peru.Kyoto, Japan. Cape Town, South Africa. Banff National Park, Canada.  Santorini, Greece."]
+    if(!getPrompt){
+      localStorage.setItem('prompt',[hello])
+    }
+    console.log(getPrompt);
+    const splitPrompt = getPrompt?.split('.')
+    setPrompt(getPrompt)
+    console.log(splitPrompt);
+  },[])
+
 
   return (
     <div className=" border-0 md:border-2 relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-2xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
@@ -44,16 +51,8 @@ const SearchInput = () => {
         />
       </div>
       {/* text to show while the input field in focus */}
-      <div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-0 left-0">
-       <div className="  flex justify-between gap-5 text-base-300 visible focus-visible:true  hover:text-black">
-       <h4 className=" text-base font-medium text-black">Dubai, UAE.</h4>
-         <button title="remove" className="    ">remove X</button>
-       </div>
-        <h4 className=" text-base font-medium ">Dubai, UAE.</h4>
-        <h4 className=" text-base font-medium ">Dubai, UAE.</h4>
-        <h4 className=" text-base font-medium ">Dubai, UAE.</h4>
-        <h4 className=" text-base font-medium ">Dubai, UAE.</h4>
-
+      <div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-0 left-0 ">
+        {/* {prompt&&prompt.map((singlePrompt,index)=><h5 key={index} className=" text-base font-medium">{singlePrompt}</h5>)} */}
       </div>
       {/* date button  */}
       <button
