@@ -46,7 +46,7 @@ const SearchInput = () => {
 
 
   return (
-    <div className=" border-0 md:border-2 relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-2xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
+    <div className=" border-0 md:border-2  relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-2xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
       <div className=" pl-3 flex gap-2 lg:gap-3 items-center   w-full md:border-r-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
         <CiLocationOn className=" md:text-2xl text-black"></CiLocationOn>
         {/* search input  */}
