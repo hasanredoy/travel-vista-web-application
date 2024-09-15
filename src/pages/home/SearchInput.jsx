@@ -25,10 +25,11 @@ const SearchInput = () => {
   // state handle prompt 
   const [ prompt ,setPrompt] = useState()
 
-
+  // state to handle visibility of prompt
   const [focus , setFocus] = useState(false)
-  console.log(focus);
-  
+  // console.log(focus);
+  const [searchInputValue, setSearchInputValue] = useState('')
+
   useEffect(()=>{
     // get access of prompt form local storage 
     const getPrompt = localStorage.getItem('prompt')
@@ -54,14 +55,17 @@ const SearchInput = () => {
           type="text"
           placeholder="Where to go?"
           name="search"
+          value={searchInputValue}
           onFocus={()=>setFocus(true)}
           onBlur={()=>setFocus(false)}
-          autoComplete="off"
+          autoComplete="off" // prevents default suggestion
+          required
+
         />
       </div>
       {/* text to show while the input field in focus */}
       {focus&&<div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-10 left-0 rounded-md shadow-gray-500 ">
-        {prompt&&prompt.map((singlePrompt,index)=><h5 key={index} className=" text-base font-medium flex gap-5 items-center justify-between">{singlePrompt}<MdOutlineShowChart title="top ranked" className=" text-lg"></MdOutlineShowChart></h5>)}
+        {prompt&&prompt.map((singlePrompt,index)=><h5 onMouseEnter={()=>setSearchInputValue(singlePrompt)} key={index} className=" cursor-pointer hover:font-bold text-base font-medium flex gap-5 items-center justify-between">{singlePrompt}<MdOutlineShowChart title="top ranked" className=" text-lg"></MdOutlineShowChart></h5>)}
       </div>}
       {/* date button  */}
       <button
@@ -94,9 +98,11 @@ const SearchInput = () => {
           type="number"
           className="  w-full placeholder:text-black  py-3 px-2 lg:px-5 outline-none"
           placeholder="How many Travelers?"
+          min={1}
+          required
         />
       </div>
-      <button className=" md:border-l-2 border-gray-400 md:border-sky-500 bg-gradient-to-r  from-[#71fdfd] via-[#4cfdee] to-[#61daf0]  py-3 w-32 hover:bg-gradient-to-r hover:from-white hover:to-white hover:via-white font-bold text-black rounded-md mb-3 md:mb-0 md:rounded-none ">
+      <button className=" md:border-l-2 border-gray-400 md:border-sky-500 bg-gradient-to-tr  from-[#f9fafa] via-[#4cfdee] to-[#f0f4f5]  py-3 w-32 hover:bg-gradient-to-r hover:from-white hover:to-white hover:via-white font-bold text-black rounded-md mb-3 md:mb-0 md:rounded-none ">
         Search
       </button>
     </div>

@@ -48,7 +48,7 @@ body {
 
 .btn-primary{
   background-color: #08F3E7;
-  background: linear-gradient( to right, #01afa1,#02f0f8,#37ddfa,#01858a );
+  background: linear-gradient( to bottom left, #f9fafa,#00dbe2,#f3f5f5 );
 color: black;
    font-weight: 600;
   size: 17px;
@@ -131,7 +131,7 @@ color: black;
 
   .btn-primary{
     background-color: #08F3E7;
-    background: linear-gradient( to right, #01afa1,#02f0f8,#37ddfa,#01858a );
+    background: linear-gradient( to right, #fafafa,#02f0f8,#37ddfa,#01858a );
   color: black;
      font-weight: 500;
     size: 14px;
