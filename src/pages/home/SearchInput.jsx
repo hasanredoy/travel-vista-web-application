@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { HiUserGroup } from "react-icons/hi";
+import { MdOutlineShowChart } from "react-icons/md";
+
 
 const SearchInput = () => {
   // state to show and hide date input
@@ -22,20 +24,24 @@ const SearchInput = () => {
   ]);
   // state handle prompt 
   const [ prompt ,setPrompt] = useState()
+
+
+  const [focus , setFocus] = useState(false)
+  console.log(focus);
   
   useEffect(()=>{
     // get access of prompt form local storage 
     const getPrompt = localStorage.getItem('prompt')
     // if there is not any prompt in local storage then set these dummy prompt in local storage 
-    const hello = ["Dubai, UAE. Moscow, Russia. Sydney, Australia. Machu Picchu, Peru.Kyoto, Japan. Cape Town, South Africa. Banff National Park, Canada.  Santorini, Greece."]
+    const hello = []
     if(!getPrompt){
-      localStorage.setItem('prompt',[hello])
+      localStorage.setItem('prompt',"Dubai, UAE. Moscow, Russia. Sydney, Australia. Machu Picchu, Peru.Kyoto, Japan. Cape Town, South Africa. Banff National Park, Canada.  Santorini, Greece")
     }
-    console.log(getPrompt);
     const splitPrompt = getPrompt?.split('.')
-    setPrompt(getPrompt)
-    console.log(splitPrompt);
+   
+    setPrompt(splitPrompt)
   },[])
+  console.log(prompt);
 
 
   return (
@@ -48,12 +54,15 @@ const SearchInput = () => {
           type="text"
           placeholder="Where to go?"
           name="search"
+          onFocus={()=>setFocus(true)}
+          onBlur={()=>setFocus(false)}
+          autoComplete="off"
         />
       </div>
       {/* text to show while the input field in focus */}
-      <div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-0 left-0 ">
-        {/* {prompt&&prompt.map((singlePrompt,index)=><h5 key={index} className=" text-base font-medium">{singlePrompt}</h5>)} */}
-      </div>
+      {focus&&<div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-10 left-0 rounded-md shadow-gray-500 ">
+        {prompt&&prompt.map((singlePrompt,index)=><h5 key={index} className=" text-base font-medium flex gap-5 items-center justify-between">{singlePrompt}<MdOutlineShowChart title="top ranked" className=" text-lg"></MdOutlineShowChart></h5>)}
+      </div>}
       {/* date button  */}
       <button
         title="click"
