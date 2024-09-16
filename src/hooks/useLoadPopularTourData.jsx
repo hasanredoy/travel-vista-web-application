@@ -2,10 +2,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
 
-const useLoadFeaturedData = () => {
+const useLoadPopularTourData = () => {
   const [data,setData] = useState([])
   useEffect(()=>{
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/featured-tour`)
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/popular-tour`)
     .then(res=>{
       // console.log(res.data);
       setData(res?.data?.data)
@@ -15,4 +15,4 @@ const useLoadFeaturedData = () => {
 
 };
 
-export default useLoadFeaturedData;
+export default useLoadPopularTourData;
