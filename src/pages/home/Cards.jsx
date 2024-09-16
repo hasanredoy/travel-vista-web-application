@@ -1,15 +1,13 @@
-import axios from "axios"
+'use client'
+import useLoadFeaturedData, { loadData } from "@/hooks/useLoadFeaturedData";
 import { FaAnglesRight } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import { TbHeartStar } from "react-icons/tb";
 
 
- const loadData = async()=>{
-  const res = await axios.get(`${process.env.NEXT_BASE_URL}/api/featured`)
-  return res.data?.data
-}
-const Cards =async () => {
-const tourData = await loadData()
+
+const Cards =() => {
+const tourData = useLoadFeaturedData()
 
   return (
     <div className="card-list  grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-14 mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
@@ -38,5 +36,6 @@ const tourData = await loadData()
     </div>
   );
 };
+
 
 export default Cards;
