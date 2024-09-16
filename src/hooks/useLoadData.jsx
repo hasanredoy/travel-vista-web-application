@@ -9,7 +9,7 @@ const useLoadData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/featured');
+        const res = await axios.get('http://localhost:3000/api/featured-tour');
   
         setData(res?.data?.data);
       } catch (error) {
