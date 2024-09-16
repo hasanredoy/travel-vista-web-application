@@ -1,12 +1,7 @@
 import Image from 'next/image'
-import discountImage1 from '../../../public/assets/discount_image/airfare_12516494.png'
-import discountImage2 from '../../../public/assets/discount_image/plane-ticket (1).png'
-import discountImage3 from '../../../public/assets/discount_image/plane-ticket.png'
-import discountImage4 from '../../../public/assets/discount_image/output-onlinegiftools (3).gif'
-import discountImage5 from '../../../public/assets/discount_image/travel.png'
-import discountImage6 from '../../../public/assets/discount_image/travel_8205436.png'
-import discount40percent from '../../../public/assets/discount_image/discount (1).png'
-import line from '../../../public/assets/discount_image/line.png'
+
+import discountImage1 from '../../../../public/assets/discount_image/output-onlinegiftools (3).gif'
+import discountImage2 from '../../../../public/assets/discount_image/travel_8205436.png'
 
 const Discount = () => {
   return (
@@ -16,7 +11,7 @@ const Discount = () => {
 
       <h1  className=' text-base lg:text-xl font-black   '>Get Upto 40% discount on first tour!</h1>
      <div className=' flex gap-6'>
-      <Image src={discountImage4} alt='discount ' height={100} width={100}></Image>
+      <Image src={discountImage1} alt='discount ' height={100} width={100}></Image>
       
      </div>
     </div>
@@ -25,7 +20,7 @@ const Discount = () => {
 
 <h1  className=' text-base lg:text-xl font-black text-center'><a href="#">Follow</a> us on Twitter and get 80% discount!</h1>
 <div className=' flex gap-6'>
-<Image src={discountImage6} alt='discount ' height={100} width={100}></Image>
+<Image src={discountImage2} alt='discount ' height={100} width={100}></Image>
 
 </div>
 </div>

@@ -1,7 +1,7 @@
-import Discount from "@/pages/home/Discount";
-import Featured from "@/pages/home/Featured";
-import Hero from "@/pages/home/Hero";
-import PopularTour from "@/pages/home/PopularTour";
+import Discount from "@/pages/home/Discount/Discount";
+import Featured from "@/pages/home/FeaturedTour/Featured";
+import Hero from "@/pages/home/Hero/Hero";
+import PopularTour from "@/pages/home/PopularTour/PopularTour";
 
 export default function Home() {
   return (

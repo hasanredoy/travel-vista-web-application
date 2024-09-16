@@ -1,7 +1,5 @@
 'use client'
 import Carousel from './Carousel';
-import './home.css'
-
 const Hero = () => {
   return (
 <div

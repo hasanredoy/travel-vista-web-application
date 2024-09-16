@@ -7,7 +7,6 @@ const useLoadPopularTourData = () => {
   useEffect(()=>{
     axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/popular-tour`)
     .then(res=>{
-      // console.log(res.data);
       setData(res?.data?.data)
     })
   },[])
