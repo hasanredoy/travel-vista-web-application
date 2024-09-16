@@ -1,6 +1,7 @@
-import Discount from "@/pages/home/Discount";
-import Featured from "@/pages/home/Featured";
-import Hero from "@/pages/home/Hero";
+import Discount from "@/pages/home/Discount/Discount";
+import Featured from "@/pages/home/FeaturedTour/Featured";
+import Hero from "@/pages/home/Hero/Hero";
+import PopularTour from "@/pages/home/PopularTour/PopularTour";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero></Hero>
       <Featured></Featured>
       <Discount></Discount>
+      <PopularTour></PopularTour>
     </main>
   );
 }

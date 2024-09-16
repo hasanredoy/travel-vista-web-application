@@ -1,5 +1,5 @@
 'use client'
-import useLoadFeaturedData, { loadData } from "@/hooks/useLoadFeaturedData";
+import useLoadFeaturedData from "@/hooks/useLoadFeaturedData";
 import { FaAnglesRight } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import { TbHeartStar } from "react-icons/tb";
