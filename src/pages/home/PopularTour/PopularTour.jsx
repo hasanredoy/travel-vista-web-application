@@ -1,65 +1,77 @@
-'use client'
+"use client";
 import useLoadPopularTourData from "@/hooks/useLoadPopularTourData";
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
-import './PopularTour.css';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
-// import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+
+
 import Heading from "@/components/reuseble/Heading";
-import Image from "next/image";
-
 
 const PopularTour = () => {
-  const popularTour = useLoadPopularTourData()
-
+  const popularTour = useLoadPopularTourData();
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1// optional, default to 1.
+    }
+  };
   return (
-   <section>
-    <Heading t1={'Popular '}  imp={' Destinations'} ></Heading>
-   <div>
-   <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          '@0.00': {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          '@0.75': {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          '@1.00': {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          '@1.50': {
-            slidesPerView: 4,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-      
-        {popularTour?.map((tour,index)=>  <SwiperSlide className=" rounded-full" key={index}>
-         <div className=" rounded-full max-w-[290px] w-full h-full max-h-[290px]">
-         <img className=" rounded-full l min-w-[290px] min-h-[290px] " src={tour?.image} alt={tour?.country} ></img>
-         </div>
-        </SwiperSlide>)}
-      </Swiper>
-   </div>
-   </section>
+    <section className="  w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
+      <Heading t1={"Popular "} imp={" Destinations"}></Heading>
+      <div className=" mt-10 flex justify-center">
+      <Carousel
+      className="pb-8 "
+  swipeable={false}
+  draggable={false}
+  showDots={true}
+  responsive={responsive}
+  ssr={true} // means to render carousel on server-side.
+  infinite={true}
+  autoPlaySpeed={2000}
+  // autoPlay={true}
+  keyBoardControl={true}
+  
+  customTransition="all .10"
+  transitionDuration={1600}
+  containerClass="carousel-container"
+  // removeArrowOnDeviceType={["tablet", "mobile"]}
+  dotListClass="custom-dot-list-style"
+  customDot={false}
+  itemClass="carousel-item-padding-40-px"
+>
+{popularTour?.map((tour, index) => (
+            <div className=" relative  flex justify-center mx-10" key={index}>
+           <Zoom>
+           <img
+                className=" rounded-full bg-gradient-to-tr   from-[#46f8e0] via-[#e49fff] to-[#fc8ae3] p-1  min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] md:min-w-[290px] md:min-h-[290px] md:max-w-[290px] md:max-h-[290px] "
+
+                src={tour?.image}
+                alt={tour?.country}
+              >
+              </img>
+           </Zoom>
+                <h3 className=" bottom-0  z-40 left-0 absolute text-xl font-bold ">{tour?.country}</h3>
+            </div>
+          ))}
+</Carousel>
+      </div>
+   
+    </section>
   );
 };
 
