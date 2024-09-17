@@ -11,8 +11,7 @@ import "swiper/css/pagination";
 // import required modules
 import { EffectCoverflow, Pagination, Autoplay} from "swiper/modules";
 
-// import Image from 'next/img';
-import "./home.css";
+import "./hero.css";
 
 const Carousel = () => {
   return (
