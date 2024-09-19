@@ -11,7 +11,7 @@ import Heading from "@/components/reuseble/Heading";
 
 const PopularTour = () => {
   const popularTour = useLoadPopularTourData();
-  console.log(popularTour);
+  // console.log(popularTour);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },

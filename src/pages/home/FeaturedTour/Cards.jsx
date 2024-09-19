@@ -10,7 +10,7 @@ const Cards =() => {
 const tourData = useLoadFeaturedData()
 
   return (
-    <div className="card-list  grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-14 mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
+    <div className="card-list  grid grid-cols-1 md:grid-cols-2 md:gap-x-5 lg:grid-cols-3 lg:gap-x-10 gap-y-14 mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
       {tourData?.map((data,index)=><li key={index} className="card bg-base-100 border border-sky-200 shadow-xl relative pb-0">
   <figure>
     <img

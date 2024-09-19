@@ -5,10 +5,12 @@ import useLoadWhyChooseUsData from "@/hooks/why-choose-us/useLoadWhyChooseUsData
 const WhyChooseUs = () => {
   const data = useLoadWhyChooseUsData()
   return (
-    <div>
+    <section>
       <Heading t1={'Why Choose'} imp={'Travel Vista'}></Heading>
-      
-    </div>
+       <div>
+        
+       </div>
+    </section>
   );
 };
 
