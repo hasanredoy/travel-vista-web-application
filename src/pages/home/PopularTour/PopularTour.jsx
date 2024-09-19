@@ -32,13 +32,13 @@ const PopularTour = () => {
   return (
     <section className="  w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Popular "} imp={" Destinations"}></Heading>
-      <div className=" mt-10 flex justify-center">
+      <div className=" mt-10 ">
           <Carousel
           className="pb-8 "
-          swipeable={false}
-          draggable={false}
-          showDots={true}
           responsive={responsive}
+          swipeable={true}
+          draggable={true}
+          // showDots={true}
           ssr={false} // means to render carousel on server-side.
           infinite={true}
           autoPlaySpeed={2000}
@@ -50,7 +50,8 @@ const PopularTour = () => {
           dotListClass="custom-dot-list-style"
           customDot={false}
           itemClass="carousel-item-padding-40-px"
-        >
+        
+          >
           {popularTour?.map((tour, index) => (
             <div className=" relative  flex justify-center mx-10" key={index}>
               <Zoom>
