@@ -6,9 +6,9 @@ const WhyChooseUs = () => {
   const data = useLoadWhyChooseUsData()
   return (
     <section>
-      <Heading t1={'Why Choose'} imp={'Travel Vista'}></Heading>
+      <Heading desc={'Find Out'}  t1={'Why Choose '} imp={' Travel Vista'}></Heading>
        <div>
-        
+
        </div>
     </section>
   );
