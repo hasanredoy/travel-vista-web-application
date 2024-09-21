@@ -38,8 +38,9 @@ const WhyChooseUs = () => {
       {data.map((stat, index) => (
         <div
           key={index}
-          className={`flex items-center p-10 ${stat.bgColor}  rounded-lg shadow-lg`}
+          className={`flex relative items-center p-10 ${stat.bgColor}  rounded-lg shadow-lg`}
         >
+          <div className=" w-28 h-28 border border-sky-500 rotate-90 absolute -top-5 -left-5"></div>
           <img className=" w-10 h-10 " src={stat?.icon} alt="" />
           <div>
             <h3 className="text-lg font-semibold">{stat?.title}</h3>
