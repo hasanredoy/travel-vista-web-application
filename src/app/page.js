@@ -1,3 +1,4 @@
+import Categories from "@/pages/home/Categories/Categories";
 import Discount from "@/pages/home/Discount/Discount";
 import Featured from "@/pages/home/FeaturedTour/Featured";
 import Hero from "@/pages/home/Hero/Hero";
@@ -12,7 +13,7 @@ export default function Home() {
       <Discount></Discount>
       <PopularTour></PopularTour>
       <WhyChooseUs></WhyChooseUs>
-
+      <Categories></Categories>
     </main>
   );
 }
