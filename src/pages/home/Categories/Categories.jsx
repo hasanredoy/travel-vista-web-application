@@ -9,7 +9,7 @@ const Categories = () => {
       <Heading t1={'Your Gateway to'} imp={' Diverse Adventures'} desc={'Discover a variety of travel experiences belong interests.'}  ></Heading>
       <div className=" flex items-center justify-center gap-20  my-10 flex-row">
         {categories?.map((category,index)=><div  key={index}>
-              <div className=" w-32 h-32 l box-border  flex gap-2 flex-col items-center ">
+              <div title={category?.category} className=" w-32 h-32 l box-border  flex gap-2 flex-col items-center ">
               <img className=" w-24 h-24  " src={category?.image} alt="" />
               <p className="">{category?.category}</p>
               </div>
