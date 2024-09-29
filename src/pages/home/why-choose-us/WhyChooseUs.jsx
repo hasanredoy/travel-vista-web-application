@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
   //   },
   // ];
   return (
-    <section className="w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
+    <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading desc={'Find Out'}  t1={'Why Choose '} imp={' Travel Vista'}></Heading>
        <div className="">
        <div className="grid my-10 grid-cols-1 gap-10 w-[90%] md:w-[60%] mx-auto lg:w-[100%]  :grid-cols-2 lg:grid-cols-3 p-4">

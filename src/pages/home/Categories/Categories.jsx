@@ -5,7 +5,7 @@ import useLoadCategories from "@/hooks/categories/useLoadCategories";
 const Categories = () => {
   const categories = useLoadCategories()
   return (
-    <section  className=" w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
+    <section  className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'Your Gateway to'} imp={' Diverse Adventures'} desc={'Discover a variety of travel experiences belong interests.'}  ></Heading>
       <div className=" flex items-center justify-center gap-20  my-10 flex-row">
         {categories?.map((category,index)=><div  key={index}>

@@ -9,6 +9,7 @@ const Featured = () => {
       <div className="absolute z-40 -top-10 md:-top-[20px] lg:-top-[30px] flex w-full justify-center">
       <SearchInput></SearchInput>
       </div>
+      <div className=" w-full h-14"></div>
 <div  className=" pt-28 md:pt-0">
   
 <Heading desc={'Discover lesser-known treasures'} t1={" Dream"} imp={' Explore'} t2={' Repeat'}></Heading>

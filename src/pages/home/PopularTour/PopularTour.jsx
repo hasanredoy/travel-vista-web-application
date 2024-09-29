@@ -30,7 +30,7 @@ const PopularTour = () => {
     },
   };
   return (
-    <section className="  w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
+    <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Popular "} imp={" Destinations"}></Heading>
       <div className=" mt-10 ">
           <Carousel
