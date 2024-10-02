@@ -1,9 +1,9 @@
 
 const Testimonial = () => {
   return (
-    <div>
+    <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       
-    </div>
+    </section>
   );
 };
 
