@@ -3,6 +3,7 @@ import Discount from "@/pages/home/Discount/Discount";
 import Featured from "@/pages/home/FeaturedTour/Featured";
 import Hero from "@/pages/home/Hero/Hero";
 import PopularTour from "@/pages/home/PopularTour/PopularTour";
+import Testimonial from "@/pages/home/Testimonial/Testimonial";
 import WhyChooseUs from "@/pages/home/why-choose-us/WhyChooseUs";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <PopularTour></PopularTour>
       <WhyChooseUs></WhyChooseUs>
       <Categories></Categories>
+      <Testimonial></Testimonial>
     </main>
   );
 }
