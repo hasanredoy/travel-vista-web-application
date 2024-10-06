@@ -12,37 +12,38 @@ export const GET = async()=>{
 
 const data = [
   {
-    "category": "Adventure",
-    "description": "Explore thrilling destinations with activities like hiking, rafting, and mountain climbing for the ultimate adrenaline rush.",
-    "image": "https://i.postimg.cc/MHVwV89P/route-1.png"
+    "name": "John Smith",
+    "image": "https://randomuser.me/api/portraits/men/1.jpg",
+    "location": "Los Angeles, USA",
+    "testimonial": "Travel Vista made my adventure trip so smooth and hassle-free. The platform is user-friendly, and I got excellent support from their team.",
+    "rating": 5
   },
   {
-    "category": "Beach Holidays",
-    "description": "Relax on stunning beaches with crystal-clear waters, perfect sunsets, and luxurious resorts for a tropical getaway.",
-    "image": "https://i.postimg.cc/28bXSw16/sun-umbrella-1.png"
+    "name": "Ahmed El-Sayed",
+    "image": "https://randomuser.me/api/portraits/men/2.jpg",
+    "location": "Cairo, Egypt",
+    "testimonial": "I booked my mountain escape with Travel Vista and had an amazing experience. The variety of travel options and the ease of booking was exceptional.",
+    "rating": 4
   },
   {
-    "category": "Mountain Escapes",
-    "description": "Discover breathtaking mountain ranges, enjoy serene landscapes, and embark on challenging treks amidst nature's beauty.",
-    "image": "https://i.postimg.cc/sgZFbzYT/mountain-2.png"
+    "name": "Daniel Kim",
+    "image": "https://randomuser.me/api/portraits/men/3.jpg",
+    "location": "Seoul, South Korea",
+    "testimonial": "The beach holiday package I found on Travel Vista was perfect for my family. The platform made everything easy from start to finish.",
+    "rating": 5
   },
   {
-    "category": "Wildlife Safaris",
-    "description": "Embark on thrilling safaris to witness wildlife in their natural habitats, from African savannas to Amazon rainforests.",
-    "image": "https://i.postimg.cc/fb30NLzS/wildlife-1.png"
+    "name": "Carlos Rivera",
+    "image": "https://randomuser.me/api/portraits/men/4.jpg",
+    "location": "Madrid, Spain",
+    "testimonial": "I had a great experience using Travel Vista to plan my cruise. The site has a lot of options, and I found the perfect trip for me.",
+    "rating": 5
   },
   {
-    "category": "Cruises",
-    "description": "Set sail on luxurious cruises to explore multiple destinations, enjoy onboard entertainment, and experience the open sea.",
-    "image": "https://i.postimg.cc/vmYf1qSd/ship.png"
+    "name": "Mustafa Khan",
+    "image": "https://randomuser.me/api/portraits/men/5.jpg",
+    "location": "Istanbul, Turkey",
+    "testimonial": "Travel Vista’s wildlife safari recommendations were fantastic. I had a memorable experience and will definitely use the service again.",
+    "rating": 4
   }
 ]
-
-
-// image links 
-//https://i.postimg.cc/dtL2grXr/map.png
-// https://i.postimg.cc/pLLgwGvk/summer-holidays.png
-// https://i.postimg.cc/63XzXqRw/mountain.png
-// https://i.postimg.cc/J0g1sfRr/tree.png
-// https://i.postimg.cc/Y24NsQTg/boat.png 
-
