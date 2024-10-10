@@ -35,12 +35,14 @@ const Testimonial = () => {
         className="mySwiper"
       >
         {testimonials?.map((testimonial, index)=><SwiperSlide key={index}>
-        <div className="p-6 sm:p-12 dark:bg-gray-50 dark:text-gray-800">
-	<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-		<img src={testimonial?.image} alt="" className="  w-24 h-24 border " />
+        <div className="p-6 sm:p-12 ">
+	<div className="flex flex-col md:flex-row">
+		<div  className="rounded-full  w-20 h-20">
+    <img src={testimonial?.image} alt="" className=" w-20 h-20  border " />
+    </div>
 		<div className="flex flex-col">
 			<h4 className="text-lg font-semibold text-center md:text-left">{testimonial?.name}</h4>
-			<p className="dark:text-gray-600">Sed non nibh iaculis, posuere diam vitae, consectetur neque. Integer velit ligula, semper sed nisl in, cursus commodo elit. Pellentesque sit amet mi luctus ligula euismod lobortis ultricies et nibh.</p>
+			<p className="">{testimonial?.testimonial}</p>
 		</div>
 	</div>
 	<div className="flex justify-center pt-4 space-x-4 align-center">
