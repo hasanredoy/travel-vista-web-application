@@ -15,6 +15,7 @@ const data = [
     "name": "John Smith",
     "image": "https://randomuser.me/api/portraits/men/20.jpg",
     "location": "Los Angeles, USA",
+    "date":"09/10/2024",
     "testimonial": "Travel Vista made my adventure trip so smooth and hassle-free. The platform is user-friendly, and I got excellent support from their team.",
     "rating": 5
   },
