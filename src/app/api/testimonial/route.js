@@ -23,6 +23,8 @@ const data = [
     "name": "Ahmed El-Sayed",
     "image": "https://randomuser.me/api/portraits/men/21.jpg",
     "location": "Cairo, Egypt",
+    "date":"09/10/2024",
+
     "testimonial": "I booked my mountain escape with Travel Vista and had an amazing experience. The variety of travel options and the ease of booking was exceptional.",
     "rating": 4
   },
@@ -30,6 +32,7 @@ const data = [
     "name": "Daniel Kim",
     "image": "https://randomuser.me/api/portraits/men/23.jpg",
     "location": "Seoul, South Korea",
+    "date":"09/10/2024",
     "testimonial": "The beach holiday package I found on Travel Vista was perfect for my family. The platform made everything easy from start to finish.",
     "rating": 5
   },
@@ -37,6 +40,7 @@ const data = [
     "name": "Carlos Rivera",
     "image": "https://randomuser.me/api/portraits/men/24.jpg",
     "location": "Madrid, Spain",
+    "date":"09/10/2024",
     "testimonial": "I had a great experience using Travel Vista to plan my cruise. The site has a lot of options, and I found the perfect trip for me.",
     "rating": 5
   },
@@ -44,6 +48,7 @@ const data = [
     "name": "Mustafa Khan",
     "image": "https://randomuser.me/api/portraits/men/25.jpg",
     "location": "Istanbul, Turkey",
+    "date":"09/10/2024",
     "testimonial": "Travel Vista’s wildlife safari recommendations were fantastic. I had a memorable experience and will definitely use the service again.",
     "rating": 4
   }
