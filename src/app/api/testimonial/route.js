@@ -17,7 +17,7 @@ const data = [
     "location": "Los Angeles, USA",
     "testimonial": "Travel Vista made my adventure trip so smooth and hassle-free. The platform is user-friendly, and I got excellent support from their team.",
     "rating": 5,
-    "date": "2024-09-10"
+    "date": "2024-10-10"
   },
   {
     "name": "Ahmed El-Sayed",
