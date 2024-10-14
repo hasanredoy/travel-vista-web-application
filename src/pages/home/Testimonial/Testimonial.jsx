@@ -45,7 +45,7 @@ const Testimonial = () => {
 			</div>
 			<div>
 				<h4 className="font-bold">{testimonial?.name}</h4>
-        <p> {moment(testimonial?.date).startOf('seconds').fromNow()}</p>
+        <p className=" text-green-500"> {moment(testimonial?.date).startOf("seconds").fromNow()}</p>
 			</div>
 		</div>
 		<div className="flex items-center space-x-2 text-yellow-700">
