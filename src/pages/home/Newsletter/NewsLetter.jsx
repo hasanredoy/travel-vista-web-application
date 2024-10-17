@@ -1,9 +1,9 @@
 
 const NewsLetter = () => {
   return (
-    <div>
-      <h1>hello</h1>
-    </div>
+    <section>
+      <h1>Subscribe to Newsletter</h1>
+    </section>
   );
 };
 
