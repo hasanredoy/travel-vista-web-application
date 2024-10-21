@@ -1,29 +1,28 @@
+/* eslint-disable react/no-unescaped-entities */
 
 const NewsLetter = () => {
   return (
-    <div
-  className="hero min-h-[calc(100dvh-200px)] "
-  style={{
-    backgroundImage: "url(https://i.postimg.cc/2yvw21z6/email-network-communication-perforated-paper-sign.jpg)",
-  }}>
-  <div className="hero-overlay bg-opacity-60"></div>
-  <div className="hero-content text-neutral-content text-center">
-          <section >
-    
-      <h1 className='text-4xl font-black'>Subscribe to Travel Vista! </h1>
-      <form className="card-body">
-      <div className="join">
-        <input
-          type="text"
-          placeholder="username@site.com"
-          className="input input-bordered join-item" />
-        <button className="btn btn-primary join-item">Subscribe</button>
-      </div>
-      </form>
-    </section>
-  </div>
-</div>
+<div className='bg-gradient-to-br min-h-[200px] flex justify-center items-center from-[#b8e1fc]  via-[#ffffff] to-[#cbebfd]   '>
+<section className='flex justify-between  items-center    w-[94%] my-10 md:w-[90%] lg:w-[65%] mx-auto '>
 
+<div>
+  <h1 className="text-4xl font-black mb-3 italic">Subscribe to Travel Vista! </h1>
+  <p>Get special discount on your tour's by subscribing Travel Vista</p>
+</div>
+<div>
+<form className=" ">
+    <input
+      type="text"
+      placeholder="username@site.com"
+      className="input input-bordered border-sky-400 "
+    />
+    <button className="btn btn-primary ml-5">Subscribe</button>
+
+</form>
+</div>
+</section>
+</div>
+     
   );
 };
 
