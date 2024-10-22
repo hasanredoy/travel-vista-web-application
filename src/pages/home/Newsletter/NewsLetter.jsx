@@ -10,13 +10,13 @@ const NewsLetter = () => {
   <p>Get special discount on your tour's by subscribing Travel Vista</p>
 </div>
 <div>
-<form className=" ">
+<form className="   flex justify-center items-center gap-5">
     <input
       type="text"
       placeholder="username@site.com"
-      className="input input-bordered border-sky-400 "
+      className="input input-bordered border-sky-400 -5 "
     />
-    <button className="btn btn-primary ml-5">Subscribe</button>
+    <button className="btn btn-primary ">Subscribe</button>
 
 </form>
 </div>
