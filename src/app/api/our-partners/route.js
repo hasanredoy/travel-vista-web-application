@@ -13,52 +13,35 @@ export const GET = async()=>{
 const data =[
   {
     "name": "Emirates",
-    "logo": "https://example.com/logos/emirates.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/566px-Emirates_logo.svg.png",
     "website": "https://www.emirates.com"
   },
   {
     "name": "Qatar Airways",
-    "logo": "https://example.com/logos/qatar-airways.png",
+    "logo": "https://seeklogo.com/images/Q/qatar-airways-logo-E096F45AE3-seeklogo.com.png",
     "website": "https://www.qatarairways.com"
   },
   {
     "name": "Hilton Hotels",
-    "logo": "https://example.com/logos/hilton-hotels.png",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0CEFVZ_gTqgyHkDz3_TMh5X61ReKA54ijIg&s",
     "website": "https://www.hilton.com"
   },
-  {
-    "name": "Expedia",
-    "logo": "https://example.com/logos/expedia.png",
-    "website": "https://www.expedia.com"
-  },
-  {
-    "name": "Marriott",
-    "logo": "https://example.com/logos/marriott.png",
-    "website": "https://www.marriott.com"
-  },
-  {
-    "name": "Booking.com",
-    "logo": "https://example.com/logos/booking.png",
-    "website": "https://www.booking.com"
-  },
-  {
-    "name": "Airbnb",
-    "logo": "https://example.com/logos/airbnb.png",
-    "website": "https://www.airbnb.com"
-  },
-  {
-    "name": "TripAdvisor",
-    "logo": "https://example.com/logos/tripadvisor.png",
-    "website": "https://www.tripadvisor.com"
-  },
-  {
-    "name": "Kayak",
-    "logo": "https://example.com/logos/kayak.png",
-    "website": "https://www.kayak.com"
-  },
-  {
-    "name": "Turo",
-    "logo": "https://example.com/logos/turo.png",
-    "website": "https://www.turo.com"
-  }
+  
+    {
+      "name": "Expedia",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxmFPTzVUjpMUYZRW-h3fGNlH31NZvOtlPg&s",
+      "website": "https://www.expedia.com"
+    },
+    {
+      "name": "Marriott",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGSPTP6AD2Jq2f7xYl29OSShxfNSSbLWk3yg&s",
+      "website": "https://www.marriott.com"
+    },
+    {
+      "name": "Turo",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjILdSHoTMiW9gUsWFFOq3yIS_ToishBdmQ&s",
+      "website": "https://www.turo.com"
+    }
+  
+  
 ]
