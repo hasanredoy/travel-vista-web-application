@@ -6,6 +6,7 @@ import NewsLetter from "@/pages/home/Newsletter/NewsLetter";
 import PopularTour from "@/pages/home/PopularTour/PopularTour";
 import Testimonial from "@/pages/home/Testimonial/Testimonial";
 import WhyChooseUs from "@/pages/home/why-choose-us/WhyChooseUs";
+import OurPartners from "@/pages/OurPartners/OurPartners";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <WhyChooseUs></WhyChooseUs>
       <Categories></Categories>
       <Testimonial></Testimonial>
+      <OurPartners></OurPartners>
       <NewsLetter></NewsLetter>
     </main>
   );
