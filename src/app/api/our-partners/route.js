@@ -13,7 +13,7 @@ export const GET = async()=>{
 const data =[
   {
     "name": "Emirates",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Emirates_logo.svg/566px-Emirates_logo.svg.png",
+    "logo": "https://seeklogo.com/images/E/Emirates_Airlines-logo-3A6A7D24CA-seeklogo.com.png",
     "website": "https://www.emirates.com"
   },
   {
@@ -23,13 +23,13 @@ const data =[
   },
   {
     "name": "Hilton Hotels",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0CEFVZ_gTqgyHkDz3_TMh5X61ReKA54ijIg&s",
+    "logo": "https://i.pinimg.com/originals/62/81/ed/6281edd49b9cbbe208790650d29cf1fe.png",
     "website": "https://www.hilton.com"
   },
   
     {
       "name": "Expedia",
-      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxmFPTzVUjpMUYZRW-h3fGNlH31NZvOtlPg&s",
+      "logo": "https://cdn.worldvectorlogo.com/logos/expedia.svg",
       "website": "https://www.expedia.com"
     },
     {

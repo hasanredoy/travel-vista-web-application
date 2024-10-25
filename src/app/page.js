@@ -18,8 +18,8 @@ export default function Home() {
       <WhyChooseUs></WhyChooseUs>
       <Categories></Categories>
       <Testimonial></Testimonial>
-      <OurPartners></OurPartners>
       <NewsLetter></NewsLetter>
+      <OurPartners></OurPartners>
     </main>
   );
 }
