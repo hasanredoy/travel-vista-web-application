@@ -6,7 +6,12 @@ import NewsLetter from "@/pages/home/Newsletter/NewsLetter";
 import PopularTour from "@/pages/home/PopularTour/PopularTour";
 import Testimonial from "@/pages/home/Testimonial/Testimonial";
 import WhyChooseUs from "@/pages/home/why-choose-us/WhyChooseUs";
-import OurPartners from "@/pages/OurPartners/OurPartners";
+import 'leaflet/dist/leaflet.css';
+import '../styles/globals.css';
+import OurPartners from "@/pages/home/OurPartners/OurPartners";
+
+
+
 
 export default function Home() {
   return (
