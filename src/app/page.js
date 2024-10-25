@@ -6,9 +6,9 @@ import NewsLetter from "@/pages/home/Newsletter/NewsLetter";
 import PopularTour from "@/pages/home/PopularTour/PopularTour";
 import Testimonial from "@/pages/home/Testimonial/Testimonial";
 import WhyChooseUs from "@/pages/home/why-choose-us/WhyChooseUs";
-import 'leaflet/dist/leaflet.css';
-import '../styles/globals.css';
 import OurPartners from "@/pages/home/OurPartners/OurPartners";
+import InteractiveMap from "@/pages/home/InteractiveMap";
+import 'leaflet/dist/leaflet.css';
 
 
 
@@ -25,6 +25,7 @@ export default function Home() {
       <Testimonial></Testimonial>
       <NewsLetter></NewsLetter>
       <OurPartners></OurPartners>
+      <InteractiveMap></InteractiveMap>
     </main>
   );
 }
