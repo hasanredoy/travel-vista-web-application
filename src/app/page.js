@@ -9,6 +9,7 @@ import WhyChooseUs from "@/pages/home/why-choose-us/WhyChooseUs";
 import OurPartners from "@/pages/home/OurPartners/OurPartners";
 import InteractiveMap from "@/pages/home/InteractiveMap";
 import 'leaflet/dist/leaflet.css';
+import FAQ from "@/pages/home/FAQ/FAQ";
 
 
 
@@ -23,9 +24,11 @@ export default function Home() {
       <WhyChooseUs></WhyChooseUs>
       <Categories></Categories>
       <Testimonial></Testimonial>
-      <NewsLetter></NewsLetter>
+    <FAQ></FAQ>
       <OurPartners></OurPartners>
       <InteractiveMap></InteractiveMap>
+
+      <NewsLetter></NewsLetter>
     </main>
   );
 }
