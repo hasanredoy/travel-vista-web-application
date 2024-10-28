@@ -3,7 +3,7 @@ import Heading from "@/components/reuseble/Heading";
 const FAQ = () => {
   return (
     <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
-      <Heading t1={'Frequently Ask '} imp={' Questions'}></Heading>
+      <Heading t1={'Frequently Asked '} imp={' Questions'}></Heading>
       {/* image div  */}
       <div>
         
@@ -12,22 +12,33 @@ const FAQ = () => {
       <div>
       <div className="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 dark:divide-gray-300">
 			<details>
-				<summary className="py-2 outline-none cursor-pointer focus:underline">Optio maiores eligendi molestiae totam dolores similique?</summary>
+				<summary className="py-2 outline-none cursor-pointer focus:underline">How do I book a trip on Travel Vista?</summary>
 				<div className="px-4 pb-4">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde neque in fugiat magni, quas animi enim veritatis deleniti ex. Impedit.</p>
+					<p>Booking a trip on Travel Vista is simple! Just browse our destinations, select your preferred package, and follow the prompts to complete your booking.</p>
 				</div>
 			</details>
 			<details>
-				<summary className="py-2 outline-none cursor-pointer focus:underline">Modi dolorem veritatis culpa quos consequuntur beatae itaque excepturi perspiciatis?</summary>
+				<summary className="py-2 outline-none cursor-pointer focus:underline">Can I customize my travel itinerary?</summary>
 				<div className="px-4 pb-4">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur quae, eos explicabo odit minima libero veniam similique quibusdam doloribus facilis ipsa accusantium vel maiores corrupti! Libero voluptate a doloribus?</p>
+					<p>Absolutely! We offer customizable travel itineraries for many packages. Look for the &quot;customizable&quot; tag or speak to our travel agents for tailored experiences.</p>
 				</div>
 			</details>
 			<details>
-				<summary className="py-2 outline-none cursor-pointer focus:underline">Magni reprehenderit possimus debitis?</summary>
+				<summary className="py-2 outline-none cursor-pointer focus:underline">What is included in a travel package?</summary>
 				<div className="px-4 pb-4 space-y-2">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates aspernatur dolores in consequatur doloremque inventore reprehenderit, consequuntur perspiciatis architecto.</p>
-					<p>Sed consectetur quod tenetur! Voluptatibus culpa incidunt veritatis velit quasi cupiditate unde eaque! Iure, voluptatibus autem eaque unde possimus quae.</p>
+					<p>Our packages typically include accommodation, select meals, guided tours, and transportation within the destination. However, each package is unique, so refer to the specific package details for more information.</p>
+				</div>
+			</details>
+			<details>
+				<summary className="py-2 outline-none cursor-pointer focus:underline">How do I know if a tour is suitable for families?</summary>
+				<div className="px-4 pb-4 space-y-2">
+					<p> We label each tour with specific categories, like &quot;Family-Friendly&quot; or &quot;Adventure.&quot; You can also filter options to find tours that best suit your group’s needs.</p>
+				</div>
+			</details>
+			<details>
+				<summary className="py-2 outline-none cursor-pointer focus:underline">Can I get a refund if I cancel my booking?</summary>
+				<div className="px-4 pb-4 space-y-2">
+					<p> Yes, but it depends on when you cancel. Our cancellation policy allows for partial or full refunds based on the timing of your cancellation. Be sure to check the specific policy details at checkout.</p>
 				</div>
 			</details>
 		</div>
