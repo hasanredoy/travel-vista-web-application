@@ -1,16 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 import Heading from "@/components/reuseble/Heading";
-
+import faqImage from '../../../../public/assets/faq.jpg'
+import Image from "next/image";
 const FAQ = () => {
   return (
     <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'Frequently Asked '} imp={' Questions'}></Heading>
+     <section className="flex "> 
       {/* image div  */}
       <div>
-        
+        <Image src={faqImage} className=" " width={600} height={500} alt="faq banner image" />
       </div>
       {/* accordion div  */}
-      <div>
-      <div className="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 dark:divide-gray-300">
+      <div className=" max-w-[500px] bg-[#ebeefc]">
+      <div className="flex flex-col divide-y sm:px-8 lg:px-12 ">
 			<details>
 				<summary className="py-2 outline-none cursor-pointer focus:underline">How do I book a trip on Travel Vista?</summary>
 				<div className="px-4 pb-4">
@@ -42,7 +45,7 @@ const FAQ = () => {
 				</div>
 			</details>
 		</div>
-      </div>
+      </div></section>
     </section>
   );
 };
