@@ -4,15 +4,16 @@ import faqImage from '../../../../public/assets/faq.jpg'
 import Image from "next/image";
 const FAQ = () => {
   return (
-    <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
+    <section className="  my-10">
       <Heading t1={'Frequently Asked '} imp={' Questions'}></Heading>
-     <section className="flex "> 
+<section className="bg-[#ebeefc] w-full">
+<section className="flex justify-center w-[94%]  md:w-[90%] lg:w-[85%] mx-auto"> 
       {/* image div  */}
-      <div>
-        <Image src={faqImage} className=" " width={600} height={500} alt="faq banner image" />
+      <div className="">
+        <Image src={faqImage} className="  min-w-[570px] " width={600} height={500} alt="faq banner image" />
       </div>
       {/* accordion div  */}
-      <div className=" max-w-[500px] bg-[#ebeefc]">
+      <div className=" max-w-[500px] min-w-[500px] w-full">
       <div className="flex flex-col divide-y sm:px-8 lg:px-12 ">
 			<details>
 				<summary className="py-2 outline-none cursor-pointer focus:underline">How do I book a trip on Travel Vista?</summary>
@@ -46,6 +47,7 @@ const FAQ = () => {
 			</details>
 		</div>
       </div></section>
+</section>
     </section>
   );
 };
