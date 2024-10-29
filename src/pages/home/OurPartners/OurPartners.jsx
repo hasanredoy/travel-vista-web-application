@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Heading from "@/components/reuseble/Heading";
-import DataLoader from "@/hooks/data-loader/DataLoader";
-import Link from "next/link";
+// import DataLoader from "@/hooks/data-loader/DataLoader";
+// import Link from "next/link";
 
-const OurPartners =async () => {
+const OurPartners =() => {
   // const ourPartners = await DataLoader('our-partners')
   // console.log(ourPartners);
   return (
