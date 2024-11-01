@@ -20,12 +20,12 @@ const data = [
   {
     "statistic": "5-Star Reviews",
     "value": 350,
-    "description": "35,0+ positive reviews from satisfied travelers around the globe."
+    "description": "350+ positive reviews from satisfied travelers around the globe."
   },
   {
     "statistic": "Years of Service",
     "value": 5,
-    "description": "A decade of crafting memorable travel experiences."
+    "description": "Half decade of crafting memorable travel experiences."
   },
   {
     "statistic": "Countries Visited",
