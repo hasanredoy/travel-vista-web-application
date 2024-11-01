@@ -18,43 +18,23 @@ const data = [
   },
   {
     "statistic": "Total Trips Booked",
-    "value": 54000,
+    "value": 540,
     "description": "Over 54,000 unforgettable journeys planned and counting."
   },
   {
-    "statistic": "Returning Customers",
-    "value": 85,
-    "description": "85% of our travelers choose to explore with us again."
-  },
-  {
     "statistic": "5-Star Reviews",
-    "value": 35000,
+    "value": 350,
     "description": "35,000+ positive reviews from satisfied travelers around the globe."
   },
   {
     "statistic": "Years of Service",
-    "value": 10,
+    "value": 5,
     "description": "A decade of crafting memorable travel experiences."
-  },
-  {
-    "statistic": "Top-Rated Guides",
-    "value": 200,
-    "description": "200 expert guides dedicated to making each trip exceptional."
-  },
-  {
-    "statistic": "Unique Experiences",
-    "value": 400,
-    "description": "400+ handpicked activities and excursions for all kinds of travelers."
   },
   {
     "statistic": "Countries Visited",
     "value": 50,
     "description": "Travel with us across 50 diverse countries and cultures."
-  },
-  {
-    "statistic": "Custom Trips",
-    "value": 2500,
-    "description": "Over 2,500 personalized trips crafted to meet individual preferences."
   },
   {
     "statistic": "Customer Satisfaction",
