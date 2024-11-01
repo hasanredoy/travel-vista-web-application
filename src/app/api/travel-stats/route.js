@@ -14,13 +14,13 @@ const data = [
   {
     "statistic": "Destinations Covered",
     "value": 120,
-    "description": "Explore 120+ destinations worldwide, from bustling cities to serene escapes."
+    "description": "Explore 120+ destinations worldwide."
   },
  
   {
     "statistic": "5-Star Reviews",
     "value": 350,
-    "description": "350+ positive reviews from satisfied travelers around the globe."
+    "description": "350+ positive reviews from satisfied travelers."
   },
   {
     "statistic": "Years of Service",

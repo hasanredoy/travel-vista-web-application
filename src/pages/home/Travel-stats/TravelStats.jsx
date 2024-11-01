@@ -13,9 +13,9 @@ const TravelStats = () => {
             key={index}
             className={`flex flex-col items-center p-5 rounded-md shadow-md border border-sky-100 w-full  max-h-80 justify-center gap-5 
              ${index == 0 && "bg-gradient-to-tr from-[#c5fcf9] via-[#fff] to-[#bafdf8]"}
-             ${index == 1 && "bg-gradient-to-br from-[#e6fac5] via-[#fff] to-[#d4ff9b]"}
+             ${index == 1 && "bg-gradient-to-br from-[#e6fac5] via-[#fff] to-[#e6fac5]"}
              ${index == 2 && "bg-gradient-to-tl from-[#c5fcf9] via-[#fff] to-[#bafdf8]"}
-             ${index == 3 && "bg-gradient-to-bl from-[#e6fac5] via-[#fff] to-[#d4ff9b]"}
+             ${index == 3 && "bg-gradient-to-bl from-[#e6fac5] via-[#fff] to-[#e6fac5]"}
         
         `}
           >
