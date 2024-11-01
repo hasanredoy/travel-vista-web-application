@@ -1,19 +1,21 @@
-import axios from "axios";
+'use client'
+import { useEffect, useState } from "react";
 
-const loadData = async (URL) => {
-  try {
-    const res = await axios.get(URL);
-    // console.log({ response: res?.data?.data });
-    return res?.data || [];
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-    return [];
-  }
-};
-
-const DataLoader = async (url) => {
+const DataLoader = (url) => {
+      const [data , setData] = useState()
   const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/${url}`;
-  return await loadData(apiUrl);
+  useEffect(()=>{
+     fetch(apiUrl)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      setData(data?.data)
+    })
+},[apiUrl])
+    
+    console.log(data);
+    return data || [];
+
 };
 
 export default DataLoader;
