@@ -27,7 +27,6 @@ const SearchInput = () => {
 
   // state to handle visibility of prompt
   const [focus , setFocus] = useState(false)
-  // console.log(focus);
   const [searchInputValue, setSearchInputValue] = useState('')
 
   useEffect(()=>{
@@ -42,7 +41,6 @@ const SearchInput = () => {
    
     setPrompt(splitPrompt)
   },[])
-  console.log(prompt);
 
 
   return (

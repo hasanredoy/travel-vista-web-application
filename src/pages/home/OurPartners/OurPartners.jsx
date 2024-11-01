@@ -10,7 +10,6 @@ import Link from "next/link";
 
 const OurPartners = () => {
    const ourPartners = DataLoader('our-partners')
-   console.log(ourPartners);
   return (
     <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'All our '} imp={' Partners'} />

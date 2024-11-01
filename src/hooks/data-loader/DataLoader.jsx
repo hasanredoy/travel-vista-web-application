@@ -8,12 +8,10 @@ const DataLoader = (url) => {
      fetch(apiUrl)
     .then(res=>res.json())
     .then(data=>{
-      console.log(data);
       setData(data?.data)
     })
 },[apiUrl])
     
-    console.log(data);
     return data || [];
 
 };

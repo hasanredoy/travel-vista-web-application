@@ -7,7 +7,6 @@ const useLoadFeaturedData = () => {
   useEffect(()=>{
     axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/featured-tour`)
     .then(res=>{
-      // console.log(res.data);
       setData(res?.data?.data)
     })
   },[])
