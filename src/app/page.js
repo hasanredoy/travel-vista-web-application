@@ -10,6 +10,7 @@ import WhyChooseUs from "@/pages/home/why-choose-us/WhyChooseUs";
 import OurPartners from "@/pages/home/OurPartners/OurPartners";
 import FAQ from "@/pages/home/FAQ/FAQ";
 import TravelStats from "@/pages/home/Travel-stats/TravelStats";
+import Blogs from "@/pages/home/Blogs/Blogs";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero></Hero>
       <Featured></Featured>
       <Discount></Discount>
+      <Blogs></Blogs>
       <PopularTour></PopularTour>
       <WhyChooseUs></WhyChooseUs>
       <Categories></Categories>
