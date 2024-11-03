@@ -54,5 +54,14 @@ const data =[
     "experience": "Travel Vista’s wildlife safari recommendations were fantastic. I had a memorable experience seeing animals in their natural habitat. The itinerary included some exclusive spots I would never have discovered on my own. The guides were knowledgeable and passionate about wildlife. For anyone looking to experience nature firsthand, I can’t recommend it enough. Be sure to read their travel prep guide—it helped me get the most out of my trip.",
     "rating": 4,
     "location": "Istanbul, Turkey"
+  },
+  {
+    "user": "Liam Johnson",
+    "date": "2024-09-22",
+    "image": "https://randomuser.me/api/portraits/men/50.jpg",
+    "title": "Cultural Immersion at Its Best",
+    "experience": "Travel Vista gave me the chance to experience local traditions and culture in a way I never expected. The itinerary included unique activities like cooking classes and local festivals that added so much to my trip. Their attention to detail and personalized recommendations made me feel like more than just a tourist. I highly recommend browsing their 'local experience' section for hidden gems!",
+    "rating": 5,
+    "location": "Cape Town, South Africa"
   }
 ]

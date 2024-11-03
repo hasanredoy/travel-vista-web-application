@@ -8,7 +8,7 @@ const Blogs = () => {
   return (
     <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
       <Heading imp={'Blogs, Opinions & Experience'}></Heading>
-      <div className=" grid grid-cols-3">
+      <div className=" grid grid-cols-3 gap-10">
         {blogs.map((blog, index) => (
           <div
             key={index}
@@ -16,26 +16,21 @@ const Blogs = () => {
           >
             <article>
               <h2 className="text-xl font-bold">
-                Sed diam massa, semper a condimentum
+                {blog?.title}
               </h2>
               <p className="mt-4 ">
-                Morbi porttitor mi in diam scelerisque commodo. Proin sed
-                laoreet libero. Fusce faucibus porttitor lacus, at blandit
-                mauris blandit eget. Donec facilisis lorem et risus commodo,
-                quis auctor nulla varius. Pellentesque facilisis feugiat turpis,
-                id molestie augue semper quis. Nunc ornare eget est sit amet
-                elementum.
+                {blog?.experience}
               </p>
               <div className="flex items-center mt-8 space-x-4">
                 <Image
-                  src="https://source.unsplash.com/100x100/?portrait"
+                  src={blog?.image}
                   width={40}
                   height={40}
                   alt=""
                   className="w-10 h-10 rounded-full dark:bg-gray-500"
                 />
                 <div>
-                  <h3 className="text-sm font-medium">Leroy Jenkins</h3>
+                  <h3 className="text-sm font-medium">{blog?.user}</h3>
                   <time
                     datetime="2021-02-18"
                     className="text-sm dark:text-gray-600"
