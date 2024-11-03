@@ -2,12 +2,13 @@
 import Heading from "@/components/reuseble/Heading";
 import DataLoader from "@/hooks/data-loader/DataLoader";
 import Image from "next/image";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Blogs = () => {
   const blogs = DataLoader("blog-section-data");
   return (
     <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
-      <Heading imp={'Blogs, Opinions & Experience'}></Heading>
+      <Heading imp={"Blogs, Opinions & Experience"}></Heading>
       <div className=" grid grid-cols-3 gap-10">
         {blogs.map((blog, index) => (
           <div
@@ -15,12 +16,14 @@ const Blogs = () => {
             className="max-w-md p-6 overflow-hidden rounded-lg shadow "
           >
             <article>
-              <h2 className="text-xl font-bold">
-                {blog?.title}
-              </h2>
-              <p className="mt-4 ">
-                {blog?.experience}
-              </p>
+              <h2 className="text-xl font-bold">{blog?.title}</h2>
+              <p className="mt-4 ">{blog?.experience}</p>
+              <div>
+                <h3>
+                  {" "}
+                  <FaLocationDot></FaLocationDot> <span>{blog?.location}</span>
+                </h3>
+              </div>
               <div className="flex items-center mt-8 space-x-4">
                 <Image
                   src={blog?.image}
@@ -31,12 +34,9 @@ const Blogs = () => {
                 />
                 <div>
                   <h3 className="text-sm font-medium">{blog?.user}</h3>
-                  <time
-                    datetime="2021-02-18"
-                    className="text-sm dark:text-gray-600"
-                  >
-                    Feb 18th 2021
-                  </time>
+                  <span className="text-sm dark:text-gray-600">
+                    {blog?.date}
+                  </span>
                 </div>
               </div>
             </article>
