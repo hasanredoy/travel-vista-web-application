@@ -2,6 +2,7 @@
 import Heading from "@/components/reuseble/Heading";
 import DataLoader from "@/hooks/data-loader/DataLoader";
 import Image from "next/image";
+import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
 
 const Blogs = () => {
@@ -17,7 +18,7 @@ const Blogs = () => {
           >
             <article>
               <h2 className="text-xl font-bold">{blog?.title}</h2>
-              <p className="mt-4 ">{blog?.experience?.slice(100)}</p>
+              <p className="mt-4 ">{blog?.experience?.slice(80)} <Link href={'/'} className=" text-blue-600">see more...</Link></p>
               <div>
                 <h3 className=" flex gap-2 items-center my-3">
                   {" "}
