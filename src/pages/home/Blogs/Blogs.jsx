@@ -17,11 +17,11 @@ const Blogs = () => {
           >
             <article>
               <h2 className="text-xl font-bold">{blog?.title}</h2>
-              <p className="mt-4 ">{blog?.experience}</p>
+              <p className="mt-4 ">{blog?.experience?.slice(100)}</p>
               <div>
-                <h3>
+                <h3 className=" flex gap-2 items-center my-3">
                   {" "}
-                  <FaLocationDot></FaLocationDot> <span>{blog?.location}</span>
+                  <FaLocationDot className=" text-lg"></FaLocationDot> <span>{blog?.location}</span>
                 </h3>
               </div>
               <div className="flex items-center mt-8 space-x-4">
