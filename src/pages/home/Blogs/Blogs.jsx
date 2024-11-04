@@ -46,6 +46,10 @@ const Blogs = () => {
           </div>
         ))}
       </div>
+<div className=" flex justify-center my-10">
+<button className=" btn-primary ">See All</button>
+
+</div>
     </section>
   );
 };
