@@ -1,8 +1,9 @@
-"use client";
+"use client"
 import Heading from "@/components/reuseble/Heading";
 import DataLoader from "@/hooks/data-loader/DataLoader";
 import Image from "next/image";
 import Link from "next/link";
+import { FaHeart, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 const Blogs = () => {
@@ -14,10 +15,11 @@ const Blogs = () => {
         {blogs.map((blog, index) => (
           <div
             key={index}
-            className="max-w-md p-6 overflow-hidden rounded-lg shadow "
+            className="max-w-md relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
           >
             <article>
-              <h2 className="text-xl font-bold">{blog?.title}</h2>
+            <h3 className=" absolute text-red-400 top-1 right-1  flex items-center text-lg gap-1 font-medium">{blog?.rating} <span><FaStar></FaStar></span></h3>
+             <h2 className="text-xl font-bold">{blog?.title}</h2>
               <p className="mt-4 ">{blog?.experience?.slice(80)} <Link href={'/'} className=" text-blue-600">see more...</Link></p>
               <div>
                 <h3 className=" flex gap-2 items-center my-3">
