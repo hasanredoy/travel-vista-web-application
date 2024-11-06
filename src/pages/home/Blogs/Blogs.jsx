@@ -1,12 +1,14 @@
-"use client"
+"use client";
 import Heading from "@/components/reuseble/Heading";
 import DataLoader from "@/hooks/data-loader/DataLoader";
 import Image from "next/image";
 import Link from "next/link";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const Blogs = () => {
+  // get blog data
   const blogs = DataLoader("blog-section-data");
   return (
     <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
@@ -18,13 +20,24 @@ const Blogs = () => {
             className="max-w-md relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
           >
             <article>
-            <h3 className=" absolute text-red-400 top-1 right-1  flex items-center text-lg gap-1 font-medium">{blog?.rating} <span><FaStar></FaStar></span></h3>
-             <h2 className="text-xl font-bold">{blog?.title}</h2>
-              <p className="mt-4 ">{blog?.experience?.slice(80)} <Link href={'/'} className=" text-blue-600">see more...</Link></p>
+              <h3 className=" absolute text-red-400 top-1 right-1  flex items-center text-lg gap-1 font-medium">
+                {blog?.rating}{" "}
+                <span>
+                  <FaStar></FaStar>
+                </span>
+              </h3>
+              <h2 className="text-xl font-bold">{blog?.title}</h2>
+              <p className="mt-4 ">
+                {blog?.experience?.slice(80)}{" "}
+                <Link href={"/"} className=" text-blue-600">
+                  see more...
+                </Link>
+              </p>
               <div>
                 <h3 className=" flex gap-2 items-center my-3">
                   {" "}
-                  <FaLocationDot className=" text-lg"></FaLocationDot> <span>{blog?.location}</span>
+                  <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
+                  <span>{blog?.location}</span>
                 </h3>
               </div>
               <div className="flex items-center mt-8 space-x-4">
@@ -35,21 +48,28 @@ const Blogs = () => {
                   alt=""
                   className="w-10 h-10 rounded-full dark:bg-gray-500"
                 />
-                <div>
-                  <h3 className="text-sm font-medium">{blog?.user}</h3>
-                  <span className="text-sm dark:text-gray-600">
-                    {blog?.date}
-                  </span>
+                {/* user name and details btn container div  */}
+                <div className=" flex justify-between w-full items-center">
+                  <div>
+                    <h3 className="text-sm font-medium">{blog?.user}</h3>
+                    <span className="text-sm dark:text-gray-600">
+                      {blog?.date}
+                    </span>
+                  </div>
+                  <div>
+                    <Link href={"/"}>
+                      <FaRegArrowAltCircleRight title="View full blog!" className=" text-3xl "></FaRegArrowAltCircleRight>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </article>
           </div>
         ))}
       </div>
-<div className=" flex justify-center my-10">
-<button className=" btn-primary ">See All</button>
-
-</div>
+      <Link href={"/"} className=" flex justify-center my-10">
+        <button className=" btn-primary ">See All</button>
+      </Link>
     </section>
   );
 };
