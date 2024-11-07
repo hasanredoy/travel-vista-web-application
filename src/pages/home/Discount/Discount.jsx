@@ -5,7 +5,7 @@ import discountImage2 from '../../../../public/assets/discount_image/travel_8205
 
 const Discount = () => {
   return (
- <section className=" flex flex-col md:flex-row gap-y-10 md:gap-20   w-[94%] overflow-hidden md:w-[90%] lg:w-[85%] px-5 md:px-0 mx-auto">
+ <section className=" flex flex-col py-10 md:flex-row gap-y-10 md:gap-20   w-[94%] overflow-hidden md:w-[90%] lg:w-[85%] px-5 md:px-0 mx-auto">
   {/* 1st discount  */}
     <div className=' px-3 py-5 md:p-5 relative w-full flex-1 flex items-center justify-center flex-col  h-[200px] bg-gradient-to-r rounded-lg shadow-lg shadow-gray-400 from-[#f8fafa] via-[#68e3e7]  to-[#f9fcfc]'>
 

@@ -41,26 +41,32 @@ const Blogs = () => {
                 </h3>
               </div>
               <div className="flex items-center mt-8 space-x-4">
-             <Link href={'/'}>
-             <Image
-                  src={blog?.image}
-                  width={40}
-                  height={40}
-                  alt=""
-                  className="w-10 h-10 rounded-full dark:bg-gray-500"
-                />
-             </Link>
+                <Link href={"/"}>
+                  <Image
+                    src={blog?.image}
+                    width={40}
+                    title={blog?.user}
+                    height={40}
+                    alt=""
+                    className="w-10 h-10 rounded-full dark:bg-gray-500"
+                  />
+                </Link>
                 {/* user name and details btn container div  */}
                 <div className=" flex justify-between w-full items-center">
                   <div>
-                    <Link href={'/'}><h3 className="text-sm font-medium">{blog?.user}</h3></Link>
+                    <Link title={blog?.user} href={"/"}>
+                      <h3 className="text-sm font-medium">{blog?.user}</h3>
+                    </Link>
                     <span className="text-sm dark:text-gray-600">
                       {blog?.date}
                     </span>
                   </div>
                   <div>
                     <Link href={"/"}>
-                      <FaRegArrowAltCircleRight title="View full blog!" className=" text-3xl "></FaRegArrowAltCircleRight>
+                      <FaRegArrowAltCircleRight
+                        title="View full blog!"
+                        className=" text-3xl "
+                      ></FaRegArrowAltCircleRight>
                     </Link>
                   </div>
                 </div>
