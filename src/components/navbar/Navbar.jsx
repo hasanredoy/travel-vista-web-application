@@ -14,6 +14,8 @@ import { LuLogIn } from "react-icons/lu";
 import { PiLessThanFill } from "react-icons/pi";
 import { FaDotCircle } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
+import { TbMessageChatbot } from "react-icons/tb";
+
 
 const Navbar = () => {
   //  get pathname
@@ -51,6 +53,17 @@ const Navbar = () => {
         }`}
       >
         <MdAddHomeWork className="text-xl"></MdAddHomeWork> Start Hosting{" "}
+        {path == "/start_hosting" && (
+          <GoDotFill className=" text-green-400 font-bold "></GoDotFill>
+        )}
+      </Link>
+      <Link
+        href={"/blogs"}
+        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+          path == "/start_hosting" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+        }`}
+      >
+        <TbMessageChatbot className="text-xl"></TbMessageChatbot> Blogs{" "}
         {path == "/start_hosting" && (
           <GoDotFill className=" text-green-400 font-bold "></GoDotFill>
         )}
@@ -95,7 +108,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className=" h-full dropdown-content dropDown bg-[#08F3E7] shadow-lg shadow-blue-300 bg-opacity-90   w-[200px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[20] mt-2 absolute -left-10 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
+              className=" h-full dropdown-content dropDown bg-[#a2faf6] shadow-lg shadow-blue-300 bg-opacity-90   w-[200px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[50] mt-2 absolute -left-10 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
             >
               {navLinks}
               <div>

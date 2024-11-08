@@ -12,6 +12,7 @@ export const GET = async()=>{
 const data =[
   {
     "user": "John Smith",
+    "email":"smith@email.com",
     "date": "Oct 10th 2024",
     "image": "https://randomuser.me/api/portraits/men/19.jpg",
     "title": "Adventure Trip Made Easy",
@@ -21,6 +22,7 @@ const data =[
   },
   {
     "user": "Ahmed El-Sayed",
+    "email":"elsayed@email.com",
     "date": "Aug 25th 2024",
     "image": "https://randomuser.me/api/portraits/men/32.jpg",
     "title": "Mountain Escape Experience",
@@ -30,6 +32,7 @@ const data =[
   },
   {
     "user": "Daniel Kim",
+    "email":"danial@email.com",
     "date": "Sep 2nd 2024",
     "image": "https://randomuser.me/api/portraits/men/33.jpg",
     "title": "Perfect Beach Holiday",
@@ -39,6 +42,7 @@ const data =[
   },
   {
     "user": "Carlos Rivera",
+    "email":"carlos@email.com",
     "date": "Aug 18th 2024",
     "image": "https://randomuser.me/api/portraits/men/40.jpg",
     "title": "Cruise Planning with Ease",
@@ -48,6 +52,7 @@ const data =[
   },
   {
     "user": "Mustafa Khan",
+    "email":"@email.com",
     "date": "Sep 15th 2024",
     "image": "https://randomuser.me/api/portraits/men/30.jpg",
     "title": "Memorable Wildlife Safari",
@@ -57,6 +62,7 @@ const data =[
   },
   {
     "user": "Liam Johnson",
+    "email":"@email.com",
     "date": "Sep 22nd 2024",
     "image": "https://randomuser.me/api/portraits/men/50.jpg",
     "title": "Cultural Immersion at Its Best",

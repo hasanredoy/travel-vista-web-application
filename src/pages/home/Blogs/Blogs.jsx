@@ -9,9 +9,10 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const Blogs = () => {
   // get blog data
-  const blogs = DataLoader("blog-section-data");
+  const blogs = DataLoader("blog-data");
+  
   return (
-    <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
+    <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
       <Heading imp={"Blogs, Opinions & Experience"}></Heading>
       <div className=" grid grid-cols-3 gap-10">
         {blogs.map((blog, index) => (
