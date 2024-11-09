@@ -20,7 +20,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 :root {
-  --navbar-bg-color: linear-gradient( to top, #f8f8f8,#75f9fd,#f5fbfc );
+  --navbar-bg-color: linear-gradient( to top, #f8f8f8,#b0f6f8,#f5fbfc );
 }
 
 [data-theme="dark"] {

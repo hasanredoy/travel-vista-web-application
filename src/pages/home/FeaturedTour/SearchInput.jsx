@@ -8,6 +8,9 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { HiUserGroup } from "react-icons/hi";
 import { MdOutlineShowChart } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
+
+
 
 
 const SearchInput = () => {
@@ -27,7 +30,7 @@ const SearchInput = () => {
 
   // state to handle visibility of prompt
   const [focus , setFocus] = useState(false)
-  const [searchInputValue, setSearchInputValue] = useState('')
+  const [searchInputValue, setSearchInputValue] = useState()
 
   useEffect(()=>{
     // get access of prompt form local storage 
@@ -60,6 +63,7 @@ const SearchInput = () => {
           required
 
         />
+        <h4><RxCross1 className="text-xl font-bold pl-2"></RxCross1></h4>
       </div>
       {/* text to show while the input field in focus */}
       {focus&&<div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-10 left-0 rounded-md shadow-gray-500 ">
