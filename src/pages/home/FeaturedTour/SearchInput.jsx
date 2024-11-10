@@ -8,7 +8,6 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { HiUserGroup } from "react-icons/hi";
 import { MdOutlineShowChart } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
 
 
 
@@ -32,11 +31,17 @@ const SearchInput = () => {
   const [focus , setFocus] = useState(false)
   const [searchInputValue, setSearchInputValue] = useState()
 
+
+  // handler for search input 
+  const handleSearch=(e)=>{
+   e.preventDefault()
+  }
+
   useEffect(()=>{
     // get access of prompt form local storage 
     const getPrompt = localStorage.getItem('prompt')
     // if there is not any prompt in local storage then set these dummy prompt in local storage 
-    const hello = []
+  
     if(!getPrompt){
       localStorage.setItem('prompt',"Dubai, UAE. Moscow, Russia. Sydney, Australia. Machu Picchu, Peru.Kyoto, Japan. Cape Town, South Africa. Banff National Park, Canada.  Santorini, Greece")
     }
@@ -57,13 +62,14 @@ const SearchInput = () => {
           placeholder="Where to go?"
           name="search"
           value={searchInputValue}
+          
           onFocus={()=>setFocus(true)}
           onBlur={()=>setFocus(false)}
           autoComplete="off" // prevents default suggestion
           required
 
         />
-       {focus&& <button onMouseEnter={()=>setSearchInputValue(null)} className=" absolute right-1 "><RxCross1  className="text-xl font-bold "></RxCross1></button>}
+    
       </div>
       {/* text to show while the input field in focus */}
       {focus&&<div className=" absolute flex flex-col p-5 bg-base-200 border shadow-md gap-3 top-10 left-0 rounded-md shadow-gray-500 ">
