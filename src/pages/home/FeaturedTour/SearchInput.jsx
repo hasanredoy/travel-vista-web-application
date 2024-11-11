@@ -44,8 +44,8 @@ const SearchInput = () => {
        travelers: e?.target?.travelers?.value,
        date,
    }
-   localStorage.removeItem('search-data')
-   localStorage.setItem('search-data',searchData)
+   localStorage.removeItem("search-data")
+   localStorage.setItem("search-data",JSON.stringify(searchData))
    router.push('tours')
    
   }
