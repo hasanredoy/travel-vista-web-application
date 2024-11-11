@@ -8,6 +8,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { HiUserGroup } from "react-icons/hi";
 import { MdOutlineShowChart } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 
 
@@ -27,6 +28,9 @@ const SearchInput = () => {
   // state handle prompt 
   const [ prompt ,setPrompt] = useState()
 
+  // get router 
+  const router = useRouter()
+
   // state to handle visibility of prompt
   const [focus , setFocus] = useState(false)
   const [searchInputValue, setSearchInputValue] = useState()
@@ -40,7 +44,10 @@ const SearchInput = () => {
        travelers: e?.target?.travelers?.value,
        date,
    }
-   console.log(searchData);
+   localStorage.removeItem('search-data')
+   localStorage.setItem('search-data',searchData)
+   router.push('tours')
+   
   }
   
 
