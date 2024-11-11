@@ -35,7 +35,14 @@ const SearchInput = () => {
   // handler for search input 
   const handleSearch=(e)=>{
    e.preventDefault()
+   const searchData = {
+       prompt: e?.target?.search?.value,
+       travelers: e?.target?.travelers?.value,
+       date,
+   }
+   console.log(searchData);
   }
+  
 
   useEffect(()=>{
     // get access of prompt form local storage 
@@ -52,7 +59,7 @@ const SearchInput = () => {
 
 
   return (
-    <div className=" border-0 md:border-2  relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-2xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
+    <form onSubmit={handleSearch} className=" border-0 md:border-2  relative  shadow-md shadow-black md:shadow-none bg-white border-gray-400 md:border-sky-500  rounded-md max-w-[280px] md:max-w-2xl lg:max-w-3xl lg:min-w-[750px] flex md:flex-row flex-col justify-between items-center w-full">
       <div className=" relative pl-3 flex gap-2 lg:gap-3 items-center   w-full md:border-r-2 border-b md:border-b-0 flex-1 border-gray-400 md:border-sky-500">
         <CiLocationOn className=" md:text-2xl text-black"></CiLocationOn>
         {/* search input  */}
@@ -76,14 +83,14 @@ const SearchInput = () => {
         {prompt&&prompt.map((singlePrompt,index)=><h5 onMouseEnter={()=>setSearchInputValue(singlePrompt)} key={index} className=" cursor-pointer hover:font-bold text-base font-medium flex gap-5 items-center justify-between">{singlePrompt}<MdOutlineShowChart title="top ranked" className=" text-lg"></MdOutlineShowChart></h5>)}
       </div>}
       {/* date button  */}
-      <button
+      <h4
         title="click"
         className=" pl-3 w-full  md:w-20 lg:w-40 md:min-w-32 lg:min-w-40 lg:max-w-40 px-3  lg:px-5  flex gap-5 md:gap-6 items-center font-bold border-b border-gray-400 md:border-sky-500 md:border-b-0 hover:bg-[#a6f8f1] py-3 "
         onClick={() => setShowDateInput(!showDateInput)}
       >
         <IoCalendarNumberOutline className=" md:text-xl"></IoCalendarNumberOutline>{" "}
         Date ?
-      </button>
+      </h4>
       {/* date inp  */}
       {showDateInput ? (
         <div className=" absolute top-28  md:top-10 flex justify-center w-full">
@@ -104,6 +111,7 @@ const SearchInput = () => {
         <HiUserGroup className=" md:text-2xl"></HiUserGroup>
         <input
           type="number"
+          name="travelers"
           className="  w-full placeholder:text-black  py-3 px-2 lg:px-5 outline-none"
           placeholder="How many Travelers?"
           min={1}
@@ -113,7 +121,7 @@ const SearchInput = () => {
       <button className=" md:border-l-2 border-gray-400 md:border-sky-500 bg-gradient-to-tr  from-[#f9fafa] via-[#4cfdee] to-[#f0f4f5]  py-3 w-32 hover:bg-gradient-to-r hover:from-white hover:to-white hover:via-white font-bold text-black rounded-md mb-3 md:mb-0 md:rounded-none ">
         Search
       </button>
-    </div>
+    </form>
   );
 };
 
