@@ -9,19 +9,19 @@ const Tours = () => {
     console.log(searchData);
   }, []);
   return (
-    <main className="min-h-screen relative w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
+    <main className="min-h-screen relative my-20 w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
       {/* categories and filter container */}
       <section>
         {/* categories section  */}
         <section className=" flex gap-5">
           {categories?.map((category, index) => (
-            <div key={index} className=" flex gap-2 border border-sky-200 py-1 px-4">
+            <button key={index} className="  bg-gray-200 flex items-center rounded-lg gap-2 border border-sky-200 py-1 px-4">
               <h3>{category?.category}</h3>
              <img alt={category?.category} src={category?.image}
              width={40}
              height={40}
              ></img>
-            </div>
+            </button>
           ))}
         </section>
         {/* filter section  */}
