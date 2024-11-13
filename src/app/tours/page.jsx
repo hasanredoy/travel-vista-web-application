@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Tours = () => {
+  // state to set background color in category btn 
+  const [categoryBackground , setCategoryBackground]= useState('')
   useEffect(() => {
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));
@@ -15,7 +17,7 @@ const Tours = () => {
         {/* categories section  */}
         <section className=" flex gap-5">
           {categories?.map((category, index) => (
-            <button key={index} className="  bg-gray-200 flex items-center rounded-lg gap-2 border border-sky-200 py-1 px-4">
+            <button onClick={()=>setCategoryBackground(category?.category)} key={index} className={` ${categoryBackground==category?.category&&"bg-white border border-gray-500"} bg-gray-200 flex items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}>
               <h3>{category?.category}</h3>
              <img alt={category?.category} src={category?.image}
              width={40}
