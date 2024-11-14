@@ -13,7 +13,7 @@ const OurPartners = () => {
   return (
     <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'All our '} imp={' Partners'} />
-      <div className="flex justify-center gap-10">
+      <div className={` grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-center gap-10`}>
         {ourPartners?.map((partner, index) => (
           <Link href={partner?.website} key={index}>
             <img

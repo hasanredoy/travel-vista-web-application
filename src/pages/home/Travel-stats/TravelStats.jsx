@@ -7,11 +7,11 @@ const TravelStats = () => {
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Our "} imp={" Statics"}></Heading>
-      <div className=" flex gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-10">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center p-5 rounded-md shadow-md border border-sky-100 w-full  max-h-80 justify-center gap-5 
+            className={` flex flex-col items-center p-5 rounded-md shadow-md border border-sky-100 w-full  max-h-80 justify-center gap-5 
              ${index == 0 && "bg-gradient-to-tr from-[#ffffff] via-[#d5fcfa] to-[#ffffff]"}
              ${index == 1 && "bg-gradient-to-br from-[#fff] via-[#e6fac5] to-[#ffffff]"}
              ${index == 2 && "bg-gradient-to-tl from-[#ffffff] via-[#d5fcfa] to-[#ffffff]"}

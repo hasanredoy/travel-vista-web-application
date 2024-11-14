@@ -14,7 +14,7 @@ const Blogs = () => {
   return (
     <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
       <Heading imp={"Blogs, Opinions & Experience"}></Heading>
-      <div className=" grid grid-cols-3 gap-10">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {blogs.map((blog, index) => (
           <div
             key={index}

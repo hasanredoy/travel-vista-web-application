@@ -7,12 +7,12 @@ const FAQ = () => {
     <section className="  my-10">
       <Heading t1={"Frequently Asked "} imp={" Questions"}></Heading>
       <section className="bg-[#ebeefc] w-full">
-        <section className="flex justify-center w-[94%]  md:w-[90%] lg:w-[85%] mx-auto">
+        <section className="flex flex-col lg:flex-row justify-center w-[94%]  md:w-[90%] lg:w-[85%] mx-auto">
           {/* image div  */}
           <div className="">
             <Image
               src={faqImage}
-              className="  min-w-[570px] "
+              className=" w-full  lg:min-w-[570px] "
               width={600}
               height={500}
               alt="faq banner image"

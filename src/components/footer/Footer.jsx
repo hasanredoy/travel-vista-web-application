@@ -7,7 +7,7 @@ import microsoft from '../../../public/assets/footer/png-transparent-microsoft-s
 const Footer = () => {
   return (
     <footer className="footer mt-10 px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]   p-10">
-      <section className=" flex justify-between  w-full  ">
+      <section className=" flex flex-col lg:flex-row justify-between  w-full  ">
         <div>
           <Link href={"/"}>
             <Image
