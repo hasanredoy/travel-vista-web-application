@@ -13,7 +13,7 @@ const Tours = () => {
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
       {/* categories and filter container */}
-      <section>
+      <section className=" flex justify-between">
         {/* categories section  */}
         <section className=" flex gap-5">
           {categories?.map((category, index) => (
@@ -39,12 +39,12 @@ const Tours = () => {
         <section>
           <details className="dropdown">
             <summary className="btn m-1">Sort By</summary>
-            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-44 p-2 shadow">
               <li>
-                <a>Low - High price</a>
+                <a>Low - High </a>
               </li>
               <li>
-              <a>High - Low price</a>
+              <a>High - Low</a>
               </li>
             </ul>
           </details>
