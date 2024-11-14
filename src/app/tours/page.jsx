@@ -3,8 +3,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Tours = () => {
-  // state to set background color in category btn 
-  const [categoryBackground , setCategoryBackground]= useState('')
+  // state to set background color in category btn
+  const [categoryBackground, setCategoryBackground] = useState("");
   useEffect(() => {
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));
@@ -17,17 +17,38 @@ const Tours = () => {
         {/* categories section  */}
         <section className=" flex gap-5">
           {categories?.map((category, index) => (
-            <button onClick={()=>setCategoryBackground(category?.category)} key={index} className={` ${categoryBackground==category?.category&&"bg-white border border-gray-500"} bg-gray-200 flex items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}>
+            <button
+              onClick={() => setCategoryBackground(category?.category)}
+              key={index}
+              className={` ${
+                categoryBackground == category?.category &&
+                "bg-gray-200 border border-gray-600"
+              } flex items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}
+            >
               <h3>{category?.category}</h3>
-             <img alt={category?.category} src={category?.image}
-             width={40}
-             height={40}
-             ></img>
+              <img
+                alt={category?.category}
+                src={category?.image}
+                width={40}
+                height={40}
+              ></img>
             </button>
           ))}
         </section>
         {/* filter section  */}
-        <section></section>
+        <section>
+          <details className="dropdown">
+            <summary className="btn m-1">Sort By</summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <li>
+                <a>Low - High price</a>
+              </li>
+              <li>
+              <a>High - Low price</a>
+              </li>
+            </ul>
+          </details>
+        </section>
       </section>
     </main>
   );
