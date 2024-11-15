@@ -3,9 +3,9 @@
 const NewsLetter = () => {
   return (
 <div className='bg-gradient-to-br min-h-[200px] flex justify-center items-center from-[#b8e1fc]  via-[#ffffff] to-[#cbebfd]    my-20 '>
-<section className='flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between  items-center  my-10   w-[94%] md:w-[90%] lg:w-[75%] mx-auto '>
+<section className='flex flex-col gap-10 lg:gap-0  md:flex-row justify-between  items-center  my-10   w-[94%] md:w-[90%] lg:w-[75%] mx-auto '>
 
-<div>
+<div className=" text-center md:text-start">
   <h1 className=" text-2xl md:text-3xl lg:text-4xl font-black mb-3 italic">Subscribe to Travel Vista! </h1>
   <p>Get special discount on your tour's by subscribing Travel Vista</p>
 </div>
