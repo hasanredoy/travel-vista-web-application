@@ -16,7 +16,7 @@ const Discount = () => {
      </div>
     </div>
   {/* 2nd discount  */}
-  <div className=' px-3 py-5 md:p-5 relative flex-1 flex items-center justify-center flex-col gap-5 h-[200px] bg-gradient-to-l rounded-lg shadow-lg shadow-gray-400 from-[#7ff8f2] via-[#f3f5f5]  to-[#60f0e9]'>
+  <div className=' px-3 py-3 md:py-5 md:p-5 relative flex-1 flex items-center justify-center flex-col gap-5 h-[200px] bg-gradient-to-l rounded-lg shadow-lg shadow-gray-400 from-[#7ff8f2] via-[#f3f5f5]  to-[#60f0e9]'>
 
 <h1  className=' text-base lg:text-xl font-black text-center'><a href="#">Follow</a> us on Twitter and get 80% discount!</h1>
 <div className=' flex gap-6'>

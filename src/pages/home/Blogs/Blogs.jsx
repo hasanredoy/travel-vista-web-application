@@ -12,13 +12,13 @@ const Blogs = () => {
   const blogs = DataLoader("blog-data");
   
   return (
-    <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
+    <section className="w-[90%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
       <Heading imp={"Blogs, Opinions & Experience"}></Heading>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className=" grid grid-cols-1 justify-center md:grid-cols-2 lg:grid-cols-3 gap-10">
         {blogs.map((blog, index) => (
           <div
             key={index}
-            className="max-w-md relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
+            className="max-w-md border relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
           >
             <article>
               <h3 className=" absolute text-red-400 top-1 right-1  flex items-center text-lg gap-1 font-medium">
