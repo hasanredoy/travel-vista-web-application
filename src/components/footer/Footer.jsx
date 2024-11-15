@@ -6,13 +6,13 @@ import microsoft from '../../../public/assets/footer/png-transparent-microsoft-s
 
 const Footer = () => {
   return (
-    <footer className="footer mt-10 px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]   p-10">
-      <section className=" flex flex-col lg:flex-row justify-between  w-full  ">
-        <div>
+    <footer className="footer mt-10 px-5 lg:px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]  p-4  lg:p-10">
+      <section className="flex  flex-col lg:flex-row gap-10  min-w-[100%]  w-full  ">
+        <div className="flex-1 ">
           <Link href={"/"}>
             <Image
               src={logo}
-              className=" w-[120px] md:w-[180px] lg:w-[250px]"
+              className=" w-full md:w-[180px] lg:w-[250px]"
               width={200}
               height={50}
               alt="logo"
@@ -28,8 +28,9 @@ const Footer = () => {
             <p className=" mt-3 text-base font-medium"> All rights reserved &copy; || by Travel Vista </p>
           </div>
         </div>
-        <div className=" flex flex-col ml-20 gap-2 ">
-          <h3 className=" font-bold text-lg">Useful Links:</h3>
+     <section className="flex flex-1 justify-between w-full">
+     <div className=" flex flex-col  gap-2 flex-1 ">
+          <h3 className=" font-bold text-lg">Useful Links</h3>
           <Link href={"/"} className={`text-base   flex gap-2 `}>
             Home{" "}
           </Link>
@@ -46,8 +47,8 @@ const Footer = () => {
             Contact us{" "}
           </Link>
         </div>
-        <nav className=" w-full lg:w-1/3 flex flex-col justify-center items-center pb-0 md:pb-8">
-          <h1 className="   text-lg md:text-xl py-2">Follow Us On</h1>
+        <nav className=" flex-1 w-full lg:w-1/3 flex flex-col    pb-0 md:pb-8">
+          <h1 className="   text-lg md:text-xl pb-3">Follow Us On</h1>
           <div className="flex  gap-4">
             <a>
               <svg
@@ -85,10 +86,11 @@ const Footer = () => {
           </div>
           <h4 className=" text-lg font-semibold my-5">Download app</h4>
           <div>
-            <Image className=" cursor-pointer mb-5" width={200} height={100} alt="play store logo" src={playstore}></Image>
-            <Image className=" cursor-pointer" width={200} height={100} alt="microsoft logo" src={microsoft}></Image>
+            <Image className=" cursor-pointer w-28 lg:w-52 mb-5" width={200} height={100} alt="play store logo" src={playstore}></Image>
+            <Image className=" cursor-pointer w-28 lg:w-52 " width={200} height={100} alt="microsoft logo" src={microsoft}></Image>
           </div>
         </nav>
+     </section>
       </section>
     </footer>
   );
