@@ -1,4 +1,3 @@
-
 import Categories from "@/pages/home/Categories/Categories";
 import Discount from "@/pages/home/Discount/Discount";
 import Featured from "@/pages/home/FeaturedTour/Featured";
@@ -14,7 +13,7 @@ import Blogs from "@/pages/home/Blogs/Blogs";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
       <Hero></Hero>
       <Featured></Featured>
       <Discount></Discount>
@@ -26,7 +25,7 @@ export default function Home() {
       <TravelStats></TravelStats>
       <FAQ></FAQ>
       <OurPartners></OurPartners>
-        <NewsLetter></NewsLetter>
+      <NewsLetter></NewsLetter>
     </main>
   );
 }
