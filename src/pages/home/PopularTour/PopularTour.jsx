@@ -11,6 +11,7 @@ import Heading from "@/components/reuseble/Heading";
 
 const PopularTour = () => {
   const popularTour = useLoadPopularTourData();
+//  responsive of slider
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
