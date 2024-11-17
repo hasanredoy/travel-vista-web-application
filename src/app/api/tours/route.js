@@ -22,7 +22,7 @@ const data = [
     "room_type": "Luxury Villa",
     "country": "Greece",
     "user_review_count": 0,
-    "image": "santorini_image.jpg"
+    "image": "https://images.pexels.com/photos/163864/santorini-oia-greece-travel-163864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "data_id": "002",
@@ -67,7 +67,7 @@ const data = [
     "room_type": "Mountain Cabin",
     "country": "Canada",
     "user_review_count": 0,
-    "image": "banff_image.jpg"
+       "image": "https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "data_id": "005",
