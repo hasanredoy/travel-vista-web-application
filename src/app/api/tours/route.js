@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server"
 
-export const GET= async ()=>{
-try {
-  return  NextResponse.json({data})
+export const GET = async()=>{
+  try {
+  return NextResponse.json({data})
 } catch (error) {
-  return NextResponse.error({error})
-}
+  console.log(error);
+    return NextResponse.json({})
+    
+  }
 }
 
 const data = [
@@ -37,7 +39,7 @@ const data = [
     "room_type": "Traditional Ryokan",
     "country": "Japan",
     "user_review_count": 0,
-    "image": "kyoto_image.jpg"
+    "image": "https://images.pexels.com/photos/1829980/pexels-photo-1829980.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "data_id": "003",
@@ -52,7 +54,7 @@ const data = [
     "room_type": "Seaside Resort",
     "country": "South Africa",
     "user_review_count": 0,
-    "image": "cape_town_image.jpg"
+    "image": "https://images.pexels.com/photos/1829980/pexels-photo-1829980.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "data_id": "004",
@@ -82,7 +84,7 @@ const data = [
     "room_type": "Luxury Hotel",
     "country": "UAE",
     "user_review_count": 0,
-    "image": "dubai_image.jpg"
+    "image": "https://img.freepik.com/free-photo/dubai-skyline-sunset-time-united-arab-emirates_231208-7631.jpg?t=st=1731950045~exp=1731953645~hmac=635982ec7982f1332431db208c8aec4da2cf1bbbba83562e98f997ef32975caf&w=360"
   },
   {
     "data_id": "006",
@@ -97,7 +99,7 @@ const data = [
     "room_type": "Luxury Hotel",
     "country": "Russia",
     "user_review_count": 0,
-    "image": "moscow_image.jpg"
+    "image": "https://img.freepik.com/free-photo/moscow-business-centre_1398-216.jpg?t=st=1731950163~exp=1731953763~hmac=ad60163a8c17adf21ddd17182db3be48c379ae46185f89aab699007597657edf&w=360"
   },
   {
     "data_id": "007",
@@ -112,7 +114,7 @@ const data = [
     "room_type": "Seaside Apartment",
     "country": "Australia",
     "user_review_count": 0,
-    "image": "sydney_image.jpg"
+    "image": "https://images.pexels.com/photos/16872051/pexels-photo-16872051/free-photo-of-aerial-view-of-coastline-of-sydney.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "data_id": "008",
@@ -127,7 +129,7 @@ const data = [
     "room_type": "Rustic Lodge",
     "country": "Peru",
     "user_review_count": 0,
-    "image": "machu_picchu_image.jpg"
+    "image": "https://images.pexels.com/photos/259967/pexels-photo-259967.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     "data_id": "009",
@@ -142,7 +144,7 @@ const data = [
     "room_type": "Luxury Apartment",
     "country": "Greece",
     "user_review_count": 0,
-    "image": "athens_image.jpg"
+    "image": "https://img.freepik.com/free-photo/ancient-greek-ruins-acropolis-athens-greece_181624-11815.jpg?t=st=1731950316~exp=1731953916~hmac=eabd3f02dfc0dcd49c5ee5d64ac9f1204a07f3809dca941463471a5ad1187721&w=360"
   },
   {
     "data_id": "010",
@@ -157,7 +159,7 @@ const data = [
     "room_type": "Luxury Hotel",
     "country": "Japan",
     "user_review_count": 0,
-    "image": "tokyo_image.jpg"
+    "image": "https://img.freepik.com/free-photo/people-walking-japan-street-nighttime_23-2148942945.jpg?t=st=1731950457~exp=1731954057~hmac=808966a36609b6272ea5adff8111f93ceb824ecef7ba77c39a54b63458fc71e8&w=740"
   },
   {
     "data_id": "011",
@@ -172,7 +174,7 @@ const data = [
     "room_type": "Boutique Lodge",
     "country": "New Zealand",
     "user_review_count": 0,
-    "image": "queenstown_image.jpg"
+    "image": "https://img.freepik.com/free-photo/breathtaking-view-beautiful-landscape-surrounded-by-mountains-wanaka-town-new-zealand_181624-41030.jpg?t=st=1731950516~exp=1731954116~hmac=a21bb4301120b577ba99a6f7626a104758d42880f87c80e0b620d69d5a9afc23&w=740"
   },
   {
     "data_id": "012",
@@ -187,7 +189,7 @@ const data = [
     "room_type": "Luxury Apartment",
     "country": "Italy",
     "user_review_count": 0,
-    "image": "rome_image.jpg"
+    "image": "https://img.freepik.com/free-photo/roman-coliseum_181624-30510.jpg?t=st=1731950556~exp=1731954156~hmac=847323d421b158544a73f4e52ac9a7edca4ef5de638c46227ea371b12f393b88&w=740"
   },
   {
     "data_id": "013",
@@ -202,7 +204,7 @@ const data = [
     "room_type": "Luxury Hotel",
     "country": "France",
     "user_review_count": 0,
-    "image": "paris_image.jpg"
+    "image": "https://img.freepik.com/free-photo/eiffel-tower-champ-de-mars-paris-france_53876-94787.jpg?t=st=1731950609~exp=1731954209~hmac=8a5e985bee40c53714d5b5961a6366ab9a38a781db8dcdc10637cbb76aca5c06&w=740"
   },
   {
     "data_id": "014",
@@ -217,7 +219,7 @@ const data = [
     "room_type": "Historic Hotel",
     "country": "Turkey",
     "user_review_count": 0,
-    "image": "istanbul_image.jpg"
+    "image": "https://img.freepik.com/free-photo/istanbul-city-camlica-hill-turkey_335224-558.jpg?t=st=1731950678~exp=1731954278~hmac=cdc25bcb04b9eb29dc9f0195a0562114c3e3738d32f774f128fcc5ca8593eee5&w=740"
   },
   {
     "data_id": "015",
@@ -232,7 +234,7 @@ const data = [
     "room_type": "Boutique Hotel",
     "country": "Thailand",
     "user_review_count": 0,
-    "image": "bangkok_image.jpg"
+    "image": "https://img.freepik.com/free-photo/city-with-buildings-bridge_1203-1022.jpg?t=st=1731950714~exp=1731954314~hmac=dc2b7f135b8698321eecd4bf5acd503f9f113576bf4e69def3997f0f807181d9&w=740"
   },
   {
     "data_id": "016",
@@ -247,7 +249,7 @@ const data = [
     "room_type": "Modern Hotel",
     "country": "South Korea",
     "user_review_count": 0,
-    "image": "seoul_image.jpg"
+    "image": "https://img.freepik.com/free-photo/beautiful-architecture-building-seoul-city_74190-3339.jpg?t=st=1731950783~exp=1731954383~hmac=6fd55f1875975e7cf22e0ec8784c5ccfd1dfc799b06add54c829a3ec81cab7c3&w=740"
   },
   {
     "data_id": "017",
@@ -262,7 +264,7 @@ const data = [
     "room_type": "Boutique Hotel",
     "country": "Vietnam",
     "user_review_count": 0,
-    "image": "hanoi_image.jpg"
+    "image": "https://img.freepik.com/free-photo/chinise-building_1417-1713.jpg?t=st=1731950817~exp=1731954417~hmac=82d122bf96fb7221f83cfaae3262581d576ff8ab7814135adafe276192ab3693&w=740"
   },
   {
     "data_id": "018",
@@ -277,7 +279,7 @@ const data = [
     "room_type": "Chalet",
     "country": "Switzerland",
     "user_review_count": 0,
-    "image": "zermatt_image.jpg"
+    "image": "https://img.freepik.com/free-photo/house-surrounded-by-rocky-mountains-covered-greenery-snow-valais-switzerland_181624-26240.jpg?t=st=1731950876~exp=1731954476~hmac=b6380408f1cd1b15a0bb9d6be345fd626a4fad746494576c6c86df5b4268d31a&w=740"
   },
   {
     "data_id": "019",
@@ -292,7 +294,7 @@ const data = [
     "room_type": "Luxury Camp",
     "country": "UAE",
     "user_review_count": 0,
-    "image": "dubai_desert_image.jpg"
+    "image": "https://img.freepik.com/free-photo/vertical-shot-patterns-beautiful-sand-dunes-desert_181624-23323.jpg?t=st=1731951202~exp=1731954802~hmac=89427acbb177af51b50e73765404fef8a694335a1c6adc57c60ca59c7c2e8665&w=360"
   },
   {
     "data_id": "020",
@@ -307,6 +309,6 @@ const data = [
     "room_type": "Boutique Hotel",
     "country": "Iceland",
     "user_review_count": 0,
-    "image": "reykjavik_image.jpg"
+    "image": "https://img.freepik.com/free-photo/road-surrounded-by-field-rocks-covered-snow-cloudy-sky-iceland_181624-15196.jpg?t=st=1731951255~exp=1731954855~hmac=9727e3eac966c603c43f927e967fd81d78e48d782e14cc6526056fff8577fd2e&w=740"
   }
 ]
