@@ -1,4 +1,5 @@
 "use client";
+import ToursCard from "@/pages/tour/ToursCard";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -49,6 +50,10 @@ const Tours = () => {
             </ul>
           </details>
         </section>
+      </section>
+      {/* cards section  */}
+      <section>
+        <ToursCard></ToursCard>
       </section>
     </main>
   );
