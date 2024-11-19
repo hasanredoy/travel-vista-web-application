@@ -11,7 +11,6 @@ const Tours = () => {
 
   // get tours data 
   const  tours = useLoadToursData()
-  console.log(tours);
 
 
   useEffect(() => {
@@ -61,7 +60,7 @@ const Tours = () => {
       </section>
       {/* cards section  */}
       <section>
-        <ToursCard></ToursCard>
+        <ToursCard tours={tours}></ToursCard>
       </section>
     </main>
   );
