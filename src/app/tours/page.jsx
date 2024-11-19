@@ -1,4 +1,5 @@
 "use client";
+import useLoadToursData from "@/hooks/tors-data/useLoadToursData";
 import ToursCard from "@/pages/tour/ToursCard";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -6,6 +7,13 @@ import { useEffect, useState } from "react";
 const Tours = () => {
   // state to set background color in category btn
   const [categoryBackground, setCategoryBackground] = useState("");
+
+
+  // get tours data 
+  const  tours = useLoadToursData()
+  console.log(tours);
+
+
   useEffect(() => {
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));

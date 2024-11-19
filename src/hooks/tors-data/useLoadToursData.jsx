@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const useLoadToursData = () => {
   const [data,setData] = useState([])
   useEffect(()=>{
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/why-choose-us`)
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tours`)
     .then(res=>{
       setData(res?.data?.data)
     })
