@@ -59,7 +59,7 @@ const Tours = () => {
         </section>
       </section>
       {/* cards section  */}
-      <section>
+      <section className=" my-10">
         <ToursCard tours={tours}></ToursCard>
       </section>
     </main>
