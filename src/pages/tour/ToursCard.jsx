@@ -26,6 +26,7 @@ const ToursCard = ({ tours }) => {
               <h3>Price: <span>{tour?.price}</span></h3>
               <h3>Duration: <span>{tour?.package_duration}</span></h3>
             </div>
+            <button></button>
           </section>
         </div>
       ))}
