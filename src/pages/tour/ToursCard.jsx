@@ -6,7 +6,7 @@ import Link from "next/link";
 const ToursCard = ({ tours }) => {
   return (
     <main className=" grid grid-cols-2 gap-20">
-      {tours.map((tour, index) => (
+      {tours?.map((tour, index) => (
         <div
           className=" rounded-e-md relative flex gap-6 w-full border shadow-lg bg-base-300 bg-opacity-35 min-h-[300px] h-full"
           key={index}
