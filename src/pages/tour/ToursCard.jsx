@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
+import Link from "next/link";
+
+
 const ToursCard = ({ tours }) => {
   return (
     <main className=" grid grid-cols-2 gap-20">
@@ -26,7 +29,7 @@ const ToursCard = ({ tours }) => {
               <h3 className=" text-base font-medium pb-3 ">Price: <span className=" text-[#2bbfc4]">{tour?.price}</span></h3>
               <h3 className=" text-base font-medium ">Duration: <span className=" text-[#2bbfc4]">{tour?.package_duration}</span></h3>
             </div>
-            <button className=" btn-primary mt-3">Details</button>
+            <Link href={`tours/${tour?.data_id}`} className=" btn-primary mt-3">Details</Link>
             <div className=" bg-sky-200 w-20  h-20 border rotate-45 absolute -right-12 -bottom-12  "></div>
             <div className=" bg-sky-200 w-20  h-20 border rotate-45 absolute -right-12 -top-12  "></div>
           </section>
