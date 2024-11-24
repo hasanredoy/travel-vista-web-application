@@ -1,14 +1,11 @@
 'use client'
+import TourDetails from "@/pages/tour/Tour-Details/TourDetails";
 import { useParams } from "next/navigation";
 
-const ToursDetails = () => {
+const Page = () => {
   const {id} = useParams()
     
-  return (
-    <div>
-      
-    </div>
-  );
+  return <TourDetails id={id}></TourDetails>
 };
 
-export default ToursDetails;
+export default Page;
