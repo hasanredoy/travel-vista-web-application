@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Link from "next/link";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 
 const ToursCard = ({ tours }) => {
@@ -13,11 +15,13 @@ const ToursCard = ({ tours }) => {
         >
           {/* image section  */}
           <section className=" flex-1  p-5 pr-0 ">
+            <Zoom>
             <img
               src={tour?.image}
               alt={tour?.title}
               className="absolute -left-5 w-[250px] h-[250px]"
             />
+            </Zoom>
           </section>
           {/* texts and others section  */}
           <section className=" flex-1  p-5 pl-0  relative overflow-hidden ">
