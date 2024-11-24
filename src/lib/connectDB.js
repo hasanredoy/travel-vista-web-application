@@ -6,7 +6,6 @@ export const connectDB = async ()=>{
   try {
     // get uri from env file 
   const uri = process.env.NEXT_PUBLIC_MONGO_URI
-  console.log({uri});
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
