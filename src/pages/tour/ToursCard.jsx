@@ -7,19 +7,19 @@ import "react-medium-image-zoom/dist/styles.css";
 
 const ToursCard = ({ tours }) => {
   return (
-    <main className=" grid grid-cols-2 gap-20">
+    <main className=" grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20">
       {tours?.map((tour, index) => (
         <div
           className=" rounded-e-md relative flex gap-6 w-full border shadow-lg bg-base-300 bg-opacity-35 min-h-[300px] h-full"
           key={index}
         >
           {/* image section  */}
-          <section className=" flex-1  p-5 pr-0 ">
+          <section className=" flex-1 p-5 pr-0 ">
             <Zoom>
             <img
               src={tour?.image}
               alt={tour?.title}
-              className="absolute -left-5 w-[250px] h-[250px]"
+              className="absolute -left-5 w-[210px] h-[220px] xl:w-[250px] xl:h-[250px]"
             />
             </Zoom>
           </section>

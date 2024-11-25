@@ -19,7 +19,7 @@ const Tours = () => {
     console.log(searchData);
   }, []);
   return (
-    <main className="min-h-screen relative my-20 w-[94%] md:w-[90%] lg:w-[85%] mx-auto">
+    <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
       {/* categories and filter container */}
       <section className=" flex justify-between">
         {/* categories section  */}

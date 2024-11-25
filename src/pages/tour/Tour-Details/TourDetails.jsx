@@ -19,7 +19,7 @@ const TourDetails = ({ id }) => {
   }, [id]);
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
-      <div className=" rounded-e-md relative flex gap-10 w-full border shadow-lg bg-base-300 bg-opacity-35 min-h-[300px] h-full">
+      <div className=" rounded-e-md relative flex gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
         {/* image section  */}
         <section className=" flex-1  p-5 pr-0 ">
           <img
