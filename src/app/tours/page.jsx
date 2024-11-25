@@ -21,9 +21,9 @@ const Tours = () => {
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
       {/* categories and filter container */}
-      <section className=" flex justify-between">
+      <section className=" flex  flex-col gap-10 md:flex-row  justify-between">
         {/* categories section  */}
-        <section className=" flex gap-5">
+        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
           {categories?.map((category, index) => (
             <button
               onClick={() => setCategoryBackground(category?.category)}
