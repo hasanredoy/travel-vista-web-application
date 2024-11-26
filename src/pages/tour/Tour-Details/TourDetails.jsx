@@ -25,7 +25,7 @@ const TourDetails = ({ id }) => {
           <img
             src={tour?.image}
             alt={tour?.title}
-            className=" w-full h-[400px]"
+            className=" w-full md:h-[330px] lg:h-[400px]"
           />
         </section>
         {/* texts and others section  */}

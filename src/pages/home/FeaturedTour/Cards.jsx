@@ -1,5 +1,6 @@
 'use client'
 import useLoadFeaturedData from "@/hooks/useLoadFeaturedData";
+import Link from "next/link";
 import { FaAnglesRight } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import { TbHeartStar } from "react-icons/tb";
@@ -29,7 +30,7 @@ const tourData = useLoadFeaturedData()
 
   </div>
   <div className=" flex justify-center mb-3">
-  <button title="view details" className="  btn-primary w-10  h-8 text-center text-white"><FaAnglesRight className=""></FaAnglesRight></button>
+  <Link href={`tours/${data?.data_id}`} title="view details" className="  btn-primary w-10  h-8 text-center text-white"><FaAnglesRight className=""></FaAnglesRight></Link>
   </div>
 
       </li>)}

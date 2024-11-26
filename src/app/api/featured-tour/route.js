@@ -12,6 +12,7 @@ export const GET = async()=>{
 const data =[
   {
     "title": "Santorini, Greece",
+    "data_id": "001",
     "destination": "Santorini",
     "village_or_city": "City",
     "description": "Experience breathtaking sunsets, whitewashed houses, and crystal-clear waters on this iconic island.",
@@ -24,6 +25,7 @@ const data =[
   },
   {
     "title": "Banff National Park, Canada",
+        "data_id": "004",
     "destination": "Banff National Park",
     "village_or_city": "Village",
     "description": "Explore the stunning Rocky Mountains, turquoise lakes, and wildlife in Canada's first national park.",
@@ -37,6 +39,7 @@ const data =[
   },
   {
     "title": "Cape Town, South Africa",
+        "data_id": "003",
     "destination": "Cape Town",
     "village_or_city": "City",
     "description": "Discover the natural beauty of Table Mountain, coastal views, and vibrant culture.",
@@ -50,6 +53,7 @@ const data =[
   },
   {
     "title": "Kyoto, Japan",
+     "data_id": "002",
     "destination": "Kyoto",
     "village_or_city": "City",
     "description": "Visit ancient temples, peaceful gardens, and experience the rich history of Japan's cultural heart.",
@@ -63,6 +67,7 @@ const data =[
   },
   {
     "title": "Machu Picchu, Peru",
+        "data_id": "008",
     "destination": "Machu Picchu",
     "village_or_city": "Village",
     "description": "Hike to the ancient Incan city and witness one of the Seven Wonders of the World.",
@@ -76,6 +81,7 @@ const data =[
   },
   {
     "title": "Sydney, Australia",
+        "data_id": "007",
     "destination": "Sydney",
     "village_or_city": "City",
     "description": "Enjoy the vibrant city life, iconic landmarks like the Sydney Opera House, and beautiful beaches.",
