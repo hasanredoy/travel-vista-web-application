@@ -4,7 +4,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaUser } from "react-icons/fa";
 
 const TourDetails = ({ id }) => {
   // state to handle tour data
@@ -19,9 +19,9 @@ const TourDetails = ({ id }) => {
   }, [id]);
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
-      <div className=" rounded-e-md relative flex gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
+      <div className=" rounded-e-md relative flex flex-col md:flex-row gap-5 md:gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
         {/* image section  */}
-        <section className=" flex-1  p-5 pr-0 ">
+        <section className=" flex-1  p-5">
           <img
             src={tour?.image}
             alt={tour?.title}
@@ -29,7 +29,7 @@ const TourDetails = ({ id }) => {
           />
         </section>
         {/* texts and others section  */}
-        <section className=" flex-1  p-5 pl-0  relative overflow-hidden ">
+        <section className=" flex-1  p-5  relative overflow-hidden ">
           <div>
             <h1 className=" pb-3 text-xl font-bold">{tour?.title}</h1>
             <p className=" ">{tour?.description}</p>
@@ -52,7 +52,7 @@ const TourDetails = ({ id }) => {
               <span className=" ">{tour?.room_type}</span>
             </h3>
           </div>
-          <h3 className=" text-base font-medium mb-7 ">Rated By: <span >{tour?.user_review_count}</span></h3>
+          <h3 className=" text-base font-medium mb-7 flex gap-2 items-center ">Rated By: <span >{tour?.user_review_count}</span> <FaUser className=" text-sm"></FaUser></h3>
           <Link href={`tours/${tour?.data_id}`} className=" btn-primary mt-5">
             Book Now
           </Link>
