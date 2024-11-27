@@ -2,12 +2,15 @@
 import useLoadToursData from "@/hooks/tors-data/useLoadToursData";
 import ToursCard from "@/pages/tour/ToursCard";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Tours = () => {
   // state to set background color in category btn
   const [categoryBackground, setCategoryBackground] = useState("");
-
+  // get params 
+  const params = useSearchParams()
+  console.log(params.get('from'));
 
   // get tours data 
   const  tours = useLoadToursData()

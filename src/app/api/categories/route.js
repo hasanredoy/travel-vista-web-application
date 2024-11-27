@@ -17,17 +17,17 @@ const data = [
     "image": "https://i.postimg.cc/MHVwV89P/route-1.png"
   },
   {
-    "category": "Beach Holidays",
+    "category": "Beach_Holidays",
     "description": "Relax on stunning beaches with crystal-clear waters, perfect sunsets, and luxurious resorts for a tropical getaway.",
     "image": "https://i.postimg.cc/28bXSw16/sun-umbrella-1.png"
   },
   {
-    "category": "Mountain Escapes",
+    "category": "Mountain_Escapes",
     "description": "Discover breathtaking mountain ranges, enjoy serene landscapes, and embark on challenging treks amidst nature's beauty.",
     "image": "https://i.postimg.cc/sgZFbzYT/mountain-2.png"
   },
   {
-    "category": "Wildlife Safaris",
+    "category": "Wildlife_Safaris",
     "description": "Embark on thrilling safaris to witness wildlife in their natural habitats, from African savannas to Amazon rainforests.",
     "image": "https://i.postimg.cc/fb30NLzS/wildlife-1.png"
   },
