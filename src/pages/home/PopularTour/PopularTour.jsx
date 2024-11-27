@@ -8,6 +8,7 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
 import Heading from "@/components/reuseble/Heading";
+import Link from "next/link";
 
 const PopularTour = () => {
   const popularTour = useLoadPopularTourData();
@@ -53,7 +54,7 @@ const PopularTour = () => {
         
           >
           {popularTour?.map((tour, index) => (
-            <div className=" relative  flex justify-center mx-10" key={index}>
+            <Link href={'/tours'} className=" relative  flex justify-center mx-10" key={index}>
               <Zoom>
                 <img
                   className=" rounded-full bg-gradient-to-tr   from-[#46f8e0] via-[#e49fff] to-[#fc8ae3] p-1  min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] md:min-w-[290px] md:min-h-[290px] md:max-w-[290px] md:max-h-[290px] "
@@ -64,7 +65,7 @@ const PopularTour = () => {
               <h3 className=" bottom-0  z-40 left-0 absolute text-xl font-bold ">
                 {tour?.country}
               </h3>
-            </div>
+            </Link>
           ))}
         </Carousel>
       </div>
