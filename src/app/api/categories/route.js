@@ -32,9 +32,9 @@ const data = [
     "image": "https://i.postimg.cc/fb30NLzS/wildlife-1.png"
   },
   {
-    "category": "Cruises",
+    "category": "City_Escapes",
     "description": "Set sail on luxurious cruises to explore multiple destinations, enjoy onboard entertainment, and experience the open sea.",
-    "image": "https://i.postimg.cc/vmYf1qSd/ship.png"
+    "image": "https://i.postimg.cc/0yKthXTq/smart-city.png"
   }
 ]
 

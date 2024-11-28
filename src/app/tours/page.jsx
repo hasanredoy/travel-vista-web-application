@@ -8,9 +8,15 @@ import { useEffect, useState } from "react";
 const Tours = () => {
   // state to set background color in category btn
   const [categoryBackground, setCategoryBackground] = useState("");
+  // state form search info
+  const [searchInfo, setSearchInfo] = useState('') 
+  
+  
   // get params 
-  const params = useSearchParams()
-  console.log(params.get('from'));
+  const params = useSearchParams()||''
+  const categoryFormParams = params.get('from')||''
+  
+
 
   // get tours data 
   const  tours = useLoadToursData()
@@ -19,8 +25,13 @@ const Tours = () => {
   useEffect(() => {
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));
-    console.log(searchData);
-  }, []);
+    if(searchData){
+      setSearchInfo(searchData)
+    }
+    if(categoryFormParams){
+      setCategoryBackground(categoryFormParams)
+    }
+  }, [categoryFormParams]);
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
       {/* categories and filter container */}
@@ -60,6 +71,12 @@ const Tours = () => {
             </ul>
           </details>
         </section>
+      </section>
+      {/* section to show user search info  */}
+      <section>
+        <div>
+          {searchInfo&&<h2>Your search For <span>{searchInfo?.prompt}</span>, Date Between <span>{searchInfo?.date[0]?.startDate?.split("T")[0]}</span>-<span>{searchInfo?.date[0]?.endDate?.split("T")[0]}</span>, For <span>{searchInfo?.travelers}</span></h2>}
+        </div>
       </section>
       {/* cards section  */}
       <section className=" my-14">
