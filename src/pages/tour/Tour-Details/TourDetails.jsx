@@ -16,7 +16,7 @@ const TourDetails = ({ id }) => {
       console.log(res?.data?.result);
       setTour(res?.data?.result);
     });
-  }, [id]);
+  }, [id,url]);
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <div className=" rounded-e-md relative flex flex-col md:flex-row gap-5 md:gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">

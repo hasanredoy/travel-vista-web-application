@@ -27,7 +27,7 @@ const ToursCard = ({ tours }) => {
           <section className=" flex-1  p-5 pl-0  relative overflow-hidden ">
             <div>
               <h1 className=" pb-3 text-lg xl:text-xl font-semibold">{tour?.title}</h1>
-              <p className=" text-sm font-medium">{tour?.description}</p>
+              <p className=" text-sm md:text-base font-medium">{tour?.description}</p>
             </div>
             <div className=" my-3 mb-6">
               <h3 className=" text-base font-medium pb-3 ">Price: <span className=" text-[#2bbfc4]">{tour?.price}</span></h3>
