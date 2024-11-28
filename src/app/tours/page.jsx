@@ -9,27 +9,23 @@ const Tours = () => {
   // state to set background color in category btn
   const [categoryBackground, setCategoryBackground] = useState("");
   // state form search info
-  const [searchInfo, setSearchInfo] = useState('') 
-  
-  
-  // get params 
-  const params = useSearchParams()||''
-  const categoryFormParams = params.get('from')||''
-  
+  const [searchInfo, setSearchInfo] = useState("");
 
+  // get params
+  const params = useSearchParams() || "";
+  const categoryFormParams = params.get("from") || "";
 
-  // get tours data 
-  const  tours = useLoadToursData()
-
+  // get tours data
+  const tours = useLoadToursData();
 
   useEffect(() => {
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));
-    if(searchData){
-      setSearchInfo(searchData)
+    if (searchData) {
+      setSearchInfo(searchData);
     }
-    if(categoryFormParams){
-      setCategoryBackground(categoryFormParams)
+    if (categoryFormParams) {
+      setCategoryBackground(categoryFormParams);
     }
   }, [categoryFormParams]);
   return (
@@ -66,7 +62,7 @@ const Tours = () => {
                 <a>Low - High </a>
               </li>
               <li>
-              <a>High - Low</a>
+                <a>High - Low</a>
               </li>
             </ul>
           </details>
@@ -74,9 +70,14 @@ const Tours = () => {
       </section>
       {/* section to show user search info  */}
       <section>
-        <div>
-          {searchInfo&&<h2>Your search For <span>{searchInfo?.prompt}</span>, Date Between <span>{searchInfo?.date[0]?.startDate?.split("T")[0]}</span>-<span>{searchInfo?.date[0]?.endDate?.split("T")[0]}</span>, For <span>{searchInfo?.travelers}</span></h2>}
-        </div>
+      {searchInfo && (
+            <h2 className=" text-center mt-7 text-base md:text-lg font-medium">
+              You&apos;ve searched for <span className=" font-semibold text-sky-500">{searchInfo?.prompt}</span>, Date{" "}
+              <span className=" font-semibold text-sky-500">{searchInfo?.date[0]?.startDate?.split("T")[0]}</span> From{" "}
+              <span className=" font-semibold text-sky-500">{searchInfo?.date[0]?.endDate?.split("T")[0]}</span>, For{" "}
+              <span className=" font-semibold text-sky-500">{searchInfo?.travelers}</span> person!
+            </h2>
+          )}
       </section>
       {/* cards section  */}
       <section className=" my-14">
