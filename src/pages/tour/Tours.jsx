@@ -9,16 +9,26 @@ const Tours = () => {
   // get params
   const params = useSearchParams() 
   const categoryFormParams = params.get("from") || "";
+  // state to handle delete user search info 
+  const [deleteSearchInfo, setDeleteSearchInfo] = useState(true)
+
   // state to set background color in category btn
   const [categoryBackground, setCategoryBackground] = useState("");
   // state form search info
   const [searchInfo, setSearchInfo] = useState("");
 
 
+   
   // get tours data
   const tours = useLoadToursData();
+  
 
   useEffect(() => {
+    if(!deleteSearchInfo){
+     localStorage.removeItem("search-data")
+     setSearchInfo(null)
+    }
+
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));
     if (searchData) {
@@ -27,7 +37,7 @@ const Tours = () => {
     if (categoryFormParams) {
       setCategoryBackground(categoryFormParams);
     }
-  }, [categoryFormParams]);
+  }, [categoryFormParams,deleteSearchInfo]);
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
       {/* categories and filter container */}
@@ -69,16 +79,16 @@ const Tours = () => {
         </section>
       </section>
       {/* section to show user search info  */}
-      <section>
+      <section className=" flex gap-5 justify-center items-center">
       {searchInfo && (
-            <h2 className=" text-center mt-7 text-base md:text-lg font-medium">
+            <h2 className=" text-start md:text-center mt-7 text-base md:text-lg font-medium">
               You&apos;ve searched for <span className=" font-semibold text-sky-500">{searchInfo?.prompt}</span>, Date{" "}
               <span className=" font-semibold text-sky-500">{searchInfo?.date[0]?.startDate?.split("T")[0]}</span> From{" "}
               <span className=" font-semibold text-sky-500">{searchInfo?.date[0]?.endDate?.split("T")[0]}</span>, For{" "}
               <span className=" font-semibold text-sky-500">{searchInfo?.travelers}</span> person!
             </h2>
           )}
-          {searchInfo&&<button className=" text-xl text-red-600">x</button>}
+          {searchInfo&&<button onClick={()=>setDeleteSearchInfo(!deleteSearchInfo)} title="Delete your search information?" className="  text-xl mt-6 text-red-600 bg-gray-200 shadow-lg h-6 w-6 flex items-center justify-center rounded-full hover:bg-white">X</button>}
       </section>
       {/* cards section  */}
       <section className=" my-14">
