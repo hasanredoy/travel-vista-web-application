@@ -5,7 +5,10 @@ import { useEffect, useState } from 'react';
 const useLoadToursData = () => {
   const [data,setData] = useState([])
   useEffect(()=>{
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tours`)
+    const prompt = JSON.parse(localStorage.getItem('search-data'))
+    // this will upper case the first letter of the prompt 
+    const upperCase = String(prompt?.prompt[0]).toUpperCase()+String(prompt?.prompt).slice(1)
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tours?search=${upperCase}`)
     .then(res=>{
       setData(res?.data?.data)
     })

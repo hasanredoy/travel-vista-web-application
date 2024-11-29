@@ -17,15 +17,15 @@ const Tours = () => {
   // state form search info
   const [searchInfo, setSearchInfo] = useState("");
 
-  // get tours data
-  const tours = useLoadToursData();
 
+  
   useEffect(() => {
     // get search data from local storage
     const searchData = JSON.parse(localStorage.getItem("search-data"));
     if (searchData) {
       setSearchInfo(searchData);
     }
+    // remove user search info from ls on user click 
     if (!deleteSearchInfo) {
       localStorage.removeItem("search-data");
       setSearchInfo(null);
@@ -34,6 +34,10 @@ const Tours = () => {
       setCategoryBackground(categoryFormParams);
     }
   }, [categoryFormParams, deleteSearchInfo]);
+    // get tours data
+  const tours = useLoadToursData();
+  console.log(tours);
+
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
       {/* categories and filter container */}

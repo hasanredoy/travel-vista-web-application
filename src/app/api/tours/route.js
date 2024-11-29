@@ -1,11 +1,21 @@
 import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server"
 
-export const GET = async()=>{
+export const GET = async(request)=>{
+  const search = await request.nextUrl.searchParams.get('search')
+  console.log(search,'from tour route');
+  let searchQuery ={}
   try {
     const db = await connectDB()
     const toursCollection = await db.collection('tours')
-    const tours = await toursCollection.find().toArray()
+ 
+    if(search){
+      searchQuery.$or=[
+        {title:{$regex:search,$options: "i"}},
+        {country:{$regex:search,$options: "i"}}
+      ]
+    }
+    const tours = await toursCollection.find(searchQuery).toArray()
   return NextResponse.json({data:tours})
 } catch (error) {
   console.log(error);
