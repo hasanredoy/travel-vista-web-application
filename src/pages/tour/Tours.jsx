@@ -12,7 +12,7 @@ const Tours = () => {
   // state to handle delete user search info
   const [deleteSearchInfo, setDeleteSearchInfo] = useState(true);
 
-  // state to set background color in category btn
+  // state to handle category and set background color in category btn
   const [categoryBackground, setCategoryBackground] = useState("");
   // state form search info
   const [searchInfo, setSearchInfo] = useState("");
@@ -35,8 +35,7 @@ const Tours = () => {
     }
   }, [categoryFormParams, deleteSearchInfo]);
     // get tours data
-  const tours = useLoadToursData();
-  console.log(tours);
+  const tours = useLoadToursData(deleteSearchInfo,categoryBackground);
 
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
