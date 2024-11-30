@@ -13,7 +13,7 @@ export const GET = async (request) => {
     if (search) {
       searchQuery.$or = [
         { title: { $regex: search, $options: "i" } },
-        { country: { $regex: search, $options: "i" } },
+        { country: { $regex: search, $options: "i"} },
       ];
     }
     if(category){

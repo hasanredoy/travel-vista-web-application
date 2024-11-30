@@ -50,7 +50,7 @@ const Tours = () => {
               className={` ${
                 categoryBackground == category?.category &&
                 "bg-gray-200 border border-gray-600"
-              } flex items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}
+              } flex justify-center items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}
             >
               <h3>{category?.category}</h3>
               <img
@@ -138,7 +138,7 @@ const categories = [
     image: "https://i.postimg.cc/fb30NLzS/wildlife-1.png",
   },
   {
-    category: "Cruises",
-    image: "https://i.postimg.cc/vmYf1qSd/ship.png",
-  },
+    category: "City",
+    image: "https://i.postimg.cc/DwCpLTpV/skyline.png"
+  }
 ];
