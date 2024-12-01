@@ -49,7 +49,7 @@ const Tours = () => {
               key={index}
               className={` ${
                 categoryBackground == category?.category &&
-                "bg-gray-200 border border-gray-600"
+                "bg-gray-300 border border-gray-600"
               } flex justify-center items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}
             >
               <h3>{category?.category}</h3>
