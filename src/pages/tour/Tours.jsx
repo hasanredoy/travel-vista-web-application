@@ -67,12 +67,12 @@ const Tours = () => {
           <details className="dropdown">
             <summary className="btn m-1">Sort By</summary>
             <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-44 p-2 shadow">
-              <li>
+              <button>
                 <a>Low - High </a>
-              </li>
-              <li>
+              </button>
+              <button>
                 <a>High - Low</a>
-              </li>
+              </button>
             </ul>
           </details>
         </section>
