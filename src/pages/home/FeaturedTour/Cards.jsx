@@ -23,7 +23,7 @@ const tourData = useLoadFeaturedData()
     <h2 className="card-title">{data?.title?.split(",")[0]}</h2>
    <div className=" flex justify-between">
    <h4 className=" flex gap-2 my-2 items-center"><IoLocationOutline></IoLocationOutline> <span>{data?.title?.split(",")[1]}</span></h4>
-   <h4 className=" flex gap-2 my-2 items-center"><TbHeartStar className=" text-xl text-red-400"></TbHeartStar><span>{data?.rating}</span></h4>
+   <h4 className=" flex gap-2 my-2 items-center"><TbHeartStar className=" text-xl text-red-500"></TbHeartStar><span>{data?.rating}</span></h4>
    </div>
     <div className=" w-full border-t border-gray-400 my-2"></div>
     <p>{data.description}</p>
