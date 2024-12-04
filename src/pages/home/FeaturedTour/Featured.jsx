@@ -12,7 +12,7 @@ const Featured = () => {
       <div className=" w-full h-14"></div>
 <div  className=" pt-28 md:pt-0">
   
-<Heading desc={'Discover lesser-known treasures'} t1={" Dream"} imp={' Explore'} t2={' Repeat'}></Heading>
+<Heading desc={'Discover unknown treasures'} t1={" Dream"} imp={' Explore'} t2={' Repeat'}></Heading>
 </div>
       <div className=" py-20">
       <Cards></Cards>

@@ -51,14 +51,14 @@ const Carousel = () => {
         <SwiperSlide>
           <img
             alt="swiper"
-            className="   h-[250px] max-h-[250px] md:h-[280px] md:max-h-[280px] lg:h-[300px] lg:max-h-[300px]  w-full"
+            className="h-[250px] max-h-[250px] md:h-[280px] md:max-h-[280px] lg:h-[300px] lg:max-h-[300px]  w-full"
             src="https://img.freepik.com/free-photo/morskie-oko-tatry_1204-510.jpg?t=st=1726042587~exp=1726046187~hmac=580804b32bd7c177d51d02f2f3237cd7f20fe137001e37c001936379debffe74&w=740"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             alt="swiper"
-            className="   h-[250px] max-h-[250px] md:h-[280px] md:max-h-[280px] lg:h-[300px] lg:max-h-[300px]  w-full"
+            className="h-[250px] max-h-[250px] md:h-[280px] md:max-h-[280px] lg:h-[300px] lg:max-h-[300px]  w-full"
             src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />{" "}
           {/*switzerland */}
