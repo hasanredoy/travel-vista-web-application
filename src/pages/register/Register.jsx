@@ -1,9 +1,9 @@
 
 const Register = () => {
   return (
-    <div>
-      
-    </div>
+    <page>
+     <h1>this is register page </h1> 
+    </page>
   );
 };
 
