@@ -1,10 +1,7 @@
+import Blogs from "@/pages/blogs/Blogs";
 
 const page = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <Blogs></Blogs>
 };
 
 export default page;
