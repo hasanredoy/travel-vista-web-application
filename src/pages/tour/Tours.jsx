@@ -55,7 +55,7 @@ const Tours = () => {
                 "bg-gray-300 border border-gray-600"
               } flex justify-center items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}
             >
-              <h3>{category?.category}</h3>
+              <h3>{category?.category?.split('_')[0]}</h3>
               <img
                 alt={category?.category}
                 src={category?.image}
@@ -137,7 +137,7 @@ const categories = [
     image: "https://i.postimg.cc/sgZFbzYT/mountain-2.png",
   },
   {
-    category: "Wildlife ",
+    category: "Wildlife_Safaris",
     image: "https://i.postimg.cc/fb30NLzS/wildlife-1.png",
   },
   {

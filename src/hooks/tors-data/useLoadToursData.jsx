@@ -14,7 +14,7 @@ const useLoadToursData = (deleteSearchInfo,categoryBackground,sortVal) => {
     .then(res=>{
       setData(res?.data?.data)
     })
-  },[deleteSearchInfo,categoryBackground])
+  },[deleteSearchInfo,categoryBackground,sortVal])
   return data||[]
 };
 
