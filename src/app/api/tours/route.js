@@ -4,12 +4,16 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   const search = await request.nextUrl.searchParams.get("search");
   const category = await request.nextUrl.searchParams.get("category");
-  const sort = await request.nextUrl.searchParams.get("sort")
-  
+  const sortValFormClient = await request.nextUrl.searchParams.get("sort")
+
   try {
     const db = await connectDB();
     const toursCollection = await db.collection("tours");
     let searchQuery = {};
+    let sort = {}
+    if(sortValFormClient=='low'){
+      sort={}
+    }
 
     if (search) {
       searchQuery.$or = [
@@ -37,7 +41,7 @@ const data = [
     description:
       "Experience breathtaking sunsets, whitewashed houses, and crystal-clear waters on this iconic island.",
     package_duration: "5 days",
-    price: "$1,200",
+    price: "1,200",
     rating: "4.4",
     max_capacity: "20 people",
     room_type: "Luxury Villa",
@@ -55,7 +59,7 @@ const data = [
     description:
       "Discover the beauty of traditional temples, vibrant gardens, and the rich culture of Japan's ancient capital.",
     package_duration: "7 days",
-    price: "$1,800",
+    price: "1,800",
     rating: "4.7",
     max_capacity: "15 people",
     room_type: "Traditional Ryokan",
@@ -73,7 +77,7 @@ const data = [
     description:
       "Explore stunning beaches, vibrant culture, and Table Mountain in this coastal gem.",
     package_duration: "7 days",
-    price: "$1,400",
+    price: "1,400",
     rating: "4.6",
     max_capacity: "20 people",
     room_type: "Seaside Resort",
@@ -91,7 +95,7 @@ const data = [
     description:
       "Enjoy pristine mountain scenery, crystal-clear lakes, and outdoor adventures in this charming town.",
     package_duration: "5 days",
-    price: "$1,700",
+    price: "1,700",
     rating: "4.8",
     max_capacity: "15 people",
     room_type: "Mountain Cabin",
@@ -109,7 +113,7 @@ const data = [
     description:
       "Experience luxury, modern architecture, and the Arabian Desert in this dynamic city.",
     package_duration: "4 days",
-    price: "$2,000",
+    price: "2,000",
     rating: "4.6",
     max_capacity: "40 people",
     room_type: "Luxury Hotel",
@@ -127,7 +131,7 @@ const data = [
     description:
       "Discover the history, grandeur, and cultural richness of Russia's iconic capital city.",
     package_duration: "6 days",
-    price: "$1,500",
+    price: "1,500",
     rating: "4.5",
     max_capacity: "30 people",
     room_type: "Luxury Hotel",
@@ -145,7 +149,7 @@ const data = [
     description:
       "Explore the iconic Sydney Opera House, beautiful beaches, and vibrant city life.",
     package_duration: "5 days",
-    price: "$2,200",
+    price: "2,200",
     rating: "4.7",
     max_capacity: "25 people",
     room_type: "Seaside Apartment",
@@ -163,7 +167,7 @@ const data = [
     description:
       "Experience the wonder of the ancient Inca citadel surrounded by breathtaking mountain scenery.",
     package_duration: "4 days",
-    price: "$1,800",
+    price: "1,800",
     rating: "4.9",
     max_capacity: "10 people",
     room_type: "Rustic Lodge",
@@ -181,7 +185,7 @@ const data = [
     description:
       "Dive into history and explore ancient ruins while enjoying modern Greek culture.",
     package_duration: "5 days",
-    price: "$1,300",
+    price: "1,300",
     rating: "4.5",
     max_capacity: "30 people",
     room_type: "Luxury Apartment",
@@ -199,7 +203,7 @@ const data = [
     description:
       "Experience the vibrant life of Tokyo with its neon-lit streets and tranquil gardens.",
     package_duration: "6 days",
-    price: "$2,100",
+    price: "2,100",
     rating: "4.8",
     max_capacity: "20 people",
     room_type: "Luxury Hotel",
@@ -217,7 +221,7 @@ const data = [
     description:
       "Adventure awaits in this stunning town surrounded by towering mountains and clear lakes.",
     package_duration: "5 days",
-    price: "$1,900",
+    price: "1,900",
     rating: "4.6",
     max_capacity: "15 people",
     room_type: "Boutique Lodge",
@@ -235,7 +239,7 @@ const data = [
     description:
       "Explore the ancient ruins of Rome, vibrant streets, and world-famous cuisine.",
     package_duration: "5 days",
-    price: "$1,400",
+    price: "1,400",
     rating: "4.7",
     max_capacity: "30 people",
     room_type: "Luxury Apartment",
@@ -253,7 +257,7 @@ const data = [
     description:
       "Fall in love with the City of Lights, famous for its art, fashion, and culinary delights.",
     package_duration: "5 days",
-    price: "$2,500",
+    price: "2,500",
     rating: "4.9",
     max_capacity: "20 people",
     room_type: "Luxury Hotel",
@@ -271,7 +275,7 @@ const data = [
     description:
       "Immerse yourself in the rich history and vibrant markets of Istanbul.",
     package_duration: "6 days",
-    price: "$1,600",
+    price: "1,600",
     rating: "4.6",
     max_capacity: "25 people",
     room_type: "Historic Hotel",
@@ -289,7 +293,7 @@ const data = [
     description:
       "Enjoy the vibrant street life and cultural landmarks of Bangkok.",
     package_duration: "5 days",
-    price: "$1,200",
+    price: "1,200",
     rating: "4.4",
     max_capacity: "30 people",
     room_type: "Boutique Hotel",
@@ -307,7 +311,7 @@ const data = [
     description:
       "Experience the dynamic mix of technology and tradition in this vibrant city.",
     package_duration: "6 days",
-    price: "$1,900",
+    price: "1,900",
     rating: "4.5",
     max_capacity: "25 people",
     room_type: "Modern Hotel",
@@ -325,7 +329,7 @@ const data = [
     description:
       "Discover the charm of Vietnam's capital with its ancient temples and bustling markets.",
     package_duration: "4 days",
-    price: "$1,100",
+    price: "1,100",
     rating: "4.3",
     max_capacity: "20 people",
     room_type: "Boutique Hotel",
@@ -343,7 +347,7 @@ const data = [
     description:
       "Ski or hike in the shadow of the majestic Matterhorn in this alpine paradise.",
     package_duration: "7 days",
-    price: "$3,000",
+    price: "3,000",
     rating: "4.9",
     max_capacity: "15 people",
     room_type: "Chalet",
@@ -361,7 +365,7 @@ const data = [
     description:
       "Unwind in a luxurious desert retreat surrounded by the vast sand dunes.",
     package_duration: "4 days",
-    price: "$1,700",
+    price: "1,700",
     rating: "4.7",
     max_capacity: "15 people",
     room_type: "Luxury Tent",
@@ -379,7 +383,7 @@ const data = [
     description:
       "Explore the dramatic landscapes, glaciers, and mountain ranges of Patagonia.",
     package_duration: "10 days",
-    price: "$4,500",
+    price: "4,500",
     rating: "4.9",
     max_capacity: "10 people",
     room_type: "Eco Lodge",
