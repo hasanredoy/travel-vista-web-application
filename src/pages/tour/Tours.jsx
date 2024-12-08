@@ -16,6 +16,9 @@ const Tours = () => {
   const [categoryBackground, setCategoryBackground] = useState("");
   // state form search info
   const [searchInfo, setSearchInfo] = useState("");
+  // state to handle sort
+  const [sortVal , setSortVal] = useState('')
+  console.log(sortVal);
 
 
   
@@ -35,7 +38,7 @@ const Tours = () => {
     }
   }, [categoryFormParams, deleteSearchInfo]);
     // get tours data
-  const tours = useLoadToursData(deleteSearchInfo,categoryBackground);
+  const tours = useLoadToursData(deleteSearchInfo,categoryBackground,sortVal);
 
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
@@ -67,10 +70,10 @@ const Tours = () => {
           <details className="dropdown">
             <summary className="btn m-1">Sort By</summary>
             <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-44 p-2 shadow">
-              <button>
+              <button className={` mb-2 ${sortVal=='low'&&'bg-gray-300'}`} onClick={()=>setSortVal('low')}>
                 <a>Low - High </a>
               </button>
-              <button>
+              <button  className={` ${sortVal=='high'&&'bg-gray-300'}`}  onClick={()=>setSortVal('high')}>
                 <a>High - Low</a>
               </button>
             </ul>

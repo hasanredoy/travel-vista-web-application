@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   const search = await request.nextUrl.searchParams.get("search");
   const category = await request.nextUrl.searchParams.get("category");
-  console.log(category);
+  const sort = await request.nextUrl.searchParams.get("sort")
+  
   try {
     const db = await connectDB();
     const toursCollection = await db.collection("tours");
