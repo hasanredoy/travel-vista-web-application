@@ -117,6 +117,8 @@ const Tours = () => {
       <section className=" my-14">
         <ToursCard tours={tours}></ToursCard>
       </section>
+      {/* pagination section  */}
+      <section></section>
     </main>
   );
 };
