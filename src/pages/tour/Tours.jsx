@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import ToursCard from "./ToursCard";
 import useLoadToursData from "@/hooks/tors-data/useLoadToursData";
+import useLoadCount from "@/hooks/useLoadCount";
 
 const Tours = () => {
   // get params
@@ -18,8 +19,9 @@ const Tours = () => {
   const [searchInfo, setSearchInfo] = useState("");
   // state to handle sort
   const [sortVal , setSortVal] = useState('')
-  console.log(sortVal);
 
+  // call tours count 
+  const toursCount = useLoadCount('tours/count')
 
   
   useEffect(() => {
@@ -119,7 +121,7 @@ const Tours = () => {
       </section>
       {/* pagination section  */}
       <section>
-        
+
       </section>
     </main>
   );

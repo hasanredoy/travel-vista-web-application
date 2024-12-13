@@ -1,14 +1,17 @@
 "use client"
 
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const useLoadCount = () => {
+const useLoadCount = (url) => {
   const [count , setCount] = useState()
-  return (
-    <div>
-      
-    </div>
-  );
+  useEffect(()=>{
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${url}`)
+    .then(res=>{
+      setCount(res?.data?.count)
+    })
+  },[])
+  return count||0
 };
 
 export default useLoadCount;
