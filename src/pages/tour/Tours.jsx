@@ -44,7 +44,7 @@ const Tours = () => {
     }
   }, [categoryFormParams, deleteSearchInfo]);
     // get tours data
-  const tours = useLoadToursData(deleteSearchInfo,categoryBackground,sortVal);
+  const tours = useLoadToursData(deleteSearchInfo,categoryBackground,sortVal,currentPage);
 
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
@@ -125,7 +125,7 @@ const Tours = () => {
       </section>
       {/* pagination section  */}
       <section>
-     <Pagination count={toursCount} dataPerPage={5} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>
+     <Pagination count={toursCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>
       </section>
     </main>
   );

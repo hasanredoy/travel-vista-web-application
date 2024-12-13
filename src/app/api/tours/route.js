@@ -4,7 +4,10 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   const search = await request.nextUrl.searchParams.get("search");
   const category = await request.nextUrl.searchParams.get("category");
+  const page = parseInt( await request.nextUrl.searchParams.get("page"))
+  const size = parseInt(await request.nextUrl.searchParams.get("size"))
   const sortValFormClient = await request.nextUrl.searchParams.get("sort");
+  console.log({size,page});
 
   try {
     const db = await connectDB();
@@ -27,7 +30,7 @@ export const GET = async (request) => {
     if (category) {
       searchQuery = { category: { $regex: category, $options: "i" } };
     }
-    const tours = await toursCollection.find(searchQuery).sort(sort).toArray();
+    const tours = await toursCollection.find(searchQuery).sort(sort).limit(size).skip(size*page).toArray();
     return NextResponse.json({ data: tours });
   } catch (error) {
     console.log(error);
