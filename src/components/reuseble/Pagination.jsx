@@ -1,3 +1,5 @@
+import { FaGreaterThan, FaLessThan } from "react-icons/fa";
+
 const Pagination = ({ count, dataPerPage, currentPage, setCurrentPage }) => {
   const pages = Math.ceil(count / dataPerPage);
   let totalPage = [];
@@ -7,9 +9,14 @@ const Pagination = ({ count, dataPerPage, currentPage, setCurrentPage }) => {
   console.log(totalPage);
 
   return (
-    <div>
-      {/* btns section  */}
+
       <div className=" flex justify-center gap-5">
+        {/* prev btn  */}
+        <div>
+          <button
+          
+          className=" p-2 hover:bg-gray-200 border border-gray-200 rounded"><FaLessThan></FaLessThan></button>
+        </div>
         {totalPage.map((page, index) => (
           <button
             onClick={() => setCurrentPage(page)}
@@ -21,8 +28,11 @@ const Pagination = ({ count, dataPerPage, currentPage, setCurrentPage }) => {
             {index + 1}
           </button>
         ))}
+         {/* next btn  */}
+         <div>
+          <button className=" p-2 hover:bg-gray-200 border border-gray-200 rounded"><FaGreaterThan></FaGreaterThan></button>
+        </div>
       </div>
-    </div>
   );
 };
 
