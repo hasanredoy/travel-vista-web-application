@@ -5,6 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 import ToursCard from "./ToursCard";
 import useLoadToursData from "@/hooks/tors-data/useLoadToursData";
 import useLoadCount from "@/hooks/useLoadCount";
+import Pagination from "@/components/reuseble/Pagination";
 
 const Tours = () => {
   // get params
@@ -22,6 +23,9 @@ const Tours = () => {
 
   // call tours count 
   const toursCount = useLoadCount('tours/count')
+
+  // state to handle current page 
+  const [currentPage, setCurrentPage] = useState(0)
 
   
   useEffect(() => {
@@ -121,7 +125,7 @@ const Tours = () => {
       </section>
       {/* pagination section  */}
       <section>
-
+     <Pagination count={toursCount} dataPerPage={5} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>
       </section>
     </main>
   );
