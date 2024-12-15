@@ -13,8 +13,8 @@ const handlePrev=()=>{
   }
 }
 const handleNext=()=>{ 
-  if(currentPage>0&&currentPage<pages){
-    setCurrentPage(currentPage-1)
+  if(currentPage<pages){
+    setCurrentPage(currentPage+1)
   }
 }
   return (
@@ -38,7 +38,7 @@ const handleNext=()=>{
       ))}
       {/* next btn  */}
       <div>
-        <button className=" p-2 hover:bg-gray-200 border border-gray-200 rounded">
+        <button onClick={handleNext} className=" p-2 hover:bg-gray-200 border border-gray-200 rounded">
           <FaGreaterThan></FaGreaterThan>
         </button>
       </div>
