@@ -18,31 +18,31 @@ const handleNext=()=>{
   }
 }
   return (
-    <div className=" flex justify-center gap-5">
-      {/* prev btn  */}
-      <div>
-        <button onClick={handlePrev} className=" p-2 hover:bg-gray-200 border border-gray-200 rounded">
-          <FaLessThan></FaLessThan>
-        </button>
-      </div>
-      {totalPage.map((page, index) => (
-        <button
-          onClick={() => setCurrentPage(page)}
-          className={` ${
-            page == currentPage && "bg-sky-300"
-          } p-1 px-2 border border-gray-200 rounded`}
-          key={index}
-        >
-          {index + 1}
-        </button>
-      ))}
-      {/* next btn  */}
-      <div>
-        <button onClick={handleNext} className=" p-2 hover:bg-gray-200 border border-gray-200 rounded">
-          <FaGreaterThan></FaGreaterThan>
-        </button>
-      </div>
-    </div>
+   <>{count? <div className=" flex justify-center gap-5">
+   {/* prev btn  */}
+   <div>
+     <button onClick={handlePrev} className=" p-2 hover:bg-gray-200 border border-gray-200 rounded">
+       <FaLessThan></FaLessThan>
+     </button>
+   </div>
+   {totalPage.map((page, index) => (
+     <button
+       onClick={() => setCurrentPage(page)}
+       className={` ${
+         page == currentPage && "bg-sky-300"
+       } p-1 px-2 border border-gray-200 rounded`}
+       key={index}
+     >
+       {index + 1}
+     </button>
+   ))}
+   {/* next btn  */}
+   <div>
+     <button onClick={handleNext} className=" p-2 hover:bg-gray-200 border border-gray-200 rounded">
+       <FaGreaterThan></FaGreaterThan>
+     </button>
+   </div>
+ </div>:<div></div>}</>
   );
 };
 
