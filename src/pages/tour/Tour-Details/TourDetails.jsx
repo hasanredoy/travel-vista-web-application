@@ -53,9 +53,12 @@ const TourDetails = ({ id }) => {
             </h3>
           </div>
           <h3 className=" text-base font-medium mb-7 flex gap-2 items-center ">Rated By: <span >{tour?.user_review_count}</span> <FaUser className=" text-sm"></FaUser></h3>
-          <Link href={`tours/${tour?.data_id}`} className=" btn-primary mt-5">
+        <div className=" flex justify-between items-center">
+        <Link href={`tours/${tour?.data_id}`} className=" btn-primary ">
             Book Now
           </Link>
+          <button className=" btn-primary">See Room</button>
+        </div>
          
         </section>
       </div>

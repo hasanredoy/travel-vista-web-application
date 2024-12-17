@@ -339,7 +339,12 @@
     "user_review_count": 3,
     "image":
       "https://img.freepik.com/free-photo/desert-landscape-uae-emerates_181624-41945.jpg?t=st=1731950935~exp=1731954535~hmac=4a5b2a0a3b3624b49693f7adf7fcab48582cbce3e52b5759187e2fe546d88b2d&w=740",
-    "category": "Wildlife_Safaris"
+    "category": "Wildlife_Safaris",
+    "room":{
+      "images":["https"],
+      "title":"Room with sea view",
+      "description":"this room hello"
+    }
   },
   {
     "data_id": "020",
