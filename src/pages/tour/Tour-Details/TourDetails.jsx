@@ -20,11 +20,27 @@ const TourDetails = ({ id }) => {
       setTour(res?.data?.result);
     });
   }, [id, url]);
-  if(!tour)return <LoadingSpinner></LoadingSpinner>
+
+  // return loading spinner if there is no data available
+  if (!tour) return <LoadingSpinner></LoadingSpinner>;
+
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       {roomDetailsModal ? (
-        <div></div>
+        <section className=" h-[calc(100dvh-200px)] flex  flex-col-reverse w-full border shadow">
+          {/* images section */}
+          <section className=" flex gap-10">
+            {tour?.room?.images?.map((room_imgs,index)=><img key={index} src={room_imgs} alt="" className=" w-full h-[300px]" />)}
+            
+          </section>
+          {/* title and desc section */}
+          <section>
+            <div>
+              <h3>{tour?.room?.title}</h3>
+              <p>{tour?.room?.description}</p>
+            </div>
+          </section>
+        </section>
       ) : (
         <div className=" rounded-e-md relative flex flex-col md:flex-row gap-5 md:gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
           {/* image section  */}
