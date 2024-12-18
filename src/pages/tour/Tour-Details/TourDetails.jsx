@@ -61,7 +61,7 @@ const TourDetails = ({ id }) => {
             </div>
             <div className=" my-3 mb-6">
               <h3 className=" text-base font-medium pb-3 ">
-                Price: <span className=" text-[#2bbfc4]">{tour?.price}</span>
+                Price: <span className=" text-[#2bbfc4]">{tour?.price}$</span>
               </h3>
               <h3 className=" text-base font-medium ">
                 Duration:{" "}

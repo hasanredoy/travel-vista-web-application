@@ -6,6 +6,7 @@ import ToursCard from "./ToursCard";
 import useLoadToursData from "@/hooks/tors-data/useLoadToursData";
 import useLoadCount from "@/hooks/useLoadCount";
 import Pagination from "@/components/reuseble/Pagination";
+import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 
 const Tours = () => {
   // get params
@@ -46,6 +47,8 @@ const Tours = () => {
     // get tours data
   const tours = useLoadToursData(deleteSearchInfo,categoryBackground,sortVal,currentPage);
 
+  if(!tours)return <LoadingSpinner></LoadingSpinner>
+  if(!toursCount)return <LoadingSpinner></LoadingSpinner>
   return (
     <main className="min-h-screen relative my-20 w-[94%] md:w-[90%]  xl:w-[85%] mx-auto">
       {/* categories and filter container */}
