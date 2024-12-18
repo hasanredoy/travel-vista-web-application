@@ -25,21 +25,23 @@ const TourDetails = ({ id }) => {
   if (!tour) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
+    <section className=" w-[94%] box-border my-10 md:w-[90%] lg:w-[85%] mx-auto">
       {roomDetailsModal ? (
-        <section className=" h-[calc(100dvh-200px)] flex  flex-col-reverse w-full border shadow">
+        <section className="  lg:h-[calc(100dvh-100px)] flex gap-5 flex-col justify-between w-full border shadow p-5"> 
+        {/* title and desc section */}
+          <section className=" relative">
+            <div>
+              <h3 className=" text-lg md:text-xl font-semibold">{tour?.room?.title}</h3>
+              <p className=" text-sm md:text-base  font-medium">{tour?.room?.description}</p>
+            </div>
+            <button onClick={()=>setRoomDetailsModal(false)} title="close!" className=" absolute -right-2 -top-2 text-lg font-light">X</button>
+          </section>
           {/* images section */}
-          <section className=" flex gap-10">
-            {tour?.room?.images?.map((room_imgs,index)=><img key={index} src={room_imgs} alt="" className=" w-full h-[300px]" />)}
+          <section className=" flex flex-col lg:flex-row gap-10 w-full">
+            {tour?.room?.images?.map((room_imgs,index)=><img key={index} src={room_imgs} alt="" className=" w-full max-w-full  xl:h-[350px] lg:h-[280px] md:h-[280px] h-[150px] " />)}
             
           </section>
-          {/* title and desc section */}
-          <section>
-            <div>
-              <h3>{tour?.room?.title}</h3>
-              <p>{tour?.room?.description}</p>
-            </div>
-          </section>
+         
         </section>
       ) : (
         <div className=" rounded-e-md relative flex flex-col md:flex-row gap-5 md:gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
