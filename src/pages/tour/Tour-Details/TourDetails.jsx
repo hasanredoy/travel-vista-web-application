@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -19,6 +20,7 @@ const TourDetails = ({ id }) => {
       setTour(res?.data?.result);
     });
   }, [id, url]);
+  if(!tour)return <LoadingSpinner></LoadingSpinner>
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       {roomDetailsModal ? (
