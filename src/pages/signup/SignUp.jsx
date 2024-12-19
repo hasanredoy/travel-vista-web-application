@@ -14,8 +14,10 @@ const SingUp = () => {
   const [loading, setLoading] = useState(false);
   // state show and hide password
   const [showPass, setShowPass] = useState(false);
-    // stat for phone number
-    const [phone, setPhone] = useState();
+  // stat for phone number
+  const [phone, setPhone] = useState();
+  // stat for image url
+  const [imageUrl, setImageUrl] = useState("");
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
