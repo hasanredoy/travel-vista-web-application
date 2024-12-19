@@ -74,7 +74,7 @@ const Login = () => {
           </form>
           <div className="divider">or</div>
           <Link
-            href={"/register"}
+            href={"/signup"}
             className=" py-3 flex  justify-center gap-2 text-sm lg:text-base text-center "
           >
             New in <span className=" font-bold">Travel Vista?</span> Please{" "}

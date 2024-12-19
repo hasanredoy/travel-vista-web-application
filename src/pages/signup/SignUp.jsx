@@ -4,6 +4,9 @@ import Link from "next/link";
 import { Suspense, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+
 
 
 const SingUp = () => {
@@ -11,11 +14,13 @@ const SingUp = () => {
   const [loading, setLoading] = useState(false);
   // state show and hide password
   const [showPass, setShowPass] = useState(false);
+    // stat for phone number
+    const [phone, setPhone] = useState();
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
-      <div className="flex flex-col-reverse items-center gap-5 md:flex-row">
-        <div className="text-center flex-1 lg:text-left">
+      <div className="flex flex-col items-center justify-center gap-5 md:flex-row-reverse ">
+        <div className="text-center  lg:text-left">
           <Image
             src="https://i.postimg.cc/c43FvsQp/Sign-up-rafiki.png"
             className=""
@@ -25,9 +30,53 @@ const SingUp = () => {
           />
         </div>
         <div className="flex-1 border border-gray-200 rounded-md  bg-base-200 w-full max-w-md shrink-0 ">
-          <h3 className=" text-lg font-medium text-center subtitle pt-3">Please Login</h3>
+          <h3 className=" text-lg font-medium text-center subtitle pt-3">Please Sign Up!</h3>
 
           <form  className="card-body">
+                   {/* Name div  */}
+                   <div className="form-control">
+              <label className="label">
+                <span className="   text-sm font-bold lg:text-base ">
+                  Full Name
+                </span>
+              </label>
+              <input
+                type="text"
+                placeholder="Full Name"
+                name={"name"}
+                className="input input-bordered"
+                required
+              />
+            </div>
+            {/* Phone number div  */}
+            <div className="form-control">
+              <label className="label">
+                <span className="   text-sm font-bold lg:text-base ">
+                  Phone Number
+                </span>
+              </label>
+              <PhoneInput
+                className=" input input-bordered"
+                placeholder="Enter phone number"
+                value={phone}
+              
+                onChange={setPhone}
+              />
+            </div>
+            {/* photo div  */}
+            <div className="form-control">
+              <label className="label">
+                <span className="   text-sm font-bold lg:text-base ">
+                  Photo
+                </span>
+              </label>
+              <input
+                onChange={(event) => setImageUrl(event.target.files[0])}
+                type="file"
+                required
+                className=" file-input file-input-bordered"
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className=" text-sm font-bold lg:text-lg  ">Email</span>
@@ -67,18 +116,18 @@ const SingUp = () => {
                 {loading ? (
                   <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>
                 ) : (
-                  "Login"
+                  "Sign Up"
                 )}
               </button>
             </div>
           </form>
           <div className="divider">or</div>
           <Link
-            href={"/register"}
+            href={"/login"}
             className=" py-3 flex  justify-center gap-2 text-sm lg:text-base text-center "
           >
-            New in <span className=" font-bold">Travel Vista?</span> Please{" "}
-            <span className=" font-semibold text-blue-700">Register</span>.
+            Already Member of<span className=" font-bold">Travel Vista?</span> 
+            <span className=" font-semibold text-blue-700">Login</span>.
           </Link>
         </div>
       </div>
