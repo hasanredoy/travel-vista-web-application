@@ -1,4 +1,5 @@
 "use client"
+import { usePostImage } from "@/hooks/post-image/usePostImage";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState } from "react";
@@ -18,6 +19,9 @@ const SingUp = () => {
   const [phone, setPhone] = useState();
   // stat for image url
   const [imageUrl, setImageUrl] = useState("");
+
+  const hostedImage = usePostImage(imageUrl,setLoading)
+  console.log(hostedImage)
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
