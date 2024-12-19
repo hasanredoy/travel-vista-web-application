@@ -30,7 +30,7 @@ const ToursCard = ({ tours }) => {
               <p className=" text-sm md:text-base font-medium">{tour?.description}</p>
             </div>
             <div className=" my-3 mb-6">
-              <h3 className=" text-base font-medium pb-3 ">Price: <span className=" text-[#2bbfc4]">{tour?.price}</span></h3>
+              <h3 className=" text-base font-medium pb-3 ">Price: <span className=" text-[#2bbfc4]">{tour?.price}$</span></h3>
               <h3 className=" text-base font-medium ">Duration: <span className=" text-[#2bbfc4]">{tour?.package_duration}</span></h3>
             </div>
             <h2 className=" text-lg font-bold mb-4 text-sky-500">{tour?.category}</h2>

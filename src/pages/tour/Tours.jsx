@@ -61,7 +61,7 @@ const Tours = () => {
               key={index}
               className={` ${
                 categoryBackground == category?.category &&
-                "bg-gray-300 border border-gray-600"
+                "bg-gray-100 border border-gray-600"
               } flex justify-center items-center rounded-lg gap-2 border border-sky-200 py-1 px-4`}
             >
               <h3>{category?.category?.split('_')[0]}</h3>
@@ -128,7 +128,7 @@ const Tours = () => {
       </section>
       {/* pagination section  */}
       <section>
-     <Pagination count={toursCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>
+     {tours.length>6&&<Pagination count={toursCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>}
       </section>
     </main>
   );

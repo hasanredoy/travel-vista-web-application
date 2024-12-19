@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 import { ImHome } from "react-icons/im";
-import { MdOutlineTravelExplore, MdReviews } from "react-icons/md";
+import { MdLogin, MdOutlineTravelExplore, MdReviews } from "react-icons/md";
 import { MdAddHomeWork } from "react-icons/md";
 import { MdContactSupport } from "react-icons/md";
 import { usePathname } from "next/navigation";
@@ -25,7 +25,7 @@ const Navbar = () => {
     <>
       <Link
         href={"/"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500     hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500     hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/" && "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         } `}
       >
@@ -36,7 +36,7 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/tours"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  transition-all  ${
           path == "/tours" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
@@ -48,7 +48,7 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/start_hosting"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/start_hosting" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
@@ -59,7 +59,7 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/blogs"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/start_hosting" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
@@ -70,7 +70,7 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/reviews"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/reviews" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
@@ -81,12 +81,23 @@ const Navbar = () => {
       </Link>
       <Link
         href={"/contact_us"}
-        className={`text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
           path == "/contact_us" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
         }`}
       >
         <MdContactSupport className="text-xl"></MdContactSupport> Contact us{" "}
         {path == "/contact_us" && (
+          <GoDotFill className=" text-green-400 font-bold "></GoDotFill>
+        )}
+      </Link>
+      <Link
+        href={"/login"}
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+          path == "/login" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+        }`}
+      >
+        <MdLogin className="text-xl"></MdLogin> Login{" "}
+        {path == "/login" && (
           <GoDotFill className=" text-green-400 font-bold "></GoDotFill>
         )}
       </Link>
@@ -108,7 +119,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className=" h-full dropdown-content dropDown bg-[#a2faf6] shadow-lg shadow-blue-300 bg-opacity-90   w-[200px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[50] mt-2 absolute -left-10 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
+              className=" h-full dropdown-content dropDown bg-[#a2faf6] shadow-lg shadow-blue-300 bg-opacity-90   w-[230px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[50] mt-2 absolute -left-5 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
             >
               {navLinks}
               <div>
@@ -117,7 +128,7 @@ const Navbar = () => {
                   alt="trip "
                   width={60}
                   height={60}
-                  className=" absolute top-0 right-0"
+                  className=" absolute  w-10 h-10  md:w-16 md:h-16 top-0 right-0"
                 ></Image>
               </div>
             </ul>
@@ -135,9 +146,9 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-end">
-          <Link href={"/login"}>
-            <button className=" btn-nav">
-              Login<LuLogIn className=" text-base md:text-xl"></LuLogIn>{" "}
+          <Link className="hidden md:block" href={"/login"}>
+            <button className="  btn-nav">
+              Login<LuLogIn className=" text-base  md:text-xl"></LuLogIn>{" "}
             </button>
           </Link>
         </div>
