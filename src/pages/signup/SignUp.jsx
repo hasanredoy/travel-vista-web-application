@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 
 
-const Login = () => {
+const SingUp = () => {
   // state to handle loading
   const [loading, setLoading] = useState(false);
   // state show and hide password
@@ -14,12 +14,12 @@ const Login = () => {
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
-      <div className="flex flex-col items-center gap-5 md:flex-row">
+      <div className="flex flex-col-reverse items-center gap-5 md:flex-row">
         <div className="text-center flex-1 lg:text-left">
           <Image
-            src="https://i.postimg.cc/52HKf46Q/Tablet-login-bro.png"
+            src="https://i.postimg.cc/c43FvsQp/Sign-up-rafiki.png"
             className=""
-            alt="login banner imge"
+            alt="sign up banner imge"
             height={500}
             width={500}
           />
@@ -78,7 +78,7 @@ const Login = () => {
             className=" py-3 flex  justify-center gap-2 text-sm lg:text-base text-center "
           >
             New in <span className=" font-bold">Travel Vista?</span> Please{" "}
-            <span className=" font-semibold text-blue-700">Sign Up</span>.
+            <span className=" font-semibold text-blue-700">Register</span>.
           </Link>
         </div>
       </div>
@@ -87,4 +87,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SingUp;
