@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-
+import swal from 'sweetalert'
 
 
 const SingUp = () => {
@@ -21,7 +21,26 @@ const SingUp = () => {
   const [imageUrl, setImageUrl] = useState("");
 
   const hostedImage = usePostImage(imageUrl,setLoading)
-  console.log(hostedImage)
+
+const handleSignUp=(e)=>{
+  e.preventDefault()
+  setLoading(ture)
+  const form = e.target
+const password = form.password.value
+  if(password.length<6){
+    return swal("Password must be 6 charecter", "error");
+    
+  }
+  // user data object 
+  const userData = {
+    name : form.name.value,
+    photo:hostedImage,
+    phone,
+    email:form.email.value,
+    password:form.password.value
+  }
+  console.log(userData)
+}
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
@@ -38,7 +57,7 @@ const SingUp = () => {
         <div className="flex-1 border border-gray-200 rounded-md  bg-base-200 w-full max-w-md shrink-0 ">
           <h3 className=" text-lg font-medium text-center subtitle pt-3">Please Sign Up!</h3>
 
-          <form  className="card-body">
+          <form onSubmit={handleSignUp}  className="card-body">
                    {/* Name div  */}
                    <div className="form-control">
               <label className="label">
@@ -127,13 +146,12 @@ const SingUp = () => {
               </button>
             </div>
           </form>
-          <div className="divider">or</div>
           <Link
             href={"/login"}
             className=" py-3 flex  justify-center gap-2 text-sm lg:text-base text-center "
           >
             Already Member of<span className=" font-bold">Travel Vista?</span> 
-            <span className=" font-semibold text-blue-700">Login</span>.
+            <span className=" font-semibold text-blue-700">Login.</span>
           </Link>
         </div>
       </div>
