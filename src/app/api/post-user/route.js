@@ -27,7 +27,7 @@ export const POST = async (request) => {
     };
    console.log({user})
     if (checkUser) {
-      return NextResponse.json({ message: "user already exit." });
+      return NextResponse.json({ message:"user exist" });
     }
     const result = await userCollection.insertOne(user);
     console.log({result})

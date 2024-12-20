@@ -46,9 +46,12 @@ const SingUp = () => {
     };
     axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post-user`,userData)
     .then(res=>{
-      if(res?.data){
-        console.log(res?.data)
-        setLoading(false)
+      setLoading(false)
+      if(res?.data?.message=='user exist'){
+       return swal("Email already in use.","", "error");
+      }
+      if(res?.data?.result?.insertedId){
+        swal("Signup Sucessfully","", "success");
       }
     })
   };
