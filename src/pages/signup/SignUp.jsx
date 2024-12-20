@@ -44,7 +44,7 @@ const SingUp = () => {
       type:"user",
       date:new Date(),
     };
-    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user`,userData)
+    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post-user`,userData)
     .then(res=>{
       if(res?.data){
         console.log(res?.data)
