@@ -10,10 +10,10 @@ export const usePostImage = (image, setLoading) => {
 
   const imageData = new FormData();
   imageData.append("image", image);
-  console.log(imageUrl,API)
   if(!imageData) return null
 
   try {
+    if(!image)return null
     axios
       .post(`https://api.imgbb.com/1/upload?key=${API}`, imageData)
       .then((res) => {
