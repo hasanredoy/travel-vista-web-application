@@ -3,6 +3,7 @@ import { usePostImage } from "@/hooks/post-image/usePostImage";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Suspense, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
@@ -20,7 +21,10 @@ const SingUp = () => {
   // stat for image url
   const [imageUrl, setImageUrl] = useState("");
 
+  // get image address after hosting image
   const hostedImage = usePostImage(imageUrl, setLoading);
+
+  const router = useRouter()
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -52,6 +56,7 @@ const SingUp = () => {
       }
       if(res?.data?.result?.insertedId){
         swal("Signup Sucessfully","", "success");
+        router.push('/login')
       }
     })
   };
@@ -114,7 +119,7 @@ const SingUp = () => {
                   onChange={(event) => setImageUrl(event.target.files[0])}
                   type="file"
                   required
-                  className=" file-input file-input-bordered"
+                  className=" file-input file-input-bordered file-input-accent"
                 />
               </div>
               <div className="form-control">

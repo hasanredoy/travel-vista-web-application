@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 
 import { Roboto_Condensed } from "next/font/google";
+import AuthProvider from "@/services/AuthProvider";
 const manrope = Roboto_Condensed({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,10 +17,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${manrope.className}`}
       >
-        
+        <AuthProvider>
        <div> <Navbar></Navbar></div>
         {children}
        <div> <Footer></Footer></div>
+       </AuthProvider>
       </body>
     </html>
   );
