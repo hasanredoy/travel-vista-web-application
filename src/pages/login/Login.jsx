@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Suspense, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
+import { signIn } from "next-auth/react";
 
 
 const Login = () => {
@@ -11,6 +12,19 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   // state show and hide password
   const [showPass, setShowPass] = useState(false);
+
+// login handler 
+const handleLogin=(event)=>{
+  event.preventDefault()
+  const email = event.target.email.value
+  const password = event.target.password.value
+  const response = signIn("credentials",{
+    email,
+    password,
+    redirect:false
+  })
+  console.log(response)
+}
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
