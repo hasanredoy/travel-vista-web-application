@@ -1,4 +1,27 @@
-const handler= NextAuth({
+import NextAuth from "next-auth/next";
+import { CredentialsProvider } from "next-auth/providers/credentials";
 
-})
-export {handler as GET, handler as POST}
+const handler = NextAuth({
+  secret: process.env.SECRET_TOKEN,
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
+  providers: [
+    CredentialsProvider({
+      credentials: {
+        email: {},
+        password: {},
+      },
+
+      async authorize(credentials) {
+        return true
+      },
+    }),
+  ],
+  callbacks: {},
+  pages: {
+    signIn: "/login",
+  },
+});
+export { handler as GET, handler as POST };
