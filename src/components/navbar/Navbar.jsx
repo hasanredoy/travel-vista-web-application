@@ -15,11 +15,15 @@ import { PiLessThanFill } from "react-icons/pi";
 import { FaDotCircle } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { TbMessageChatbot } from "react-icons/tb";
+import { useSession } from "next-auth/react";
 
 
 const Navbar = () => {
   //  get pathname
   const path = usePathname();
+  const session = useSession()
+  console.log(session)
+
   // nav links
   const navLinks = (
     <>
