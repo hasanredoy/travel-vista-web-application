@@ -14,11 +14,11 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
 
 // login handler 
-const handleLogin=(event)=>{
+const handleLogin= async(event)=>{
   event.preventDefault()
   const email = event.target.email.value
   const password = event.target.password.value
-  const response = signIn("credentials",{
+  const response =await signIn("credentials",{
     email,
     password,
     redirect:false
@@ -41,7 +41,7 @@ const handleLogin=(event)=>{
         <div className="flex-1 border border-gray-200 rounded-md  bg-base-200 w-full max-w-md shrink-0 ">
           <h3 className=" text-lg font-medium text-center subtitle pt-3">Please Login</h3>
 
-          <form  className="card-body">
+          <form onSubmit={handleLogin}  className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className=" text-sm font-bold lg:text-lg  ">Email</span>
