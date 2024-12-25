@@ -55,7 +55,7 @@ const SingUp = () => {
        return swal("Email already in use.","", "error");
       }
       if(res?.data?.result?.insertedId){
-        swal("Signup Sucessfully","", "success");
+        swal("Signup Successfully","", "success");
         router.push('/login')
       }
     })

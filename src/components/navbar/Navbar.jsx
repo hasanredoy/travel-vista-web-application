@@ -11,19 +11,16 @@ import Image from "next/image";
 import logo from "../../../public/assets/logo.png";
 import { RiMenuUnfold3Fill } from "react-icons/ri";
 import { LuLogIn } from "react-icons/lu";
-import { PiLessThanFill } from "react-icons/pi";
-import { FaDotCircle } from "react-icons/fa";
+
 import { GoDotFill } from "react-icons/go";
 import { TbMessageChatbot } from "react-icons/tb";
-import { useSession } from "next-auth/react";
-
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   //  get pathname
   const path = usePathname();
-  const session = useSession()
+  const session = useSession();
   console.log(session)
-
   // nav links
   const navLinks = (
     <>
@@ -41,7 +38,7 @@ const Navbar = () => {
       <Link
         href={"/tours"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md  transition-all  ${
-          path == "/tours" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+          path == "/tours" && "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <MdOutlineTravelExplore className="text-xl"></MdOutlineTravelExplore>{" "}
@@ -53,7 +50,8 @@ const Navbar = () => {
       <Link
         href={"/start_hosting"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
-          path == "/start_hosting" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+          path == "/start_hosting" &&
+          "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <MdAddHomeWork className="text-xl"></MdAddHomeWork> Start Hosting{" "}
@@ -64,7 +62,8 @@ const Navbar = () => {
       <Link
         href={"/blogs"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
-          path == "/start_hosting" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+          path == "/start_hosting" &&
+          "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <TbMessageChatbot className="text-xl"></TbMessageChatbot> Blogs{" "}
@@ -75,7 +74,8 @@ const Navbar = () => {
       <Link
         href={"/reviews"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
-          path == "/reviews" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+          path == "/reviews" &&
+          "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <MdReviews className="text-xl"></MdReviews> Reviews{" "}
@@ -86,7 +86,8 @@ const Navbar = () => {
       <Link
         href={"/contact_us"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
-          path == "/contact_us" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+          path == "/contact_us" &&
+          "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <MdContactSupport className="text-xl"></MdContactSupport> Contact us{" "}
@@ -97,7 +98,7 @@ const Navbar = () => {
       <Link
         href={"/login"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
-          path == "/login" &&'text-sky-500 bg-white  max-w-40 px-5 rounded-md'
+          path == "/login" && "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <MdLogin className="text-xl"></MdLogin> Login{" "}
@@ -109,7 +110,6 @@ const Navbar = () => {
   );
   return (
     <nav className="shadow-lg  nav relative ">
-      
       <section className="navbar w-[96%] mx-auto lg:w-[85%]">
         <div className="navbar-start">
           <section className="dropdown">
@@ -150,11 +150,15 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-end">
-          <Link className="hidden md:block" href={"/login"}>
-            <button className="  btn-nav">
-              Login<LuLogIn className=" text-base  md:text-xl"></LuLogIn>{" "}
-            </button>
-          </Link>
+          {session?.data?.user? (
+            <button className=" btn-nav">Logout</button>
+          ) : (
+            <Link className="hidden md:block" href={"/login"}>
+              <button onClick={()=>signOut()} className="  btn-nav">
+                Login<LuLogIn className=" text-base  md:text-xl"></LuLogIn>{" "}
+              </button>
+            </Link>
+          )}
         </div>
       </section>
     </nav>

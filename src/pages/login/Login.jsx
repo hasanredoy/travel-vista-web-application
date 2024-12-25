@@ -5,6 +5,8 @@ import { Suspense, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 import { signIn } from "next-auth/react";
+import swal from "sweetalert"
+import { useRouter } from "next/navigation";
 
 
 const Login = () => {
@@ -12,10 +14,12 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   // state show and hide password
   const [showPass, setShowPass] = useState(false);
+const router = useRouter()
 
 // login handler 
 const handleLogin= async(event)=>{
   event.preventDefault()
+  setLoading(true)
   const email = event.target.email.value
   const password = event.target.password.value
   const response =await signIn("credentials",{
@@ -23,6 +27,11 @@ const handleLogin= async(event)=>{
     password,
     redirect:false
   })
+  if(response){setLoading(false)}
+  if(response.status==200){
+    swal("Logged in Successfully","", "success");
+    router.push("/") 
+  }
   console.log(response)
 }
   return (

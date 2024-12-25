@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 
 const handler = NextAuth({
-  // secret: process.env.SECRET_TOKEN,
+  secret: process.env.SECRET_TOKEN,
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
