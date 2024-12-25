@@ -20,7 +20,7 @@ const Navbar = () => {
   //  get pathname
   const path = usePathname();
   const session = useSession();
-  console.log(session)
+  console.log(session);
   // nav links
   const navLinks = (
     <>
@@ -150,14 +150,17 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-end">
-          {session?.data?.user? (
-            <button className=" btn-nav">Logout</button>
-          ) : (
+          {/* login and logout button  */}
+          {session?.status === "loading" && <span>loading...</span>}
+          {session?.status === "unauthenticated" && (
             <Link className="hidden md:block" href={"/login"}>
-              <button onClick={()=>signOut()} className="  btn-nav">
+              <button  className="  btn-nav">
                 Login<LuLogIn className=" text-base  md:text-xl"></LuLogIn>{" "}
               </button>
             </Link>
+          )}
+          {session?.status === "authenticated" && (
+            <button className=" btn-nav" onClick={() => signOut()}>Logout</button>
           )}
         </div>
       </section>
