@@ -11,7 +11,7 @@ import Image from "next/image";
 import logo from "../../../public/assets/logo.png";
 import { RiMenuUnfold3Fill } from "react-icons/ri";
 import { LuLogIn } from "react-icons/lu";
-
+import swal from 'sweetalert'
 import { GoDotFill } from "react-icons/go";
 import { TbMessageChatbot } from "react-icons/tb";
 import { signOut, useSession } from "next-auth/react";
@@ -20,7 +20,28 @@ const Navbar = () => {
   //  get pathname
   const path = usePathname();
   const session = useSession();
-  console.log(session);
+  // console.log(session);
+// logout handler 
+const handleLogout=()=>{
+  swal({
+    title: "Are you sure?",
+    text: "You want Logout!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      signOut()
+      swal("Logged out successfully!", {
+        icon: "success",
+      });
+    } else {
+      swal("Action Canceled!");
+    }
+  });
+}
+
   // nav links
   const navLinks = (
     <>
@@ -165,7 +186,7 @@ const Navbar = () => {
               </Link>
             )}
             {session?.status === "authenticated" && (
-              <button className="btn-primary flex justify-center items-center gap-2" onClick={() => signOut()}>
+              <button className="btn-primary flex justify-center items-center gap-2" onClick={handleLogout}>
                 Logout <MdLogout className=" text-base  md:text-xl"></MdLogout>
               </button>
             )}

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 import { signIn } from "next-auth/react";
 import swal from "sweetalert"
@@ -96,7 +96,12 @@ const handleLogin= async(event)=>{
             </div>
           </form>
           <div className="divider">or</div>
-          <Link
+          
+          <div className=" flex justify-center my-4">
+          <button className="btn-secondary flex justify-center items-center gap-2">Login with Google <FaGoogle className=" text-red-900"></FaGoogle></button>
+
+          </div>
+                    <Link
             href={"/signup"}
             className=" py-3 flex  justify-center gap-2 text-sm lg:text-base text-center "
           >
