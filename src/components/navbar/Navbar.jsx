@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 import { ImHome } from "react-icons/im";
-import { MdLogin, MdOutlineTravelExplore, MdReviews } from "react-icons/md";
+import { MdLogin, MdLogout, MdOutlineTravelExplore, MdReviews } from "react-icons/md";
 import { MdAddHomeWork } from "react-icons/md";
 import { MdContactSupport } from "react-icons/md";
 import { usePathname } from "next/navigation";
@@ -150,18 +150,26 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-end">
-          {/* login and logout button  */}
-          {session?.status === "loading" && <span>loading...</span>}
-          {session?.status === "unauthenticated" && (
-            <Link className="hidden md:block" href={"/login"}>
-              <button  className="  btn-nav">
-                Login<LuLogIn className=" text-base  md:text-xl"></LuLogIn>{" "}
+          {/* user image  */}
+          <div className="mr-5">
+            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full border p-1 border-[#003f3c]" ></Image>}
+          </div>
+          <div>
+            {/* login and logout button  */}
+            {session?.status === "loading" && <span>loading...</span>}
+            {session?.status === "unauthenticated" && (
+              <Link className="hidden md:block" href={"/login"}>
+                <button className="  btn-primary flex justify-center items-center gap-2">
+                  Login<LuLogIn className=" text-base  md:text-xl"></LuLogIn>{" "}
+                </button>
+              </Link>
+            )}
+            {session?.status === "authenticated" && (
+              <button className="btn-primary flex justify-center items-center gap-2" onClick={() => signOut()}>
+                Logout <MdLogout className=" text-base  md:text-xl"></MdLogout>
               </button>
-            </Link>
-          )}
-          {session?.status === "authenticated" && (
-            <button className=" btn-nav" onClick={() => signOut()}>Logout</button>
-          )}
+            )}
+          </div>
         </div>
       </section>
     </nav>
