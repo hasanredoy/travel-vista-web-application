@@ -34,6 +34,10 @@ const handleLogin= async(event)=>{
   }
   console.log(response)
 }
+
+const handleGoogleLogin =()=>{
+  
+}
   return (
     <Suspense fallback={<span>Loading</span>}>
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
@@ -98,7 +102,7 @@ const handleLogin= async(event)=>{
           <div className="divider">or</div>
           
           <div className=" flex justify-center my-4">
-          <button className="btn-secondary flex justify-center items-center gap-2">Login with Google <FaGoogle className=" text-red-900"></FaGoogle></button>
+          <button onClick={handleGoogleLogin} className="btn-secondary flex justify-center items-center gap-2">Login with Google <FaGoogle className=" text-red-900"></FaGoogle></button>
 
           </div>
                     <Link
