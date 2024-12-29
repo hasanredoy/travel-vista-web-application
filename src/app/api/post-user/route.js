@@ -22,7 +22,7 @@ export const POST = async (request) => {
       phone: userData?.phone,
       registerDate: userData?.date,
       type: userData?.type,
-      image: userData?.photo,
+      image: userData?.imageURL,
       password: hashedPassword,
     };
    console.log({user})

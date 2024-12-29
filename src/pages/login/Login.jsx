@@ -31,18 +31,28 @@ const Login = () => {
     if (response) {
       setLoading(false);
     }
+    if (response.status == 401) {
+      swal("Please check your email and password, try again", "", "error");
+    }
+   
     if (response.status == 200) {
       swal("Logged in Successfully", "", "success");
       router.push("/");
     }
-    console.log(response);
   };
 
   const handleGoogleLogin = () => {
     const response=signIn("google",{
     redirect:false
     })
-    console.log(response)
+    if (response.status == 401) {
+      swal("Please check your email and password, try again", "", "error");
+    }
+   
+    if (response.status == 200) {
+      swal("Logged in Successfully", "", "success");
+      router.push("/");
+    }
   };
   return (
     <Suspense fallback={<span>Loading</span>}>
@@ -99,7 +109,7 @@ const Login = () => {
               <div className="mt-6 flex justify-center w-full">
                 <button
                   disabled={loading}
-                  className=" btn-primary min-w-32 max-w-32"
+                  className=" btn-primary min-w-32 flex justify-center items-center w-full max-w-32"
                 >
                   {loading ? (
                     <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>
@@ -116,7 +126,7 @@ const Login = () => {
                 onClick={handleGoogleLogin}
                 className=" p-2 px-4 rounded-md bg-neutral-900 text-white  flex justify-center items-center gap-2 hover:bg-white hover:text-neutral-900 border hover:border-neutral-900 "
               >
-                Login by
+              Login with
                 <FcGoogle></FcGoogle>
               </button>
             </div>

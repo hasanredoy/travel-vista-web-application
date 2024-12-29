@@ -25,7 +25,7 @@ const Navbar = () => {
 const handleLogout=()=>{
   swal({
     title: "Are you sure?",
-    text: "You want Logout!",
+    text: "You wanna Logout!",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -36,8 +36,6 @@ const handleLogout=()=>{
       swal("Logged out successfully!", {
         icon: "success",
       });
-    } else {
-      swal("Action Canceled!");
     }
   });
 }
