@@ -15,6 +15,7 @@ import swal from 'sweetalert'
 import { GoDotFill } from "react-icons/go";
 import { TbMessageChatbot } from "react-icons/tb";
 import { signOut, useSession } from "next-auth/react";
+import { FiLoader } from "react-icons/fi";
 
 const Navbar = () => {
   //  get pathname
@@ -175,7 +176,7 @@ const handleLogout=()=>{
           </div>
           <div>
             {/* login and logout button  */}
-            {session?.status === "loading" && <span>loading...</span>}
+            {session?.status === "loading" && <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>}
             {session?.status === "unauthenticated" && (
               <Link className="hidden md:block" href={"/login"}>
                 <button className="  btn-primary flex justify-center items-center gap-2">

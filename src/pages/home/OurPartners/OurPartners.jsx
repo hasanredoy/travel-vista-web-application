@@ -4,12 +4,12 @@
 // pages/our-partners.js
 
 import Heading from "@/components/reuseble/Heading";
-import DataLoader from "@/hooks/data-loader/DataLoader";
+import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import Link from "next/link";
 
 
 const OurPartners = () => {
-   const ourPartners = DataLoader('our-partners')
+   const ourPartners = useDataLoader('our-partners')
   return (
     <section className="w-[92%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'All our '} imp={' Partners'} />

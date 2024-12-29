@@ -1,9 +1,10 @@
 
 const Blogs = () => {
+  // const blogs = 
   return (
-    <div>
-      
-    </div>
+    <main className=" min-h-screen">
+      hello from blogs page
+    </main>
   );
 };
 

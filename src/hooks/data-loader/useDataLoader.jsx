@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 
-const DataLoader = (url) => {
+const useDataLoader = (url) => {
       const [data , setData] = useState()
   const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/${url}`;
   useEffect(()=>{
@@ -16,4 +16,4 @@ const DataLoader = (url) => {
 
 };
 
-export default DataLoader;
+export default useDataLoader;

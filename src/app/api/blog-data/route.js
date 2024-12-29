@@ -1,8 +1,13 @@
+import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server"
 
 export const GET = async()=>{
   try {
-  return NextResponse.json({data})
+    const db = await connectDB()
+    const blogsCollection = await db.collection("blogs")
+    const BlogsData = await blogsCollection.find().toArray()
+    console.log(BlogsData)
+  return NextResponse.json({data:BlogsData})
 } catch (error) {
   console.log(error);
     return NextResponse.json({})

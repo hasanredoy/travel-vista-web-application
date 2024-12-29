@@ -32,7 +32,7 @@ const Login = () => {
       setLoading(false);
     }
     if (response.status == 401) {
-      swal("Please check your email and password, try again", "", "error");
+      swal("Please try again", "", "error");
     }
    
     if (response.status == 200) {
