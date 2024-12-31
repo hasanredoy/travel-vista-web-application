@@ -1,5 +1,6 @@
 "use client";
 import useDataLoader from "@/hooks/data-loader/useDataLoader";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
@@ -7,6 +8,8 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const Blogs = () => {
   const blogs = useDataLoader("blog-data");
+  const session = useSession()
+  const user = session?.data?.user
   return (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
      {/* user info section  */}
