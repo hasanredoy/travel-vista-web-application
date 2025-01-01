@@ -3,13 +3,15 @@ import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
+import {  FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoIosAddCircle } from "react-icons/io";
+import { MdAdd } from "react-icons/md";
+import { CiHeart } from "react-icons/ci";
+
 
 
 const Blogs = () => {
-  const blogs = useDataLoader("blog-data");
+  const blogs = useDataLoader("blog-data")
   const session = useSession();
   const user = session?.data?.user;
   return (
@@ -95,7 +97,7 @@ const Blogs = () => {
         <div className=" mb-10 flex justify-between">
         {/* add new blog button */}
         <div className=" flex gap-10">
-           <button className=" btn flex gap-2 items-center">Add New <IoIosAddCircle></IoIosAddCircle> </button>
+           <button className=" btn flex gap-2 items-center">Add New <MdAdd className="text-xl"></MdAdd> </button>
            <button className=" btn">Your Blogs </button>
         </div>
           {/* sort btn  */}
@@ -127,12 +129,16 @@ const Blogs = () => {
                     see more...
                   </Link>
                 </p>
-                <div>
+                <div className=" flex justify-between">
                   <h3 className=" flex gap-2 items-center my-3">
                     {" "}
                     <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
                     <span>{blog?.location}</span>
                   </h3>
+                  <button title={`${blog?.react} reactions`} className="flex gap-2 items-center">
+                    {blog?.react}
+                    <CiHeart className=" text-2xl text-red-500"></CiHeart>
+                  </button>
                 </div>
                 <div className="flex items-center mt-8 space-x-4">
                   <Link href={"/"}>
