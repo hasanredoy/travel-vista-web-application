@@ -7,13 +7,20 @@ import {  FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdAdd } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
+import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 
 
 
 const Blogs = () => {
+  // load blogs
   const blogs = useDataLoader("blog-data")
+  // get session and then user 
   const session = useSession();
   const user = session?.data?.user;
+
+  // return loading spinner if blogs data is not available
+  if(blogs)return <LoadingSpinner></LoadingSpinner>
+  
   return (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
       {/* user info section  */}
@@ -125,7 +132,7 @@ const Blogs = () => {
                 <h2 className="text-xl font-bold">{blog?.title}</h2>
                 <p className="mt-4 ">
                   {blog?.experience?.slice(80)}{" "}
-                  <Link href={"/"} className=" text-blue-600">
+                  <Link href={`/blogs/${blog?._id}`} className=" text-blue-600">
                     see more...
                   </Link>
                 </p>
