@@ -1,8 +1,8 @@
 
-export default function BlogDetails() {
+const BlogDetails=()=> {
   return (
-    <div>
-      
-    </div>
+    <div>BlogDetails</div>
   )
 }
+
+export default BlogDetails
