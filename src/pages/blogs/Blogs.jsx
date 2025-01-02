@@ -162,7 +162,7 @@ const Blogs = () => {
                       </span>
                     </div>
                     <div>
-                      <Link href={"/"}>
+                      <Link href={`/blogs/${blog?._id}`}>
                         <FaRegArrowAltCircleRight
                           title="View full blog!"
                           className=" text-3xl "
@@ -177,7 +177,7 @@ const Blogs = () => {
         </div>
       </section>
     </main>
-    
+
   );
 };
 
