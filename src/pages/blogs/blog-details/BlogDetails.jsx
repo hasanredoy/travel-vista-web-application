@@ -9,14 +9,15 @@ import { CiHeart } from "react-icons/ci";
 import { FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
-const BlogDetails = ({ id }) => {
+const BlogDetails = ({ id }) => {    
   const blogDetails = useDataLoader(`blog-data/${id}`);
+  
   const session = useSession();
   const user = session?.data?.user;
   if(!blogDetails)return <LoadingSpinner></LoadingSpinner>
   return (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
-          
+           
       {/* user info section  */}
       <section className=" w-[30%]">
         <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">

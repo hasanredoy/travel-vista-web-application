@@ -8,18 +8,26 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdAdd } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
+import { useState } from "react";
 
 
 
 const Blogs = () => {
   // load blogs
   const blogs = useDataLoader("blog-data")
+
+  console.log(blogs)
+  const [userBlogs,setUserBlogs]=useState(false)
+  const [sortVal,setSortVal]=useState("")
+
   // get session and then user 
   const session = useSession();
   const user = session?.data?.user;
 
   // return loading spinner if blogs data is not available
-  if(blogs)return <LoadingSpinner></LoadingSpinner>
+  if(!blogs)return <LoadingSpinner></LoadingSpinner>
+  if(!session)return <LoadingSpinner></LoadingSpinner>
+  
   
   return (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
@@ -104,8 +112,8 @@ const Blogs = () => {
         <div className=" mb-10 flex justify-between">
         {/* add new blog button */}
         <div className=" flex gap-10">
-           <button className=" btn flex gap-2 items-center">Add New <MdAdd className="text-xl"></MdAdd> </button>
-           <button className=" btn">Your Blogs </button>
+           <button title="click to add a new blog" className=" btn flex gap-2 items-center">Add New <MdAdd className="text-xl"></MdAdd> </button>
+           <button title="Click to see your blogs" onClick={()=>setUserBlogs(!userBlogs)} className={`btn rounded-xl ${userBlogs&&"border bg-sky-200"}`}>Your Blogs </button>
         </div>
           {/* sort btn  */}
           <select className="select select-info w-full max-w-[150px]">
