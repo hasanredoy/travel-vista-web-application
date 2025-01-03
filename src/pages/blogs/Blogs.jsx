@@ -28,6 +28,7 @@ const Blogs = () => {
   if(!blogs)return <LoadingSpinner></LoadingSpinner>
   if(!session)return <LoadingSpinner></LoadingSpinner>
   
+  console.log(sortVal)
   
   return (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
@@ -116,8 +117,8 @@ const Blogs = () => {
            <button title="Click to see your blogs" onClick={()=>setUserBlogs(!userBlogs)} className={`btn rounded-xl ${userBlogs&&"border bg-sky-200"}`}>Your Blogs </button>
         </div>
           {/* sort btn  */}
-          <select className="select select-info w-full max-w-[150px]">
-            <option disabled selected>
+          <select onChange={(e)=>setSortVal(e.target.value)} className="select select-info w-full max-w-[150px]">
+            <option  disabled selected>
               Sort
             </option>
             <option>New-Old</option>
