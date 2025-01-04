@@ -3,34 +3,85 @@ import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import {  FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
+import { FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdAdd } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import { useState } from "react";
-
-
+import { FiLoader } from "react-icons/fi";
 
 const Blogs = () => {
+  // loading state
+  const [loading, setLoading] = useState(false);
   // load blogs
-  const blogs = useDataLoader("blog-data")
+  const blogs = useDataLoader("blog-data");
+  // state to handle user blogs
+  const [userBlogs, setUserBlogs] = useState(false);
+  // sort value handler state
+  const [sortVal, setSortVal] = useState("");
+  // add blog form handler
+  const [showForm, setShowForm] = useState(false);
 
-  console.log(blogs)
-  const [userBlogs,setUserBlogs]=useState(false)
-  const [sortVal,setSortVal]=useState("")
-
-  // get session and then user 
+  // get session and then user
   const session = useSession();
   const user = session?.data?.user;
 
   // return loading spinner if blogs data is not available
-  if(!blogs)return <LoadingSpinner></LoadingSpinner>
-  if(!session)return <LoadingSpinner></LoadingSpinner>
-  
-  console.log(sortVal)
-  
-  return (
+  if (blogs.length < 1) return <LoadingSpinner></LoadingSpinner>;
+  if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
+
+  return showForm ? (
+    <section>
+      <form className="card-body">
+        {/* heading inpt  */}
+        <div className="form-control">
+          <label className="label">
+            <span className=" text-sm font-bold lg:text-lg  ">Heading</span>
+          </label>
+          <input
+            type="text"
+            name="title"
+            placeholder="Heading"
+            className="input input-bordered"
+            required
+          />
+        </div>
+        {/* location inp  */}
+        <div className="form-control relative">
+          <label className="label">
+            <span className=" text-sm font-bold lg:text-base ">Location</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Location"
+            className="input input-bordered"
+            required
+            name="location"
+          />
+        </div>
+        {/* description inp  */}
+        <div>
+          <label className="label">
+            <span className=" text-sm font-bold lg:text-base ">Summary</span>
+          </label>
+          <textarea className="textarea textarea-bordered" placeholder="Summary"></textarea>
+        </div>
+        <div className="mt-6 flex justify-center w-full">
+          <button
+            disabled={loading}
+            className=" btn-primary min-w-32 flex justify-center items-center w-full max-w-32"
+          >
+            {loading ? (
+              <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>
+            ) : (
+              "Login"
+            )}
+          </button>
+        </div>
+      </form>
+    </section>
+  ) : (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
       {/* user info section  */}
       <section className=" w-[30%]">
@@ -111,14 +162,28 @@ const Blogs = () => {
       <section className=" w-[68%]">
         {/* sort and add new blog button div  */}
         <div className=" mb-10 flex justify-between">
-        {/* add new blog button */}
-        <div className=" flex gap-10">
-           <button title="click to add a new blog" className=" btn flex gap-2 items-center">Add New <MdAdd className="text-xl"></MdAdd> </button>
-           <button title="Click to see your blogs" onClick={()=>setUserBlogs(!userBlogs)} className={`btn rounded-xl ${userBlogs&&"border bg-sky-200"}`}>Your Blogs </button>
-        </div>
+          {/* add new blog button */}
+          <div className=" flex gap-10">
+            <button
+              title="click to add a new blog"
+              className=" btn flex gap-2 items-center"
+            >
+              Add New <MdAdd className="text-xl"></MdAdd>{" "}
+            </button>
+            <button
+              title="Click to see your blogs"
+              onClick={() => setUserBlogs(!userBlogs)}
+              className={`btn rounded-xl ${userBlogs && "border bg-sky-200"}`}
+            >
+              Your Blogs{" "}
+            </button>
+          </div>
           {/* sort btn  */}
-          <select onChange={(e)=>setSortVal(e.target.value)} className="select select-info w-full max-w-[150px]">
-            <option  disabled selected>
+          <select
+            onChange={(e) => setSortVal(e.target.value)}
+            className="select select-info w-full max-w-[150px]"
+          >
+            <option disabled selected>
               Sort
             </option>
             <option>New-Old</option>
@@ -151,7 +216,10 @@ const Blogs = () => {
                     <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
                     <span>{blog?.location}</span>
                   </h3>
-                  <button title={`${blog?.react} reactions`} className="flex gap-2 items-center">
+                  <button
+                    title={`${blog?.react} reactions`}
+                    className="flex gap-2 items-center"
+                  >
                     {blog?.react}
                     <CiHeart className=" text-2xl text-red-500"></CiHeart>
                   </button>
@@ -193,7 +261,6 @@ const Blogs = () => {
         </div>
       </section>
     </main>
-
   );
 };
 

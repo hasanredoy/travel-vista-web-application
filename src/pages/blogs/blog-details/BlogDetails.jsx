@@ -15,8 +15,9 @@ const BlogDetails = ({ id }) => {
   const session = useSession();
   const user = session?.data?.user;
   if(!blogDetails)return <LoadingSpinner></LoadingSpinner>
+  if(!user)return <LoadingSpinner></LoadingSpinner>
   return (
-    <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
+   user&&<main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
            
       {/* user info section  */}
       <section className=" w-[30%]">
