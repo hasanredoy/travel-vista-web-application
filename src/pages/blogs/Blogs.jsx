@@ -10,6 +10,7 @@ import { CiHeart } from "react-icons/ci";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import { useState } from "react";
 import { FiLoader } from "react-icons/fi";
+import { RxCross1 } from "react-icons/rx";
 
 const Blogs = () => {
   // loading state
@@ -33,11 +34,20 @@ const Blogs = () => {
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
-      <form className=" max-w-md card-body border shadow-lg">
+      <form className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative">
+        <h3 className=" text-base md:text-xl font-semibold text-center">
+          Please fill{" "}
+        </h3>
+        <button
+          onClick={()=> setShowForm(!showForm)}
+          className=" absolute top-2 right-2"
+        >
+          <RxCross1 className="text-lg"></RxCross1>
+        </button>
         {/* heading inpt  */}
         <div className="form-control">
           <label className="label">
-            <span className=" text-sm font-bold lg:text-lg  ">Heading</span>
+            <span className=" text-sm font-bold lg:text-base  ">Heading**</span>
           </label>
           <input
             type="text"
@@ -50,11 +60,11 @@ const Blogs = () => {
         {/* location inp  */}
         <div className="form-control relative">
           <label className="label">
-            <span className=" text-sm font-bold lg:text-base ">Location</span>
+            <span className=" text-sm font-bold lg:text-base ">Location**</span>
           </label>
           <input
             type="text"
-            placeholder="Location"
+            placeholder="Dhaka, Bangladesh"
             className="input input-bordered"
             required
             name="location"
@@ -63,9 +73,13 @@ const Blogs = () => {
         {/* description inp  */}
         <div>
           <label className="label">
-            <span className=" text-sm font-bold lg:text-base ">Summary</span>
+            <span className=" text-sm font-bold lg:text-base ">Summary**</span>
           </label>
-          <textarea className="textarea textarea-bordered" placeholder="Summary"></textarea>
+          <textarea
+            rows={4}
+            className="textarea w-full  textarea-bordered"
+            placeholder="Summary"
+          ></textarea>
         </div>
         <div className="mt-6 flex justify-center w-full">
           <button
@@ -165,7 +179,7 @@ const Blogs = () => {
           {/* add new blog button */}
           <div className=" flex gap-10">
             <button
-            onClick={()=>setShowForm(!showForm)}
+              onClick={() => setShowForm(!showForm)}
               title="click to add a new blog"
               className=" btn flex gap-2 items-center"
             >
