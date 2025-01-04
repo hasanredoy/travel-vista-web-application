@@ -75,7 +75,7 @@ const Blogs = () => {
             {loading ? (
               <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>
             ) : (
-              "Login"
+              "Submit"
             )}
           </button>
         </div>
@@ -165,6 +165,7 @@ const Blogs = () => {
           {/* add new blog button */}
           <div className=" flex gap-10">
             <button
+            onClick={()=>setShowForm(!showForm)}
               title="click to add a new blog"
               className=" btn flex gap-2 items-center"
             >
