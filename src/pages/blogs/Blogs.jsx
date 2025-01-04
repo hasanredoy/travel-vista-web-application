@@ -32,8 +32,8 @@ const Blogs = () => {
   if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
 
   return showForm ? (
-    <section>
-      <form className="card-body">
+    <section className=" flex justify-center w-full mt-10 ">
+      <form className=" max-w-md card-body border shadow-lg">
         {/* heading inpt  */}
         <div className="form-control">
           <label className="label">
