@@ -20,7 +20,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 :root {
-  --navbar-bg-color: linear-gradient( to top, #f8f8f8,#b0f6f8,#f5fbfc );
+  --navbar-bg-color: linear-gradient(to top, #f8f8f8, #b0f6f8, #f5fbfc);
 }
 
 [data-theme="dark"] {
@@ -31,118 +31,109 @@ body {
   background: var(--navbar-bg-color);
 }
 
-.bg-primary{
-  background-color: #08F3E7;
+.bg-primary {
+  background-color: #08f3e7;
 }
-.bg-secondary{
-  background-color: #FFFDD0;
-}
-
-
-.primary{
-  color: #08F3E7;
-}
-.secondary{
-  color: #FFFDD0;
+.bg-secondary {
+  background-color: #fffdd0;
 }
 
-.btn-primary{
-  background-color: #08F3E7;
-  background: linear-gradient( to bottom left, #f9fafa,#00dbe2,#f3f5f5 );
-color: black;
-   font-weight: 600;
+.primary {
+  color: #08f3e7;
+}
+.secondary {
+  color: #fffdd0;
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom left, #fdfdfd, #b2f1f3, #00dbe2, #b8f3f5, #f3f5f5);
+  color: black;
+  font-weight: 600;
   size: 17px;
   padding: 7px 12px;
   border-radius: 6px;
-  border: 1px solid #01afa1;
+  border: 1.5px solid #03aaa2;
+  
 }
-.btn-primary:hover{
-  background-color: white;
+.btn-primary:hover {
   background: white;
-
-   transition: 1s;
+  transition: 1s;
   color: black;
-  border: 1px solid #01afa1;
+  border: 1.5px solid #01afa1;
 }
 
-.btn-secondary{
-  background-color: #FFFDD0;
+.btn-secondary {
+  background-color: #fffdd0;
   color: #01534f;
-   font-weight: 600;
+  font-weight: 600;
   size: 17px;
   padding: 7px 12px;
   border-radius: 6px;
   box-shadow: 5px #8df1ec;
-
 }
-.btn-secondary:hover{
+.btn-secondary:hover {
   background-color: #02fcef;
   color: #000e0d;
-  border: 1px solid #FFFDD0;
-
+  border: 1px solid #fffdd0;
 }
-.btn-nav{
-  background-color: #FFFDD0;
+.btn-nav {
+  background-color: #fffdd0;
 
   color: #01534f;
-   font-weight: 600;
+  font-weight: 600;
   size: 17px;
   padding: 6px 12px;
   border-radius: 6px;
   box-shadow: 3px 3px #014b47;
   border: 1px solid #016e69;
-  display: flex ;
+  display: flex;
   align-items: center;
   gap: 3px;
-
 }
-.btn-nav:hover{
+.btn-nav:hover {
   background-color: #00dbe2;
   border: 1px solid #015348;
-
 }
 
 .card-list:has(li:hover) li:not(:hover) {
-  filter: blur(4px)
+  filter: blur(4px);
 }
 
 @media screen and (max-width: 500px) {
-  .btn-nav{
-    background-color: #FFFDD0;
+  .btn-nav {
+    background-color: #fffdd0;
     color: #01534f;
-     font-weight: 400;
+    font-weight: 400;
     size: 12px;
     padding: 2px 4px;
     border-radius: 6px;
     box-shadow: 0px 0px #014b47;
     border: 1px solid #016e69;
-    display: flex ;
+    display: flex;
     align-items: center;
     gap: 2px;
-  
   }
-  .btn-nav:hover{
+  .btn-nav:hover {
     background-color: #016e69;
     color: #f7f8f8;
     border: 1px solid #015348;
-  
   }
 
-  .btn-primary{
-    background-color: #08F3E7;
-    background: linear-gradient( to bottom left, #f9fafa,#00dbe2,#f3f5f5 );
+  .btn-primary {
+    background-color: #08f3e7;
+    background: linear-gradient(to bottom left, #f9fafa, #00dbe2, #f3f5f5);
     color: black;
-     font-weight: 500;
+    font-weight: 500;
     size: 14px;
     padding: 3px 7px;
     border-radius: 6px;
     border: 1px solid #01afa1;
   }
-  .btn-primary:hover{
+  .btn-primary:hover {
     background-color: white;
     background: white;
-  
-     transition: 1s;
+
+    transition: 1s;
     color: black;
     border: 1px solid #01afa1;
   }
