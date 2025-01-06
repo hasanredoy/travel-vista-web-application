@@ -82,12 +82,12 @@ const handleLogout=()=>{
       <Link
         href={"/blogs"}
         className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
-          path == "/start_hosting" &&
+          path == "/blogs" &&
           "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
         }`}
       >
         <TbMessageChatbot className="text-xl"></TbMessageChatbot> Blogs{" "}
-        {path == "/start_hosting" && (
+        {path == "/blogs" && (
           <GoDotFill className=" text-green-400 font-bold "></GoDotFill>
         )}
       </Link>

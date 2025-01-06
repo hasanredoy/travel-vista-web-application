@@ -28,13 +28,17 @@ const Blogs = () => {
   const session = useSession();
   const user = session?.data?.user;
 
+const handleAddBlog=(e)=>{
+
+}
+
   // return loading spinner if blogs data is not available
   if (blogs.length < 1) return <LoadingSpinner></LoadingSpinner>;
   if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
-      <form className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative">
+      <form onSubmit={handleAddBlog} className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative">
         <h3 className=" text-base md:text-xl font-semibold text-center">
           Please fill{" "}
         </h3>
@@ -52,7 +56,7 @@ const Blogs = () => {
           <input
             type="text"
             name="title"
-            placeholder="Heading"
+            placeholder="Adventure Trip Made Easy"
             className="input input-bordered"
             required
           />
