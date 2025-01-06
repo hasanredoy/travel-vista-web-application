@@ -28,9 +28,21 @@ const Blogs = () => {
   const session = useSession();
   const user = session?.data?.user;
 
-const handleAddBlog=(e)=>{
-
-}
+  const handleAddBlog = (e) => {
+    e.preventDefault()
+    const blog_info = {
+      user: user?.name,
+      email: user?.email,
+      date: new Date(),
+      image: user?.image,
+      title: e?.target?.title?.value,
+      experience: e?.target?.description?.value,
+      rating: 4,
+      react: 5,
+      location: e?.target?.location?.value,
+    };
+    console.log(blog_info);
+  };
 
   // return loading spinner if blogs data is not available
   if (blogs.length < 1) return <LoadingSpinner></LoadingSpinner>;
@@ -38,12 +50,15 @@ const handleAddBlog=(e)=>{
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
-      <form onSubmit={handleAddBlog} className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative">
+      <form
+        onSubmit={handleAddBlog}
+        className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative"
+      >
         <h3 className=" text-base md:text-xl font-semibold text-center">
           Please fill{" "}
         </h3>
         <button
-          onClick={()=> setShowForm(!showForm)}
+          onClick={() => setShowForm(!showForm)}
           className=" absolute top-2 right-2"
         >
           <RxCross1 className="text-lg"></RxCross1>
@@ -81,6 +96,7 @@ const handleAddBlog=(e)=>{
           </label>
           <textarea
             rows={4}
+            name="description"
             className="textarea w-full  textarea-bordered"
             placeholder="Summary"
           ></textarea>
