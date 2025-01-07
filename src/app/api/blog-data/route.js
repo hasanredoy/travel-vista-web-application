@@ -14,6 +14,24 @@ export const GET = async()=>{
     
   }
 }
+export const POST = async(request)=>{
+  const blogFromClient = await request.json()
+  try {
+    const db = await connectDB()
+    const blogsCollection = await db.collection("blogs")
+    const findBlog = await blogsCollection.findOne({title:blogFromClient?.title})
+    if(findBlog){
+      return NextResponse.json({message:"Blog already exist"})
+    }
+    const result = await blogsCollection.insertOne(blogFromClient)
+    // console.log(BlogsData)
+  return NextResponse.json({data:result})
+} catch (error) {
+  console.log(error);
+    return NextResponse.json({})
+    
+  }
+}
 const data =[
   {
     "user": "John Smith",
