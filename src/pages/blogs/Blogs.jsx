@@ -11,6 +11,9 @@ import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import { useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
+import axios from "axios";
+import swal from "sweetalert";
+
 
 const Blogs = () => {
   // loading state
@@ -42,6 +45,18 @@ const Blogs = () => {
       location: e?.target?.location?.value,
     };
     console.log(blog_info);
+    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data`,blog_info)
+    .then(res=>{
+      console.log(res.data)
+      if(res.data?.data?.insertedId){
+        swal("Blog added successfully", "", "success");
+
+      }
+      if(res.data?.message){
+        swal("Plese change blog title and try again ", "", "error");
+
+      }
+    }) 
   };
 
   // return loading spinner if blogs data is not available
