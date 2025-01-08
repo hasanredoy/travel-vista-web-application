@@ -240,7 +240,7 @@ const Blogs = () => {
             <option>Old-New</option>
           </select>
         </div>
-        <div className=" grid grid-cols-2 gap-5">
+        <div className=" grid grid-cols-2 gap-5 md:gap-10">
           {blogs.map((blog, index) => (
             <div
               key={index}
@@ -299,7 +299,7 @@ const Blogs = () => {
                       <Link href={`/blogs/${blog?._id}`}>
                         <FaRegArrowAltCircleRight
                           title="View full blog!"
-                          className=" text-3xl "
+                          className=" text-xl md:text-3xl "
                         ></FaRegArrowAltCircleRight>
                       </Link>
                     </div>
