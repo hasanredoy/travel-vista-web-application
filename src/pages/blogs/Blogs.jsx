@@ -18,10 +18,10 @@ import swal from "sweetalert";
 const Blogs = () => {
   // loading state
   const [loading, setLoading] = useState(false);
-  // load blogs
-  const blogs = useDataLoader("blog-data");
   // state to handle user blogs
   const [userBlogs, setUserBlogs] = useState(false);
+  // load blogs
+  const blogs = useDataLoader("blog-data",userBlogs?userBlogs:"");
   // sort value handler state
   const [sortVal, setSortVal] = useState("");
   // add blog form handler
