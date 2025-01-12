@@ -1,16 +1,13 @@
+import { loadData } from "@/utils/loadData";
 import Link from "next/link";
 import { FaAnglesRight } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import { TbHeartStar } from "react-icons/tb";
 
-const loadFeatureData =async()=>{
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/featured-tour`)
-  const data = await res.json()
-  return data.data
-}
+
 
 const Cards = async() => {
-const tourData = await loadFeatureData()
+const tourData = await loadData("/featured-tour")
 
   return (
     <div className="card-list  grid grid-cols-1 md:grid-cols-2 md:gap-x-5 lg:grid-cols-3 lg:gap-x-10 gap-y-14 mx-auto w-[95%] md:w-[90%] lg:w-[85%]">

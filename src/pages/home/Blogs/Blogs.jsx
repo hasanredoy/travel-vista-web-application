@@ -1,4 +1,3 @@
-"use client";
 import Heading from "@/components/reuseble/Heading";
 import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import Image from "next/image";
@@ -6,10 +5,12 @@ import Link from "next/link";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { loadData } from "@/utils/loadData";
 
-const Blogs = () => {
+
+const Blogs = async () => {
   // get blog data
-  const blogs = useDataLoader("blog-data");
+  const blogs = await loadData("blog-data")
   
   return (
     <section className="w-[90%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">

@@ -1,10 +1,11 @@
-'use client'
 import Heading from "@/components/reuseble/Heading";
-import useLoadCategories from "@/hooks/categories/useLoadCategories";
+import { loadData } from "@/utils/loadData";
 import Link from "next/link";
 
-const Categories = () => {
-  const categories = useLoadCategories()
+
+
+const Categories =async () => {
+  const categories = await loadData('/categories')
   return (
     <section  className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'Your Gateway to'} imp={' Diverse Adventures'} desc={'Discover a variety of travel experiences.'}  ></Heading>

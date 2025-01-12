@@ -1,15 +1,11 @@
-/* eslint-disable @next/next/no-async-client-component */
-'use client'
-/* eslint-disable @next/next/no-img-element */
-// pages/our-partners.js
 
 import Heading from "@/components/reuseble/Heading";
-import useDataLoader from "@/hooks/data-loader/useDataLoader";
+import { loadData } from "@/utils/loadData";
 import Link from "next/link";
 
 
-const OurPartners = () => {
-   const ourPartners = useDataLoader('our-partners')
+const OurPartners =async () => {
+   const ourPartners =await loadData('/our-partners')
   return (
     <section className="w-[92%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'All our '} imp={' Partners'} />

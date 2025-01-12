@@ -1,9 +1,8 @@
-"use client";
 import Heading from "@/components/reuseble/Heading";
-import useDataLoader from "@/hooks/data-loader/useDataLoader";
+import { loadData } from "@/utils/loadData";
 
-const TravelStats = () => {
-  const stats = useDataLoader("travel-stats");
+const TravelStats =async () => {
+  const stats =await loadData("/travel-stats");
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Our "} imp={" Statics"}></Heading>

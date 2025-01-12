@@ -14,7 +14,7 @@ import './testimonial.css'
 
 const Testimonial = () => {
   // get testimonials
-  const testimonials = useLoadTestimonial();
+  const testimonials = useLoadTestimonial("testimonial");
 
   var settings = {
     dots: true,

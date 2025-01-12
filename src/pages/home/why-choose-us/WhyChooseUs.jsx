@@ -1,9 +1,8 @@
-'use client'
 import Heading from "@/components/reuseble/Heading";
-import useLoadWhyChooseUsData from "@/hooks/why-choose-us/useLoadWhyChooseUsData";
+import { loadData } from "@/utils/loadData";
 
-const WhyChooseUs = () => {
-  const data = useLoadWhyChooseUsData()
+const WhyChooseUs =async () => {
+  const data =await loadData("/why-choose-us")
  
   return (
     <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
