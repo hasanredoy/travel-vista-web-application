@@ -1,5 +1,10 @@
 export const loadData =async(url)=>{
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api${url}`,{next:{revalidate:10}})
+try { const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api${url}`,{next:{revalidate:10}})
   const data = await res.json()
-  return data.data
+  const result  = data?.data
+  return result ||[]}
+    catch (error) {
+      console.error('Failed to load data:', error);
+      return [];
+  }
 }

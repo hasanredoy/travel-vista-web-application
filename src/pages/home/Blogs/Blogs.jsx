@@ -1,12 +1,23 @@
 import Heading from "@/components/reuseble/Heading";
-import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import Image from "next/image";
 import Link from "next/link";
-import { FaHeart, FaStar } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import { loadData } from "@/utils/loadData";
+import { FaStar, FaRegArrowAltCircleRight } from "react-icons/fa";
 
+import { FaLocationDot } from "react-icons/fa6";
+
+const loadData = async (url) => {
+  try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api${url}`, { next: { revalidate: 10 } });
+      if (!res.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const data = await res.json();
+      return data.data || []
+  } catch (error) {
+      console.error('Failed to load data:', error);
+      return [];
+  }
+};
 
 const Blogs = async () => {
   // get blog data
@@ -16,7 +27,7 @@ const Blogs = async () => {
     <section className="w-[90%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
       <Heading imp={"Blogs, Opinions & Experience"}></Heading>
       <div className=" grid grid-cols-1 justify-center md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {blogs?.slice(0-6)?.map((blog, index) => (
+        {blogs?.slice(0,6)?.map((blog, index) => (
           <div
             key={index}
             className="max-w-md border relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
@@ -30,7 +41,7 @@ const Blogs = async () => {
               </h3>
               <h2 className="text-xl font-bold">{blog?.title}</h2>
               <p className="mt-4 ">
-                {blog?.experience?.slice(80)}{" "}
+                {blog?.experience?.slice(0,80)}{" "}
                 <Link href={"/"} className=" text-blue-600">
                   see more...
                 </Link>
@@ -45,9 +56,9 @@ const Blogs = async () => {
               <div className="flex items-center mt-8 space-x-4">
                 <Link href={"/"}>
                   <Image
-                    src={blog?.image}
+                    src={blog?.image||"/user.image"}
                     width={40}
-                    title={blog?.user}
+                    title={blog?.user||"user image"}
                     height={40}
                     alt=""
                     className="w-10 h-10 rounded-full dark:bg-gray-500"

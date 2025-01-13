@@ -10,7 +10,7 @@ const useLoadCount = (url) => {
     .then(res=>{
       setCount(res?.data?.count)
     })
-  },[])
+  },[url])
   return count||0
 };
 
