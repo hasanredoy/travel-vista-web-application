@@ -1,13 +1,14 @@
+"use client"
 import Heading from "@/components/reuseble/Heading";
-import { loadData } from "@/utils/loadData";
+import useDataLoader from "@/hooks/data-loader/useDataLoader";
 
-const TravelStats =async () => {
-  const stats =await loadData("/travel-stats");
+const TravelStats =() => {
+  const stats =useDataLoader("/travel-stats");
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Our "} imp={" Statics"}></Heading>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-10">
-        {stats.map((stat, index) => (
+        {stats?.map((stat, index) => (
           <div
             key={index}
             className={` flex flex-col items-center p-5 rounded-md shadow-md border border-sky-100 w-full  max-h-80 justify-center gap-5 

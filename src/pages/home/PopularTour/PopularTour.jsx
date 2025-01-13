@@ -9,28 +9,12 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
 import Heading from "@/components/reuseble/Heading";
-import { useEffect, useState } from "react";
-import { FiLoader } from "react-icons/fi";
+import useDataLoader from "@/hooks/data-loader/useDataLoader";
 
-const loadData = async (url) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api${url}`, {
-    next: { revalidate: 10 },
-  });
-  const data = await res.json();
-  return data.data;
-};
+
 
 const PopularTour = () => {
-  const [popularTour, setPopularTour] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const loadTourData = async () => {
-      const data = await loadData("/popular-tour");
-      setPopularTour(data);
-      setLoading(false);
-    };
-    loadTourData();
-  }, []);
+  const [popularTour,loading]= useDataLoader("/popular-tour")
 
   //  responsive of slider
   const responsive = {
@@ -56,9 +40,9 @@ const PopularTour = () => {
       {loading ? (
         <div className=" flex justify-center gap-10 w-full ">
           <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
-          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
-          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
-          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full hidden md:block"></div>
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full hidden md:block"></div>
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full hidden md:block"></div>
         </div>
       ) : (
         <div className=" mt-10 ">
