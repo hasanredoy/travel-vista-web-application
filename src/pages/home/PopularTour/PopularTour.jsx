@@ -8,10 +8,30 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
 import Heading from "@/components/reuseble/Heading";
+import { useEffect, useState } from "react";
+import { FiLoader } from "react-icons/fi";
+
+const loadData = async (url) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api${url}`, {
+    next: { revalidate: 10 },
+  });
+  const data = await res.json();
+  return data.data;
+};
 
 const PopularTour = () => {
-  const popularTour = useLoadPopularTourData();
-//  responsive of slider
+  const [popularTour, setPopularTour] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const loadTourData = async () => {
+      const data = await loadData("/popular-tour");
+      setPopularTour(data);
+      setLoading(false);
+    };
+    loadTourData();
+  }, []);
+
+  //  responsive of slider
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -32,42 +52,50 @@ const PopularTour = () => {
   return (
     <section className="  w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Popular "} imp={" Destinations"}></Heading>
-      <div className=" mt-10 ">
+      {loading ? (
+        <div className=" flex justify-center gap-10 w-full ">
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
+          <div className="skeleton h-56 w-56 shrink-0 rounded-full"></div>
+        </div>
+      ) : (
+        <div className=" mt-10 ">
           <Carousel
-          className="pb-8 "
-          responsive={responsive}
-          swipeable={true}
-          draggable={true}
-          // showDots={true}
-          ssr={false} // means to render carousel on server-side.
-          infinite={true}
-          autoPlaySpeed={2000}
-          // autoPlay={true}
-          keyBoardControl={true}
-          customTransition="all .10"
-          transitionDuration={1600}
-          containerClass="carousel-container"
-          dotListClass="custom-dot-list-style"
-          customDot={false}
-          itemClass="carousel-item-padding-40-px"
-        
+            className="pb-8 "
+            responsive={responsive}
+            swipeable={true}
+            draggable={true}
+            // showDots={true}
+            ssr={false} // means to render carousel on server-side.
+            infinite={true}
+            autoPlaySpeed={2000}
+            // autoPlay={true}
+            keyBoardControl={true}
+            customTransition="all .10"
+            transitionDuration={1600}
+            containerClass="carousel-container"
+            dotListClass="custom-dot-list-style"
+            customDot={false}
+            itemClass="carousel-item-padding-40-px"
           >
-          {popularTour?.map((tour, index) => (
-            <div className=" relative  flex justify-center mx-10" key={index}>
-              <Zoom>
-                <img
-                  className=" rounded-full bg-gradient-to-tr   from-[#46f8e0] via-[#e49fff] to-[#fc8ae3] p-1  min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] md:min-w-[290px] md:min-h-[290px] md:max-w-[290px] md:max-h-[290px] "
-                  src={tour?.image}
-                  alt={tour?.country}
-                ></img>
-              </Zoom>
-              <h3 className=" bottom-0  z-40 left-0 absolute text-xl font-bold ">
-                {tour?.country}
-              </h3>
-            </div>
-          ))}
-        </Carousel>
-      </div>
+            {popularTour?.map((tour, index) => (
+              <div className=" relative  flex justify-center mx-10" key={index}>
+                <Zoom>
+                  <img
+                    className=" rounded-full bg-gradient-to-tr   from-[#46f8e0] via-[#e49fff] to-[#fc8ae3] p-1  min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] md:min-w-[290px] md:min-h-[290px] md:max-w-[290px] md:max-h-[290px] "
+                    src={tour?.image}
+                    alt={tour?.country}
+                  ></img>
+                </Zoom>
+                <h3 className=" bottom-0  z-40 left-0 absolute text-xl font-bold ">
+                  {tour?.country}
+                </h3>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      )}
     </section>
   );
 };

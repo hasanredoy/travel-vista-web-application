@@ -49,26 +49,23 @@ body {
   color: black;
   font-weight: 600;
   size: 17px;
+  border: 1px solid rgb(247, 246, 246);
   padding: 7px 12px;
-  border: 1.5px solid transparent;
   border-radius: 6px;
   background: linear-gradient(
-      to bottom left,
+    to bottom left,
       #fdfdfd,
       #b2f1f3,
       #00dbe2,
       #b8f3f5,
       #f3f5f5
-      ),
-      linear-gradient(to right, rgb(130, 226, 250), #f8fa92, #f59dc6);
-      background-clip: padding-box, border-box;
-      background-origin: padding-box, border-box;
+      )
 }
 .btn-primary:hover {
   transition: 1s;
   color: black;
-  border: 2px solid transparent;
   border-radius: 6px;
+  border: 1px solid gray;
   background: linear-gradient(
       to top left,
       #fdfdfd,
@@ -76,14 +73,7 @@ body {
       #fcffff,
       #b8f3f5,
       #f3f5f5
-    ),
-    linear-gradient(to right, rgb(130, 226, 250), #f8fa92, #f59dc6);
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-}
-
-.btn-primary::after {
-  filter: blur(3.5rem);
+    )
 }
 
 .card-list:has(li:hover) li:not(:hover) {
@@ -99,17 +89,14 @@ body {
         #00dbe2,
         #b8f3f5,
         #f3f5f5
-      ),
-      linear-gradient(to right, rgb(130, 226, 250), #f8fa92, #f59dc6);
-    background-clip: padding-box, border-box;
-    background-origin: padding-box, border-box;
+      );
 
     color: black;
     font-weight: 500;
     size: 14px;
     padding: 3px 7px;
     border-radius: 6px;
-    border: 1px solid #01afa1;
+    border: 1px solid #f8fcfb;
   }
   .btn-primary:hover {
     background: linear-gradient(
@@ -119,13 +106,9 @@ body {
         #fcffff,
         #b8f3f5,
         #f3f5f5
-      ),
-      linear-gradient(to right, rgb(130, 226, 250), #f8fa92, #f59dc6);
-    background-clip: padding-box, border-box;
-    background-origin: padding-box, border-box;
-
+      );
     transition: 1s;
     color: black;
-    border: 1px solid #01afa1;
+    border: 1px solid gray;
   }
 }

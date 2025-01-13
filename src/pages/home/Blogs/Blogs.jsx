@@ -10,13 +10,13 @@ import { loadData } from "@/utils/loadData";
 
 const Blogs = async () => {
   // get blog data
-  const blogs = await loadData("blog-data")
+  const blogs = await loadData("/blog-data")
   
   return (
     <section className="w-[90%] my-10 md:w-[90%] lg:w-[85%] mx-auto ">
       <Heading imp={"Blogs, Opinions & Experience"}></Heading>
       <div className=" grid grid-cols-1 justify-center md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {blogs.map((blog, index) => (
+        {blogs?.slice(0-6)?.map((blog, index) => (
           <div
             key={index}
             className="max-w-md border relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
