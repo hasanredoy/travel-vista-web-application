@@ -15,25 +15,23 @@ import axios from "axios";
 import swal from "sweetalert";
 import useLoadBlogs from "@/hooks/blogs-data/useLoadBlogs";
 
-
 const Blogs = () => {
   // state to handle user blogs
   const [userBlogs, setUserBlogs] = useState(false);
-  // load blogs
-  const [blogs,loading] = useLoadBlogs()
-console.log(blogs)
-
+  
   // sort value handler state
   const [sortVal, setSortVal] = useState("");
   // add blog form handler
   const [showForm, setShowForm] = useState(false);
-
+  // load blogs
+  const [blogs, loading] = useLoadBlogs(userBlogs,sortVal);
+  
   // get session and then user
   const session = useSession();
   const user = session?.data?.user;
 
   const handleAddBlog = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const blog_info = {
       user: user?.name,
       email: user?.email,
@@ -46,23 +44,22 @@ console.log(blogs)
       location: e?.target?.location?.value,
     };
     console.log(blog_info);
-    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data`,blog_info)
-    .then(res=>{
-      console.log(res.data)
-      if(res.data?.data?.insertedId){
-        swal("Blog added successfully", "", "success");
-
-      }
-      if(res.data?.message){
-        swal("Plese change blog title and try again ", "", "error");
-
-      }
-    }) 
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data`, blog_info)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data?.data?.insertedId) {
+          swal("Blog added successfully", "", "success");
+        }
+        if (res.data?.message) {
+          swal("Please change blog title and try again ", "", "error");
+        }
+      });
   };
 
   // return loading spinner if blogs data is not available
-  // if (blogs.length < 1) return <LoadingSpinner></LoadingSpinner>;
-  // if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
+  if (loading) return <LoadingSpinner></LoadingSpinner>;
+  if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
@@ -135,7 +132,8 @@ console.log(blogs)
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
       {/* user info section  */}
       <section className=" w-[30%]">
-        <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
+       <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
+       <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
           <img
             src={user?.image}
             alt=""
@@ -207,6 +205,7 @@ console.log(blogs)
             </div>
           </div>
         </div>
+       </div>
       </section>
       {/* cards section  */}
       <section className=" w-[68%]">
@@ -224,7 +223,7 @@ console.log(blogs)
             <button
               title="Click to see your blogs"
               onClick={() => setUserBlogs(!userBlogs)}
-              className={`btn rounded-xl ${userBlogs && "border bg-sky-200"}`}
+              className={`btn rounded-xl ${userBlogs && "border bg-neutral-600 text-white"}`}
             >
               Your Blogs{" "}
             </button>
@@ -243,9 +242,10 @@ console.log(blogs)
         </div>
         <div className=" grid grid-cols-2 gap-5 md:gap-10">
           {blogs?.map((blog, index) => (
-            <div
-              key={index}
-              className="max-w-md border relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
+            <div  key={index} className="max-w-md p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg">
+              <div
+            
+              className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg"
             >
               <article>
                 <h3 className=" absolute text-red-400 top-1 right-1  flex items-center text-lg gap-1 font-medium">
@@ -255,12 +255,21 @@ console.log(blogs)
                   </span>
                 </h3>
                 <h2 className="text-xl font-bold">{blog?.title}</h2>
-                <p className="mt-4 ">
-                  {blog?.experience?.slice(80)}{" "}
-                  <Link href={`/blogs/${blog?._id}`} className=" text-blue-600">
-                    see more...
-                  </Link>
-                </p>
+
+                {blog?.experience?.length > 180 ? (
+                  <p className="mt-4 pl-1 ">
+                    <span>{blog?.experience?.slice(0, 180)}</span>{" "}{" "}
+                    <Link
+                      href={`/blogs/${blog?._id}`}
+                      className=" text-blue-600"
+                    >
+                      see more...
+                    </Link>
+                  </p>
+                ) : (
+                  <p className="my-4 pl-1">{blog?.experience}</p>
+                )}
+
                 <div className=" flex justify-between">
                   <h3 className=" flex gap-2 items-center my-3">
                     {" "}
@@ -307,6 +316,7 @@ console.log(blogs)
                   </div>
                 </div>
               </article>
+            </div>
             </div>
           ))}
         </div>

@@ -10,18 +10,19 @@ import { FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 const BlogDetails = ({ id }) => {    
-  const blogDetails = useDataLoader(`blog-data/${id}`);
+  const [blogDetails,loading] = useDataLoader(`blog-data/${id}`);
   
   const session = useSession();
   const user = session?.data?.user;
-  if(!blogDetails)return <LoadingSpinner></LoadingSpinner>
+  if(loading)return <LoadingSpinner></LoadingSpinner>
   if(!user)return <LoadingSpinner></LoadingSpinner>
   return (
    user&&<main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
            
       {/* user info section  */}
       <section className=" w-[30%]">
-        <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
+      <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
+       <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
           <img
             src={user?.image}
             alt=""
@@ -93,10 +94,13 @@ const BlogDetails = ({ id }) => {
             </div>
           </div>
         </div>
+       </div>
       </section>
-      {/* cards section  */}
+      {/* card section  */}
       <section className=" w-[68%] flex justify-center ">
-        <div className="max-w-lg max-h-[380px] border relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg">
+      <div className="max-w-lg p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg max-h-[368px]">
+          
+        <div className="max-w-lg max-h-[368px] border relative bg-base-200 shadow-md p-6 overflow-hidden rounded-lg">
           <article>
             <h3 className=" absolute text-red-400 top-1 right-1  flex items-center text-lg gap-1 font-medium">
               {blogDetails?.rating}{" "}
@@ -147,6 +151,7 @@ const BlogDetails = ({ id }) => {
               </div>
             </div>
           </article>
+        </div>
         </div>
       </section>
     </main>
