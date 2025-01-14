@@ -1,10 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
 
-const useDataLoader = (url) => {
+const useLoadBlogs = () => {
       const [data , setData] = useState()
       const [loading , setLoading] = useState(true)
-  const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/${url}`;
+  const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data`;
   useEffect(()=>{
      fetch(apiUrl)
     .then(res=>res.json())
@@ -18,4 +18,4 @@ const useDataLoader = (url) => {
 
 };
 
-export default useDataLoader;
+export default useLoadBlogs;

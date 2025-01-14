@@ -13,15 +13,16 @@ import { FiLoader } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import swal from "sweetalert";
+import useLoadBlogs from "@/hooks/blogs-data/useLoadBlogs";
 
 
 const Blogs = () => {
-  // loading state
-  const [loading, setLoading] = useState(false);
   // state to handle user blogs
   const [userBlogs, setUserBlogs] = useState(false);
   // load blogs
-  const blogs = useDataLoader("blog-data",userBlogs?userBlogs:"");
+  const [blogs,loading] = useLoadBlogs()
+console.log(blogs)
+
   // sort value handler state
   const [sortVal, setSortVal] = useState("");
   // add blog form handler
@@ -60,8 +61,8 @@ const Blogs = () => {
   };
 
   // return loading spinner if blogs data is not available
-  if (blogs.length < 1) return <LoadingSpinner></LoadingSpinner>;
-  if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
+  // if (blogs.length < 1) return <LoadingSpinner></LoadingSpinner>;
+  // if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
@@ -241,7 +242,7 @@ const Blogs = () => {
           </select>
         </div>
         <div className=" grid grid-cols-2 gap-5 md:gap-10">
-          {blogs.map((blog, index) => (
+          {blogs?.map((blog, index) => (
             <div
               key={index}
               className="max-w-md border relative bg-base-200 bg-opacity-20 shadow-md p-6 overflow-hidden rounded-lg"
