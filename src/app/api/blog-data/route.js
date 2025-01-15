@@ -1,11 +1,26 @@
 import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server"
 
-export const GET = async()=>{
+export const GET = async(request)=>{
+  const userEmail = await request.nextUrl.searchParams.get("user-blog")
+  const sortVal = await request.nextUrl.searchParams.get("sort")
+ let sort={}
+ let query ={}
   try {
+    if(sortVal=="Old-New"){
+      sort ={date:1}
+    }
+    if(sortVal=="New-Old"){
+      sort ={date:-1}
+    }
+    if(userEmail){
+      query={
+        email:userEmail
+      }
+    }
     const db = await connectDB()
     const blogsCollection = await db.collection("blogs")
-    const BlogsData = await blogsCollection.find().toArray()
+    const BlogsData = await blogsCollection.find(query).sort(sort).toArray()
     // console.log(BlogsData)
   return NextResponse.json({data:BlogsData})
 } catch (error) {
@@ -16,6 +31,7 @@ export const GET = async()=>{
 }
 export const POST = async(request)=>{
   const blogFromClient = await request.json()
+
   try {
     const db = await connectDB()
     const blogsCollection = await db.collection("blogs")

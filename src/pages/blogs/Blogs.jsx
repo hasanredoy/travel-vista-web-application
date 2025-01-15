@@ -14,6 +14,7 @@ import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import swal from "sweetalert";
 import useLoadBlogs from "@/hooks/blogs-data/useLoadBlogs";
+import moment from "moment";
 
 const Blogs = () => {
   // state to handle user blogs
@@ -302,7 +303,7 @@ const Blogs = () => {
                         <h3 className="text-sm font-medium">{blog?.user}</h3>
                       </Link>
                       <span className="text-sm dark:text-gray-600">
-                        {blog?.date}
+                        {moment(blog?.date).format('')}
                       </span>
                     </div>
                     <div>
