@@ -15,6 +15,10 @@ import axios from "axios";
 import swal from "sweetalert";
 import useLoadBlogs from "@/hooks/blogs-data/useLoadBlogs";
 import moment from "moment";
+import { FaCopy } from "react-icons/fa";
+import { IoCheckmarkCircleSharp } from "react-icons/io5";
+
+
 
 const Blogs = () => {
   // state to handle user blogs
@@ -26,6 +30,10 @@ const Blogs = () => {
   const [showForm, setShowForm] = useState(false);
   // state to refresh blogs
   const [refetch, setRefetch] = useState(0);
+
+  // state to handle copy blog 7
+
+  const [copied , setCopied] = useState(true)
   // load blogs
   const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch);
 
@@ -89,12 +97,23 @@ const Blogs = () => {
     }
   };
 
+
+  // handler to copy user blog \
+  const handleCopy=(text)=>{
+    setCopied(false)
+    navigator.clipboard.writeText(text)
+    setTimeout(() => {
+      setCopied(true)
+    }, 3000);
+  }
+
   // return loading spinner if blogs data is not available
   if (loading) return <LoadingSpinner></LoadingSpinner>;
   if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
+    {/* add blog form */}
       <form
         onSubmit={handleAddBlog}
         className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative"
@@ -292,12 +311,9 @@ const Blogs = () => {
               )}
               <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg">
                 <article>
-                  <h3 className=" absolute text-red-600 top-6 right-1  flex items-center text-lg gap-1 font-medium">
-                    {blog?.rating}{" "}
-                    <span>
-                      <FaStar></FaStar>
-                    </span>
-                  </h3>
+                  <button onClick={()=>handleCopy(blog?.experience)} className=" absolute  top-6 right-1  flex  font-medium">
+                    {copied?<FaCopy className="text-sm"></FaCopy>:<IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>}
+                  </button>
                   <h2 className="text-xl font-bold">{blog?.title}</h2>
 
                   {blog?.experience?.length > 180 ? (
