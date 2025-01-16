@@ -15,7 +15,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import useLoadBlogs from "@/hooks/blogs-data/useLoadBlogs";
 import moment from "moment";
-import { FaCopy } from "react-icons/fa";
+import { IoMdCopy } from "react-icons/io";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 
 
@@ -31,9 +31,9 @@ const Blogs = () => {
   // state to refresh blogs
   const [refetch, setRefetch] = useState(0);
 
-  // state to handle copy blog 7
-
+  // state to handle copy blog 
   const [copied , setCopied] = useState(true)
+
   // load blogs
   const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch);
 
@@ -98,13 +98,13 @@ const Blogs = () => {
   };
 
 
-  // handler to copy user blog \
+  // handler to copy user blog 
   const handleCopy=(text)=>{
-    setCopied(false)
+    setCopied(text)
     navigator.clipboard.writeText(text)
     setTimeout(() => {
-      setCopied(true)
-    }, 3000);
+      setCopied("")
+    }, 1000);
   }
 
   // return loading spinner if blogs data is not available
@@ -299,20 +299,18 @@ const Blogs = () => {
               key={index}
               className="max-w-md p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg relative "
             >
-              {user?.email == blog?.email ? (
+              {user?.email == blog?.email && (
                 <button
                   onClick={() => handleDeleteBlog(blog?._id)}
                   className=" absolute top-1 text-gray-600 right-1 z-20 hover:text-red-500 "
                 >
                   <FaTrash></FaTrash>
                 </button>
-              ) : (
-                ""
               )}
               <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg">
                 <article>
-                  <button onClick={()=>handleCopy(blog?.experience)} className=" absolute  top-6 right-1  flex  font-medium">
-                    {copied?<FaCopy className="text-sm"></FaCopy>:<IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>}
+                  <button onClick={()=>handleCopy(blog?.experience)} className=" absolute  top-7 right-1.5">
+                    {copied==blog?.experience?<IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>:<IoMdCopy className="text-base"></IoMdCopy>}
                   </button>
                   <h2 className="text-xl font-bold">{blog?.title}</h2>
 
