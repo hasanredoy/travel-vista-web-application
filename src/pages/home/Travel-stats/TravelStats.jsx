@@ -3,7 +3,7 @@ import Heading from "@/components/reuseble/Heading";
 import useDataLoader from "@/hooks/data-loader/useDataLoader";
 
 const TravelStats =() => {
-  const stats =useDataLoader("/travel-stats");
+  const [stats] =useDataLoader("travel-stats");
   return (
     <section className=" w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={"Our "} imp={" Statics"}></Heading>

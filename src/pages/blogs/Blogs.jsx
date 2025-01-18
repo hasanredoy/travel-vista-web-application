@@ -1,5 +1,4 @@
 "use client";
-import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -105,6 +104,21 @@ const Blogs = () => {
     setTimeout(() => {
       setCopied("")
     }, 1000);
+  }
+  const handleReactOnPost=()=>{
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.data.deletedCount > 0) {
+          setRefetch(refetch + 1);
+          swal("Blog has been deleted!", {
+            icon: "success",
+          });
+        }
+      });
   }
 
   // return loading spinner if blogs data is not available
@@ -302,7 +316,7 @@ const Blogs = () => {
               {user?.email == blog?.email && (
                 <button
                   onClick={() => handleDeleteBlog(blog?._id)}
-                  className=" absolute top-1 text-gray-600 right-1 z-20 hover:text-red-500 "
+                  className=" absolute top-1 hover:text-gray-600 right-1 z-20 text-red-600 "
                 >
                   <FaTrash></FaTrash>
                 </button>
@@ -335,6 +349,7 @@ const Blogs = () => {
                       <span>{blog?.location}</span>
                     </h3>
                     <button
+                      onClick={handleReactOnPost}
                       title={`${blog?.react} reactions`}
                       className="flex gap-2 items-center"
                     >
@@ -343,7 +358,7 @@ const Blogs = () => {
                     </button>
                   </div>
                   <div className="flex items-center mt-8 space-x-4">
-                    <Link href={"/"}>
+                    <Link href={`/dashboard/profile/${blog?._id}`}>
                       <Image
                         src={blog?.image}
                         width={40}
@@ -356,7 +371,7 @@ const Blogs = () => {
                     {/* user name and details btn container div  */}
                     <div className=" flex justify-between w-full items-center">
                       <div>
-                        <Link title={blog?.user} href={"/"}>
+                        <Link title={blog?.user} href={`/dashboard/profile/${blog?._id}`}>
                           <h3 className="text-sm font-medium">{blog?.user}</h3>
                         </Link>
                         <span className="text-sm dark:text-gray-600">

@@ -3,7 +3,8 @@ import Heading from "@/components/reuseble/Heading";
 import useDataLoader from "@/hooks/data-loader/useDataLoader";
 
 const WhyChooseUs =() => {
-  const data =useDataLoader("/why-choose-us")
+const [data] =useDataLoader("why-choose-us")
+  console.log(data)
  
   return (
     <section className="w-[94%] my-10 md:w-[90%] lg:w-[85%] mx-auto">

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 
 const OurPartners =() => {
-   const ourPartners = useDataLoader('/our-partners')||[]
+   const [ourPartners] = useDataLoader('our-partners')||[]
   return (
     <section className="w-[92%] my-10 md:w-[90%] lg:w-[85%] mx-auto">
       <Heading t1={'All our '} imp={' Partners'} />
