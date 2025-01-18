@@ -128,7 +128,7 @@ const Tours = () => {
       </section>
       {/* pagination section  */}
       <section>
-     {tours.length>6&&<Pagination count={toursCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>}
+     {tours.length>5&&<Pagination count={toursCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>}
       </section>
     </main>
   );

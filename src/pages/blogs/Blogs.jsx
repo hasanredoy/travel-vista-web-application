@@ -107,7 +107,7 @@ const Blogs = () => {
   }
   const handleReactOnPost=()=>{
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
-      method: "DELETE",
+      method: "PATCH",
     })
       .then((res) => res.json())
       .then((data) => {
