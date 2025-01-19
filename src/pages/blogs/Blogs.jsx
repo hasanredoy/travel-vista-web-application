@@ -105,14 +105,16 @@ const Blogs = () => {
       setCopied("")
     }, 1000);
   }
-  const handleReactOnPost=()=>{
+
+  
+  const handleReactOnPost=(id)=>{
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data?.data.deletedCount > 0) {
+        if (data?.data.modifiedCount > 0) {
           setRefetch(refetch + 1);
           swal("Blog has been deleted!", {
             icon: "success",
@@ -349,7 +351,7 @@ const Blogs = () => {
                       <span>{blog?.location}</span>
                     </h3>
                     <button
-                      onClick={handleReactOnPost}
+                      onClick={()=>handleReactOnPost(blog?._id)}
                       title={`${blog?.react} reactions`}
                       className="flex gap-2 items-center"
                     >

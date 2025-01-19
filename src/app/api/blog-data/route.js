@@ -49,6 +49,19 @@ export const POST = async(request)=>{
     
   }
 }
+export const PATCH = async(request)=>{
+   const id = await request.nextUrl.searchParams.get("id")
+  try {
+    const db = await connectDB()
+    const blogsCollection = await db.collection("blogs")
+    const deleteBlog = await blogsCollection.updateOne({_id: new ObjectId(id)})
+
+    return NextResponse.json({data:deleteBlog})
+} catch (error) {
+  console.log(error);
+    return NextResponse.json({}) 
+  }
+}
 export const DELETE = async(request)=>{
    const id = await request.nextUrl.searchParams.get("id")
   try {
