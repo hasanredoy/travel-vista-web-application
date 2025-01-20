@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 const useLoadBlogs = (userBlogs, sortVal,refetch) => {
-  console.log(userBlogs, sortVal);
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const session = useSession()

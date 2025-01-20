@@ -54,9 +54,12 @@ export const PATCH = async(request)=>{
   try {
     const db = await connectDB()
     const blogsCollection = await db.collection("blogs")
-    const deleteBlog = await blogsCollection.updateOne({_id: new ObjectId(id)})
+    const updateDoc =
+      {$inc:{react:1}}
+    
+    const updateReactsOfBlog = await blogsCollection.updateOne({_id: new ObjectId(id)},updateDoc,{upsert: true})
 
-    return NextResponse.json({data:deleteBlog})
+ return NextResponse.json({data:updateReactsOfBlog})
 } catch (error) {
   console.log(error);
     return NextResponse.json({}) 

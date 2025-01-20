@@ -7,7 +7,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdAdd } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
@@ -29,6 +29,9 @@ const Blogs = () => {
   const [showForm, setShowForm] = useState(false);
   // state to refresh blogs
   const [refetch, setRefetch] = useState(0);
+
+  // state look after user react on blog
+  const [userEmailFromLS,setUserEmailFromLS] = useState("")
 
   // state to handle copy blog 
   const [copied , setCopied] = useState(true)
@@ -97,6 +100,7 @@ const Blogs = () => {
   };
 
 
+
   // handler to copy user blog 
   const handleCopy=(text)=>{
     setCopied(text)
@@ -106,19 +110,30 @@ const Blogs = () => {
     }, 1000);
   }
 
+
+useEffect(()=>{
+  const userInfoForReaction = localStorage.getItem("userInfo")
+  setUserEmailFromLS(userInfoForReaction)
+},[])
   
   const handleReactOnPost=(id)=>{
+    if(userEmailFromLS==user.email){
+      console.log('hellog')
+      return
+    }
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
       method: "PATCH",
+      headers:{
+        "Content-Type":"application/json"
+      }
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data?.data.modifiedCount > 0) {
+        if (data?.data?.modifiedCount > 0) {
           setRefetch(refetch + 1);
-          swal("Blog has been deleted!", {
-            icon: "success",
-          });
+          const info = (user.email ,id)
+          localStorage.setItem("userInfo",info)
         }
       });
   }
