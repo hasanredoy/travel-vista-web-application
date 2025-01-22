@@ -132,8 +132,8 @@ useEffect(()=>{
         console.log(data);
         if (data?.data?.modifiedCount > 0) {
           setRefetch(refetch + 1);
-          const info = (user.email ,id)
-          // localStorage.setItem("userInfo",info)
+          const info = [user.email ,id]
+          localStorage.setItem("userInfo",info)
 
         }
       });
