@@ -132,7 +132,7 @@ useEffect(()=>{
         console.log(data);
         if (data?.data?.modifiedCount > 0) {
           setRefetch(refetch + 1);
-          const info = [user.email ,id]
+          const info = [id]
           localStorage.setItem("userInfo",info)
 
         }
