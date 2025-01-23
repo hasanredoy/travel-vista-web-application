@@ -16,8 +16,7 @@ import useLoadBlogs from "@/hooks/blogs-data/useLoadBlogs";
 import moment from "moment";
 import { IoMdCopy } from "react-icons/io";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
-
-
+import { FaHeart } from "react-icons/fa6";
 
 const Blogs = () => {
   // state to handle user blogs
@@ -31,10 +30,10 @@ const Blogs = () => {
   const [refetch, setRefetch] = useState(0);
 
   // state look after user react on blog
-  const [userEmailFromLS,setUserEmailFromLS] = useState("")
+  const [ids, setIdsFromLS] = useState([]);
 
-  // state to handle copy blog 
-  const [copied , setCopied] = useState(true)
+  // state to handle copy blog
+  const [copied, setCopied] = useState(true);
 
   // load blogs
   const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch);
@@ -99,45 +98,42 @@ const Blogs = () => {
     }
   };
 
-
-
-  // handler to copy user blog 
-  const handleCopy=(text)=>{
-    setCopied(text)
-    navigator.clipboard.writeText(text)
+  // handler to copy user blog
+  const handleCopy = (text) => {
+    setCopied(text);
+    navigator.clipboard.writeText(text);
     setTimeout(() => {
-      setCopied("")
+      setCopied("");
     }, 1000);
-  }
+  };
 
-
-useEffect(()=>{
-  const userInfoForReaction = localStorage.getItem("userInfo")
-  setUserEmailFromLS(userInfoForReaction)
-},[])
+  useEffect(() => {
+    const ids = JSON.parse(localStorage.getItem("ids"));
+    const idsArray = Array.isArray(ids) ? ids : [ids];
   
-  const handleReactOnPost=(id)=>{
-    if(userEmailFromLS==user.email){
-      console.log('hellog')
-      return
-    }
+    setIdsFromLS(idsArray);  }, [refetch]);
+
+  console.log(ids);
+  const handleReactOnPost = (id) => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
       method: "PATCH",
-      headers:{
-        "Content-Type":"application/json"
-      }
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data?.data?.modifiedCount > 0) {
           setRefetch(refetch + 1);
-          const info = [id]
-          localStorage.setItem("userInfo",info)
-
+          const existingIds = JSON.parse(localStorage.getItem("ids")) || [];
+          // console.log(existingIds,id)
+          const updatedIds = [...existingIds, id];
+          localStorage.setItem("ids", JSON.stringify(updatedIds));
         }
       });
-  }
+  };
+  console.log(typeof ids)
 
   // return loading spinner if blogs data is not available
   if (loading) return <LoadingSpinner></LoadingSpinner>;
@@ -145,7 +141,7 @@ useEffect(()=>{
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
-    {/* add blog form */}
+      {/* add blog form */}
       <form
         onSubmit={handleAddBlog}
         className=" max-w-md card-body border shadow-xl rounded-md bg-sky-400 bg-opacity-10 relative"
@@ -213,7 +209,7 @@ useEffect(()=>{
     </section>
   ) : (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
-      {/* user info section  */}
+      {/* user info section  J*/}
       <section className=" w-[30%]">
         <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
           <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
@@ -341,8 +337,15 @@ useEffect(()=>{
               )}
               <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg">
                 <article>
-                  <button onClick={()=>handleCopy(blog?.experience)} className=" absolute  top-7 right-1.5">
-                    {copied==blog?.experience?<IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>:<IoMdCopy className="text-base"></IoMdCopy>}
+                  <button
+                    onClick={() => handleCopy(blog?.experience)}
+                    className=" absolute  top-7 right-1.5"
+                  >
+                    {copied == blog?.experience ? (
+                      <IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>
+                    ) : (
+                      <IoMdCopy className="text-base"></IoMdCopy>
+                    )}
                   </button>
                   <h2 className="text-xl font-bold">{blog?.title}</h2>
 
@@ -367,12 +370,18 @@ useEffect(()=>{
                       <span>{blog?.location}</span>
                     </h3>
                     <button
-                      onClick={()=>handleReactOnPost(blog?._id)}
+                      onClick={() => handleReactOnPost(blog?._id)}
                       title={`${blog?.react} reactions`}
                       className="flex gap-2 items-center"
                     >
                       {blog?.react}
-                      <CiHeart className=" text-2xl text-red-500"></CiHeart>
+                      {ids?.map((id) => {
+                        id == blog?.id ? (
+                          <FaHeart className=" text-2xl text-red-500"></FaHeart>
+                        ) : (
+                          <CiHeart className=" text-2xl text-red-500"></CiHeart>
+                        );
+                      })}
                     </button>
                   </div>
                   <div className="flex items-center mt-8 space-x-4">
@@ -389,7 +398,10 @@ useEffect(()=>{
                     {/* user name and details btn container div  */}
                     <div className=" flex justify-between w-full items-center">
                       <div>
-                        <Link title={blog?.user} href={`/dashboard/profile/${blog?._id}`}>
+                        <Link
+                          title={blog?.user}
+                          href={`/dashboard/profile/${blog?._id}`}
+                        >
                           <h3 className="text-sm font-medium">{blog?.user}</h3>
                         </Link>
                         <span className="text-sm dark:text-gray-600">
