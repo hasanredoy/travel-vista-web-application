@@ -107,13 +107,13 @@ const Blogs = () => {
     }, 1000);
   };
 
+  
   useEffect(() => {
     const ids = JSON.parse(localStorage.getItem("ids"));
     const idsArray = Array.isArray(ids) ? ids : [ids];
   
     setIdsFromLS(idsArray);  }, [refetch]);
 
-  console.log(ids);
   const handleReactOnPost = (id) => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
       method: "PATCH",
@@ -133,7 +133,7 @@ const Blogs = () => {
         }
       });
   };
-  console.log(typeof ids)
+  
 
   // return loading spinner if blogs data is not available
   if (loading) return <LoadingSpinner></LoadingSpinner>;
@@ -209,7 +209,7 @@ const Blogs = () => {
     </section>
   ) : (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
-      {/* user info section  J*/}
+      {/* user info section  Jnpmeu */}
       <section className=" w-[30%]">
         <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
           <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
