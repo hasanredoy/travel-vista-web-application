@@ -30,7 +30,7 @@ const Blogs = () => {
   const [refetch, setRefetch] = useState(0);
 
   // state look after user react on blog
-  const [ids, setIdsFromLS] = useState([]);
+  const [idsFromLS, setIdsFromLS] = useState([]);
 
   // state to handle copy blog
   const [copied, setCopied] = useState(true);
@@ -107,12 +107,17 @@ const Blogs = () => {
     }, 1000);
   };
 
-  
   useEffect(() => {
     const ids = JSON.parse(localStorage.getItem("ids"));
     const idsArray = Array.isArray(ids) ? ids : [ids];
-  
-    setIdsFromLS(idsArray);  }, [refetch]);
+
+    setIdsFromLS(idsArray);
+  }, [refetch]);
+
+  console.log(typeof idsFromLS);
+  idsFromLS.forEach((id) => {
+    console.log(id);
+  });
 
   const handleReactOnPost = (id) => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
@@ -133,7 +138,6 @@ const Blogs = () => {
         }
       });
   };
-  
 
   // return loading spinner if blogs data is not available
   if (loading) return <LoadingSpinner></LoadingSpinner>;
@@ -369,20 +373,24 @@ const Blogs = () => {
                       <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
                       <span>{blog?.location}</span>
                     </h3>
-                    <button
-                      onClick={() => handleReactOnPost(blog?._id)}
-                      title={`${blog?.react} reactions`}
-                      className="flex gap-2 items-center"
-                    >
-                      {blog?.react}
-                      {ids?.map((id) => {
-                        id == blog?.id ? (
-                          <FaHeart className=" text-2xl text-red-500"></FaHeart>
+                    {idsFromLS?.map((id) => (
+                      <div key={id}>
+                        {idsFromLS.includes(blog?._id) ? (
+                          <div>
+                            <FaHeart className="text-2xl text-red-500" />
+                          </div>
                         ) : (
-                          <CiHeart className=" text-2xl text-red-500"></CiHeart>
-                        );
-                      })}
-                    </button>
+                          <button
+                            onClick={() => handleReactOnPost(blog?._id)}
+                            title={`${blog?.react || 0} reactions`}
+                            className="flex gap-2 items-center"
+                          >
+                            {blog?.react || 0}
+                            <CiHeart className="text-2xl text-gray-500" />
+                          </button>
+                        )}
+                      </div>
+                    ))}
                   </div>
                   <div className="flex items-center mt-8 space-x-4">
                     <Link href={`/dashboard/profile/${blog?._id}`}>
