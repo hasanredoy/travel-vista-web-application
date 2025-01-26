@@ -41,25 +41,25 @@ const Blogs = () => {
   // get session and then user
   const session = useSession();
   const user = session?.data?.user;
-
   const handleAddBlog = (e) => {
     e.preventDefault();
     const blog_info = {
       user: user?.name,
       email: user?.email,
       date: new Date(),
-      image: user?.image,
+      image: user?.image||"helloworld",
       title: e?.target?.title?.value,
       experience: e?.target?.description?.value,
       rating: 4,
       react: 5,
       location: e?.target?.location?.value,
+      reactedBy:["hello@gmail.com"]
     };
     axios
       .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data`, blog_info)
       .then((res) => {
-        console.log(res.data);
         if (res.data?.data?.insertedId) {
+          setRefetch(refetch+1)
           swal("Blog added successfully", "", "success");
         }
         if (res.data?.message) {
@@ -107,38 +107,23 @@ const Blogs = () => {
     }, 1000);
   };
 
-  useEffect(() => {
-    const ids = JSON.parse(localStorage.getItem("ids"));
-    const idsArray = Array.isArray(ids) ? ids : [ids];
-
-    setIdsFromLS(idsArray);
-  }, [refetch]);
-
-  console.log(typeof idsFromLS);
-  idsFromLS.forEach((id) => {
-    console.log(id);
-  });
-
   const handleReactOnPost = (id) => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
-      method: "PATCH",
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}&email=${user.email}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data?.data?.modifiedCount > 0) {
           setRefetch(refetch + 1);
           const existingIds = JSON.parse(localStorage.getItem("ids")) || [];
-          // console.log(existingIds,id)
           const updatedIds = [...existingIds, id];
           localStorage.setItem("ids", JSON.stringify(updatedIds));
         }
       });
   };
-
   // return loading spinner if blogs data is not available
   if (loading) return <LoadingSpinner></LoadingSpinner>;
   if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
@@ -199,21 +184,16 @@ const Blogs = () => {
         </div>
         <div className="mt-6 flex justify-center w-full">
           <button
-            disabled={loading}
             className=" btn-primary min-w-32 flex justify-center items-center w-full max-w-32"
           >
-            {loading ? (
-              <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>
-            ) : (
-              "Submit"
-            )}
+              Submit
           </button>
         </div>
       </form>
     </section>
   ) : (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
-      {/* user info section  Jnpmeu */}
+      {/* user info section */}
       <section className=" w-[30%]">
         <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
           <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
@@ -373,13 +353,12 @@ const Blogs = () => {
                       <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
                       <span>{blog?.location}</span>
                     </h3>
-                    {idsFromLS?.map((id) => (
-                      <div key={id}>
-                        {idsFromLS.includes(blog?._id) ? (
-                          <div>
+                      <div  >
+                        { blog?.reactedBy?.includes(user.email)? (
+                         <div>
                             <FaHeart className="text-2xl text-red-500" />
-                          </div>
-                        ) : (
+                          </div> 
+                        ) : ( 
                           <button
                             onClick={() => handleReactOnPost(blog?._id)}
                             title={`${blog?.react || 0} reactions`}
@@ -388,9 +367,8 @@ const Blogs = () => {
                             {blog?.react || 0}
                             <CiHeart className="text-2xl text-gray-500" />
                           </button>
-                        )}
+                        )} 
                       </div>
-                    ))}
                   </div>
                   <div className="flex items-center mt-8 space-x-4">
                     <Link href={`/dashboard/profile/${blog?._id}`}>
