@@ -37,6 +37,7 @@ const Blogs = () => {
 
   // load blogs
   const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch);
+  console.log(blogs,loading)
 
   // get session and then user
   const session = useSession();
@@ -126,7 +127,6 @@ const Blogs = () => {
   };
   // return loading spinner if blogs data is not available
   if (loading) return <LoadingSpinner></LoadingSpinner>;
-  if (!session?.data?.user) return <LoadingSpinner></LoadingSpinner>;
 
   return showForm ? (
     <section className=" flex justify-center w-full mt-10 ">
@@ -354,7 +354,7 @@ const Blogs = () => {
                       <span>{blog?.location}</span>
                     </h3>
                       <div  >
-                        { blog?.reactedBy?.includes(user.email)? (
+                        { blog?.reactedBy?.includes(user?.email)? (
                          <div>
                             <FaHeart className="text-2xl text-red-500" />
                           </div> 
