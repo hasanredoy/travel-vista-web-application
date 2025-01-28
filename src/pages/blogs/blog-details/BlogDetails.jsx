@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
-import { FaCopy, FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
+import { FaCopy, FaHeart, FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
 import { FaLocationDot, FaTrash } from "react-icons/fa6";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import swal from "sweetalert";
@@ -52,6 +52,24 @@ const BlogDetails = ({ id }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleReactOnPost = (id) => {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}&email=${user.email}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.data?.modifiedCount > 0) {
+          setRefetch(refetch + 1);
+          const existingIds = JSON.parse(localStorage.getItem("ids")) || [];
+          const updatedIds = [...existingIds, id];
+          localStorage.setItem("ids", JSON.stringify(updatedIds));
+        }
+      });
   };
 
   // handler to copy user blog
@@ -170,21 +188,28 @@ const BlogDetails = ({ id }) => {
                 </button>
                 <h2 className="text-xl font-bold">{blogDetails?.title}</h2>
                 <p className="mt-4 ">{blogDetails?.experience}</p>
-                <div className=" flex justify-between">
+                <div className=" flex justify-between ">
                   <h3 className=" flex gap-2 items-center my-3">
                     {" "}
                     <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
                     <span>{blogDetails?.location}</span>
                   </h3>
-                  <button className="flex gap-2 items-center">
-                    <span title={`${blogDetails?.react} reactions`}>
-                      {blogDetails?.react}
-                    </span>
-                    <CiHeart
-                      title="click to react"
-                      className=" text-2xl text-red-500"
-                    ></CiHeart>
-                  </button>
+                  <div className="mt-3">
+                    {blogDetails?.reactedBy?.includes(user?.email) ? (
+                      <div>
+                        <FaHeart className="text-2xl text-red-500" />
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => handleReactOnPost(blog?._id)}
+                        title={`${blog?.react || 0} reactions`}
+                        className="flex gap-2 items-center"
+                      >
+                        {blogDetails?.react || 0}
+                        <CiHeart className="text-2xl text-gray-500" />
+                      </button>
+                    )}
+                  </div>
                 </div>
                 <div className="flex bg-base-200 items-center mt-8 space-x-4">
                   <Link href={"/"}>

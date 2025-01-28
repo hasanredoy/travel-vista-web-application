@@ -353,7 +353,7 @@ const Blogs = () => {
                       <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
                       <span>{blog?.location}</span>
                     </h3>
-                      <div  >
+                      <div className="mt-3"  >
                         { blog?.reactedBy?.includes(user?.email)? (
                          <div>
                             <FaHeart className="text-2xl text-red-500" />
