@@ -17,6 +17,8 @@ import moment from "moment";
 import { IoMdCopy } from "react-icons/io";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
+import useLoadCount from "@/hooks/useLoadCount";
+import Pagination from "@/components/reuseble/Pagination";
 
 const Blogs = () => {
   // state to handle user blogs
@@ -29,19 +31,21 @@ const Blogs = () => {
   // state to refresh blogs
   const [refetch, setRefetch] = useState(0);
 
-  // state look after user react on blog
-  const [idsFromLS, setIdsFromLS] = useState([]);
-
   // state to handle copy blog
   const [copied, setCopied] = useState(true);
 
+  
+  const blogsCount = useLoadCount('blog-data/count')
+  const [currentPage , setCurrentPage] = useState(0)
   // load blogs
   const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch);
-  console.log(blogs,loading)
 
   // get session and then user
   const session = useSession();
   const user = session?.data?.user;
+
+
+
   const handleAddBlog = (e) => {
     e.preventDefault();
     const blog_info = {
@@ -61,6 +65,7 @@ const Blogs = () => {
       .then((res) => {
         if (res.data?.data?.insertedId) {
           setRefetch(refetch+1)
+          setShowForm(!showForm)
           swal("Blog added successfully", "", "success");
         }
         if (res.data?.message) {
@@ -319,7 +324,7 @@ const Blogs = () => {
                   <FaTrash></FaTrash>
                 </button>
               )}
-              <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg">
+              <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg min-h-full">
                 <article>
                   <button
                     onClick={() => handleCopy(blog?.experience)}
@@ -355,7 +360,8 @@ const Blogs = () => {
                     </h3>
                       <div className="mt-3"  >
                         { blog?.reactedBy?.includes(user?.email)? (
-                         <div>
+                         <div className="flex gap-2 items-center">
+                            {blog?.react || 0}
                             <FaHeart className="text-2xl text-red-500" />
                           </div> 
                         ) : ( 
@@ -409,6 +415,10 @@ const Blogs = () => {
             </div>
           ))}
         </div>
+         {/* pagination section  */}
+      <section>
+     {blogs?.length>5&&<Pagination count={blogsCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>}
+      </section>
       </section>
     </main>
   );

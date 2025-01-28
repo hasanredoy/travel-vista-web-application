@@ -7,7 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
-import { FaCopy, FaHeart, FaRegArrowAltCircleRight, FaStar } from "react-icons/fa";
+import {
+  FaCopy,
+  FaHeart,
+  FaRegArrowAltCircleRight,
+  FaStar,
+} from "react-icons/fa";
 import { FaLocationDot, FaTrash } from "react-icons/fa6";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import swal from "sweetalert";
@@ -23,44 +28,18 @@ const BlogDetails = ({ id }) => {
   const session = useSession();
   const user = session?.data?.user;
 
-  // handler to delete user blogs
-  const handleDeleteBlog = (id) => {
-    try {
-      swal({
-        title: "Are you sure?",
-        text: "You wanna Delete your blog!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((willDelete) => {
-        if (willDelete) {
-          fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}`, {
-            method: "DELETE",
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              if (data?.data.deletedCount > 0) {
-                setRefetch(refetch + 1);
-                swal("Blog has been deleted!", {
-                  icon: "success",
-                });
-              }
-            });
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
 
   const handleReactOnPost = (id) => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}&email=${user.email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}&email=${user.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.data?.modifiedCount > 0) {
@@ -166,15 +145,8 @@ const BlogDetails = ({ id }) => {
         {/* card section  */}
         <section className=" w-[68%] flex justify-center ">
           <div className="max-w-lg p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg max-h-[368px]">
-            <div className="max-w-lg max-h-[368px] border relative bg-base-200 shadow-md p-6 overflow-hidden rounded-lg">
-              {user?.email == blogDetails?.email && (
-                <button
-                  onClick={() => handleDeleteBlog(blog?._id)}
-                  className=" absolute top-1 text-gray-600 right-1 z-20 hover:text-red-500 "
-                >
-                  <FaTrash></FaTrash>
-                </button>
-              )}
+            <div className="max-w-lg max-h-[368px] border relative bg-base-200 shadow-md p-6 overflow-hidden rounded-lg min-h-full">
+             
               <article>
                 <button
                   onClick={handleCopy}
@@ -186,8 +158,9 @@ const BlogDetails = ({ id }) => {
                     <FaCopy className="text-sm"></FaCopy>
                   )}
                 </button>
+              
                 <h2 className="text-xl font-bold">{blogDetails?.title}</h2>
-                <p className="mt-4 ">{blogDetails?.experience}</p>
+                <p className="mt-4  max-w-md">{blogDetails?.experience}</p>
                 <div className=" flex justify-between ">
                   <h3 className=" flex gap-2 items-center my-3">
                     {" "}
@@ -196,13 +169,14 @@ const BlogDetails = ({ id }) => {
                   </h3>
                   <div className="mt-3">
                     {blogDetails?.reactedBy?.includes(user?.email) ? (
-                      <div>
+                      <div className="flex gap-2 items-center">
+                        {blogDetails?.react || 0}
                         <FaHeart className="text-2xl text-red-500" />
                       </div>
                     ) : (
                       <button
-                        onClick={() => handleReactOnPost(blog?._id)}
-                        title={`${blog?.react || 0} reactions`}
+                        onClick={() => handleReactOnPost(blogDetails?._id)}
+                        title={`${blogDetails?.react || 0} reactions`}
                         className="flex gap-2 items-center"
                       >
                         {blogDetails?.react || 0}
