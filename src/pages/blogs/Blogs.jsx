@@ -38,7 +38,7 @@ const Blogs = () => {
   const blogsCount = useLoadCount('blog-data/count')
   const [currentPage , setCurrentPage] = useState(0)
   // load blogs
-  const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch);
+  const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch,currentPage);
 
   // get session and then user
   const session = useSession();
@@ -416,7 +416,7 @@ const Blogs = () => {
           ))}
         </div>
          {/* pagination section  */}
-      <section>
+      <section className="mt-4">
      {blogs?.length>5&&<Pagination count={blogsCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>}
       </section>
       </section>

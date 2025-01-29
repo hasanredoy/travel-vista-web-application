@@ -5,6 +5,8 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   const userEmail = await request.nextUrl.searchParams.get("user-blog");
   const sortVal = await request.nextUrl.searchParams.get("sort");
+  const page = parseInt( await request.nextUrl.searchParams.get("page"))
+  const size = parseInt(await request.nextUrl.searchParams.get("size"))
   let sort = {};
   let query = {};
   try {
@@ -21,7 +23,7 @@ export const GET = async (request) => {
     }
     const db = await connectDB();
     const blogsCollection = await db.collection("blogs");
-    const BlogsData = await blogsCollection.find(query).sort(sort).toArray();
+    const BlogsData = await blogsCollection.find(query).sort(sort).limit(size).skip(size*page).toArray();
     // console.log(BlogsData)
     return NextResponse.json({ data: BlogsData });
   } catch (error) {
