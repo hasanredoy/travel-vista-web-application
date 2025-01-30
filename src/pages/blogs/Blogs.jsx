@@ -417,7 +417,7 @@ const Blogs = () => {
         </div>
          {/* pagination section  */}
       <section className="mt-4">
-     {blogs?.length>5&&<Pagination count={blogsCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>}
+     <Pagination count={blogsCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>
       </section>
       </section>
     </main>
