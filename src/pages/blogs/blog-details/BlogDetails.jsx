@@ -24,10 +24,8 @@ const BlogDetails = ({ id }) => {
   // state to handle copy blog
   const [copied, setCopied] = useState(true);
 
-  //  get user form session
-  const session = useSession();
-  const user = session?.data?.user;
-
+   //  get user from session 
+   const {user} = useSession()?.data||{}
   
 
   const handleReactOnPost = (id) => {
@@ -64,9 +62,9 @@ const BlogDetails = ({ id }) => {
   if (!user) return <LoadingSpinner></LoadingSpinner>;
   return (
     user && (
-      <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
+      <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen md:gap-10 lg:gap-0">
         {/* user info section  */}
-        <section className=" w-[30%]">
+        <section className=" hidden md:block md:w-[40%] lg:w-[30%]">
           <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
             <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
               <img
@@ -143,7 +141,7 @@ const BlogDetails = ({ id }) => {
           </div>
         </section>
         {/* card section  */}
-        <section className=" w-[68%] flex justify-center ">
+        <section className="w-full md:w-[58%] lg:w-[68%] flex justify-center ">
           <div className="max-w-lg p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg max-h-[368px]">
             <div className="max-w-lg max-h-[368px] border relative bg-base-200 shadow-md p-6 overflow-hidden rounded-lg min-h-full">
              
