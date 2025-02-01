@@ -1,11 +1,11 @@
 const { connectDB } = require("@/lib/connectDB")
 const { NextResponse } = require("next/server")
 
-const GET =async()=>{
+export const GET =async()=>{
   try {
     const db = await connectDB()
     const reviews = await db.collection("reviews").find().toArray()
-    return NextResponse.json({reviews})
+    return NextResponse.json({data:reviews})
   } catch (error) {
     console.log(error)
     return NextResponse.json({})
