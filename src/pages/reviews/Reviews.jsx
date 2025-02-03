@@ -6,7 +6,13 @@ import moment from "moment";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
-import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaTrash,
+  FaTwitter,
+} from "react-icons/fa";
 import { MdAdd } from "react-icons/md";
 import { RiStarSmileFill } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
@@ -17,23 +23,48 @@ import swal from "sweetalert";
 import { RiEmotionUnhappyLine } from "react-icons/ri";
 import { MdSentimentNeutral } from "react-icons/md";
 import { RiEmotionHappyLine } from "react-icons/ri";
-
-
-
-
+import axios from "axios";
+import Pagination from "@/components/reuseble/Pagination";
+import useLoadCount from "@/hooks/useLoadCount";
 
 const Reviews = () => {
+  
+  // state for current page 
+  const [ currentPage , setCurrentPage]=useState(0)
+  // state for refetch data
+  const [refetch, setRefetch] = useState(0);
   // state show  reviews form
   const [showForm, setShowForm] = useState(false);
+  // state to show user review
+  const [userReview, setUserReview] = useState(false);
   // rating state
   const [rating, setRating] = useState(0);
+  // object to style rating stars 
   const myStyles = {
     itemShapes: ThinStar,
-    activeFillColor: rating > 0 && rating < 3 ? "#fd0707" : rating === 3 ? "#3f3a3a" : rating > 3 ? "#ffb700" : "",
-    inactiveFillColor: "#fbf1a9",
+    activeFillColor:
+      rating > 0 && rating < 3
+        ? "#fd0707"
+        : rating === 3
+        ? "#3f3a3a"
+        : rating > 3
+        ? "#ffb700"
+        : "#ffb700",
+    inactiveFillColor:
+      rating > 0 && rating < 3
+        ? "#fd07075b"
+        : rating === 3
+        ? "#3f3a3a23"
+        : rating > 3
+        ? "#fbf1a9"
+        : "#fbf1a9",
   };
+
+  const count = useLoadCount('reviews/count')
+  console.log(count)
+
   // load reviews
-  const [reviews, loading] = useReviewsData();
+  const [reviews, loading] = useReviewsData(refetch,userReview,currentPage);
 
   //  get user from session
   const { user } = useSession()?.data || {};
@@ -49,10 +80,50 @@ const Reviews = () => {
       description: e.target.description.value,
       rating,
     };
-    if (rating < 0) {
-      return swal("Please add rating", "", "error");
+    if (rating < 1) {
+      return swal("Rating required!", "", "error");
     }
-    console.log(review);
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews`, review)
+      .then((res) => {
+        if (res.data?.data?.insertedId) {
+          setRefetch(refetch + 1);
+          setShowForm(!showForm);
+          swal("Review added successfully", "", "success");
+        }
+        if (res.data?.message) {
+          swal("You can only submit one review!", "", "error");
+        }
+      });
+  };
+  // handler to delete user review
+  const handleDeleteReview = (id) => {
+    try {
+      swal({
+        title: "Are you sure?",
+        text: "You wanna Delete your review!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews?id=${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data?.data?.deletedCount > 0) {
+                setRefetch(refetch + 1);
+                swal("Review has been deleted!", {
+                  icon: "success",
+                });
+              }
+            });
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (loading) return <LoadingSpinner></LoadingSpinner>;
@@ -72,9 +143,26 @@ const Reviews = () => {
         </button>
         {/* rating inp  */}
         <h4>
-          {rating > 0 && rating < 3 ? <span className=" flex gap-1 items-center ml-[88px] text-red-500 font-semibold">Unhappy <RiEmotionUnhappyLine className="text-2xl"></RiEmotionUnhappyLine></span> : ""}
-          {rating == 3 && <span className="  flex gap-1 items-center ml-[165px] text-neutral-500 font-semibold">Neutral <MdSentimentNeutral className="text-2xl"></MdSentimentNeutral></span>}  
-          {rating >= 4 && <span className=" flex gap-1 items-center  ml-[240px] text-green-600 font-semibold">Happy <RiEmotionHappyLine className="text-2xl"></RiEmotionHappyLine></span>}
+          {rating > 0 && rating < 3 ? (
+            <span className=" flex gap-1 items-center ml-[88px] text-red-500 font-semibold">
+              Unhappy{" "}
+              <RiEmotionUnhappyLine className="text-2xl"></RiEmotionUnhappyLine>
+            </span>
+          ) : (
+            ""
+          )}
+          {rating == 3 && (
+            <span className="  flex gap-1 items-center ml-[165px] text-neutral-500 font-semibold">
+              Neutral{" "}
+              <MdSentimentNeutral className="text-2xl"></MdSentimentNeutral>
+            </span>
+          )}
+          {rating >= 4 && (
+            <span className=" flex gap-1 items-center  ml-[240px] text-green-600 font-semibold">
+              Happy{" "}
+              <RiEmotionHappyLine className="text-2xl"></RiEmotionHappyLine>
+            </span>
+          )}
         </h4>
         <div className=" flex justify-center  mb-3">
           <Rating
@@ -169,21 +257,29 @@ const Reviews = () => {
             </button>
             <button
               title="Click to see your blogs"
-              // onClick={() => setUserBlogs(!userBlogs)}
-              className={`btn rounded-xl`}
+              onClick={() => setUserReview(!userReview)}
+              className={`btn rounded-xl ${userReview?"bg-gray-700 text-white":"bg-gray-200 text-black"}`}
             >
               Your Review
             </button>
           </div>
         </div>
         {/* cards  */}
-        <div className=" grid grid-cols-2 gap-6">
+        <div className=" grid grid-cols-2 gap-6 mb-4">
           {reviews?.map((review, index) => (
             <div
               key={index}
               className="container flex flex-col w-full max-w-lg mx-auto  rounded-md 
-          bg-base-200 bg-opacity-20 border border-gray-300 shadow-md  "
+          bg-base-200 bg-opacity-20 border border-gray-300 shadow-md relative "
             >
+              {user?.email == review?.email && (
+                <button
+                  onClick={() => handleDeleteReview(review?._id)}
+                  className=" absolute top-1 hover:text-gray-600 right-1 z-20 text-red-600 "
+                >
+                  <FaTrash></FaTrash>
+                </button>
+              )}
               <div className="p-4">
                 <div className="  text-sm md:text-base">
                   <p>{review?.description}</p>
@@ -218,6 +314,7 @@ const Reviews = () => {
             </div>
           ))}
         </div>
+        <Pagination count={count} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage} ></Pagination>
       </section>
     </main>
   );
