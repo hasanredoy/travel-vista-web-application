@@ -10,7 +10,6 @@ const useReviewsData = () => {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         setReviews(data.data);
         setLoading(false);
       });
