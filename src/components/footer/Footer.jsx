@@ -6,7 +6,7 @@ import microsoft from '../../../public/assets/footer/png-transparent-microsoft-s
 
 const Footer = () => {
   return (
-    <footer className="footer mt-10 px-5 lg:px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]  p-4  lg:p-10">
+    <footer className="footer  px-5 lg:px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]  p-4  lg:p-10">
       <section className="flex  flex-col md:flex-row gap-10  min-w-[100%]  w-full  ">
         <div className="flex-1 ">
           <Link href={"/"}>

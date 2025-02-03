@@ -144,7 +144,7 @@ const Reviews = () => {
         {/* rating inp  */}
         <h4>
           {rating > 0 && rating < 3 ? (
-            <span className=" flex gap-1 items-center ml-[88px] text-red-500 font-semibold">
+            <span className=" flex gap-1 items-center ml-[26px] md:ml-[88px] text-red-500 font-semibold">
               Unhappy{" "}
               <RiEmotionUnhappyLine className="text-2xl"></RiEmotionUnhappyLine>
             </span>
@@ -152,13 +152,13 @@ const Reviews = () => {
             ""
           )}
           {rating == 3 && (
-            <span className="  flex gap-1 items-center ml-[165px] text-neutral-500 font-semibold">
+            <span className="  flex gap-1 items-center ml-[96px] md:ml-[165px] text-neutral-500 font-semibold">
               Neutral{" "}
               <MdSentimentNeutral className="text-2xl"></MdSentimentNeutral>
             </span>
           )}
           {rating >= 4 && (
-            <span className=" flex gap-1 items-center  ml-[240px] text-green-600 font-semibold">
+            <span className=" flex gap-1 items-center  ml-[166px] md:ml-[240px] text-green-600 font-semibold">
               Happy{" "}
               <RiEmotionHappyLine className="text-2xl"></RiEmotionHappyLine>
             </span>
@@ -191,7 +191,7 @@ const Reviews = () => {
   ) : (
     <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto flex gap-10">
       {/* user info section */}
-      <section className=" w-[30%]">
+      <section className=" hidden md:block  md:w-[40%] lg:w-[30%]">
         <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
           <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
             <img
@@ -243,7 +243,7 @@ const Reviews = () => {
         </div>
       </section>
       {/* cards section  */}
-      <section className=" w-[68%]">
+      <section className=" w-full md:w-[58%] lg:w-[68%]">
         {/* sort and add new blog button div  */}
         <div className=" mb-10 ">
           <div className=" flex gap-10">
@@ -265,12 +265,12 @@ const Reviews = () => {
           </div>
         </div>
         {/* cards  */}
-        <div className=" grid grid-cols-2 gap-6 mb-4">
+        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {reviews?.map((review, index) => (
             <div
               key={index}
               className="container flex flex-col w-full max-w-lg mx-auto  rounded-md 
-          bg-base-200 bg-opacity-20 border border-gray-300 shadow-md relative "
+          bg-base-200 bg-opacity-20 border border-gray-300 shadow-md relative md:max-w-sm  "
             >
               {user?.email == review?.email && (
                 <button
@@ -281,7 +281,7 @@ const Reviews = () => {
                 </button>
               )}
               <div className="p-4">
-                <div className="  text-sm md:text-base">
+                <div className="text-base">
                   <p>{review?.description}</p>
                 </div>
                 <div
