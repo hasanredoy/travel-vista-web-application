@@ -69,9 +69,9 @@ const handleLogout=()=>{
       </Link>
       <Link
         href={"/start_hosting"}
-        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-2 hover:rounded-md transition-all  ${
           path == "/start_hosting" &&
-          "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
+          "text-sky-500 bg-white  max-w-40 px-2 rounded-md"
         }`}
       >
         <MdAddHomeWork className="text-xl"></MdAddHomeWork> Start Hosting{" "}
@@ -105,9 +105,9 @@ const handleLogout=()=>{
       </Link>
       <Link
         href={"/contact_us"}
-        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-5 hover:rounded-md transition-all  ${
+        className={`text-sm md:text-base font-bold flex gap-2 items-center hover:text-sky-500  hover:bg-white hover:max-w-40 hover:px-2 hover:rounded-md transition-all  ${
           path == "/contact_us" &&
-          "text-sky-500 bg-white  max-w-40 px-5 rounded-md"
+          "text-sky-500 bg-white  max-w-40 px-2 rounded-md"
         }`}
       >
         <MdContactSupport className="text-xl"></MdContactSupport> Contact us{" "}
@@ -143,7 +143,7 @@ const handleLogout=()=>{
             </div>
             <ul
               tabIndex={0}
-              className=" h-full dropdown-content dropDown bg-[#a2faf6] shadow-lg shadow-blue-300 bg-opacity-90   w-[230px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[50] mt-2 absolute -left-5 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
+              className=" h-full dropdown-content dropDown bg-[#daf8f7e8] shadow-lg shadow-blue-200 bg-opacity-90   w-[230px] md:w-[240px] lg:w-[320px]    min-h-screen  z-[50] mt-2 absolute -left-5 md:-left-14 lg:-left-32 flex flex-col gap-3 pl-5 md:pl-16 lg:pl-20 pt-5 "
             >
               {navLinks}
               <div>
@@ -172,7 +172,7 @@ const handleLogout=()=>{
         <div className="navbar-end">
           {/* user image  */}
           <div className="mr-5">
-            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full border p-1 border-[#003f3c]" ></Image>}
+            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full hidden md:block border p-1 border-[#003f3c]" ></Image>}
           </div>
           <div>
             {/* login and logout button  */}
