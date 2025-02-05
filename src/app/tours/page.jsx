@@ -2,7 +2,13 @@ import Tours from "@/pages/tour/Tours";
 import { Suspense } from "react";
 import { FaSpinner } from "react-icons/fa";
 
-const page = () => {
+export const metadata = {
+  title: "Explore Tours",
+  description: "Find and book the best tours and experiences around the globe. Adventure awaits with Travel Vista!",
+};
+
+
+const ToursPage = () => {
   return (
     <Suspense
       fallback={
@@ -16,4 +22,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ToursPage;

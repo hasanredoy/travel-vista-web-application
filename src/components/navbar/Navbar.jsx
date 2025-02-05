@@ -186,7 +186,7 @@ const handleLogout=()=>{
             )}
             {session?.status === "authenticated" && (
               <button className="btn-primary flex justify-center items-center gap-2" onClick={handleLogout}>
-                Logout <MdLogout className=" text-base  md:text-xl"></MdLogout>
+               <span className=" md:blog hidden"> Logout</span> <MdLogout className=" text-base  md:text-xl"></MdLogout>
               </button>
             )}
           </div>
