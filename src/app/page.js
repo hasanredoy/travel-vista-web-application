@@ -12,6 +12,7 @@ import TravelStats from "@/pages/home/Travel-stats/TravelStats";
 import Blogs from "@/pages/home/Blogs/Blogs";
 
 export default function Home() {
+  console.log(object)
   return (
     <main className="overflow-hidden">
       <Hero></Hero>
