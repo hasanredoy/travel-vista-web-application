@@ -16,8 +16,17 @@ import { GoDotFill } from "react-icons/go";
 import { TbMessageChatbot } from "react-icons/tb";
 import { signOut, useSession } from "next-auth/react";
 import { FiLoader } from "react-icons/fi";
+import { useState } from "react";
+import { RxDashboard } from "react-icons/rx";
+
+
+
 
 const Navbar = () => {
+
+  // state for dashboard dropdown
+  const [showDropdown , setShowDropdown] = useState(false) 
+
   //  get pathname
   const path = usePathname();
   const session = useSession();
@@ -169,12 +178,8 @@ const handleLogout=()=>{
             ></Image>
           </Link>
         </div>
-        <div className="navbar-end">
-          {/* user image  */}
-          <div className="mr-5">
-            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full hidden md:block border p-1 border-[#003f3c]" ></Image>}
-          </div>
-          <div>
+        <div className="navbar-end relative">
+            <div>
             {/* login and logout button  */}
             {session?.status === "loading" && <FiLoader className=" animate-spin text-2xl font-bold text-black"></FiLoader>}
             {session?.status === "unauthenticated" && (
@@ -184,12 +189,19 @@ const handleLogout=()=>{
                 </button>
               </Link>
             )}
-            {session?.status === "authenticated" && (
-              <button className="btn-primary flex justify-center items-center gap-2" onClick={handleLogout}>
-               <span className=" md:blog hidden"> Logout</span> <MdLogout className=" text-base  md:text-xl"></MdLogout>
-              </button>
-            )}
+           
           </div>
+          {/* user image  */}
+          <button onClick={()=>setShowDropdown(!showDropdown)} className="ml-5">
+            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full  md:block border p-0.5 border-[#6bfaf3]" ></Image>}
+          </button>
+        {showDropdown&&<div onMouseLeave={()=>setShowDropdown(!showDropdown)} className=" flex flex-col gap-3 p-4 absolute top-14 right-0 z-50 bg-gray-100 border shadow-lg rounded-md justify-center  ">
+              <Link className=" text-center flex justify-center items-center gap-2 py-2 px-3 border bg-gray-300 text-black rounded-md" href={'/dashboard'}>Dashboard <RxDashboard></RxDashboard></Link>
+              <button className="btn-primary flex justify-center items-center gap-2" onClick={handleLogout}>
+               <span> Logout</span> <MdLogout className=" text-base  md:text-xl"></MdLogout>
+              </button>
+          </div>}
+    
         </div>
       </section>
     </nav>
