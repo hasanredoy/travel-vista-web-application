@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 
 const useLoadUserRole = () => {
-  const [role,setRole] = useState("")
+  const [role,setRole] = useState("user")
   const {user} = useSession()?.data||{}
   useEffect(()=>{
     const email ={email:user?.email}
