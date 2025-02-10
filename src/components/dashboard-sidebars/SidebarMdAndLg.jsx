@@ -50,6 +50,7 @@ const SidebarMdAndLg = () => {
   return (
     <section
       className=" min-h-dvh bg-gradient-to-r from-white via-[#b8f3f5] to-white py-4 flex items-center flex-col gap-3 justify-between
+      h-full
       drop-shadow-[3px_0_1px_rgba(0,0,0,0.3)] 
       "
     >

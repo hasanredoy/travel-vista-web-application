@@ -1,8 +1,8 @@
-import Profile from '@/pages/dashboard/common/Profile'
+import ProfilePage from '@/pages/dashboard/common/ProfilePage'
 import React from 'react'
 
-const ProfilePage = () => {
-  return <Profile></Profile>
+const Profile = () => {
+  return <ProfilePage></ProfilePage>
 }
 
-export default ProfilePage
+export default Profile
