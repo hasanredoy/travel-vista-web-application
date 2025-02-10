@@ -137,6 +137,9 @@ const handleLogout=()=>{
       </Link>
     </>
   );
+  if(path.includes("dashboard")){
+    return <div></div>
+  }
   return (
     <nav className="shadow-lg  nav relative ">
       <section className="navbar w-[96%] mx-auto lg:w-[85%]">

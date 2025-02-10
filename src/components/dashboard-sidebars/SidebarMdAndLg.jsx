@@ -14,14 +14,16 @@ import {
   MdContactSupport,
   MdLogout,
 } from "react-icons/md";
-import { LiaBlogSolid } from "react-icons/lia";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { ImHome } from "react-icons/im";
 import { TbMessageChatbot } from "react-icons/tb";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import swal from "sweetalert";
+import Image from "next/image";
 
 const SidebarMdAndLg = () => {
+  const { user } = useSession()?.data || {};
+
   // get pathname
   const pathname = usePathname();
   // get user role
@@ -53,6 +55,24 @@ const SidebarMdAndLg = () => {
     >
       {/* dynamic links div  */}
       <div className=" w-full min-w-full">
+        {/* user info sect  */}
+          <div className="flex items-center space-x-4  justify-center w-full">
+          <Image
+            src={user?.image}
+            width={40}
+            title={user?.name}
+            height={40}
+            alt=""
+            className="w-10 h-10 rounded-full dark:bg-gray-500"
+          />
+          {/* user name and details btn container div  */}
+          <div className=" ">
+            <div>
+              <h3 className="text-base font-medium">{user?.name}</h3>
+            </div>
+          </div>
+        </div>
+        <div className="divider"></div>
         {/* links for user  */}
         {role == "user" && (
           <div className=" flex gap-3 flex-col w-full min-w-full">
@@ -78,7 +98,7 @@ const SidebarMdAndLg = () => {
             }`}
             >
               My Blogs
-              <LiaBlogSolid className="text-2xl"></LiaBlogSolid>
+              <TbMessageChatbot className="text-2xl"></TbMessageChatbot>
             </Link>
             {/* bookings  */}
             <Link
@@ -133,7 +153,7 @@ const SidebarMdAndLg = () => {
             }`}
             >
               My Blogs
-              <LiaBlogSolid className=" text-2xl"></LiaBlogSolid>
+              <TbMessageChatbot className=" text-2xl"></TbMessageChatbot>
             </Link>
             {/* list item  */}
             <Link
@@ -199,7 +219,7 @@ const SidebarMdAndLg = () => {
             }`}
             >
               My Blogs
-              <LiaBlogSolid className=" text-2xl"></LiaBlogSolid>
+              <TbMessageChatbot className=" text-2xl"></TbMessageChatbot>
             </Link>
             {/* list item  */}
             <Link
@@ -296,15 +316,15 @@ const SidebarMdAndLg = () => {
         >
           <MdContactSupport className="text-xl"></MdContactSupport> Contact us{" "}
         </Link>
-<div className="pl-[80px]">
-<button
-          className="btn-primary flex justify-center items-center gap-2 max-w-36"
-          onClick={handleLogout}
-        >
-          <span> Logout</span>{" "}
-          <MdLogout className=" text-base  md:text-xl"></MdLogout>
-        </button>
-</div>
+        <div className="pl-[80px]">
+          <button
+            className="btn-primary flex justify-center items-center gap-2 max-w-36"
+            onClick={handleLogout}
+          >
+            <span> Logout</span>{" "}
+            <MdLogout className=" text-base  md:text-xl"></MdLogout>
+          </button>
+        </div>
       </div>
     </section>
   );

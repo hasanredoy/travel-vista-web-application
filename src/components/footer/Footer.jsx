@@ -1,12 +1,15 @@
+'use client'
 import Image from "next/image";
 import logo from "../../../public/assets/logo.png";
 import Link from "next/link";
 import playstore from '../../../public/assets/footer/png-transparent-google-play-computer-icons-android-google-text-label-logo-removebg-preview.png'
 import microsoft from '../../../public/assets/footer/png-transparent-microsoft-store-windows-10-android-app-store-logo-text-logo-microsoft-store-removebg-preview.png'
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const path = usePathname()
   return (
-    <footer className="footer  px-5 lg:px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]  p-4  lg:p-10">
+    <footer className={`"footer  px-5 lg:px-28 overflow-hidden bg-gradient-to-b from-[#e7f7f6] via-[#bef1f5] to-[#a8f7f1]  p-4  lg:p-10 ${path.includes('dashboard')&&"hidden md:block"}`}>
       <section className="flex  flex-col md:flex-row gap-10  min-w-[100%]  w-full  ">
         <div className="flex-1 ">
           <Link href={"/"}>
