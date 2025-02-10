@@ -1,7 +1,7 @@
 
 const UserPage = () => {
   return (
-    <div>
+    <div className=" fond">
       hello 
     </div>
   )
