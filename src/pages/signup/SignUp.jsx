@@ -47,6 +47,7 @@ const SingUp = () => {
       password: form.password.value,
       type:"user",
       date:new Date(),
+      bio:form.bio.value
     };
     axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post-user`,userData)
     .then(res=>{
@@ -154,6 +155,20 @@ const SingUp = () => {
                 >
                   {showPass ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}
                 </a>
+              </div>
+              {/* bio div  */}
+              <div className="form-control relative">
+                <label className="label">
+                  <span className="   text-sm font-bold lg:text-base ">
+                    Bio 
+                  </span>
+                </label>
+                <textarea
+                  placeholder="Bio.."
+                  className="textarea textarea-bordered"
+                  required
+                  name="bio"
+                />
               </div>
               <div className="mt-6 flex justify-center w-full">
                 <button

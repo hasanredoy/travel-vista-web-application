@@ -64,7 +64,8 @@ const handler = NextAuth({
           email,
           registerDate: new Date(),
           type:'user',
-          image
+          image,
+          bio:"Travel enthusiast and blogger who loves exploring new destinations and sharing experiences."
         }
         const findUser = await db.collection("users").findOne({email})
         if(!findUser){
