@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import Link from "next/link";

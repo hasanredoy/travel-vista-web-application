@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Heading from "@/components/reuseble/Heading";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
