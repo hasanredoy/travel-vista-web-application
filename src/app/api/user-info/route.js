@@ -41,6 +41,7 @@ const findUser = await userCollection.findOne({email:emailFromClient?.email})
       reactionsGained,
       destinationCovered: getRandomInteger(),
       bio:findUser?.bio?findUser?.bio:"Travel enthusiast and blogger who loves exploring new destinations and sharing experiences.",
+      about:findUser?.about_user?findUser?.about_user:"I have been traveling for over 5 years, documenting my journeys through blogs and reviews. My favorite destinations include Japan, Italy, and New Zealand.",
     };
   // console.log(data)
     return NextResponse.json({ data });
