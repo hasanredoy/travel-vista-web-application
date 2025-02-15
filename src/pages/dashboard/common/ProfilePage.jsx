@@ -15,6 +15,9 @@ const ProfilePage = () => {
   const { user } = useSession()?.data || {};
 
   const [userInfo, setUserInfo] = useState({});
+  const handleSave=()=>{
+    
+  }
 
   useEffect(() => {
     axios
@@ -111,7 +114,7 @@ const ProfilePage = () => {
         </div>
         <div className={` ${!editUserBio&&"hidden"}  flex gap-4 justify-end w-full mt-3`}>
           <button className=" ">Cancel</button>
-          <button disabled={disableSaveBtn} className=" py-1 px-4 border rounded-md text-white bg-green-500">Save</button>
+          <button onClick={handleSave} disabled={disableSaveBtn} className=" py-1 px-4 border rounded-md text-white bg-green-500">Save</button>
         </div>
       </div>
     </div>
