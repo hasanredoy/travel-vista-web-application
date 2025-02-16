@@ -7,17 +7,23 @@ import { FaPen } from "react-icons/fa6";
 import { MdCancel } from "react-icons/md";
 
 const ProfilePage = () => {
-  // state to disable save button 
-  const [disableSaveBtn, setDisableSaveBtn]= useState(true)
-  // state to edit user bio 
+  // state to disable save button
+  const [disableSaveBtn, setDisableSaveBtn] = useState(true);
+  // state to edit user bio
   const [editUserBio, setEditUserBio] = useState(false);
   // get user
   const { user } = useSession()?.data || {};
 
   const [userInfo, setUserInfo] = useState({});
-  const handleSave=()=>{
-    
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    const info = {
+      bio:form.bio.value,
+      about:form.about.value,
+    }
+    console.log(info)
+  };
 
   useEffect(() => {
     axios
@@ -31,7 +37,7 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-[#b8f3f51e] py-6">
-      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-[0_0_15px_rgba(184,243,245,0.3)]  pb-0 pl-8 pt-6 pr-8">
+      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-xl shadow-[0_0_15px_rgba(184,243,245,0.3)]  pb-0 pl-8 pt-6 pr-8">
         {/* Profile Header */}
         <div className="text-center">
           <img
@@ -42,22 +48,35 @@ const ProfilePage = () => {
           <h1 className="text-3xl font-bold mt-4 text-gray-800">
             {user?.name}
           </h1>
-      <div className={` justify-center flex mt-2 gap-2 ${editUserBio ? "block" : "hidden"}`}>
-      <input
-            type="text"
-            defaultValue={userInfo?.bio}
-            onChange={()=>setDisableSaveBtn(false)}
-            className={`${editUserBio ? "block" : "hidden"} w-full max-w-[605px] outline-none focus:outline-1 outline-gray-200 px-2 rounded-md`}
-          />
-          <MdCancel className=" text-xl text-red-500 cursor-pointer" onClick={() => setEditUserBio(!editUserBio)} />
-      </div>
+          <div
+            className={` justify-center flex mt-2 gap-2 ${
+              editUserBio ? "block" : "hidden"
+            }`}
+          >
+            <input
+              type="text"
+              name="bio"
+              defaultValue={userInfo?.bio}
+              onChange={() => setDisableSaveBtn(false)}
+              className={`${
+                editUserBio ? "block" : "hidden"
+              } w-full max-w-[605px] outline-none focus:outline-1 outline-gray-200 px-2 rounded-md`}
+            />
+            <MdCancel
+              className=" text-xl text-red-500 cursor-pointer"
+              onClick={() => setEditUserBio(!editUserBio)}
+            />
+          </div>
           <p
             className={`text-gray-600 italic mt-2 flex gap-2 items-center justify-center ${
               editUserBio && "hidden"
             }`}
           >
             {userInfo?.bio}{" "}
-            <FaPen className=" cursor-pointer" onClick={() => setEditUserBio(!editUserBio)} />
+            <FaPen
+              className=" cursor-pointer"
+              onClick={() => setEditUserBio(!editUserBio)}
+            />
           </p>
         </div>
 
@@ -94,29 +113,53 @@ const ProfilePage = () => {
         {/* Additional Info */}
         <div className="mt-8 bg-[#b8f3f5] bg-opacity-30 p-6 rounded-lg shadow-[0_0_10px_rgba(184,243,245,0.3)]">
           <h2 className="text-2xl font-bold text-gray-800">About Me</h2>
-          <div className={` justify-center flex mt-2 gap-2 ${editUserBio ? "block" : "hidden"}`}>
-      <textarea
-            type="text"
-            defaultValue={userInfo?.about}
-            onChange={()=>setDisableSaveBtn(false)}
-            className={`${editUserBio ? "block" : "hidden"} w-full outline-none focus:outline-1 outline-gray-200 px-2 rounded-md`}
-          />
-          <MdCancel className=" text-xl text-red-500 cursor-pointer" onClick={() => setEditUserBio(!editUserBio)} />
-      </div>
+          <div
+            className={` justify-center flex mt-2 gap-2 ${
+              editUserBio ? "block" : "hidden"
+            }`}
+          >
+            <textarea
+              type="text"
+              name="about"
+              defaultValue={userInfo?.about}
+              onChange={() => setDisableSaveBtn(false)}
+              className={`${
+                editUserBio ? "block" : "hidden"
+              } w-full outline-none focus:outline-1 outline-gray-200 px-2 rounded-md`}
+            />
+            <MdCancel
+              className=" text-xl text-red-500 cursor-pointer"
+              onClick={() => setEditUserBio(!editUserBio)}
+            />
+          </div>
           <p
             className={`text-gray-600  flex gap-2  justify-center ${
               editUserBio && "hidden"
             }`}
           >
             {userInfo?.about}{" "}
-            <FaPen className=" cursor-pointer" onClick={() => setEditUserBio(!editUserBio)} />
+            <FaPen
+              className=" cursor-pointer"
+              onClick={() => setEditUserBio(!editUserBio)}
+            />
           </p>
         </div>
-        <div className={` ${!editUserBio&&"hidden"}  flex gap-4 justify-end w-full mt-3`}>
-          <button className=" ">Cancel</button>
-          <button onClick={handleSave} disabled={disableSaveBtn} className=" py-1 px-4 border rounded-md text-white bg-green-500">Save</button>
+        <div
+          className={` ${
+            !editUserBio && "hidden"
+          }  flex gap-4 justify-end w-full mt-3`}
+        >
+          <span className="cursor-pointer" onClick={()=>setEditUserBio(!editUserBio)}>Cancel</span>
+          <button
+          type="button"
+        
+            disabled={disableSaveBtn}
+            className=" py-1 px-4 border rounded-md text-white bg-green-500"
+          >
+            Save
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
