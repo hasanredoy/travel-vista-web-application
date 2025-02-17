@@ -11,18 +11,28 @@ const ProfilePage = () => {
   const [disableSaveBtn, setDisableSaveBtn] = useState(true);
   // state to edit user bio
   const [editUserBio, setEditUserBio] = useState(false);
+  // state to refetch data
+  const [refetch, setRefetch] = useState(false);
   // get user
   const { user } = useSession()?.data || {};
 
   const [userInfo, setUserInfo] = useState({});
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const form = e.target
+    e.preventDefault();
+    const form = e.target;
     const info = {
-      bio:form.bio.value,
-      about:form.about.value,
-    }
-    console.log(info)
+      bio: form.bio.value,
+      about: form.about.value,
+      email: user?.email,
+    };
+    axios
+      .put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post-user`, info)
+      .then((res) => {
+        if (res?.data?.data?.modifiedCount > 0) {
+          setEditUserBio(!editUserBio);
+          setRefetch(!refetch);
+        }
+      });
   };
 
   useEffect(() => {
@@ -33,11 +43,14 @@ const ProfilePage = () => {
       .then((res) => {
         setUserInfo(res.data?.data);
       });
-  }, [user]);
+  }, [user, refetch]);
 
   return (
     <div className="min-h-screen bg-[#b8f3f51e] py-6">
-      <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white rounded-xl shadow-[0_0_15px_rgba(184,243,245,0.3)]  pb-0 pl-8 pt-6 pr-8">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-4xl mx-auto bg-white rounded-xl shadow-[0_0_15px_rgba(184,243,245,0.3)]  pb-0 pl-8 pt-6 pr-8"
+      >
         {/* Profile Header */}
         <div className="text-center">
           <img
@@ -149,10 +162,13 @@ const ProfilePage = () => {
             !editUserBio && "hidden"
           }  flex gap-4 justify-end w-full mt-3`}
         >
-          <span className="cursor-pointer" onClick={()=>setEditUserBio(!editUserBio)}>Cancel</span>
+          <span
+            className="cursor-pointer"
+            onClick={() => setEditUserBio(!editUserBio)}
+          >
+            Cancel
+          </span>
           <button
-          type="button"
-        
             disabled={disableSaveBtn}
             className=" py-1 px-4 border rounded-md text-white bg-green-500"
           >

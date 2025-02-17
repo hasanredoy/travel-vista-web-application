@@ -5,29 +5,31 @@ export const POST = async (request) => {
   try {
     const { email: emailFromClient } = await request.json();
 
-
     const db = await connectDB();
     const userCollection = db.collection("users");
     const blogsCollection = db.collection("blogs");
     const reviewsCollection = db.collection("reviews");
-// find user 
-const findUser = await userCollection.findOne({email:emailFromClient?.email})
+    // find user
+    const findUser = await userCollection.findOne({ email: emailFromClient });
 
-// find user blogs 
+    // find user blogs
     const findUserBlogs = await blogsCollection
       .find({ email: emailFromClient })
       .toArray();
-      // find user review 
+    // find user review
     const findUserReviews = await reviewsCollection
       .find({ email: emailFromClient })
       .toArray();
-// get total reactions 
-    const totalReactions = await blogsCollection.aggregate([
-      { $match: { email: emailFromClient } },
-      { $group: { _id: null, totalReactions: { $sum: "$react" } } }
-    ]).toArray();
+    // get total reactions
+    const totalReactions = await blogsCollection
+      .aggregate([
+        { $match: { email: emailFromClient } },
+        { $group: { _id: null, totalReactions: { $sum: "$react" } } },
+      ])
+      .toArray();
 
-    const reactionsGained = totalReactions.length > 0 ? totalReactions[0].totalReactions : 0;
+    const reactionsGained =
+      totalReactions.length > 0 ? totalReactions[0].totalReactions : 0;
 
     const getRandomInteger = () => {
       const min = 1;
@@ -40,14 +42,20 @@ const findUser = await userCollection.findOne({email:emailFromClient?.email})
       reviewsCount: findUserReviews.length,
       reactionsGained,
       destinationCovered: getRandomInteger(),
-      bio:findUser?.bio?findUser?.bio:"Travel enthusiast and blogger who loves exploring new destinations and sharing experiences.",
-      about:findUser?.about_user?findUser?.about_user:"I have been traveling for over 5 years, documenting my journeys through blogs and reviews. My favorite destinations include Japan, Italy, and New Zealand.",
+      bio: findUser?.bio
+        ? findUser?.bio
+        : "Travel enthusiast and blogger who loves exploring new destinations and sharing experiences.",
+      about: findUser?.about
+        ? findUser.about
+        : "I have been traveling for over 5 years, documenting my journeys through blogs and reviews. My favorite destinations include Japan, Italy, and New Zealand.",
     };
-  // console.log(data)
+    // console.log(data)
     return NextResponse.json({ data });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 };
-
