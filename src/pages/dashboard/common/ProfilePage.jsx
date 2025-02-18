@@ -1,4 +1,5 @@
 "use client";
+import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import axios from "axios";
 /* eslint-disable @next/next/no-img-element */
 import { useSession } from "next-auth/react";
@@ -44,6 +45,10 @@ const ProfilePage = () => {
         setUserInfo(res.data?.data);
       });
   }, [user, refetch]);
+
+  if(!userInfo){
+    return <LoadingSpinner></LoadingSpinner>
+  }
 
   return (
     <div className="min-h-screen bg-[#b8f3f51e] py-6">
