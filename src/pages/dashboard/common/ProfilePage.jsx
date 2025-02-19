@@ -14,6 +14,8 @@ const ProfilePage = () => {
   const [editUserBio, setEditUserBio] = useState(false);
   // state to refetch data
   const [refetch, setRefetch] = useState(false);
+  // loading state
+  const [loading, setLoading] = useState(false);
   // get user
   const { user } = useSession()?.data || {};
 
@@ -42,11 +44,18 @@ const ProfilePage = () => {
         email: user?.email,
       })
       .then((res) => {
+        setLoading(true)
         setUserInfo(res.data?.data);
+        setLoading(false)
       });
   }, [user, refetch]);
 
-  if(!userInfo){
+  
+  if(!user){
+    return <LoadingSpinner></LoadingSpinner>
+  }
+
+  if(loading){
     return <LoadingSpinner></LoadingSpinner>
   }
 
