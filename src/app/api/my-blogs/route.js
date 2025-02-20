@@ -8,7 +8,6 @@ export const GET = async (request) => {
     const db = await connectDB();
     const blogsCollection = await db.collection("blogs");
     const BlogsData = await blogsCollection.find({email:userEmail}).toArray();
-    // console.log(BlogsData)
     return NextResponse.json({ data: BlogsData });
   } catch (error) {
     console.log(error);

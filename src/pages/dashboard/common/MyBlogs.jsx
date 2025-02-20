@@ -1,4 +1,5 @@
 "use client"
+import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 /* eslint-disable @next/next/no-img-element */
@@ -29,7 +30,9 @@ useEffect(()=>{
         setLoading(false)
       })
 },[user])
-
+if(loading){
+  return <LoadingSpinner></LoadingSpinner>
+}
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="flex justify-between items-center mb-6">
