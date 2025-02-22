@@ -23,7 +23,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { RiMenuUnfold3Fill, RiMenuUnfold4Fill } from "react-icons/ri";
 
-const SidebarSm = () => {
+const SidebarMdAndSm = () => {
   // state to handle menu
   const [showMenu, setShowMenu] = useState(false);
   // get user
@@ -52,7 +52,7 @@ const SidebarSm = () => {
     });
   };
   return (
-    <section className=" relative w-[180px]">
+    <section className=" relative w-[180px] md:w-[220px]">
       <div className=" absolute top-1 left-1 z-50 ">
       {showMenu ? (
         <button onClick={() => setShowMenu(false)}>
@@ -350,4 +350,4 @@ const SidebarSm = () => {
   );
 };
 
-export default SidebarSm;
+export default SidebarMdAndSm;

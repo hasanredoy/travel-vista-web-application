@@ -21,7 +21,7 @@ import { signOut, useSession } from "next-auth/react";
 import swal from "sweetalert";
 import Image from "next/image";
 
-const SidebarMdAndLg = () => {
+const SidebarLg = () => {
   const { user } = useSession()?.data || {};
 
   // get pathname
@@ -331,4 +331,4 @@ const SidebarMdAndLg = () => {
   );
 };
 
-export default SidebarMdAndLg;
+export default SidebarLg;
