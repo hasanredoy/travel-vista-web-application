@@ -32,8 +32,7 @@ const SidebarMdAndSm = () => {
   // get pathname
   const pathname = usePathname();
   // get user role
-  const role = "host";
-
+  const role = useLoadUserRole()
   // logout handler
   const handleLogout = () => {
     swal({

@@ -1,6 +1,7 @@
 "use client";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import axios from "axios";
+import moment from "moment";
 import { useSession } from "next-auth/react";
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
@@ -72,7 +73,7 @@ export default function MyBlogs() {
         </aside>
 
         {/* Blog Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
           {blogs?.map((blog, index) => (
             <div
               key={index}
@@ -88,7 +89,7 @@ export default function MyBlogs() {
                   <span className="font-semibold text-lg block">
                     {blog?.user}
                   </span>
-                  <span className="text-sm text-gray-500">{blog?.date}</span>
+                  <span className="text-sm text-gray-500">{moment(blog?.date).format("lll")}</span>
                 </div>
               </div>
               <h3 className="text-xl font-semibold mb-2">{blog?.title}</h3>

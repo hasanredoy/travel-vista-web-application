@@ -27,7 +27,7 @@ const SidebarLg = () => {
   // get pathname
   const pathname = usePathname();
   // get user role
-  const role = "admin";
+  const role = useLoadUserRole()
 
   // logout handler
   const handleLogout = () => {
