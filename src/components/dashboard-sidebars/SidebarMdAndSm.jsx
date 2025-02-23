@@ -173,26 +173,26 @@ const SidebarMdAndSm = () => {
                 </Link>
                 {/* list item  */}
                 <Link
-                  href={"/dashboard/list_item"}
+                  href={"/dashboard/list_tour"}
                   className={`flex gap-2 items-center pl-[55px] text-sm   font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
-           pathname == "/dashboard/list_item" &&
+           pathname == "/dashboard/list_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
          }`}
                 >
-                  List Item
+                  List Tour
                   <MdPlaylistAddCircle className="  "></MdPlaylistAddCircle>
                 </Link>
                 {/* listed item  */}
                 <Link
-                  href={"/dashboard/listed_item"}
+                  href={"/dashboard/listed_tour"}
                   className={`flex gap-2 items-center pl-[55px] text-sm   font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
-           pathname == "/dashboard/listed_item" &&
+           pathname == "/dashboard/listed_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
          }`}
                 >
-                  Listed Items
+                  Listed Tours
                   <MdPlaylistAddCheckCircle className="  "></MdPlaylistAddCheckCircle>
                 </Link>
                 {/* earnings */}
@@ -239,26 +239,26 @@ const SidebarMdAndSm = () => {
                 </Link>
                 {/* list item  */}
                 <Link
-                  href={"/dashboard/list_item"}
+                  href={"/dashboard/list_tour"}
                   className={`flex gap-2 items-center pl-[55px] text-sm   font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
-           pathname == "/dashboard/list_item" &&
+           pathname == "/dashboard/list_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
          }`}
                 >
-                  List Item
+                  List Tour
                   <MdPlaylistAddCircle className="  "></MdPlaylistAddCircle>
                 </Link>
                 {/* all items  */}
                 <Link
-                  href={"/dashboard/all_items"}
+                  href={"/dashboard/all_tours"}
                   className={`flex gap-2 items-center pl-[55px] text-sm   font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
-           pathname == "/dashboard/all_items" &&
+           pathname == "/dashboard/all_tours" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
          }`}
                 >
-                  All Items
+                  All Tours
                   <MdPlaylistAddCheckCircle className="  "></MdPlaylistAddCheckCircle>
                 </Link>
                 {/* users  */}
