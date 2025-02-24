@@ -37,3 +37,24 @@ export const GET = async (request) => {
     return NextResponse.json({});
   }
 };
+
+export const POST = async (request) => {
+  const tourFromClient = await request.json();
+
+  try {
+    const db = await connectDB();
+    const toursCollection = await db.collection("tours");
+    const findTour = await toursCollection.findOne({
+      title: tourFromClient?.title,
+    });
+    if (findTour) {
+      return NextResponse.json({ message: "Blog already exist" });
+    }
+    const result = await toursCollection.insertOne(tourFromClient);
+    // console.log(BlogsData)
+    return NextResponse.json({ data: result });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({});
+  }
+};
