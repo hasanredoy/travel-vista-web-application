@@ -27,7 +27,7 @@ const SidebarLg = () => {
   // get pathname
   const pathname = usePathname();
   // get user role
-  const role = useLoadUserRole()
+  const role = useLoadUserRole();
 
   // logout handler
   const handleLogout = () => {
@@ -57,7 +57,7 @@ const SidebarLg = () => {
       {/* dynamic links div  */}
       <div className=" w-full min-w-full">
         {/* user info sect  */}
-          <div className="flex items-center space-x-4  justify-center w-full">
+        <div className="flex items-center space-x-4  justify-center w-full">
           <Image
             src={user?.image}
             width={40}
@@ -233,6 +233,17 @@ const SidebarLg = () => {
             >
               List Tour
               <MdPlaylistAddCircle className=" text-2xl"></MdPlaylistAddCircle>
+            </Link>
+            <Link
+              href={"/dashboard/listed_tour"}
+              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+         ${
+           pathname == "/dashboard/listed_tour" &&
+           " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
+         }`}
+            >
+              Listed Tours
+              <MdPlaylistAddCheckCircle className=" text-2xl"></MdPlaylistAddCheckCircle>
             </Link>
             {/* all items  */}
             <Link

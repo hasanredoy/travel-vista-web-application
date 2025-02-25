@@ -4,10 +4,15 @@ import { usePostImage } from "@/hooks/post-image/usePostImage";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
 
 export default function ListTour() {
+// get user 
+const {user} = useSession()?.data||{}
+
+
   const [loading,setLoading] = useState(false)
   // state for thumbnail file 
   const [tourThumbnailFile,setTourThumbnailFile] = useState()
@@ -79,6 +84,7 @@ export default function ListTour() {
         image: tourThumbnail,
         category,
         date: new Date(),
+        host_email:user?.email
       };
       // Sending data to the backend
       const response = await axios.post(

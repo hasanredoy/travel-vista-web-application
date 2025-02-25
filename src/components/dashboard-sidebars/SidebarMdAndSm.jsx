@@ -249,6 +249,17 @@ const SidebarMdAndSm = () => {
                   List Tour
                   <MdPlaylistAddCircle className="  "></MdPlaylistAddCircle>
                 </Link>
+                <Link
+                  href={"/dashboard/listed_tour"}
+                  className={`flex gap-2 items-center pl-[55px] text-sm   font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+         ${
+           pathname == "/dashboard/listed_tour" &&
+           " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
+         }`}
+                >
+                  Listed Tours
+                  <MdPlaylistAddCheckCircle className="  "></MdPlaylistAddCheckCircle>
+                </Link>
                 {/* all items  */}
                 <Link
                   href={"/dashboard/all_tours"}
