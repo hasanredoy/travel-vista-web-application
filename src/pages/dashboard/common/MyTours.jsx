@@ -118,7 +118,7 @@ if(loading){
                   </p>
 
                   <div className="mt-4 flex justify-between items-center">
-                    <Link href={`dashboard/edit_tour/${tour?._id}`}>
+                    <Link href={`/dashboard/listed_tour/${tour?._id}`}>
                     <motion.button
                       className="px-4 py-2 bg-sky-400 text-white rounded-lg text-sm shadow-md hover:bg-sky-300 hover:text-black transition"
                       whileHover={{ scale: 1.1 }}
