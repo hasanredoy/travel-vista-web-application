@@ -34,28 +34,31 @@ const email = user?.email
   }, [email]);
 
   // Delete Tour
-  const handleDelete = async (tourId) => {
-    const confirm = await swal({
+  const handleDelete =(tourId) => {
+     swal({
       title: "Are you sure?",
       text: "Once deleted, you cannot recover this tour!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    });
-
-    if (confirm) {
-      try {
-        await axios.delete(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/delete-tour/${tourId}`
-        );
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        axios.delete(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/my_tours?id=${tourId}`
+        )
+        .then(res=>{
+          console.log(res.data)
+               if(res?.data?.data?.deletedCount>0){
         setTours(tours.filter((tour) => tour?._id !== tourId));
-        swal("Tour deleted successfully!", "", "success");
-      } catch (error) {
-        console.error("Error deleting tour:", error);
-        swal("Failed to delete tour", "", "error");
-      }
+        swal("Tour deleted successfully!", "", "success")
+        
+     
     }
+        })
+      }})
   };
+
 if(loading){
   return <LoadingSpinner></LoadingSpinner>
 }
@@ -127,7 +130,7 @@ if(loading){
                     </motion.button>
                     </Link>
                     <motion.button
-                      onClick={() => handleDelete(tour?.data_id)}
+                      onClick={() => handleDelete(tour?._id)}
                       className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm shadow-md hover:bg-red-500 hover:text-black transition"
                       whileHover={{ scale: 1.1 }}
                     >

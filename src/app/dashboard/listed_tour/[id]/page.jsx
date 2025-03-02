@@ -1,10 +1,10 @@
+"use client"
+import { useParams } from "next/navigation"
+import EditTour from "@/pages/dashboard/common/EditTour"
 
-const page = () => {
-  return (
-    <div>
-      edit tour 
-    </div>
-  )
+const EditPage = () => {
+  const {id} = useParams()
+  return <EditTour id={id}></EditTour>
 }
 
-export default page
+export default EditPage

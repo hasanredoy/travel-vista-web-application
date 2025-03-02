@@ -1,5 +1,6 @@
 
 import { connectDB } from "@/lib/connectDB";
+import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server"
 
 export const POST = async(request)=>{
@@ -17,3 +18,18 @@ export const POST = async(request)=>{
     
   }
 }
+
+export const DELETE = async (request) => {
+  const id = await request.nextUrl.searchParams.get("id");
+  try {
+    const db = await connectDB();
+    const toursCollection = await db.collection("tours");
+    const deleteTour = await toursCollection.deleteOne({
+      _id: new ObjectId(id),
+    });
+    return NextResponse.json({ data: deleteTour });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({});
+  }
+};
