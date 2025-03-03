@@ -19,6 +19,7 @@ export const POST = async(request)=>{
   }
 }
 
+
 export const DELETE = async (request) => {
   const id = await request.nextUrl.searchParams.get("id");
   try {

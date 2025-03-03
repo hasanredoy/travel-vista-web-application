@@ -8,17 +8,20 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
 
-export default function EditTour({id}) {
-// get user 
-const {user} = useSession()?.data||{}
-const [tour, setTour]=useState({})
-// loading state 
-  const [loading,setLoading] = useState(false)
-  // state for thumbnail file 
-  const [tourThumbnailFile,setTourThumbnailFile] = useState()
-  // upload image 
-  const tourThumbnail = usePostImage(tourThumbnailFile,setLoading)
-  // handler to add new tour 
+export default function EditTour({ id }) {
+  // state to handle input on change
+  const [isChanged, setIsChanged] = useState(true);
+
+  // get user
+  const { user } = useSession()?.data || {};
+  const [tour, setTour] = useState({});
+  // loading state
+  const [loading, setLoading] = useState(false);
+  // state for thumbnail file
+  const [tourThumbnailFile, setTourThumbnailFile] = useState();
+  // upload image
+  const tourThumbnail = usePostImage(tourThumbnailFile, setLoading);
+  // handler to add new tour
   const handleEditTour = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,7 +39,7 @@ const [tour, setTour]=useState({})
     const room_description = form.room_description.value.trim();
     const country = form.country.value.trim();
     const category = form.category.value.trim();
-    const room_images = form.room_images.value.trim()
+    const room_images = form.room_images.value.trim();
 
     // Basic Validation
     if (
@@ -59,58 +62,56 @@ const [tour, setTour]=useState({})
       return swal("Please upload an image", "", "error");
     }
 
-
     try {
-
-
-      // Creating Tour Data Object
-      const tourData = {
+      // Creating Tour Data Object for edit tour
+      const tourEditData = {
         title,
         destination,
         village_or_city,
         description,
         package_duration,
         price,
-        rating:4,
+        rating: tour?.rating,
         max_capacity,
-         room_type,
+        room_type,
         room: {
-          images:room_images,
+          images: room_images,
           title: room_title,
           description: room_description,
         },
         country,
-        user_review_count:3,
+        user_review_count: tour?.user_review_count,
         image: tourThumbnail,
         category,
-        date: new Date(),
-        host_email:user?.email
+        date: tour?.date,
+        host_email: user?.email,
       };
       // Sending data to the backend
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/tours`,
-        tourData
+      const response = await axios.put(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/my_tours/${id}`,
+        tourEditData
       );
-    console.log(response?.data?.data)
-      if (response?.data?.data?.insertedId) {
-        swal("Tour Added Successfully!", "", "success");
+      console.log(response?.data?.data);
+      if (response?.data?.data?.modifiedCount) {
+        swal("Tour Edited Successfully!", "", "success");
         form.reset(); // Reset the form after successful submission
       } else {
-        swal("Failed to add tour", "", "error");
+        swal("Failed to edit tour", "", "error");
       }
     } catch (error) {
-      console.error("Error adding tour:", error);
+      console.error("Error", error);
       swal("Something went wrong!", "", "error");
     }
   };
-// effect to call single tour 
-useEffect(()=>{
-  axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/my_tours/${id}`)
-  .then(res=>{
-    console.log(res?.data)
-    setTour(res?.data?.result)
-  })
-},[id])
+  // effect to call single tour
+  useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/my_tours/${id}`)
+      .then((res) => {
+        console.log(res?.data);
+        setTour(res?.data?.result);
+      });
+  }, [id]);
 
   useEffect(() => {
     AOS.init({
@@ -119,7 +120,6 @@ useEffect(()=>{
       once: true, // Trigger animation only once
     });
   }, []);
-console.log(tour)
 
   return (
     <div
@@ -142,6 +142,8 @@ console.log(tour)
             <input
               type="text"
               id="title"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.title}
               name="title"
               required
               placeholder="Enter tour title"
@@ -158,6 +160,8 @@ console.log(tour)
             <input
               type="text"
               id="destination"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.destination}
               name="destination"
               required
               placeholder="Enter destination"
@@ -174,6 +178,8 @@ console.log(tour)
             <input
               type="text"
               id="village_or_city"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.village_or_city}
               name="village_or_city"
               required
               placeholder="Enter village or city"
@@ -190,6 +196,8 @@ console.log(tour)
             <input
               type="text"
               id="package_duration"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.package_duration}
               name="package_duration"
               required
               placeholder="Enter package duration"
@@ -207,6 +215,8 @@ console.log(tour)
             <input
               type="number"
               id="price"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.price}
               name="price"
               required
               placeholder="Enter tour price"
@@ -224,6 +234,8 @@ console.log(tour)
             <input
               type="text"
               id="max_capacity"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.max_capacity}
               name="max_capacity"
               required
               placeholder="Enter maximum capacity"
@@ -241,6 +253,8 @@ console.log(tour)
             <input
               type="text"
               id="country"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.country}
               name="country"
               required
               placeholder="Enter country"
@@ -253,6 +267,7 @@ console.log(tour)
             </label>
             <input
               type="file"
+              onChangeCapture={()=>setIsChanged(false)}
               id="image"
               required
               onChange={(event) => setTourThumbnailFile(event.target.files[0])}
@@ -270,6 +285,8 @@ console.log(tour)
             <input
               type="text"
               id="category"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.category}
               name="category"
               required
               placeholder="Enter category Eg. Desert, Adventure.."
@@ -283,6 +300,8 @@ console.log(tour)
             <input
               type="text"
               id="room_type"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.room_type}
               name="room_type"
               required
               placeholder="Room type Eg. Luxury Tent, Eco Lodge"
@@ -296,6 +315,8 @@ console.log(tour)
             <input
               type="text"
               id="room_title"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.room?.title}
               name="room_title"
               required
               placeholder="Enter room title"
@@ -308,13 +329,14 @@ console.log(tour)
             </label>
             <input
               type="url"
+              onChangeCapture={() => setIsChanged(false)}
+              defaultValue={tour?.room?.images}
               name="room_images"
               required
               placeholder="Enter images of room "
               className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-1 focus:ring-sky-300"
             />
           </div>
-
         </div>
         {/* Single Row Textarea */}
         <div data-aos="fade-left" data-aos-delay="1100">
@@ -326,6 +348,8 @@ console.log(tour)
           </label>
           <textarea
             id="room_description"
+            onChangeCapture={() => setIsChanged(false)}
+            defaultValue={tour?.room?.description}
             name="room_description"
             required
             placeholder="Enter details about the room"
@@ -339,6 +363,8 @@ console.log(tour)
           </label>
           <textarea
             id="description"
+            onChangeCapture={() => setIsChanged(false)}
+            defaultValue={tour?.description}
             name="description"
             required
             placeholder="Describe the tour"
@@ -347,8 +373,8 @@ console.log(tour)
           />
         </div>
         <div className=" flex justify-center">
-          <button type="submit" className="btn-primary">
-            Add Tour
+          <button disabled={isChanged} type="submit" className="btn-primary">
+            Edit Tour
           </button>
         </div>
       </form>
