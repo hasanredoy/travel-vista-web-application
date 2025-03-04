@@ -1,15 +1,15 @@
-import { connectDB } from "@/lib/connectDB"
-import { NextResponse } from "next/server"
+import { connectDB } from "@/lib/connectDB";
+import { ObjectId } from "mongodb";
+import { NextResponse } from "next/server";
 
-export const GET = async(request,{params})=>{
+export const GET = async (request, { params }) => {
   try {
-    const id= params?.id
-    const db = await connectDB()
-    const toursCollection = await db.collection('tours')
-    const result = await toursCollection.findOne({data_id:id})
-   return NextResponse.json({result})
-
+    const id = params?.id;
+    const db = await connectDB();
+    const toursCollection = await db.collection("tours");
+    const result = await toursCollection.findOne({ _id: new ObjectId(id) });
+    return NextResponse.json({ result });
   } catch (error) {
-   return NextResponse.json(error)    
+    return NextResponse.json(error);
   }
-}
+};
