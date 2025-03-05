@@ -22,7 +22,15 @@ export default function AllTours() {
   // state to handle current page
   const [currentPage, setCurrentPage] = useState(0);
   const tours = useLoadToursData("", "", "", currentPage);
+  const [showMessage, setShowMessage] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMessage(true); // Update state after 2 seconds
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, []);
   return tours?.length > 0 ? (
     <motion.div
       initial={{ opacity: 0 }}
@@ -115,11 +123,9 @@ export default function AllTours() {
       </section>
     </motion.div>
   ) : (
-    <div className=" flex justify-center items-center min-h-screen">
-      <LoadingSpinner></LoadingSpinner>
-      {setTimeout(() => {
-        <p className="text-gray-600">No tours available.</p>;
-      }, 2000)}
-    </div>
+    <div className="flex justify-center items-center min-h-screen">
+    {!showMessage&&<LoadingSpinner />}
+    {showMessage && <p className="text-gray-600 text-2xl font-bold">No Tour Available.</p>}
+  </div>
   );
 }

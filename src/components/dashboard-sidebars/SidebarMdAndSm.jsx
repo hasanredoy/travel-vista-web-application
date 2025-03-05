@@ -32,7 +32,7 @@ const SidebarMdAndSm = () => {
   // get pathname
   const pathname = usePathname();
   // get user role
-  const role = useLoadUserRole()
+  const role = useLoadUserRole();
   // logout handler
   const handleLogout = () => {
     swal({
@@ -53,15 +53,15 @@ const SidebarMdAndSm = () => {
   return (
     <section className=" relative w-[180px] md:w-[220px]">
       <div className=" absolute top-1 left-1 z-50 ">
-      {showMenu ? (
-        <button onClick={() => setShowMenu(false)}>
-          <RiMenuUnfold4Fill className=" text-lg" />
-        </button>
-      ) : (
-        <button onClick={() => setShowMenu(true)}>
-          <RiMenuUnfold3Fill className=" text-lg" />
-        </button>
-      )}
+        {showMenu ? (
+          <button onClick={() => setShowMenu(false)}>
+            <RiMenuUnfold4Fill className=" text-lg" />
+          </button>
+        ) : (
+          <button onClick={() => setShowMenu(true)}>
+            <RiMenuUnfold3Fill className=" text-lg" />
+          </button>
+        )}
       </div>
       {showMenu && (
         <section
@@ -74,7 +74,9 @@ const SidebarMdAndSm = () => {
             {/* user info sect  */}
             <div className="flex items-center space-x-4  justify-center w-full">
               <Image
-                src={user?.image}
+                src={
+                  user?.image || "https://randomuser.me/api/portraits/men/1.jpg"
+                }
                 width={40}
                 title={user?.name}
                 height={40}
@@ -341,8 +343,7 @@ const SidebarMdAndSm = () => {
                 role == "admin" && "hidden"
               }`}
             >
-              <MdContactSupport className=" "></MdContactSupport> Contact
-              us{" "}
+              <MdContactSupport className=" "></MdContactSupport> Contact us{" "}
             </Link>
             <div className="pl-[55px] text-sm ">
               <button

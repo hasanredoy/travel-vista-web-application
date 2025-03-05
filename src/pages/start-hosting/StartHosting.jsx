@@ -6,6 +6,8 @@ import { FaCheckCircle } from "react-icons/fa";
 import swal from "sweetalert";
 
 const StartHosting = () => {
+// state to refetch data 
+const [refetch,setRefetch] =useState(0)
   // state for host status
   const [status, setStatus] = useState("");
 
@@ -16,14 +18,13 @@ const StartHosting = () => {
     const emptyObject = {};
     axios
       .post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/hosts?email=${user?.email}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/hosts/status?email=${user?.email}`,
         emptyObject
       )
       .then((res) => {
         setStatus(res?.data?.status);
       });
-  }, [user]);
-  console.log(status);
+  }, [user,refetch]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -36,16 +37,21 @@ const StartHosting = () => {
       about_host: form.about_host.value,
       status: "Pending",
     };
-    console.log(hostInfo);
     axios
-      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hosts`, hostInfo)
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hosts?email=${user?.email}`, hostInfo)
       .then((res) => {
-        console.log(res?.data);
-        if (res?.data?.data.insertedId) {
+        if(res.data?.updateStatus?.modifiedCount>0){
+          setRefetch(refetch+1)
+          swal("Request Sent.", "", "success");
+
+        }
+        if (res?.data?.data?.insertedId) {
+          setRefetch(refetch+1)
           swal("We will review your information soon.", "", "success");
         }
       });
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#d2f3ef] via-[#f8f2f2] to-[#f7f7f7] p-6">
       <div className="max-w-6xl w-full bg-white shadow-lg rounded-2xl p-10 grid lg:grid-cols-2 gap-10">
@@ -87,6 +93,7 @@ const StartHosting = () => {
               type="email"
               placeholder="Email Address"
               defaultValue={user?.email}
+              readOnly
               className="w-full p-4 border rounded-lg  "
             />
             <input

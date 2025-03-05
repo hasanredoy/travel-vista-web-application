@@ -7,7 +7,6 @@ export const GET = async (request) => {
   const page = parseInt( await request.nextUrl.searchParams.get("page"))
   const size = parseInt(await request.nextUrl.searchParams.get("size"))
   const sortValFormClient = await request.nextUrl.searchParams.get("sort");
-  console.log({size,page});
 
   try {
     const db = await connectDB();

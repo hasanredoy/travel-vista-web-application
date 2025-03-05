@@ -59,7 +59,7 @@ const SidebarLg = () => {
         {/* user info sect  */}
         <div className="flex items-center space-x-4  justify-center w-full">
           <Image
-            src={user?.image}
+            src={user?.image||"https://randomuser.me/api/portraits/men/1.jpg"}
             width={40}
             title={user?.name}
             height={40}
