@@ -129,7 +129,7 @@ export default function AllHosts() {
                       alt={`${host?.name} Image`}
                       width={40}
                       height={40}
-                      className="rounded-full"
+                      className="rounded-full h-[40px] w-[40px] "
                     />
                   </td>
                   <td className="px-4 py-3">{host?.name}</td>

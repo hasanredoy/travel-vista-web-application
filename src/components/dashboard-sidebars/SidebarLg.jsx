@@ -13,6 +13,7 @@ import {
   MdReviews,
   MdContactSupport,
   MdLogout,
+  MdDashboard,
 } from "react-icons/md";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { ImHome } from "react-icons/im";
@@ -198,6 +199,18 @@ const SidebarLg = () => {
         {/* links for admin  */}
         {role == "admin" && (
           <div className=" flex gap-3 flex-col w-full min-w-full">
+            {/* admin dashboard */}
+            <Link
+              href={"/dashboard/admin_dashboard"}
+              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+         ${
+           pathname == "/dashboard/admin_dashboard" &&
+           " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
+         }`}
+            >
+              Dashboard
+              <MdDashboard></MdDashboard>
+            </Link>
             {/* profile  */}
             <Link
               href={"/dashboard"}
