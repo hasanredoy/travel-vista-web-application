@@ -26,11 +26,11 @@ import { RiEmotionHappyLine } from "react-icons/ri";
 import axios from "axios";
 import Pagination from "@/components/reuseble/Pagination";
 import useLoadCount from "@/hooks/useLoadCount";
+import Link from "next/link";
 
 const Reviews = () => {
-  
-  // state for current page 
-  const [ currentPage , setCurrentPage]=useState(0)
+  // state for current page
+  const [currentPage, setCurrentPage] = useState(0);
   // state for refetch data
   const [refetch, setRefetch] = useState(0);
   // state show  reviews form
@@ -39,7 +39,7 @@ const Reviews = () => {
   const [userReview, setUserReview] = useState(false);
   // rating state
   const [rating, setRating] = useState(0);
-  // object to style rating stars 
+  // object to style rating stars
   const myStyles = {
     itemShapes: ThinStar,
     activeFillColor:
@@ -60,11 +60,11 @@ const Reviews = () => {
         : "#fbf1a9",
   };
 
-  const count = useLoadCount('reviews/count')
-  console.log(count)
+  const count = useLoadCount("reviews/count");
+  console.log(count);
 
   // load reviews
-  const [reviews, loading] = useReviewsData(refetch,userReview,currentPage);
+  const [reviews, loading] = useReviewsData(refetch, userReview, currentPage);
 
   //  get user from session
   const { user } = useSession()?.data || {};
@@ -258,63 +258,80 @@ const Reviews = () => {
             <button
               title="Click to see your blogs"
               onClick={() => setUserReview(!userReview)}
-              className={`btn rounded-xl ${userReview?"bg-gray-700 text-white":"bg-gray-200 text-black"}`}
+              className={`btn rounded-xl ${
+                userReview ? "bg-gray-700 text-white" : "bg-gray-200 text-black"
+              }`}
             >
               Your Review
             </button>
           </div>
         </div>
-        {/* cards  */}
-        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          {reviews?.map((review, index) => (
-            <div
-              key={index}
-              className="container flex flex-col w-full max-w-lg mx-auto  rounded-md 
-          bg-base-200 bg-opacity-20 border border-gray-300 shadow-md relative md:max-w-sm  "
-            >
-              {user?.email == review?.email && (
-                <button
-                  onClick={() => handleDeleteReview(review?._id)}
-                  className=" absolute top-1 hover:text-gray-600 right-1 z-20 text-red-600 "
-                >
-                  <FaTrash></FaTrash>
-                </button>
-              )}
-              <div className="p-4">
-                <div className="text-base">
-                  <p>{review?.description}</p>
-                </div>
+        {userReview && reviews?.length < 1 ? (
+          <div className=" flex justify-center ">
+            <sapn className="text-lg text-red-600 font-bold">
+              You haven&apos;t added a review!
+            </sapn>
+          </div>
+        ) : (
+          <>
+            {/* cards  */}
+            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              {reviews?.map((review, index) => (
                 <div
-                  className={`border border-gray-300 ${
-                    review.description.length < 100 ? "mb-6" : "mb-2"
-                  } mt-4`}
-                ></div>
-                <div className="flex space-x-4">
-                  <div>
-                    <Image
-                      src={review?.image}
-                      alt="user image"
-                      width={48}
-                      height={48}
-                      className="object-cover w-12 h-12 rounded-full border border-yellow-400 p-0.5 "
-                    />
-                  </div>
-                  <div className=" flex-1">
-                    <h4 className="font-bold">{review?.user}</h4>
-                    <span className="text-xs text-green-500 font-bold">
-                      {moment(review?.date).format("lll")}
-                    </span>
-                  </div>
-                  <div className=" flex gap-2 items-center">
-                    <RiStarSmileFill className=" text-xl text-yellow-400"></RiStarSmileFill>
-                    <h4 className=" font-semibold">{review?.rating}</h4>
+                  key={index}
+                  className="container flex flex-col w-full max-w-lg mx-auto  rounded-md 
+          bg-base-200 bg-opacity-20 border border-gray-300 shadow-md relative md:max-w-sm  "
+                >
+                  {user?.email == review?.email && (
+                    <button
+                      onClick={() => handleDeleteReview(review?._id)}
+                      className=" absolute top-1 hover:text-gray-600 right-1 z-20 text-red-600 "
+                    >
+                      <FaTrash></FaTrash>
+                    </button>
+                  )}
+                  <div className="p-4">
+                    <div className="text-base">
+                      <p>{review?.description}</p>
+                    </div>
+                    <div
+                      className={`border border-gray-300 ${
+                        review.description.length < 100 ? "mb-6" : "mb-2"
+                      } mt-4`}
+                    ></div>
+                    <Link href={`/dashboard/user/${review?._id}`} className="flex space-x-4">
+                      <div>
+                        <Image
+                          src={review?.image}
+                          alt="user image"
+                          width={48}
+                          height={48}
+                          className="object-cover w-12 h-12 rounded-full border border-yellow-400 p-0.5 "
+                        />
+                      </div>
+                      <div className=" flex-1">
+                        <h4 className="font-bold">{review?.user}</h4>
+                        <span className="text-xs text-green-500 font-bold">
+                          {moment(review?.date).format("lll")}
+                        </span>
+                      </div>
+                      <div className=" flex gap-2 items-center">
+                        <RiStarSmileFill className=" text-xl text-yellow-400"></RiStarSmileFill>
+                        <h4 className=" font-semibold">{review?.rating}</h4>
+                      </div>
+                    </Link>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <Pagination count={count} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage} ></Pagination>
+            <Pagination
+              count={count}
+              dataPerPage={6}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            ></Pagination>
+          </>
+        )}
       </section>
     </main>
   );

@@ -7,8 +7,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { TbHeartStar } from "react-icons/tb";
 
 const Cards = () => {
-  const [tourData, loading] = useDataLoader("/featured-tour");
-
+  const [tourData, loading] = useDataLoader("featured-tour");
   return (
     <div className=" mx-auto w-[95%] md:w-[90%] lg:w-[85%]">
       {loading ? (
@@ -34,7 +33,7 @@ const Cards = () => {
         </div>
       ) : (
         <div className="card-list  grid grid-cols-1 md:grid-cols-2 md:gap-x-5 lg:grid-cols-3 lg:gap-x-10 gap-y-14">
-          {tourData?.map((data, index) => (
+          {tourData?.slice(0,6)?.map((data, index) => (
             <li
               key={index}
               className="card bg-base-100 border border-sky-200 shadow-xl relative pb-0 "
@@ -62,7 +61,7 @@ const Cards = () => {
                 <p>{data.description}</p>
               </div>
               <div className=" flex justify-center mb-3">
-                <Link href={`tours/${data?.data_id}`} title="view details">
+                <Link href={`tours/${data?._id}`} title="view details">
                   <button className="  btn-primary w-10  h-8 text-center">
                     <FaAnglesRight></FaAnglesRight>
                   </button>

@@ -8,8 +8,8 @@ const useLoadUserRole = () => {
   const [role,setRole] = useState("user")
   const {user} = useSession()?.data||{}
   useEffect(()=>{
-    const email ={email:user?.email}
-    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user-role`,email)
+    
+    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user-role?email=${user?.email}`)
     .then(res=>{
       setRole(res?.data?.user_role)
     })

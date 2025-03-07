@@ -185,7 +185,7 @@ const BlogDetails = ({ id }) => {
                   </div>
                 </div>
                 <div className="flex bg-base-200 items-center mt-8 space-x-4">
-                  <Link href={"/"}>
+                  <Link href={`/dashboard/user/${blogDetails?._id}`}>
                     <Image
                       src={blogDetails?.image}
                       width={40}
@@ -198,7 +198,7 @@ const BlogDetails = ({ id }) => {
                   {/* user name and details btn container div  */}
                   <div className=" flex justify-between w-full items-center">
                     <div>
-                      <Link title={blogDetails?.user} href={"/"}>
+                      <Link title={blogDetails?.user} href={`/dashboard/user/${blogDetails?._id}`}>
                         <h3 className="text-sm font-medium">
                           {blogDetails?.user}
                         </h3>

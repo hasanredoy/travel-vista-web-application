@@ -6,7 +6,6 @@ import Link from "next/link";
 import { FaHeart, FaStar } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import { loadData } from "@/utils/loadData";
 
 const Blogs = () => {
   // get blog data
@@ -52,7 +51,7 @@ const Blogs = () => {
                 </h3>
                 <h2 className="text-xl font-bold">{blog?.title}</h2>
                 <p className="mt-4 ">
-                  {blog?.experience?.slice(80)}{" "}
+                  {blog?.experience?.slice(0,80)}{" "}
                   <Link href={"/"} className=" text-blue-600">
                     see more...
                   </Link>
@@ -65,7 +64,7 @@ const Blogs = () => {
                   </h3>
                 </div>
                 <div className="flex items-center mt-8 space-x-4">
-                  <Link href={"/"}>
+                  <Link href={`/dashboard/user/${blog?._id}`}>
                     <Image
                       src={blog?.image}
                       width={40}
@@ -78,7 +77,7 @@ const Blogs = () => {
                   {/* user name and details btn container div  */}
                   <div className=" flex justify-between w-full items-center">
                     <div>
-                      <Link title={blog?.user} href={"/"}>
+                      <Link title={blog?.user} href={`/dashboard/user/${blog?._id}`}>
                         <h3 className="text-sm font-medium">{blog?.user}</h3>
                       </Link>
                       <span className="text-sm dark:text-gray-600">

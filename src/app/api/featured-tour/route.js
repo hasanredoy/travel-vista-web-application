@@ -6,8 +6,7 @@ export const GET = async()=>{
     const db = await connectDB()
     const toursCollection = await db.collection('tours')
     const result = await toursCollection.find().toArray()
-    const data = await result?.spilt(0,6)
-  return NextResponse.json({data})
+  return NextResponse.json({data:result})
 } catch (error) {
   console.log(error);
     return NextResponse.json({})

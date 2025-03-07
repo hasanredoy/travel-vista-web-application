@@ -1,7 +1,7 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import axios from "axios";
-/* eslint-disable @next/next/no-img-element */
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa6";

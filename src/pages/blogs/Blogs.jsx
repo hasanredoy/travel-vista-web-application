@@ -3,7 +3,15 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaRegArrowAltCircleRight, FaStar, FaTrash , FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaRegArrowAltCircleRight,
+  FaStar,
+  FaTrash,
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdAdd } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
@@ -21,7 +29,6 @@ import { FaHeart } from "react-icons/fa6";
 import useLoadCount from "@/hooks/useLoadCount";
 import Pagination from "@/components/reuseble/Pagination";
 
-
 const Blogs = () => {
   // state to handle user blogs
   const [userBlogs, setUserBlogs] = useState(false);
@@ -36,15 +43,18 @@ const Blogs = () => {
   // state to handle copy blog
   const [copied, setCopied] = useState(true);
 
-  
-  const blogsCount = useLoadCount('blog-data/count')
-  const [currentPage , setCurrentPage] = useState(0)
+  const blogsCount = useLoadCount("blog-data/count");
+  const [currentPage, setCurrentPage] = useState(0);
   // load blogs
-  const [blogs, loading] = useLoadBlogs(userBlogs, sortVal, refetch,currentPage);
+  const [blogs, loading] = useLoadBlogs(
+    userBlogs,
+    sortVal,
+    refetch,
+    currentPage
+  );
 
-   //  get user from session 
-   const {user} = useSession()?.data||{}
-
+  //  get user from session
+  const { user } = useSession()?.data || {};
 
   const handleAddBlog = (e) => {
     e.preventDefault();
@@ -52,20 +62,20 @@ const Blogs = () => {
       user: user?.name,
       email: user?.email,
       date: new Date(),
-      image: user?.image||"helloworld",
+      image: user?.image || "helloworld",
       title: e?.target?.title?.value,
       experience: e?.target?.description?.value,
       rating: 4,
       react: 5,
       location: e?.target?.location?.value,
-      reactedBy:["hello@gmail.com"]
+      reactedBy: ["hello@gmail.com"],
     };
     axios
       .post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data`, blog_info)
       .then((res) => {
         if (res.data?.data?.insertedId) {
-          setRefetch(refetch+1)
-          setShowForm(!showForm)
+          setRefetch(refetch + 1);
+          setShowForm(!showForm);
           swal("Blog added successfully", "", "success");
         }
         if (res.data?.message) {
@@ -114,12 +124,15 @@ const Blogs = () => {
   };
 
   const handleReactOnPost = (id) => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}&email=${user.email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/blog-data?id=${id}&email=${user.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.data?.modifiedCount > 0) {
@@ -188,10 +201,8 @@ const Blogs = () => {
           ></textarea>
         </div>
         <div className="mt-6 flex justify-center w-full">
-          <button
-            className=" btn-primary min-w-32 flex justify-center items-center w-full max-w-32"
-          >
-              Submit
+          <button className=" btn-primary min-w-32 flex justify-center items-center w-full max-w-32">
+            Submit
           </button>
         </div>
       </form>
@@ -199,57 +210,57 @@ const Blogs = () => {
   ) : (
     <main className="w-[90%] my-10 md:w-[90%] mx-auto flex justify-between  min-h-screen">
       {/* user info section */}
-               <section className=" hidden md:block md:w-[35%] lg:w-[30%]">
-              <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
-                <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
-                  <img
-                    src={user?.image}
-                    alt=""
-                    className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square border border-sky-400 p-1"
-                  />
-                  <div className="space-y-4 text-center divide-y dark:divide-gray-300">
-                    <div className="my-2 space-y-1">
-                      <h2 className="text-xl font-semibold sm:text-2xl">
-                        {user?.name}
-                      </h2>
-                    </div>
-                    <div className="flex justify-center pt-2 space-x-4 align-center">
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        aria-label="GitHub"
-                        className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
-                      >
-                        <FaGithub></FaGithub>
-                      </a>
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
-                      >
-                        <FaFacebook></FaFacebook>
-                      </a>
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        aria-label="Twitter"
-                        className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
-                      >
-                        <FaTwitter></FaTwitter>
-                      </a>
-                      <a
-                        rel="noopener noreferrer"
-                        href="#"
-                        aria-label="Email"
-                        className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
-                      >
-                        <FaInstagram></FaInstagram>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+      <section className=" hidden md:block md:w-[35%] lg:w-[30%]">
+        <div className=" bg-gradient-to-tr from-blue-200 via-sky-200 to-rose-200 p-0.5 max-w-xs rounded-xl ">
+          <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12  bg-base-200 ">
+            <img
+              src={user?.image}
+              alt=""
+              className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square border border-sky-400 p-1"
+            />
+            <div className="space-y-4 text-center divide-y dark:divide-gray-300">
+              <div className="my-2 space-y-1">
+                <h2 className="text-xl font-semibold sm:text-2xl">
+                  {user?.name}
+                </h2>
               </div>
-            </section>
+              <div className="flex justify-center pt-2 space-x-4 align-center">
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  aria-label="GitHub"
+                  className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
+                >
+                  <FaGithub></FaGithub>
+                </a>
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
+                >
+                  <FaFacebook></FaFacebook>
+                </a>
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  aria-label="Twitter"
+                  className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
+                >
+                  <FaTwitter></FaTwitter>
+                </a>
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  aria-label="Email"
+                  className="p-2 rounded-md dark:text-gray-800 hover:dark:text-violet-600"
+                >
+                  <FaInstagram></FaInstagram>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* cards section  */}
       <section className=" w-full md:w-[62%] lg:w-[68%]">
         {/* sort and add new blog button div  */}
@@ -285,115 +296,133 @@ const Blogs = () => {
             <option>Old-New</option>
           </select>
         </div>
-        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
-          {blogs?.map((blog, index) => (
-            <div
-              key={index}
-              className="max-w-md p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg relative "
-            >
-              {user?.email == blog?.email && (
-                <button
-                  onClick={() => handleDeleteBlog(blog?._id)}
-                  className=" absolute top-1 hover:text-gray-600 right-1 z-20 text-red-600 "
+        {userBlogs && blogs?.length < 1 ? (
+          <div className=" flex justify-center "><sapn className="text-lg text-red-600 font-bold">You haven&apos;t added a blog!</sapn></div>
+        ) : (
+          <>
+            {" "}
+            <div className=" grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
+              {blogs?.map((blog, index) => (
+                <div
+                  key={index}
+                  className="max-w-md p-0.5 bg-gradient-to-tr from-yellow-200 via-slate-400 to-pink-200 rounded-lg relative "
                 >
-                  <FaTrash></FaTrash>
-                </button>
-              )}
-              <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg min-h-full">
-                <article>
-                  <button
-                    onClick={() => handleCopy(blog?.experience)}
-                    className=" absolute  top-7 right-1.5"
-                  >
-                    {copied == blog?.experience ? (
-                      <IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>
-                    ) : (
-                      <IoMdCopy className="text-base"></IoMdCopy>
-                    )}
-                  </button>
-                  <h2 className=" text-lg md:text-xl font-bold">{blog?.title}</h2>
-
-                  {blog?.experience?.length > 180 ? (
-                    <p className="mt-4 pl-1  text-sm md:text-base">
-                      <span>{blog?.experience?.slice(0, 180)}</span>{" "}
-                      <Link
-                        href={`/blogs/${blog?._id}`}
-                        className=" text-blue-600"
-                      >
-                        see more...
-                      </Link>
-                    </p>
-                  ) : (
-                    <p className="my-4 pl-1 text-sm md:text-base">{blog?.experience}</p>
+                  {user?.email == blog?.email && (
+                    <button
+                      onClick={() => handleDeleteBlog(blog?._id)}
+                      className=" absolute top-1 hover:text-gray-600 right-1 z-20 text-red-600 "
+                    >
+                      <FaTrash></FaTrash>
+                    </button>
                   )}
+                  <div className="max-w-md border relative bg-base-200  shadow-md p-6 overflow-hidden rounded-lg min-h-full">
+                    <article>
+                      <button
+                        onClick={() => handleCopy(blog?.experience)}
+                        className=" absolute  top-7 right-1.5"
+                      >
+                        {copied == blog?.experience ? (
+                          <IoCheckmarkCircleSharp className="text-green-600"></IoCheckmarkCircleSharp>
+                        ) : (
+                          <IoMdCopy className="text-base"></IoMdCopy>
+                        )}
+                      </button>
+                      <h2 className=" text-lg md:text-xl font-bold">
+                        {blog?.title}
+                      </h2>
 
-                  <div className=" flex justify-between">
-                    <h3 className=" flex gap-2 items-center my-3">
-                      {" "}
-                      <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
-                      <span>{blog?.location}</span>
-                    </h3>
-                      <div className="mt-3"  >
-                        { blog?.reactedBy?.includes(user?.email)? (
-                         <div className="flex gap-2 items-center">
-                            {blog?.react || 0}
-                            <FaHeart className="text-xl text-red-500" />
-                          </div> 
-                        ) : ( 
-                          <button
-                            onClick={() => handleReactOnPost(blog?._id)}
-                            title={`${blog?.react || 0} reactions`}
-                            className="flex gap-2 items-center"
+                      {blog?.experience?.length > 180 ? (
+                        <p className="mt-4 pl-1  text-sm md:text-base">
+                          <span>{blog?.experience?.slice(0, 180)}</span>{" "}
+                          <Link
+                            href={`/blogs/${blog?._id}`}
+                            className=" text-blue-600"
                           >
-                            {blog?.react || 0}
-                            <CiHeart className="text-2xl text-gray-500" />
-                          </button>
-                        )} 
+                            see more...
+                          </Link>
+                        </p>
+                      ) : (
+                        <p className="my-4 pl-1 text-sm md:text-base">
+                          {blog?.experience}
+                        </p>
+                      )}
+
+                      <div className=" flex justify-between">
+                        <h3 className=" flex gap-2 items-center my-3">
+                          {" "}
+                          <FaLocationDot className=" text-lg"></FaLocationDot>{" "}
+                          <span>{blog?.location}</span>
+                        </h3>
+                        <div className="mt-3">
+                          {blog?.reactedBy?.includes(user?.email) ? (
+                            <div className="flex gap-2 items-center">
+                              {blog?.react || 0}
+                              <FaHeart className="text-xl text-red-500" />
+                            </div>
+                          ) : (
+                            <button
+                              onClick={() => handleReactOnPost(blog?._id)}
+                              title={`${blog?.react || 0} reactions`}
+                              className="flex gap-2 items-center"
+                            >
+                              {blog?.react || 0}
+                              <CiHeart className="text-2xl text-gray-500" />
+                            </button>
+                          )}
+                        </div>
                       </div>
-                  </div>
-                  <div className="flex items-center mt-8 space-x-4">
-                    <Link href={`/dashboard/profile/${blog?._id}`}>
-                      <Image
-                        src={blog?.image}
-                        width={40}
-                        title={blog?.user}
-                        height={40}
-                        alt=""
-                        className="w-10 h-10 rounded-full dark:bg-gray-500"
-                      />
-                    </Link>
-                    {/* user name and details btn container div  */}
-                    <div className=" flex justify-between w-full items-center">
-                      <div>
-                        <Link
-                          title={blog?.user}
-                          href={`/dashboard/profile/${blog?._id}`}
-                        >
-                          <h3 className="text-sm font-medium">{blog?.user}</h3>
+                      <div className="flex items-center mt-8 space-x-4">
+                        <Link href={`/dashboard/user/${blog?._id}`}>
+                          <Image
+                            src={blog?.image}
+                            width={40}
+                            title={blog?.user}
+                            height={40}
+                            alt=""
+                            className="w-10 h-10 rounded-full dark:bg-gray-500"
+                          />
                         </Link>
-                        <span className="text-sm dark:text-gray-600">
-                          {moment(blog?.date).format("lll")}
-                        </span>
+                        {/* user name and details btn container div  */}
+                        <div className=" flex justify-between w-full items-center">
+                          <div>
+                            <Link
+                              title={blog?.user}
+                              href={`/dashboard/user/${blog?._id}`}
+                            >
+                              <h3 className="text-sm font-medium">
+                                {blog?.user}
+                              </h3>
+                            </Link>
+                            <span className="text-sm dark:text-gray-600">
+                              {moment(blog?.date).format("lll")}
+                            </span>
+                          </div>
+                          <div>
+                            <Link href={`/blogs/${blog?._id}`}>
+                              <FaRegArrowAltCircleRight
+                                title="View full blog!"
+                                className=" text-xl md:text-3xl "
+                              ></FaRegArrowAltCircleRight>
+                            </Link>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <Link href={`/blogs/${blog?._id}`}>
-                          <FaRegArrowAltCircleRight
-                            title="View full blog!"
-                            className=" text-xl md:text-3xl "
-                          ></FaRegArrowAltCircleRight>
-                        </Link>
-                      </div>
-                    </div>
+                    </article>
                   </div>
-                </article>
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-         {/* pagination section  */}
-      <section className="mt-4">
-     <Pagination count={blogsCount} dataPerPage={6} currentPage={currentPage} setCurrentPage={setCurrentPage}></Pagination>
-      </section>
+            {/* pagination section  */}
+            <section className="mt-4">
+              <Pagination
+                count={blogsCount}
+                dataPerPage={6}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              ></Pagination>
+            </section>
+          </>
+        )}
       </section>
     </main>
   );
