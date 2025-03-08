@@ -3,23 +3,63 @@
 
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import axios from "axios";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaStar, FaUser } from "react-icons/fa";
+import swal from "sweetalert"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useSession } from "next-auth/react";
+
 
 const TourDetails = ({ id }) => {
   // state to handle tour data
   const [tour, setTour] = useState();
-  const [roomDetailsModal, setRoomDetailsModal] = useState(false);
+  // state to handle book form 
+  const [showBookingForm,setShowBookingForm] = useState(false)
+  const [date, setDate] = useState(null);
+  const [travelers, setTravelers] = useState(1);
+  const [packageType, setPackageType] = useState("Standard");
+ // get user
+ const {user} = useSession()?.data||{} 
 
+  const [roomDetailsModal, setRoomDetailsModal] = useState(false)
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/tours/${id}`;
-  console.log(url);
   useEffect(() => {
     axios.get(url).then((res) => {
       console.log(res?.data?.result);
       setTour(res?.data?.result);
     });
   }, [id, url]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const bookingDetails = {
+      email:user?.email,
+      title:tour?.title,
+      price:tour?.price,
+      date,
+      travelers,
+      status:"pending"
+    }
+    console.log(bookingDetails)
+    const formattedDate = date ? date?.toISOString()?.split("T")[0] : "No date selected";
+    axios.post(`${
+      process.env.NEXT_PUBLIC_BASE_URL
+    }/api/bookings`,bookingDetails)
+    .then(res=>{
+      console.log(res.data)
+      if(res.data?.data?.insertedId){
+           swal(`Booking confirmed! Date: ${formattedDate}, Travelers: ${travelers}, Package: ${packageType}`,"","success");
+           setShowBookingForm(false)
+           return
+      }
+      if(res.data?.message=="This tour is already exist in booking"){
+           swal(`This tour is already exist in booking`,"","error");
+           return
+      }
+    })
+ 
+  };
 
   // return loading spinner if there is no data available
   if (!tour) return <LoadingSpinner></LoadingSpinner>;
@@ -44,7 +84,48 @@ const TourDetails = ({ id }) => {
          
         </section>
       ) : (
-        <div className=" rounded-e-md relative flex flex-col md:flex-row gap-5 md:gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
+        showBookingForm ? 
+            <div className="flex justify-center items-center min-h-[calc(100dvh-400px)]">
+              <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-2xl border">
+                <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">Book Your Trip</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-gray-600 text-sm font-semibold mb-1">Select Date</label>
+                    <DatePicker 
+                      selected={date} 
+                      onChange={(date) => setDate(date)} 
+                      className="w-full border rounded-lg p-2"
+                      placeholderText="Select a date"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-600 text-sm font-semibold mb-1">Number of Travelers</label>
+                    <input
+                      type="number"
+                      min="1"
+                      value={travelers}
+                      onChange={(e) => setTravelers(e.target.value)}
+                      className="w-full border rounded-lg p-2"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-600 text-sm font-semibold mb-1">Select Package</label>
+                    <select
+                      value={packageType}
+                      onChange={(e) => setPackageType(e.target.value)}
+                      className="w-full border rounded-lg p-2"
+                    >
+                      <option value="Standard">Standard</option>
+                      <option value="Premium">Premium</option>
+                      <option value="Luxury">Luxury</option>
+                    </select>
+                  </div>
+                  <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+                    Book Now
+                  </button>
+                </form>
+              </div>
+            </div> :<div className=" rounded-e-md relative flex flex-col md:flex-row gap-5 md:gap-10 w-full border shadow-lg bg-base-300 bg-opacity-10 min-h-[300px] h-full">
           {/* image section  */}
           <section className=" flex-1  p-5">
             <img
@@ -87,9 +168,9 @@ const TourDetails = ({ id }) => {
               <FaUser className=" text-sm"></FaUser>
             </h3>
             <div className=" flex justify-between items-center">
-              <Link href={`tours/${tour?.data_id}`} className=" btn-primary ">
+              <button onClick={()=>setShowBookingForm(true)} className=" btn-primary ">
                 Book Now
-              </Link>
+              </button>
               <button
                 onClick={() => setRoomDetailsModal(true)}
                 className=" btn-primary"

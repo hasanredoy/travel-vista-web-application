@@ -1,7 +1,11 @@
 import SidebarLg from "@/components/dashboard-sidebars/SidebarLg";
 import SidebarMdAndSm from "@/components/dashboard-sidebars/SidebarMdAndSm";
-
+export const metadata = {
+  title: "Dashboard",
+  description: "Travel Vista, User Dashboard",
+};
 export default function DashboardLayout({ children }) {
+  
   return (
     <main className=" flex min-h-screen relative">
       {/* sidebar */}

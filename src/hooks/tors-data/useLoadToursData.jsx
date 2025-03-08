@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 const useLoadToursData = (deleteSearchInfo,categoryBackground,sortVal,currentPage) => {
   const [data,setData] = useState([])
   useEffect(()=>{
-    console.log('hello');
     const prompt = JSON.parse(localStorage.getItem('search-data'))
     // this will upper case the first letter of the prompt 
     const upperCase = prompt?String(prompt?.prompt[0]).toUpperCase()+String(prompt?.prompt).slice(1):""

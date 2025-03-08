@@ -196,7 +196,7 @@ const handleLogout=()=>{
           </div>
           {/* user image  */}
           <button onClick={()=>setShowDropdown(!showDropdown)} className="ml-5">
-            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full w-[50px] h-[50px]  md:block border p-0.5 border-[#6bfaf3]" ></Image>}
+            {session?.data?.user?.image&&<Image title={session?.data?.user?.name} src={session?.data?.user?.image} alt={session?.data?.user?.name} height={50} width={50} className="rounded-full  md:w-[50px] w-[35px] h-[35px] md:h-[50px]  md:block border p-0.5 border-[#6bfaf3]" ></Image>}
           </button>
         {showDropdown&&<div onMouseLeave={()=>setShowDropdown(!showDropdown)} className=" flex flex-col gap-3 p-4 absolute top-14 right-0 z-50 bg-gray-100 border shadow-lg rounded-md justify-center  ">
               <Link className=" text-center flex justify-center items-center gap-2 py-2 px-3 border bg-gray-300 text-black rounded-md" href={'/dashboard'}>Dashboard <RxDashboard></RxDashboard></Link>
