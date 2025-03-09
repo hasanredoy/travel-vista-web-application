@@ -70,7 +70,7 @@ const SidebarLg = () => {
           {/* user name and details btn container div  */}
           <div className=" ">
             <div>
-              <h3 className="text-base font-medium">{user?.name}</h3>
+              <h3 className="text-base font-bold">{user?.name}</h3>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ const SidebarLg = () => {
             {/* profile  */}
             <Link
               href={"/dashboard"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
             ${
               pathname == "/dashboard" &&
               " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -93,7 +93,7 @@ const SidebarLg = () => {
             {/* blogs  */}
             <Link
               href={"/dashboard/my_blogs"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
             ${
               pathname == "/dashboard/my_blogs" &&
               " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -105,7 +105,7 @@ const SidebarLg = () => {
             {/* bookings  */}
             <Link
               href={"/dashboard/my_bookings"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
             ${
               pathname == "/dashboard/my_bookings" &&
               " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -118,7 +118,7 @@ const SidebarLg = () => {
             {/* payment history  */}
             <Link
               href={"/dashboard/payment_history"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
             ${
               pathname == "/dashboard/payment_history" &&
               " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -136,7 +136,7 @@ const SidebarLg = () => {
             {/* profile  */}
             <Link
               href={"/dashboard"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -148,7 +148,7 @@ const SidebarLg = () => {
             {/* blogs  */}
             <Link
               href={"/dashboard/my_blogs"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
             ${
               pathname == "/dashboard/my_blogs" &&
               " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -160,7 +160,7 @@ const SidebarLg = () => {
             {/* list item  */}
             <Link
               href={"/dashboard/list_tour"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/list_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -172,7 +172,7 @@ const SidebarLg = () => {
             {/* listed item  */}
             <Link
               href={"/dashboard/listed_tour"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/listed_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -184,7 +184,7 @@ const SidebarLg = () => {
             {/* earnings */}
             <Link
               href={"/dashboard/earnings"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/earnings" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -202,7 +202,7 @@ const SidebarLg = () => {
             {/* admin dashboard */}
             <Link
               href={"/dashboard/admin_dashboard"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/admin_dashboard" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -214,7 +214,7 @@ const SidebarLg = () => {
             {/* profile  */}
             <Link
               href={"/dashboard"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -226,7 +226,7 @@ const SidebarLg = () => {
             {/* blogs  */}
             <Link
               href={"/dashboard/my_blogs"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
             ${
               pathname == "/dashboard/my_blogs" &&
               " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -238,7 +238,7 @@ const SidebarLg = () => {
             {/* list item  */}
             <Link
               href={"/dashboard/list_tour"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/list_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -249,7 +249,7 @@ const SidebarLg = () => {
             </Link>
             <Link
               href={"/dashboard/listed_tour"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/listed_tour" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -261,7 +261,7 @@ const SidebarLg = () => {
             {/* all items  */}
             <Link
               href={"/dashboard/all_tours"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/all_tours" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -273,7 +273,7 @@ const SidebarLg = () => {
             {/* users  */}
             <Link
               href={"/dashboard/users"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/users" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -285,7 +285,7 @@ const SidebarLg = () => {
             {/*  hosts  */}
             <Link
               href={"/dashboard/hosts"}
-              className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
+              className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1  
          ${
            pathname == "/dashboard/hosts" &&
            " bg-gradient-to-l from-[#b8f3f5] via-white to-[#b8f3f5]   w-full min-w-full py-1 text-black "
@@ -302,20 +302,20 @@ const SidebarLg = () => {
       <div className="flex gap-2 flex-col w-full min-w-full">
         <Link
           href={"/"}
-          className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
+          className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
         >
           <ImHome className="text-xl"></ImHome> Home{" "}
         </Link>
         <Link
           href={"/tours"}
-          className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
+          className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
         >
           <MdOutlineTravelExplore className="text-xl"></MdOutlineTravelExplore>{" "}
           Tours{" "}
         </Link>
         <Link
           href={"/start_hosting"}
-          className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1 ${
+          className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1 ${
             role == "user" ? "block" : "hidden"
           }`}
         >
@@ -323,19 +323,19 @@ const SidebarLg = () => {
         </Link>
         <Link
           href={"/blogs"}
-          className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
+          className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
         >
           <TbMessageChatbot className="text-xl"></TbMessageChatbot> Blogs{" "}
         </Link>
         <Link
           href={"/reviews"}
-          className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
+          className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1`}
         >
           <MdReviews className="text-xl"></MdReviews> Reviews{" "}
         </Link>
         <Link
           href={"/contact_us"}
-          className={`flex gap-2 items-center pl-[80px]  font-medium  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1 ${
+          className={`flex gap-2 items-center pl-[80px]  font-bold  hover:bg-gradient-to-r hover:from-[#b8f3f5] hover:via-white hover:to-[#b8f3f5] w-full min-w-full  hover:text-black relative  py-1 ${
             role == "admin" && "hidden"
           }`}
         >

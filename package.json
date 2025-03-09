@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@smastrom/react-rating": "^1.5.0",
+    "@stripe/react-stripe-js": "^3.3.0",
+    "@stripe/stripe-js": "^5.10.0",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
@@ -36,6 +38,7 @@
     "recharts": "^2.15.1",
     "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
+    "stripe": "^17.7.0",
     "sweetalert": "^2.1.2",
     "swiper": "^11.1.12"
   },
