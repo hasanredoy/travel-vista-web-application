@@ -27,7 +27,7 @@ export const POST = async (request) => {
       title: bookingInfo?.title,email:bookingInfo?.email
     });
     console.log(findUserBooking,'server')
-    if (findUserBooking) {
+    if (findUserBooking?.status=="pending") {
       return NextResponse.json({
         message: "This tour is already exist in booking",
       });

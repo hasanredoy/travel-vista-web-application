@@ -42,7 +42,6 @@ export default function MyBookings() {
     axios
       .patch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/bookings/${id}`)
       .then((res) => {
-        console.log(res.data);
         if (res.data?.data?.modifiedCount > 0) {
           swal("Tour canceled", "", "success");
           setRefetch(refetch + 1);

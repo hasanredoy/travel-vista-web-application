@@ -51,6 +51,7 @@ const itemsIds = (cart ?? [])
   const totalPrice = cart
     ?.filter((booking) => booking.status === "pending")
     ?.reduce((a, b) => a + b.price, 0)
+    console.log(totalPrice)
 
 
   React.useEffect(() => {

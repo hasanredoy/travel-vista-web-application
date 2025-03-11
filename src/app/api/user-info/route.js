@@ -41,7 +41,7 @@ export const POST = async (request) => {
       blogsCount: findUserBlogs.length,
       reviewsCount: findUserReviews.length,
       reactionsGained,
-      destinationCovered: getRandomInteger(),
+      destinationCovered: findUser?.destinationCovered?findUser?.destinationCovered:0,
       bio: findUser?.bio
         ? findUser?.bio
         : "Travel enthusiast and blogger who loves exploring new destinations and sharing experiences.",

@@ -20,6 +20,7 @@ const ProfilePage = () => {
   const { user } = useSession()?.data || {};
 
   const [userInfo, setUserInfo] = useState({});
+  // handle change user bio 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

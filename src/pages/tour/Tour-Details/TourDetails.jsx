@@ -26,13 +26,15 @@ const TourDetails = ({ id }) => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/tours/${id}`;
   useEffect(() => {
     axios.get(url).then((res) => {
-      console.log(res?.data?.result);
+      // console.log(res?.data?.result);
       setTour(res?.data?.result);
     });
   }, [id, url]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (new Date(date) < new Date()) {
+      return swal("Invalid Date", "Please select a future date.", "error");
+    }
     const bookingDetails = {
       email:user?.email,
       title:tour?.title,
@@ -41,7 +43,7 @@ const TourDetails = ({ id }) => {
       travelers,
       status:"pending"
     }
-    console.log(bookingDetails)
+    // console.log(bookingDetails)
     const formattedDate = date ? date?.toISOString()?.split("T")[0] : "No date selected";
     axios.post(`${
       process.env.NEXT_PUBLIC_BASE_URL
