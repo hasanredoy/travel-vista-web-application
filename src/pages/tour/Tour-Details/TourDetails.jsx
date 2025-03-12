@@ -39,6 +39,7 @@ const TourDetails = ({ id }) => {
       email:user?.email,
       title:tour?.title,
       price:tour?.price,
+      host_email:tour?.host_email,
       date,
       travelers,
       status:"pending"
@@ -56,7 +57,7 @@ const TourDetails = ({ id }) => {
            return
       }
       if(res.data?.message=="This tour is already exist in booking"){
-           swal(`This tour is already exist in booking`,"","error");
+           swal(`You can not book more than 1 `,"","error");
            return
       }
     })

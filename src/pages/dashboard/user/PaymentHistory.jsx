@@ -30,7 +30,7 @@ export default function PaymentHistory() {
           <thead>
             <tr className="bg-[#8bf1f5] text-gray-800 border border-gray-300 rounded-t-2xl">
               <th className="p-3 text-left border border-gray-300">
-                Destination
+                TransactionID
               </th>
               <th className="p-3 text-left border border-gray-300">Payed Amount</th>
               <th className="p-3 text-left border border-gray-300">Date</th>
@@ -40,26 +40,20 @@ export default function PaymentHistory() {
           <tbody>
             {payments?.map((payment) => (
               <tr
-                key={payment?.id}
+                key={payment?._id}
                 className="border border-gray-300 hover:bg-gray-50"
               >
-                <td className="p-3 border border-gray-300">
-                  {payment?.destination}
+                <td className="p-3 border border-gray-300 text-blue-400">
+                  {payment?.transactionID}
                 </td>
-                <td className="p-3 border border-gray-300">
-                  {payment?.price}
+                <td className="p-3 border border-gray-300 text-green-500 font-bold">
+                  {payment?.totalPrice?<span>{payment?.totalPrice} {" "}$</span>:''}
                 </td>
-                <td className="p-3 border border-gray-300">{payment?.date}</td>
+                <td className="p-3 border border-gray-300 text-yellow-400 font-bold">{payment?.paymentDate?.split("T")[0]}</td>
                 <td
-                  className={`p-3 font-semibold border border-gray-300 ${
-                    payment?.status === "Completed"
-                      ? "text-green-600"
-                      : payment?.status === "Pending"
-                      ? "text-yellow-600"
-                      : "text-red-600"
-                  }`}
+                  className={`p-3 font-semibold border border-gray-300 `}
                 >
-                  {payment?.status}
+                  {payment?.email}
                 </td>
               </tr>
             ))}

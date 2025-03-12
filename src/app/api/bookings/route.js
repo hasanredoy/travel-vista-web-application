@@ -24,10 +24,10 @@ export const POST = async (request) => {
     const db = await connectDB();
     const bookingCollection = await db.collection("bookings");
     const findUserBooking = await bookingCollection.findOne({
-      title: bookingInfo?.title,email:bookingInfo?.email
+      email:bookingInfo?.email,status:"pending"
     });
     console.log(findUserBooking,'server')
-    if (findUserBooking?.status=="pending") {
+    if (findUserBooking) {
       return NextResponse.json({
         message: "This tour is already exist in booking",
       });

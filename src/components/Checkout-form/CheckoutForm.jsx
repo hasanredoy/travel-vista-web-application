@@ -29,29 +29,23 @@ export default function CheckoutForm({ clientS }) {
   const router = useRouter()
 
   // user cart state
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
   // get tours ids
 
-const itemsIds = (cart ?? [])
-  .filter((booking) => booking.status === "pending")
-  .map((booking) => booking._id);
+console.log(cart)
 
   useEffect(() => {
     const loader = async () => {
-      axios.get(`${
+      axios.post(`${
         process.env.NEXT_PUBLIC_BASE_URL
-      }/api/bookings?email=${user?.email}`)
+      }/api/bookings/pending?email=${user?.email}`)
       .then(res=>{
         setCart(res.data?.data);
       })
     };
     loader();
   }, [user]);
-  // parse int price
-  const totalPrice = cart
-    ?.filter((booking) => booking.status === "pending")
-    ?.reduce((a, b) => a + b.price, 0)
-    console.log(totalPrice)
+
 
 
   React.useEffect(() => {
@@ -108,8 +102,9 @@ const itemsIds = (cart ?? [])
       transactionID:transactionID|| Math.random() * 3000,
       email: user?.email,
       name: user?.displayName,
-      itemsIds,
-      totalPrice,
+      title:cart?.title,
+      totalPrice:cart?.price,
+      host_email:cart?.host_email,
       paymentDate: new Date(),
     };
     // post payment info in monogo db
