@@ -2,6 +2,10 @@
 import { FaUsers, FaClipboardList, FaMoneyBillWave, FaChartLine } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import useLoadUserRole from "@/hooks/user-role/useLoadUserRole";
 
 const data = [
   { month: "Jan", earnings: 5000 },
@@ -13,6 +17,25 @@ const data = [
 ];
 
 export default function AdminDashboard() {
+  //state for admin stat 
+  const [stats,setStats] = useState({})
+
+  // get user 
+  const {user} = useSession()?.data||{}
+
+  // get user role 
+  const role = useLoadUserRole()
+console.log(role)
+  // effect to call admin stats 
+  // useEffect(()=>{
+  //   axios.post(`${
+  //     process.env.NEXT_PUBLIC_BASE_URL
+  //   }/api/admin-stats`,{email:user?.email})
+  //   .then(res=>{
+  //     console.log(res.data)
+  //     setStats(res.data?.stats)
+  //   })
+  // },[user])
   return (
     <div className="p-6 bg-gray-100 min-h-screen h-full flex flex-col items-center">
       <motion.h1 

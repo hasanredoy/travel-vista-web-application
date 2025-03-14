@@ -1,19 +1,23 @@
-import { connectDB } from "@/lib/connectDB"
-import { NextResponse } from "next/server"
+import { connectDB } from "@/lib/connectDB";
+import { NextResponse } from "next/server";
 
-export const POST = async(request)=>{
-  const emailFromClient = await request.nextUrl.searchParams.get("email")
+export const POST = async (request) => {
   try {
-    const db = await connectDB()
-    const userCollection = await db.collection("users")||[]
-    const findUser = await userCollection.findOne({email:emailFromClient})
-    const user_role = await findUser?.type||""
-  return NextResponse.json({user_role})
-} catch (error) {
-  console.log(error);
-    return NextResponse.json({})
-    
+    const { email } = await request.json();
+
+    if (!email) {
+      return NextResponse.json({ error: "Email is required" }, { status: 400 });
+    }
+
+    const db = await connectDB();
+    const userCollection = db.collection("users"); 
+
+    const findUser = await userCollection.findOne({ email });
+    const user_role = findUser?.type || ""; 
+
+    return NextResponse.json({ user_role });
+  } catch (error) {
+    console.error("Error fetching user role:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
-}
-
-
+};

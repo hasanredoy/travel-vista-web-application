@@ -1,6 +1,7 @@
 "use client";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import Pagination from "@/components/reuseble/Pagination";
+import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import useLoadCount from "@/hooks/useLoadCount";
 import useLoadUserRole from "@/hooks/user-role/useLoadUserRole";
 import axios from "axios";
@@ -57,7 +58,6 @@ export default function AllHosts() {
       axios
         .patch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hosts?email=${email}`)
         .then((res) => {
-          console.log(res.data)
           if (res.data?.res1?.modifiedCount > 0&&res.data?.res2?.modifiedCount > 0) {
             setRefetch(refetch + 1);
             return swal(`${name} is now Host!`, "", "success");
@@ -73,7 +73,6 @@ export default function AllHosts() {
       axios
         .put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/hosts?id=${id}`)
         .then((res) => {
-          console.log(res.data);
           if (res.data?.data?.modifiedCount > 0) {
             setRefetch(refetch + 1);
             return swal(` Host request form ${name} Rejected.`, "", "success");
@@ -83,6 +82,9 @@ export default function AllHosts() {
       console.log(error);
     }
   };
+
+  const [status] = useDataLoader("hosts/status")
+
   return hosts?.length > 0 ? (
     <div className="bg-gray-100 p-4 sm:p-6">
       <div className="container mx-auto">
@@ -94,9 +96,9 @@ export default function AllHosts() {
             className="select join-item px-3 py-2 border border-gray-300 rounded-md text-sm sm:text-base"
           >
             <option value={""}>All</option>
-            <option value={"Pending"}>Pending</option>
-            <option value={"Approved"}>Approved</option>
-            <option value={"Rejected"}>Rejected</option>
+            <option value={"Pending"} disabled={!status?.includes("Pending")}>Pending</option>
+            <option value={"Approved"} disabled={!status?.includes("Approved")}>Approved</option>
+            <option value={"Rejected"} disabled={!status?.includes("Rejected")}>Rejected</option>
           </select>
         </div>
 

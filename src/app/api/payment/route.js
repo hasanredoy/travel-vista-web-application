@@ -52,26 +52,8 @@ export const POST = async (request) => {
         );
     }
 
-    const year = new Date().getFullYear();
-    const month = new Date().getMonth(); // JavaScript months are 0-based
-
     
-    const existingEntry = await hostEarningsCollection.findOne({
-      host_email,
-      date: {
-        $gte: new Date(year, month, 1), // Start of the month
-        $lt: new Date(year, month + 2, 1), // Start of next month
-      },
-    });
-    
-    if (existingEntry) {
-      // If record exists, update the earnings by adding the new amount
-      const updatedRes = await hostEarningsCollection.updateOne(
-        { _id: existingEntry._id }, // Find by existing document ID
-        { $inc: { earnings: paymentData?.totalPrice || 0 } } // Increase earnings
-      );
-      console.log(updatedRes, "Earnings Updated");
-    } else {
+    if (host_email)  {
       // If no record exists, insert a new document
       const insertDoc = {
         date: new Date(),
@@ -79,7 +61,6 @@ export const POST = async (request) => {
         host_email,
       };
       const res = await hostEarningsCollection.insertOne(insertDoc);
-      console.log(res, "New Entry Created");
     }
     
     
@@ -91,5 +72,18 @@ export const POST = async (request) => {
       { error: "Internal Server Error" },
       { status: 500 }
     );
+  }
+};
+
+export const PATCH = async (request) => {
+  const email = await request.nextUrl.searchParams.get("email");
+  try {
+    const db = await connectDB();
+    const paymentsCollection = await db.collection("payments");
+    const data = await paymentsCollection.updateMany({email},{$set:{email:null}});
+    return NextResponse.json({ data });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({});
   }
 };

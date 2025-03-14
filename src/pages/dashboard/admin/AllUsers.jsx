@@ -1,6 +1,7 @@
 "use client";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
 import Pagination from "@/components/reuseble/Pagination";
+import useDataLoader from "@/hooks/data-loader/useDataLoader";
 import useLoadCount from "@/hooks/useLoadCount";
 import useLoadUserRole from "@/hooks/user-role/useLoadUserRole";
 import axios from "axios";
@@ -28,6 +29,10 @@ export default function AllUsers() {
   const count = useLoadCount("users/count");
   // get user role
   const role = useLoadUserRole();
+
+  // get user status 
+  const [status] = useDataLoader("users/status")
+console.log(status)
 
   const [showMessage, setShowMessage] = useState(false);
 
@@ -95,9 +100,9 @@ export default function AllUsers() {
           <option value={""}>
             All
           </option>
-          <option value={"user"}>User&apos;s</option>
-          <option value={"host"}>Host&apos;s</option>
-          <option value={"admin"}>Admin&apos;s</option>
+          <option disabled={!status?.includes("user") }value={"user"}>User&apos;s</option>
+          <option disabled={!status?.includes("host")} value={"host"}>Host&apos;s</option>
+          <option disabled={!status?.includes("admin")} value={"admin"}>Admin&apos;s</option>
         </select>
       </div>
   

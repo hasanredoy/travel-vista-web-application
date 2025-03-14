@@ -1,5 +1,6 @@
 "use client";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
+import Pagination from "@/components/reuseble/Pagination";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -7,36 +8,44 @@ import { useEffect, useState } from "react";
 import swal from "sweetalert";
 
 export default function MyBookings() {
+  // state to show no data available message 
+  const [showMessage, setShowMessage] = useState(false);
   // state for user bookings
   const [bookings, setBookings] = useState([]);
 
   // state to refetch data
   const [refetch, setRefetch] = useState(0);
-
+  // state for current page
+  const [currentPage, setCurrentPage] = useState(0);
+  // state for count
+  const [count, setCount] = useState(0);
   // get user
   const { user } = useSession()?.data || {};
 
-
-  const [showMessage, setShowMessage] = useState(false);
-
+  // effect to call count
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowMessage(true); // Update state after 2 seconds
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []);
+    axios
+      .post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/bookings/count?email=${user?.email}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setCount(res.data?.count);
+      });
+  }, [user]);
 
   // effect to call user bookings
   useEffect(() => {
     axios
       .get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/bookings?email=${user?.email}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/bookings?email=${
+          user?.email
+        }&page=${currentPage}&size=${6}`
       )
       .then((res) => {
         setBookings(res.data?.data);
       });
-  }, [user, refetch]);
+  }, [user, refetch,currentPage]);
 
   const handleCancelTour = (id) => {
     axios
@@ -52,14 +61,59 @@ export default function MyBookings() {
         }
       });
   };
+  // handler for clear bookings 
+  const handleClearBookings = (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "You want to clear your bookings!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+    axios
+      .patch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/bookings?email=${user?.email}`)
+      .then((res) => {
+        if (res.data?.data?.modifiedCount > 0) {
+          swal("All Bookings Cleared", "", "success");
+          setRefetch(refetch + 1);
+          return;
+        } else {
+          swal("Something went wrong.", "", "error");
+          return;
+        }
+      });
+      }
+    });
+ 
+  };
+
 
   // Calculate total price
   const totalPrice = bookings
     ?.filter((booking) => booking.status === "pending")
     ?.reduce((a, b) => a + b.price, 0);
-  return bookings.length>0? (
+
+  // effect to handle loading spinner and no data message
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMessage(true); // Update state after 2 seconds
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, []);
+
+  return bookings.length > 0 ? (
     <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-semibold text-gray-800 mb-6">My Bookings</h1>
+      <div className=" flex justify-between items-center">
+        <h1 className="text-3xl font-semibold text-gray-800 mb-6">
+          My Bookings
+        </h1>
+        <div>
+          <button onClick={handleClearBookings} className=" btn text-red-600 font-bold">Clear All</button>
+        </div>
+      </div>
       <div className="bg-white p-6 rounded-2xl shadow-md">
         <table className="w-full border border-gray-300 border-collapse rounded-t-2xl overflow-hidden">
           <thead>
@@ -82,7 +136,7 @@ export default function MyBookings() {
                 <td className="p-3 border border-gray-300 font-semibold">
                   {booking?.title}
                 </td>
-                <td className="p-3 border border-gray-300 font-semibold">
+                <td className="p-3 border border-gray-300  text-yellow-400 font-bold">
                   {booking?.date ? booking?.date?.split("T")[0] : "No date"}
                 </td>
                 <td className="p-3 border border-gray-300 font-semibold">
@@ -114,21 +168,34 @@ export default function MyBookings() {
           </tbody>
         </table>
       </div>
-     {totalPrice>0? <div className=" flex justify-end mt-4 mr-10 items-center gap-4">
-        <h2 className=" text-lg font-bold text-sky-600">
-          Amount: {totalPrice} $
-        </h2>
-        <Link href={'/dashboard/payment'}>
-        <button className=" btn-primary">Pay</button>
-        </Link>
-      </div>:""}
-    </div>
-  ): (
-      <div className="flex justify-center items-center min-h-screen">
-        {!showMessage && <LoadingSpinner />}
-        {showMessage && (
-          <p className="text-gray-600 text-2xl font-bold">No Bookings.</p>
+      {/* section for pagination , total price and pay button  */}
+      <section className=" mt-3">
+        <Pagination
+          count={count}
+          dataPerPage={6}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+        {totalPrice > 0 ? (
+          <div className=" flex justify-end mt-4 mr-10 items-center gap-4">
+            <h2 className=" text-lg font-bold text-sky-600">
+              Amount: {totalPrice} $
+            </h2>
+            <Link href={"/dashboard/payment"}>
+              <button className=" btn-primary">Pay</button>
+            </Link>
+          </div>
+        ) : (
+          ""
         )}
-      </div>
-    );
+      </section>
+    </div>
+  ) : (
+    <div className="flex justify-center items-center min-h-screen">
+      {!showMessage && <LoadingSpinner />}
+      {showMessage && (
+        <p className="text-gray-600 text-2xl font-bold">No Bookings.</p>
+      )}
+    </div>
+  );
 }

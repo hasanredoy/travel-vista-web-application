@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 const useDataLoader = (url) => {
-      const [data , setData] = useState()
+      const [data , setData] = useState([])
       const [loading , setLoading] = useState(true)
   const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/${url}`;
   useEffect(()=>{
