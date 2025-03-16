@@ -1,4 +1,3 @@
-"use client";
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -13,12 +12,22 @@ const useReviewsData = (refetch, userReview,currentPage) => {
     userReview ? user.email : ""
   }&page=${currentPage}&size=${6}`;
   useEffect(() => {
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        setReviews(data.data);
-        setLoading(false);
-      });
+    if(!apiUrl){
+      return console.log("Enter a API url.")
+    }
+   const LoadReviews=async()=>{
+    try {
+      const res = await fetch(apiUrl)
+      const data = await res.json()
+       setReviews(data?.data);
+    } catch (error) {
+      console.log("Failed to load reviews.",error)
+    }finally{
+              setLoading(false);
+
+    }
+   }
+LoadReviews()
   }, [apiUrl, refetch, userReview,currentPage]);
 
   return [reviews, loading] || [];

@@ -1,15 +1,20 @@
-'use client'
-import axios from "axios"
+
 import { useEffect, useState } from "react";
 
 
 const useLoadTestimonial = () => {
   const [data,setData] = useState([])
   useEffect(()=>{
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/testimonial`)
-    .then(res=>{
-      setData(res?.data?.data)
-    })
+    const TestimonialLoader = async()=>{
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/testimonial`)
+        const data = await res.json()
+         setData(data?.data)
+      } catch (error) {
+        console.log("Failed to load testimonial",error)
+      }
+    }
+    TestimonialLoader()
   },[])
   return data||[]
 
