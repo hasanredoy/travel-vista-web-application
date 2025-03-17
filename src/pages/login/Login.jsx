@@ -6,8 +6,9 @@ import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 import { signIn } from "next-auth/react";
 import swal from "sweetalert";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import GoogleLogin from "@/components/social-login/GoogleLogin";
 
 
 const Login = () => {
@@ -16,44 +17,50 @@ const Login = () => {
   // state show and hide password
   const [showPass, setShowPass] = useState(false);
   const router = useRouter();
-
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/";
   // login handler
   const handleLogin = async (event) => {
     event.preventDefault();
     setLoading(true);
+  
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const response = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-    if (response) {
+  
+    try {
+      const response = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+  
+      if (!response || response.error) {
+        swal("Please try again", "", "error");
+        return;
+      }
+  
+      swal("Logged in Successfully", "", "success");
+      router.push(redirectPath?redirectPath:"/"); // Redirect user to intended page
+    } catch (error) {
+      swal("Something went wrong", "Please try again later", "error");
+    } finally {
       setLoading(false);
     }
-    if (response.status == 401) {
-      swal("Please try again", "", "error");
-    }
-   
-    if (response.status == 200) {
-      swal("Logged in Successfully", "", "success");
-      router.push("/");
-    }
   };
+  console.log(redirectPath)
+  
 
-  const handleGoogleLogin = () => {
-    const response=signIn("google",{
-    redirect:false
-    })
-    if (response.status == 401) {
-      swal("Please check your email and password, try again", "", "error");
-    }
-   
-    if (response.status == 200) {
-      swal("Logged in Successfully", "", "success");
-      router.push("/");
-    }
-  };
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     const response = await signIn("google", { redirect: false });
+ 
+  //     swal("Logged in Successfully", "", "success");
+  //     router.push(redirectPath); // Redirect to intended page
+  //   } catch (error) {
+  //     swal("Something went wrong", "Please try again later.", "error");
+  //   }
+  // };
+  
   return (
     <Suspense fallback={<span>Loading</span>}>
       <main className=" min-h-screen my-10  max-w-[90%]  lg:max-w-[85%] mx-auto">
@@ -122,13 +129,7 @@ const Login = () => {
             <div className="divider">or</div>
 
             <div className=" flex justify-center my-4">
-              <button
-                onClick={handleGoogleLogin}
-                className=" p-2 px-4 rounded-md bg-neutral-900 text-white  flex justify-center items-center gap-2 hover:bg-white hover:text-neutral-900 border hover:border-neutral-900 "
-              >
-              Login with
-                <FcGoogle></FcGoogle>
-              </button>
+              <GoogleLogin></GoogleLogin>
             </div>
             <Link
               href={"/signup"}

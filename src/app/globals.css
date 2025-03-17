@@ -80,11 +80,27 @@ body {
   filter: blur(4px);
 }
 
+/* Custom gradient shadows for the dashboard cards */
+.custom-shadow-1 {
+  box-shadow: 0 6px 8px rgba(0, 143, 255, 0.2), 0 3px 5px rgba(5, 150, 255, 0.15);
+}
 
-/* .user-card{
-  color: rgba(2, 166, 172, 0.5);
-  color: #3f3a3a23;
-} */
+.custom-shadow-2 {
+  box-shadow: 0 6px 8px rgba(0, 206, 255, 0.2), 0 3px 5px rgba(0, 184, 255, 0.15);
+}
+
+.custom-shadow-3 {
+  box-shadow: 0 6px 8px rgba(0, 128, 128, 0.2), 0 3px 5px rgba(0, 204, 255, 0.15);
+}
+
+.custom-shadow-4 {
+  box-shadow: 0 6px 8px rgba(75, 0, 130, 0.2), 0 3px 5px rgba(138, 43, 226, 0.15);
+}
+
+.custom-shadow-5 {
+  box-shadow: 0 6px 8px rgba(128, 0, 128, 0.2), 0 3px 5px rgba(204, 51, 255, 0.15);
+}
+
 
 @media screen and (max-width: 500px) {
   .btn-primary {

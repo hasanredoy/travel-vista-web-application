@@ -32,6 +32,10 @@ export const POST = async (request) => {
     const totalUser = await usersCollection.estimatedDocumentCount();
     // get total bookings
     const totalBookings = await paymentsCollection.estimatedDocumentCount();
+
+    // get total blogs 
+    const totalBlogs = await db.collection("blogs").countDocuments()
+
     // get total amount method agg
     const getAmount = await paymentsCollection.aggregate([
       {
@@ -114,6 +118,7 @@ export const POST = async (request) => {
       totalBookings,
       totalEarnings,
       totalTours,
+      totalBlogs,
       monthlyGrowth: growthPercentage,
       data: monthlyEarnings,
     };

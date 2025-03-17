@@ -4,20 +4,19 @@ import {
   FaClipboardList,
   FaMoneyBillWave,
   FaChartLine,
+  FaMapMarkedAlt,
+  FaBlog,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import {
-  BarChart,
-  Bar,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useSession } from "next-auth/react";
 import useLoadUserRole from "@/hooks/user-role/useLoadUserRole";
 import useLoadAdminStats from "@/hooks/stats/useLoadAdminStats";
 import LoadingSpinner from "@/components/reuseble/LoadingSpinner";
@@ -53,77 +52,104 @@ export default function AdminDashboard() {
         Admin Dashboard
       </motion.h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
-        <motion.div
-          className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
-          whileHover={{ scale: 1.05 }}
-        >
-          <FaUsers className="text-[#8bf1f5] text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Total Users</h2>
-            <p className="text-gray-800">{stats?.totalUser}</p>
-          </div>
-        </motion.div>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6 w-full max-w-6xl">
+      {/* Total Users */}
+      <motion.div
+        className="bg-white p-6 rounded-xl shadow-lg custom-shadow-1 hover:shadow-xl transition flex items-center space-x-4"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaUsers className="text-[#8bf1f5] text-4xl" />
+        <div>
+          <h2 className="text-base md:text-lg font-semibold">Total Users</h2>
+          <p className="text-xl font-semibold text-black">{stats?.totalUser||0}</p>
+        </div>
+      </motion.div>
 
-        <motion.div
-          className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
-          whileHover={{ scale: 1.05 }}
-        >
-          <FaClipboardList className="text-[#8bf1f5] text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Total Destinations</h2>
-            <p className="text-gray-800">{stats?.totalTours}</p>
-          </div>
-        </motion.div>
+      {/* Total Destinations */}
+      <motion.div
+        className="bg-white p-6 rounded-xl shadow-lg custom-shadow-2 hover:shadow-xl transition flex items-center space-x-4"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaMapMarkedAlt className="text-[#8bf1f5] text-4xl" />
+        <div>
+          <h2 className="text-base md:text-lg font-semibold">All Destinations</h2>
+          <p className="text-xl font-semibold text-black">{stats?.totalTours||0}</p>
+        </div>
+      </motion.div>
+      {/* Total blogs */}
+      <motion.div
+        className="bg-white p-6 rounded-xl shadow-lg custom-shadow-2 hover:shadow-xl transition flex items-center space-x-4"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaBlog className="text-[#8bf1f5] text-4xl" />
+        <div>
+          <h2 className="text-base md:text-lg font-semibold">Total Blogs</h2>
+          <p className="text-xl font-semibold text-black">{stats?.totalBlogs||0}</p>
+        </div>
+      </motion.div>
 
-        <motion.div
-          className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
-          whileHover={{ scale: 1.05 }}
-        >
-          <FaClipboardList className="text-[#8bf1f5] text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Total Bookings</h2>
-            <p className="text-gray-800">{stats?.totalBookings}</p>
-          </div>
-        </motion.div>
+      {/* Total Bookings */}
+      <motion.div
+        className="bg-white p-6 rounded-xl shadow-lg custom-shadow-4 hover:shadow-xl transition flex items-center space-x-4"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaClipboardList className="text-[#8bf1f5] text-4xl" />
+        <div>
+          <h2 className="text-base md:text-lg font-semibold">Total Bookings</h2>
+          <p className="text-xl font-semibold text-black">{stats?.totalBookings||0}</p>
+        </div>
+      </motion.div>
 
-        <motion.div
-          className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
-          whileHover={{ scale: 1.05 }}
-        >
-          <FaMoneyBillWave className="text-[#8bf1f5] text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Total Earnings</h2>
-            <p className="text-gray-800">$ {stats?.totalEarnings}</p>
-          </div>
-        </motion.div>
+      {/* Total Earnings */}
+      <motion.div
+        className="bg-white p-6 rounded-xl shadow-lg custom-shadow-4 hover:shadow-xl transition flex items-center space-x-4"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaMoneyBillWave className="text-[#8bf1f5] text-4xl" />
+        <div>
+          <h2 className="text-base md:text-lg font-semibold">Total Earnings</h2>
+          <p className="text-xl font-semibold text-black">$ {stats?.totalEarnings||0}</p>
+        </div>
+      </motion.div>
 
-        <motion.div
-          className="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
-          whileHover={{ scale: 1.05 }}
-        >
-          <FaChartLine className="text-[#8bf1f5] text-4xl" />
-          <div>
-            <h2 className="text-xl font-semibold">Growth Rate</h2>
-            <p className="text-gray-800">{stats?.monthlyGrowth}%</p>
-          </div>
-        </motion.div>
+      {/* Growth Rate */}
+      <motion.div
+        className="bg-white p-6 rounded-xl shadow-lg custom-shadow-5 hover:shadow-xl transition flex items-center space-x-4"
+        whileHover={{ scale: 1.05 }}
+      >
+        <FaChartLine className="text-[#8bf1f5] text-4xl" />
+        <div>
+          <h2 className="text-base md:text-lg font-semibold">Growth Rate</h2>
+          <p className="text-xl font-semibold text-black">{stats?.monthlyGrowth||0}%</p>
+        </div>
+      </motion.div>
+    </div>
+    <div className="p-6 bg-white rounded-xl shadow-lg w-full overflow-x-auto max-w-4xl mx-auto mt-10">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800">Monthly Earnings</h2>
       </div>
 
-      <div className="w-full max-w-4xl mt-10 bg-white p-6 rounded-xl shadow-md">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
-          Earnings Overview
-        </h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={stats?.data ? stats?.data : data}>
+      {/* Recharts Area Chart */}
+      <div className="w-full h-64 min-w-[500px] ">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={stats?.data?stats?.data:data}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="month" />
+            <XAxis dataKey="monthYear" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="earnings" fill="#8bf1f5" barSize={40} />
-          </BarChart>
+            <Area
+               type="monotone"
+               dataKey="earnings"
+               stroke="#38bdf8"  
+               fill="#38bdf8"   
+               fillOpacity={0.3}
+            />
+          </AreaChart>
         </ResponsiveContainer>
       </div>
+
+    
+    </div>
     </div>
   );
 }
